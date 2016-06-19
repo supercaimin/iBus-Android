@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#f4f4f4"
+    android:orientation="vertical">
+
+    <GridView
+        android:id="@+id/gview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnWidth="120dp"
+        android:numColumns="3"
+        android:stretchMode="columnWidth"
+        android:layout_marginBottom="85dp"
+        android:layout_marginTop="10dp"
+        android:horizontalSpacing="2.5dp"
+        android:verticalSpacing="5dp"></GridView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#7feeeeee"
+        android:layout_gravity="bottom">
+            <Button
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:background="@color/colorPrimary"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="到站"
+                android:textColor="@android:color/white"
+                android:textSize="16dp"
+                android:layout_centerInParent="true"/>
+    </RelativeLayout>
+</FrameLayout>
+
