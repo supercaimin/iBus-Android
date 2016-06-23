@@ -13,6 +13,7 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
@@ -35,10 +36,9 @@ public class HttpData {
 	private static final int TIMEOUT_SO = 10000;
 	/** 测试url **/ 
 
-	public static final String FAKE_SERVER = "http://139.196.40.169/api/index/";
-	public static final String 	OUTDOOR_DATA = "http://www.pm25.com/city/";
+	public static final String FAKE_SERVER = "http://ibus.chinaairplus.com/api/";
 	//	 // /** 正式的地址url **/
-	public static final String BASE_URL = "http://139.196.40.169/";
+	public static final String BASE_URL = "http://ibus.chinaairplus.com/";
 
 	public static final String CONNECTION_ERROR_JSON = "{\"status\":0,\"error\":\"%s\"}";
 	public static final String CONNECTION_ERROR_URL = "{\"status\":0,\"error\":\"请求地址无效!\"}";
@@ -78,6 +78,44 @@ public class HttpData {
 		SystemUtils.print("result:" + strResult);
 		return strResult;
 	}
+
+
+	/**
+	 * HttpPost请求
+	 *
+	 * @param url
+	 *
+	 * @return
+	 */
+	private static String put(String url, List<NameValuePair> nameValuePairs) {
+		SystemUtils.print("PUT--URL:" + url);
+		SystemUtils.print("entity--:" + nameValuePairs);
+
+		String strResult = null;
+		try {
+			DefaultHttpClient httpClient = new DefaultHttpClient();
+			httpClient.getParams()
+					.setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT,
+							TIMEOUT_CONNECTION);
+			httpClient.getParams().setParameter(
+					CoreConnectionPNames.SO_TIMEOUT, TIMEOUT_SO);
+			HttpPut put = new HttpPut(url);
+			UrlEncodedFormEntity entity = new UrlEncodedFormEntity(
+					nameValuePairs, HTTP.UTF_8);
+			put.setEntity(entity);
+			HttpResponse httpResponse = httpClient.execute(put);
+			strResult = EntityUtils.toString(httpResponse.getEntity());
+		} catch (IllegalArgumentException e) {
+			strResult = CONNECTION_ERROR_URL;
+		} catch (Exception e) {
+			Log.e("111", "result:" + strResult);
+			strResult = String.format(CONNECTION_ERROR_JSON,
+					e.getMessage() == null ? "" : e.getMessage());
+		}
+		SystemUtils.print("result:" + strResult);
+		return strResult;
+	}
+
 	/**
 	 * HttpPost请求
 	 *
@@ -187,112 +225,31 @@ public class HttpData {
 	 * @return
 	 */
 	public static String login(String email, String password) {
-		String url = FAKE_SERVER + "login";
+		String url = FAKE_SERVER + "login/login";
 		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
-		BasicNameValuePair lonParam = new BasicNameValuePair("email",
+		BasicNameValuePair userMobile = new BasicNameValuePair("user_mobile",
 				email);
-		BasicNameValuePair latParam = new BasicNameValuePair("password",
+		BasicNameValuePair userPass = new BasicNameValuePair("user_pass",
 				password);
-		nvps.add(lonParam);
-		nvps.add(latParam);
-		return post(url, nvps);
+		nvps.add(userMobile);
+		nvps.add(userPass);
+		return put(url, nvps);
 	}
-
-	/**
-	 * 获取室外数据
-	 *
-	 * @return
-	 */
-	public static String getOutdoorData(String cityKey) {
-		String url = OUTDOOR_DATA + cityKey + ".html";
-		return get(url, null);
-
-	}
-
-	public  static String getIndoorData(){
-		String url = FAKE_SERVER + "get_pm";
+	public static String handbook() {
+		String url = FAKE_SERVER + "site/handbook";
 		return get(url, null);
 	}
 
-	public static String getUserInstruments(String uid) {
-		String url = FAKE_SERVER + "get_instruments_by_user/" +uid;
+	public static String timetable() {
+		String url = FAKE_SERVER + "site/handbook";
 		return get(url, null);
 	}
 
-	public static String getSchoolImages(String uid) {
-		String url = FAKE_SERVER + "get_school/" +uid;
+	public static String about() {
+		String url = FAKE_SERVER + "site/about_us";
 		return get(url, null);
 	}
 
-	public static String getCity() {
-		String url = FAKE_SERVER + "get_cites";
-		return get(url, null);
-	}
 
-	public static String getSchoolsByCity(String cityId) {
-		String url = FAKE_SERVER + "get_schools_by_city/" + cityId;
-		return get(url, null);
-	}
-	public static String getDeviceBySchool(String schoolId) {
-		String url = FAKE_SERVER + "get_instruments_by_school/" + schoolId;
-		return get(url, null);
-	}
-
-	/**
-	 * 添加设备
-	 *
-	 * @param userId
-	 * @param deviceId
-	 * @return
-	 */
-	public static String addUserDevice(String userId, String deviceId) {
-		String url = FAKE_SERVER + "add_user_instrument";
-		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
-		BasicNameValuePair lonParam = new BasicNameValuePair("user_id",
-				userId);
-		BasicNameValuePair latParam = new BasicNameValuePair("instrument_id",
-				deviceId);
-		nvps.add(lonParam);
-		nvps.add(latParam);
-		return post(url, nvps);
-	}
-
-	/**
-	 * 删除设备
-	 *
-	 * @param userId
-	 * @param deviceId
-	 * @return
-	 */
-	public static String delUserDevice(String userId, String deviceId) {
-		String url = FAKE_SERVER + "del_user_instrument";
-		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
-		BasicNameValuePair lonParam = new BasicNameValuePair("user_id",
-				userId);
-		BasicNameValuePair latParam = new BasicNameValuePair("instrument_id",
-				deviceId);
-		nvps.add(lonParam);
-		nvps.add(latParam);
-		return post(url, nvps);
-	}
-
-	/**
-	 * 删除设备
-	 *
-	 * @param userId
-	 * @param installationId
-	 * @return
-	 */
-	public static String setInstallationId(String userId, String installationId) {
-		String url = FAKE_SERVER + "set_installation_id";
-		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
-		BasicNameValuePair lonParam = new BasicNameValuePair("user_id",
-				userId);
-		BasicNameValuePair latParam = new BasicNameValuePair("installation_id",
-				installationId);
-		nvps.add(lonParam);
-		nvps.add(latParam);
-		return post(url, nvps);
-	}
 
 }

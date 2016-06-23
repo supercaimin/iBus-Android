@@ -4,14 +4,15 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
-import cn.homecaught.ibus_android.RApplication;
+import cn.homecaught.ibus_android.MyApplication;
 
 public class SharedPreferenceManager {
 	public static final String PREFERENCE_FILE = "FILE";
 
 	public static final String SP_NAME = "negotiation";
-	public static final String PM_DATA = "pmdata";
-	public static final String USER_DATA = "userdata";
+	public final static String LOGIN_USER_MOBILE = "user_mobile";
+	public final static String LOGIN_USER_PASS = "user_pass";
+
 
 	private SharedPreferences sp;
 	private Editor editor;
@@ -22,28 +23,28 @@ public class SharedPreferenceManager {
 	}
 
 
-	public void setPMData(String data) {
-		editor.putString(PM_DATA, data);
+	public void setUserMobile(String mobile) {
+		editor.putString(LOGIN_USER_MOBILE, mobile);
 		editor.commit();
 	}
 
-	public String getPMData() {
-		return getString(PM_DATA, "");
+	public String getUserMobile() {
+		return getString(LOGIN_USER_MOBILE, "");
 	}
-
-
-	public void setUserData(String data) {
-		editor.putString(USER_DATA, data);
+	public void setUserPass(String pass) {
+		editor.putString(LOGIN_USER_PASS, pass);
 		editor.commit();
 	}
 
-	public String getUserData() {
-		return getString(USER_DATA, "");
+	public String getUserPass() {
+		return getString(LOGIN_USER_PASS, "");
 	}
+
+
 
 	private Boolean getBoolean(String tag, Boolean defaultValue) {
 		if (sp == null) {
-			sp = getSharedPreferences(RApplication.instance);
+			sp = getSharedPreferences(MyApplication.instance);
 		}
 
 		return sp.getBoolean(tag, defaultValue);
@@ -56,7 +57,7 @@ public class SharedPreferenceManager {
 
 //	private String getString(String tag, String defaultValue) {
 		if (sp == null) {
-			sp = getSharedPreferences(RApplication.instance);
+			sp = getSharedPreferences(MyApplication.instance);
 		}
 
 		return sp.getString(tag, defaultValue);

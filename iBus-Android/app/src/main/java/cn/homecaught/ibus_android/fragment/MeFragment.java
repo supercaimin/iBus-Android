@@ -1,6 +1,7 @@
 package cn.homecaught.ibus_android.fragment;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import cn.homecaught.ibus_android.R;
+import cn.homecaught.ibus_android.MyApplication;
+import cn.homecaught.ibus_android.activity.LoginActivity;
+import cn.homecaught.ibus_android.activity.WebViewActivity;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,7 +19,9 @@ import cn.homecaught.ibus_android.R;
  * Date: 13-6-14
  * Time: 下午2:39
  */
-public class MeFragment extends Fragment{
+public class MeFragment extends Fragment {
+
+    private View container;
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -26,12 +32,39 @@ public class MeFragment extends Fragment{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         System.out.println("CCCCCCCCCC____onCreate");
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         System.out.println("CCCCCCCCCC____onCreateView");
-        return inflater.inflate(R.layout.me_fragment, container, false);
+        this.container = inflater.inflate(R.layout.me_fragment, container, false);
+        this.container.findViewById(R.id.llAbout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), WebViewActivity.class);
+                intent.putExtra("webContent", WebViewActivity.WEB_CONTENT_ABOUT_US);
+                startActivity(intent);
+            }
+        });
+
+        this.container.findViewById(R.id.llLogout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyApplication.getInstance().getSharedPreferenceManager().setUserMobile("");
+                MyApplication.getInstance().getSharedPreferenceManager().setUserPass("");
+
+
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+
+                startActivity(intent);
+
+                getActivity().finish();
+
+            }
+        });
+        return this.container;
     }
 
     @Override
