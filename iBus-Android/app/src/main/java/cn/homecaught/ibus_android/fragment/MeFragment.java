@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import cn.homecaught.ibus_android.R;
 import cn.homecaught.ibus_android.MyApplication;
 import cn.homecaught.ibus_android.activity.LoginActivity;
+import cn.homecaught.ibus_android.activity.PwdActivity;
 import cn.homecaught.ibus_android.activity.WebViewActivity;
 
 /**
@@ -45,6 +46,31 @@ public class MeFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), WebViewActivity.class);
                 intent.putExtra("webContent", WebViewActivity.WEB_CONTENT_ABOUT_US);
+                startActivity(intent);
+            }
+        });
+        this.container.findViewById(R.id.llWork).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), WebViewActivity.class);
+                intent.putExtra("webContent", WebViewActivity.WEB_CONTENT_WROK);
+                startActivity(intent);
+            }
+        });
+
+        this.container.findViewById(R.id.llUrgent).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), WebViewActivity.class);
+                intent.putExtra("webContent", WebViewActivity.WEB_CONTENT_URGENT);
+                startActivity(intent);
+            }
+        });
+
+        this.container.findViewById(R.id.llChgPwd).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), PwdActivity.class);
                 startActivity(intent);
             }
         });

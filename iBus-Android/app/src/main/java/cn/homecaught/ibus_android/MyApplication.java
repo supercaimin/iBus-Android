@@ -14,6 +14,10 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.utils.StorageUtils;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +57,9 @@ public class MyApplication extends Application {
 
     private List<Activity> activitys = new ArrayList<Activity>();
 
+    private static DisplayImageOptions options;
+
+
 
     public MyApplication() {
         instance = this;
@@ -67,8 +74,27 @@ public class MyApplication extends Application {
 
         super.onCreate();
 
-
         sharedPreferenceManager = new SharedPreferenceManager(this, SharedPreferenceManager.PREFERENCE_FILE);
+
+        options = new DisplayImageOptions.Builder()
+                .displayer(new FadeInBitmapDisplayer(300))
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .build();
+
+        //初始化图片下载组件
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
+                .threadPriority(Thread.NORM_PRIORITY - 2)
+                .denyCacheImageMultipleSizesInMemory()
+                .diskCacheSize(50 * 1024 * 1024)
+                .diskCacheFileCount(200)
+                .diskCacheFileNameGenerator(new Md5FileNameGenerator())
+                .defaultDisplayImageOptions(options)
+                .build();
+
+        //Initialize ImageLoader with configuration.
+        ImageLoader.getInstance().init(config);
+
     }
 
     /**

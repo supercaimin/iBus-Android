@@ -69,6 +69,45 @@ public class UserBean {
     private String userHead;
     private String userToken;
     private String userRealName;
+    private String userSN;
+
+    public String getUserSN() {
+        return userSN;
+    }
+
+    public void setUserSN(String userSN) {
+        this.userSN = userSN;
+    }
+
+    public String getUserGrade() {
+        return userGrade;
+    }
+
+    public void setUserGrade(String userGrade) {
+        this.userGrade = userGrade;
+    }
+
+    public String getUserOnBus() {
+        return userOnBus;
+    }
+
+    public void setUserOnBus(String userOnBus) {
+        this.userOnBus = userOnBus;
+    }
+
+    private String userGrade;
+    private String userOnBus;
+
+    public UserBean getGuardian() {
+        return guardian;
+    }
+
+    public void setGuardian(UserBean guardian) {
+        this.guardian = guardian;
+    }
+
+    private UserBean guardian;
+
 
     public UserBean(JSONObject jsonObject){
         try {
@@ -77,8 +116,19 @@ public class UserBean {
             userFirstName = jsonObject.getString("user_first_name");
             userLastName = jsonObject.getString("user_last_name");
             userHead = jsonObject.getString("user_head");
-            userToken = jsonObject.getString("user_token");
-            userRealName = jsonObject.getString("user_real_name");
+            if (jsonObject.has("user_token"))
+                userToken = jsonObject.getString("user_token");
+            if (jsonObject.has("user_real_name"))
+                userRealName = jsonObject.getString("user_real_name");
+            if (jsonObject.has("user_sn"))
+                userSN = jsonObject.getString("user_sn");
+            if (jsonObject.has("user_grade"))
+                userGrade = jsonObject.getString("user_grade");
+            if (jsonObject.has("user_on_bus"))
+                userOnBus = jsonObject.getString("user_on_bus");
+
+            if (jsonObject.has("user_guardian_data"))
+                guardian = new UserBean(jsonObject.getJSONObject("user_guardian_data"));
 
         }catch (Exception e){
             e.printStackTrace();

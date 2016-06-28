@@ -2,13 +2,19 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
     android:orientation="vertical">
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="112dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/user_header" />
+        android:layout_height="112dp"/>
+    <View
+        android:id="@+id/viewMask"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#90000000"/>
+
     <Button
         android:id="@+id/btn_info"
         android:layout_width="26dp"
@@ -23,16 +29,16 @@
         android:background="#7f000000"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/tvName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sam Cai"
             android:layout_marginLeft="5dp"
             android:textColor="@android:color/white"
             android:layout_gravity="center_horizontal"/>
         <TextView
+            android:id="@+id/tvSN"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="230435345"
             android:layout_marginLeft="5dp"
             android:textColor="@android:color/white"
             android:layout_gravity="center_horizontal"/>

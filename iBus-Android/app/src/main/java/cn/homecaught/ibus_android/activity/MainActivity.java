@@ -2,11 +2,11 @@ package cn.homecaught.ibus_android.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.os.Bundle;
 import android.widget.Toast;
 
 import android.support.v4.app.Fragment;
@@ -19,12 +19,18 @@ import android.view.MenuItem;
 
 import android.graphics.drawable.Drawable;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.homecaught.ibus_android.R;
 import cn.homecaught.ibus_android.fragment.*;
 import cn.homecaught.ibus_android.adapter.FragmentTabAdapter;
+import cn.homecaught.ibus_android.model.UgrentBean;
+import cn.homecaught.ibus_android.model.UserBean;
+import cn.homecaught.ibus_android.util.HttpData;
 import cn.homecaught.ibus_android.util.StatusBarCompat;
 import io.rong.imkit.RongIM;
 
@@ -37,7 +43,9 @@ public class MainActivity extends AppCompatActivity {
 
     private int selectedReportIndex = 0;
 
-    public String hello = "hello ";
+    public UserBean manager;
+
+    private List<UgrentBean> ugrents;
 
     Toolbar toolbar = null;
 
@@ -117,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        new GetBusTaskTask().execute();
     }
 
     @Override
@@ -130,22 +139,15 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_report:
-                showReportAlert();
+                new GetUgrentTask().execute();
                 break;
             case R.id.action_add:
                 startActivity(new Intent(this, AddStudentActivity.class));
                 break;
             case R.id.action_chat:
-                if (RongIM.getInstance() != null) {
-                    /**
-                     * 启动单聊界面。
-                     *
-                     * @param context      应用上下文。
-                     * @param targetUserId 要与之聊天的用户 Id。
-                     * @param title        聊天的标题，如果传入空值，则默认显示与之聊天的用户名称。
-                     */
-                    RongIM.getInstance().startPrivateChat(this,"targetId","title");
-                }                break;
+                RongIM.getInstance().startPrivateChat(MainActivity.this, manager.getId(),
+                        manager.getUserFirstName() + "" + manager.getUserLastName());
+                break;
             default:
                 break;
         }
@@ -162,7 +164,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void showReportAlert() {
 
-        final String[] reports = new String[]{"车辆故障", "道路拥堵", "路遇事故", "雨雪天气", "其它"};
+        final String[] reports = new String[ugrents.size()];
+        List<String> names = new ArrayList<>();
+        for (int i=0; i <ugrents.size(); i++){
+            UgrentBean ugrentBean = ugrents.get(i);
+            names.add(ugrentBean.getName());
+        }
+        names.toArray(reports);
 
         Dialog alertDialog = new AlertDialog.Builder(this).
                 setTitle("请故障选择").
@@ -178,7 +186,10 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                UgrentBean ugrentBean = ugrents.get(selectedReportIndex);
+                                new SetUrgent(ugrentBean.getId()).execute();
                                 Toast.makeText(MainActivity.this, reports[selectedReportIndex], Toast.LENGTH_SHORT).show();
+
                             }
                         }).
                         setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -192,4 +203,139 @@ public class MainActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+    public class GetBusTaskTask extends AsyncTask<Void, Void, String> {
+        public GetBusTaskTask() {
+            super();
+        }
+
+        @Override
+        protected String doInBackground(Void... params) {
+            return HttpData.getBus();
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            try {
+                JSONObject jsonObject = new JSONObject(s);
+                manager = new UserBean(jsonObject.getJSONObject("info").getJSONObject("bus_manager_data"));
+
+            } catch (Exception e) {
+
+            }
+            super.onPostExecute(s);
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onCancelled(String s) {
+            super.onCancelled(s);
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+        }
+    }
+
+
+    public class SetUrgent extends AsyncTask<Void, Void, String> {
+
+        private String mUrgentId;
+
+        public SetUrgent(String urgentId) {
+            super();
+            mUrgentId = urgentId;
+        }
+
+        @Override
+        protected String doInBackground(Void... params) {
+            return HttpData.setUrgent(mUrgentId);
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onCancelled(String s) {
+            super.onCancelled(s);
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+        }
+    }
+
+    public class GetUgrentTask extends AsyncTask<Void, Void, String>{
+
+        public GetUgrentTask() {
+            super();
+        }
+
+        @Override
+        protected String doInBackground(Void... params) {
+            return HttpData.getUrgent();
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            try{
+                if (ugrents == null)
+                    ugrents =new ArrayList<>();
+                ugrents.clear();
+                JSONObject jsonObject = new JSONObject(s);
+                JSONArray jsonArray = jsonObject.getJSONArray("info");
+                for (int i = 0; i< jsonArray.length(); i++){
+                    UgrentBean ugrentBean = new UgrentBean(jsonArray.getJSONObject(i));
+                    ugrents.add(ugrentBean);
+                }
+
+                showReportAlert();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            super.onPostExecute(s);
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onCancelled(String s) {
+            super.onCancelled(s);
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+        }
+    }
 }

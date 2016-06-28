@@ -21,8 +21,8 @@ public class WebViewActivity extends AppCompatActivity {
 
     private WebView webView;
 
-    public static final String WEB_CONTENT_HANDBOOK = "handbook";
-    public static final String WEB_CONTENT_TIMETABLE = "timetable";
+    public static final String WEB_CONTENT_WROK = "work";
+    public static final String WEB_CONTENT_URGENT = "urgent";
     public static final String WEB_CONTENT_ABOUT_US = "about_us";
 
     private String webContent = "";
@@ -44,8 +44,10 @@ public class WebViewActivity extends AppCompatActivity {
 
         if (webContent.equals(WEB_CONTENT_ABOUT_US)) {
             setTitle("关于我们");
-        } else if (webContent.equals(WEB_CONTENT_HANDBOOK)) {
-        } else if (webContent.equals(WEB_CONTENT_TIMETABLE)) {
+        } else if (webContent.equals(WEB_CONTENT_WROK)) {
+            setTitle("工作守则");
+        } else if (webContent.equals(WEB_CONTENT_URGENT)) {
+            setTitle("应急处理预案");
         } else {
 
         }
@@ -60,11 +62,11 @@ public class WebViewActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(Void... params) {
             if (webContent.equals(WEB_CONTENT_ABOUT_US)) {
-                return HttpData.about();
-            } else if (webContent.equals(WEB_CONTENT_HANDBOOK)) {
-                return HttpData.handbook();
-            } else if (webContent.equals(WEB_CONTENT_TIMETABLE)) {
-                return HttpData.timetable();
+                return HttpData.getAboutWeb();
+            } else if (webContent.equals(WEB_CONTENT_WROK)) {
+                return HttpData.getWorkWeb();
+            } else if (webContent.equals(WEB_CONTENT_URGENT)) {
+                return HttpData.getUrgentWeb();
             } else {
 
             }
