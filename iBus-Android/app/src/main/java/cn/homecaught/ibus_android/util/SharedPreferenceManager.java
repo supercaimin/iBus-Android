@@ -12,6 +12,8 @@ public class SharedPreferenceManager {
 	public static final String SP_NAME = "negotiation";
 	public final static String LOGIN_USER_MOBILE = "user_mobile";
 	public final static String LOGIN_USER_PASS = "user_pass";
+	public final static String LOGIN_USER_HEAD = "user_head";
+	public final static String LOGIN_USER_NAME = "user_name";
 
 
 	private SharedPreferences sp;
@@ -40,7 +42,23 @@ public class SharedPreferenceManager {
 		return getString(LOGIN_USER_PASS, "");
 	}
 
+	public void setUserHead(String head) {
+		editor.putString(LOGIN_USER_HEAD, head);
+		editor.commit();
+	}
 
+	public String getUserHead() {
+		return getString(LOGIN_USER_HEAD, "");
+	}
+
+	public void setUserName(String name) {
+		editor.putString(LOGIN_USER_NAME, name);
+		editor.commit();
+	}
+
+	public String getUserName() {
+		return getString(LOGIN_USER_NAME, "");
+	}
 
 	private Boolean getBoolean(String tag, Boolean defaultValue) {
 		if (sp == null) {

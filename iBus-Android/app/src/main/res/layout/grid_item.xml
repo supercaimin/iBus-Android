@@ -8,7 +8,8 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="112dp"/>
+        android:layout_height="112dp"
+        android:scaleType="centerCrop"/>
     <View
         android:id="@+id/viewMask"
         android:layout_width="match_parent"

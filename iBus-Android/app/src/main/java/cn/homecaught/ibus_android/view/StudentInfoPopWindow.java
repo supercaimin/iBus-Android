@@ -45,10 +45,12 @@ public class StudentInfoPopWindow extends PopupWindow {
         tvSN.setText(userBean.getUserSN());
         tvGrade = (TextView) contentView.findViewById(R.id.tvGrade);
         tvGrade.setText(userBean.getUserGrade());
-        tvMobile = (TextView) contentView.findViewById(R.id.tvMobile);
-        tvMobile.setText(userBean.getGuardian().getUserMobile());
-        tvKinder = (TextView) contentView.findViewById(R.id.tvKinder);
-        tvKinder.setText(userBean.getGuardian().getUserRealName());
+        if (userBean.getGuardian() != null){
+            tvMobile = (TextView) contentView.findViewById(R.id.tvMobile);
+            tvMobile.setText(userBean.getGuardian().getUserMobile());
+            tvKinder = (TextView) contentView.findViewById(R.id.tvKinder);
+            tvKinder.setText(userBean.getGuardian().getUserRealName());
+        }
 
         setContentView(contentView);
         setWidth(LinearLayout.LayoutParams.WRAP_CONTENT);

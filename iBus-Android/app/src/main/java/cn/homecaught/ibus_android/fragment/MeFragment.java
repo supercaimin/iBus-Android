@@ -7,12 +7,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import cn.homecaught.ibus_android.R;
 import cn.homecaught.ibus_android.MyApplication;
 import cn.homecaught.ibus_android.activity.LoginActivity;
 import cn.homecaught.ibus_android.activity.PwdActivity;
 import cn.homecaught.ibus_android.activity.WebViewActivity;
+import cn.homecaught.ibus_android.util.HttpData;
 
 /**
  * Created with IntelliJ IDEA.
@@ -90,6 +94,10 @@ public class MeFragment extends Fragment {
 
             }
         });
+
+        ImageLoader.getInstance().displayImage(HttpData.BASE_URL
+                        + MyApplication.getInstance().getLoginUser().getUserHead(),
+                (ImageView) this.container.findViewById(R.id.ivHead));
         return this.container;
     }
 
@@ -140,8 +148,6 @@ public class MeFragment extends Fragment {
         super.onDetach();
         System.out.println("CCCCCCCCCC____onDetach");
     }
-
-
 
 
 }

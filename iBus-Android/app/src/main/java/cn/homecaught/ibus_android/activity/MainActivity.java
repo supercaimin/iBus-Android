@@ -145,8 +145,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, AddStudentActivity.class));
                 break;
             case R.id.action_chat:
-                RongIM.getInstance().startPrivateChat(MainActivity.this, manager.getId(),
-                        manager.getUserFirstName() + "" + manager.getUserLastName());
+                if (manager != null){
+                    RongIM.getInstance().startPrivateChat(MainActivity.this, manager.getId(),
+                            manager.getUserFirstName() + "" + manager.getUserLastName());
+                }else {
+                    Toast.makeText(this, "未设置校巴经理", Toast.LENGTH_SHORT).show();
+                }
                 break;
             default:
                 break;

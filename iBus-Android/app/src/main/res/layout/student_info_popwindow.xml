@@ -30,7 +30,7 @@
                 android:layout_centerHorizontal="true"
                 android:textSize="16sp"
                 android:textColor="@android:color/black"
-                android:text="Sam Cai"/>
+                android:text=""/>
         </RelativeLayout>
         <View
             android:layout_width="match_parent"
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="16sp"
-                android:text="23432432534"/>
+                android:text=""/>
         </LinearLayout>
         <View
             android:layout_width="match_parent"
@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="16sp"
-                android:text="四年级一班"/>
+                android:text=""/>
         </LinearLayout>
         <View
             android:layout_width="match_parent"
@@ -117,7 +117,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="16sp"
-                android:text="Mark Cai"/>
+                android:text=""/>
         </LinearLayout>
         <View
             android:layout_width="match_parent"
@@ -146,7 +146,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="16sp"
-                android:text="18626467882"/>
+                android:text=""/>
         </LinearLayout>
         <View
             android:layout_width="match_parent"

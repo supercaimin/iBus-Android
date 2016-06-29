@@ -110,6 +110,7 @@ public class UserBean {
 
 
     public UserBean(JSONObject jsonObject){
+        if (jsonObject == null) return;
         try {
             id = jsonObject.getString("id");
             userMobile = jsonObject.getString("user_mobile");
