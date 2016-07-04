@@ -38,6 +38,7 @@ import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.StringBody;
 
 
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,8 +52,8 @@ import cn.homecaught.ibus_android.model.UserBean;
  * @date 2015-7-15 下午10:58:34
  */
 public class HttpData {
-    private static final int TIMEOUT_CONNECTION = 5000;
-    private static final int TIMEOUT_SO = 10000;
+    private static final int TIMEOUT_CONNECTION = 5000 * 10;
+    private static final int TIMEOUT_SO = 10000 * 10;
 
 
     public static final String TRACK_TYPE_BACK = "back";
@@ -69,8 +70,8 @@ public class HttpData {
     //	 // /** 正式的地址url **/
     public static final String BASE_URL = "http://ibus.chinaairplus.com/";
 
-    public static final String CONNECTION_ERROR_JSON = "{\"status\":0,\"error\":\"%s\"}";
-    public static final String CONNECTION_ERROR_URL = "{\"status\":0,\"error\":\"请求地址无效!\"}";
+    public static final String CONNECTION_ERROR_JSON = "{\"status\":false,\"msg\":\"请求失败%s\"}";
+    public static final String CONNECTION_ERROR_URL = "{\"status\":false,\"msg\":\"请求地址无效!\"}";
 
     public static String cookie = null;
 
@@ -98,6 +99,7 @@ public class HttpData {
             HttpPost post = new HttpPost(url);
             if (cookie != null)
                 post.setHeader("Cookie", cookie);
+                Log.i("Cookie", cookie);
             post.getParams().setParameter(
                     ClientPNames.COOKIE_POLICY, CookiePolicy.BROWSER_COMPATIBILITY);
             UrlEncodedFormEntity entity = new UrlEncodedFormEntity(
@@ -111,6 +113,7 @@ public class HttpData {
             Log.e("111", "result:" + strResult);
             strResult = String.format(CONNECTION_ERROR_JSON,
                     e.getMessage() == null ? "" : e.getMessage());
+            e.printStackTrace();
         }
         SystemUtils.print("result:" + strResult);
         return strResult;
@@ -148,9 +151,9 @@ public class HttpData {
             put.setEntity(entity);
             HttpResponse httpResponse = httpClient.execute(put);
             strResult = EntityUtils.toString(httpResponse.getEntity());
-            if (cookie == null && url.equals(FAKE_SERVER + "login/login")) {
+            if (url.equals(FAKE_SERVER + "login/login")) {
                 cookie = HttpData.getCookies(httpClient);
-                Log.i("HttpData", cookie);
+                Log.i("HttpData cookie", cookie);
             }
 
 
@@ -160,6 +163,7 @@ public class HttpData {
             Log.e("111", "result:" + strResult);
             strResult = String.format(CONNECTION_ERROR_JSON,
                     e.getMessage() == null ? "" : e.getMessage());
+            e.printStackTrace();
         }
         SystemUtils.print("result:" + strResult);
         return strResult;
@@ -189,10 +193,12 @@ public class HttpData {
             httpClient.getParams().setParameter(
                     CoreConnectionPNames.SO_TIMEOUT, TIMEOUT_SO);
             HttpGet get = new HttpGet(url);
-            get.getParams().setParameter(
-                    ClientPNames.COOKIE_POLICY, CookiePolicy.BROWSER_COMPATIBILITY);
             if (cookie != null)
                 get.setHeader("Cookie", cookie);
+                Log.i("Set Cookie", cookie);
+            get.getParams().setParameter(
+                    ClientPNames.COOKIE_POLICY, CookiePolicy.BROWSER_COMPATIBILITY);
+
             HttpResponse httpResponse = httpClient.execute(get);
             strResult = EntityUtils.toString(httpResponse.getEntity());
             SystemUtils.print("code:" + httpResponse.getStatusLine());
@@ -302,11 +308,6 @@ public class HttpData {
         List<Cookie> cookies = ((AbstractHttpClient) httpClient).getCookieStore().getCookies();
         for (Cookie cookie : cookies)
             sb.append(cookie.getName() + "=" + cookie.getValue() + ";");
-
-        // 除了HttpClient自带的Cookie，自己还可以增加自定义的Cookie
-        // 增加代码...
-
-
         return sb.toString();
     }
 
@@ -441,7 +442,14 @@ public class HttpData {
 
         return post(url, nvps);
     }
-
+    public static String getUser(String userId) {
+        String url = FAKE_SERVER + "aunt/user";
+        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+        BasicNameValuePair userIdBP = new BasicNameValuePair("id",
+                userId);
+        nvps.add(userIdBP);
+        return get(url, nvps);
+    }
 
     public  static String uploadImage(String filepath){
 

@@ -5,9 +5,8 @@
               android:layout_height="fill_parent"
                 android:background="#f4f4f4"
         >
-    <fragment
-        android:id="@+id/conversationlist"
-        android:name="io.rong.imkit.fragment.ConversationListFragment"
+    <FrameLayout
+        android:id="@+id/rong_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

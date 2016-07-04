@@ -1,5 +1,6 @@
 package cn.homecaught.ibus_android.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -45,6 +46,8 @@ public class AddStudentActivity extends AppCompatActivity {
     private EditText etSN;
     private CameraDialog cameraDialog;
 
+    private ProgressDialog progressDialog;
+
     private String mHeadPath;
 
     @Override
@@ -52,6 +55,10 @@ public class AddStudentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_student);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("提示");
+        progressDialog.setMessage("请求网络中，请稍等...");
 
         ivHeadImageView = (CircleImageView) findViewById(R.id.ivHead);
         ivHeadImageView.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +78,7 @@ public class AddStudentActivity extends AppCompatActivity {
         findViewById(R.id.btn_finish).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.show();
                 new AddChildTask(etSN.getText().toString(), etFistName.getText().toString(), etLastName.getText().toString()).execute();
             }
         });
@@ -265,6 +273,8 @@ public class AddStudentActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+
+            progressDialog.hide();
 
             try {
                 JSONObject jsonObject = new JSONObject(s);

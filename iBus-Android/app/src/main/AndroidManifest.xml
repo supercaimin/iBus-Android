@@ -56,7 +56,7 @@
             android:windowSoftInputMode="stateHidden|stateAlwaysHidden" >
         </activity>
         <activity
-            android:name=".activity.ConversationActivity"
+            android:name=".activity.ConversationActivtiy"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" >

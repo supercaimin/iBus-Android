@@ -3,6 +3,7 @@ package cn.homecaught.ibus_android.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.ProgressDialog;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -46,6 +47,7 @@ import static android.Manifest.permission.READ_CONTACTS;
  * A login screen that offers login via email/password.
  */
 public class PwdActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -95,6 +97,7 @@ public class PwdActivity extends AppCompatActivity implements LoaderCallbacks<Cu
         mProgressView = findViewById(R.id.login_progress);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
     }
 

@@ -1,5 +1,6 @@
 package cn.homecaught.ibus_android.model;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
@@ -129,8 +130,9 @@ public class UserBean {
                 userOnBus = jsonObject.getString("user_on_bus");
 
             if (jsonObject.has("user_guardian_data"))
-                guardian = new UserBean(jsonObject.getJSONObject("user_guardian_data"));
-
+                if(jsonObject.get("user_guardian_data") instanceof JSONObject){
+                    guardian = new UserBean(jsonObject.getJSONObject("user_guardian_data"));
+                }
         }catch (Exception e){
             e.printStackTrace();
         }

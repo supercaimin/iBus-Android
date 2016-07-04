@@ -341,10 +341,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
 
             if (success) {
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 MyApplication.getInstance().getSharedPreferenceManager().setUserMobile(mMobile);
                 MyApplication.getInstance().getSharedPreferenceManager().setUserPass(mPassword);
                 finish();
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
 
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));

@@ -1,5 +1,6 @@
 package cn.homecaught.ibus_android.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -49,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar = null;
 
+    private ProgressDialog progressDialog;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
         StatusBarCompat.compat(this);
         StatusBarCompat.compat(this, 0x000);
 
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("提示");
+        progressDialog.setMessage("请求网络中，请稍等...");
 
         FragmentTabAdapter tabAdapter = new FragmentTabAdapter(this, fragments, R.id.tab_content, rgs);
         tabAdapter.setOnRgsExtraCheckedChangedListener(new FragmentTabAdapter.OnRgsExtraCheckedChangedListener() {
@@ -125,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        progressDialog.show();
         new GetBusTaskTask().execute();
     }
 
@@ -139,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_report:
+                progressDialog.show();
                 new GetUgrentTask().execute();
                 break;
             case R.id.action_add:
@@ -192,7 +200,6 @@ public class MainActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 UgrentBean ugrentBean = ugrents.get(selectedReportIndex);
                                 new SetUrgent(ugrentBean.getId()).execute();
-                                Toast.makeText(MainActivity.this, reports[selectedReportIndex], Toast.LENGTH_SHORT).show();
 
                             }
                         }).
@@ -224,6 +231,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String s) {
+            progressDialog.hide();
             try {
                 JSONObject jsonObject = new JSONObject(s);
                 manager = new UserBean(jsonObject.getJSONObject("info").getJSONObject("bus_manager_data"));
@@ -268,11 +276,24 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+
         }
 
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            progressDialog.hide();
+            try{
+                JSONObject jsonObject = new JSONObject(s);
+                boolean status = jsonObject.getBoolean("status");
+                if (status == false){
+                    Toast.makeText(getBaseContext(), jsonObject.getString("msg"), Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(getBaseContext(), "报告成功", Toast.LENGTH_SHORT).show();
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
 
         @Override
@@ -309,6 +330,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String s) {
+            progressDialog.hide();
             try{
                 if (ugrents == null)
                     ugrents =new ArrayList<>();

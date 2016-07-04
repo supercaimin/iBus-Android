@@ -1,6 +1,7 @@
 package cn.homecaught.ibus_android.fragment;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -39,6 +40,8 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
     private RelativeLayout llArrive;
     private RelativeLayout llStart;
 
+    private ProgressDialog progressDialog;
+
     private String travelType = null;
 
     @Override
@@ -58,6 +61,10 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         System.out.println("AAAAAAAAAA____onCreateView");
+
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setTitle("提示");
+        progressDialog.setMessage("请求网络中，请稍等...");
         this.container = inflater.inflate(R.layout.work_fragment, container, false);
         gridView = (GridView) this.container.findViewById(R.id.gview);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -158,14 +165,17 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v){
         switch (v.getId()){
             case R.id.btnArrive:
+                progressDialog.show();
                 new SetTravelArriveStationTask().execute();
                 break;
             case R.id.btnGo:
                 travelType = HttpData.TRACK_TYPE_GO;
+                progressDialog.show();
                 new SetTravelStartTask().execute();
                 break;
             case R.id.btnBack:
                 travelType = HttpData.TRACK_TYPE_BACK;
+                progressDialog.show();
                 new SetTravelStartTask().execute();
                 break;
             default:
@@ -191,6 +201,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
 
         @Override
         protected void onPostExecute(String s) {
+            progressDialog.hide();
             try{
                 if (students == null)
                     students = new ArrayList<>();
@@ -255,6 +266,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
 
         @Override
         protected void onPostExecute(String s) {
+            progressDialog.hide();
             try{
                 JSONObject jsonObject = new JSONObject(s);
                 boolean hasNextStation = jsonObject.getJSONObject("info").getBoolean("has_next_station");
@@ -305,6 +317,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
 
         @Override
         protected void onPostExecute(String s) {
+            progressDialog.hide();
             try{
                 JSONObject jsonObject = new JSONObject(s);
                 boolean status = jsonObject.getBoolean("status");
