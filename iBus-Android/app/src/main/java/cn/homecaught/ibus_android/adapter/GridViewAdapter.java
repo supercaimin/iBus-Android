@@ -1,6 +1,7 @@
 package cn.homecaught.ibus_android.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,7 +64,7 @@ public class GridViewAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     if(onInfoButtonOnClickListener != null){
-                        onInfoButtonOnClickListener.onClick(position);
+                        onInfoButtonOnClickListener.onClick((UserBean)v.getTag());
                     }
                 }
             });
@@ -73,6 +74,7 @@ public class GridViewAdapter extends BaseAdapter {
             viewHolder.headImageView = (ImageView)convertView.findViewById(R.id.imageView);
             viewHolder.snTextView = (TextView) convertView.findViewById(R.id.tvSN);
             viewHolder.viewMask = (View) convertView.findViewById(R.id.viewMask);
+            viewHolder.infoBtn = (Button) convertView.findViewById(R.id.btn_info);
             convertView.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder)convertView.getTag();
@@ -80,6 +82,7 @@ public class GridViewAdapter extends BaseAdapter {
         UserBean userBean = mItems.get(position);
         viewHolder.nameTextView.setText(userBean.getUserRealName());
         viewHolder.snTextView.setText(userBean.getUserSN());
+        viewHolder.infoBtn.setTag(userBean);
 
         if (userBean.getUserOnBus().equals("off"))
             viewHolder.viewMask.setVisibility(View.VISIBLE);
@@ -98,11 +101,12 @@ public class GridViewAdapter extends BaseAdapter {
         TextView nameTextView;
         TextView snTextView;
         View viewMask;
+        Button infoBtn;
 
     }
 
     public interface OnInfoButtonOnClickListener{
-        public void onClick(int position);
+        public void onClick(UserBean userBean);
     }
 
     public void setmItems(List<UserBean> items){

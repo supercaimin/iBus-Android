@@ -52,8 +52,8 @@ import cn.homecaught.ibus_android.model.UserBean;
  * @date 2015-7-15 下午10:58:34
  */
 public class HttpData {
-    private static final int TIMEOUT_CONNECTION = 5000 * 10;
-    private static final int TIMEOUT_SO = 10000 * 10;
+    private static final int TIMEOUT_CONNECTION = 5000 * 100;
+    private static final int TIMEOUT_SO = 10000 * 100;
 
 
     public static final String TRACK_TYPE_BACK = "back";
@@ -443,12 +443,8 @@ public class HttpData {
         return post(url, nvps);
     }
     public static String getUser(String userId) {
-        String url = FAKE_SERVER + "aunt/user";
-        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
-        BasicNameValuePair userIdBP = new BasicNameValuePair("id",
-                userId);
-        nvps.add(userIdBP);
-        return get(url, nvps);
+        String url = FAKE_SERVER + "aunt/user/" + userId;
+        return get(url, null);
     }
 
     public  static String uploadImage(String filepath){

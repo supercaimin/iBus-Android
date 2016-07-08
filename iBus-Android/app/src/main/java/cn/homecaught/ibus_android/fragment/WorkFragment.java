@@ -34,6 +34,8 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
     private GridView gridView = null;
     private GridViewAdapter adapter;
     private List<UserBean> students;
+    private List<UserBean> orgStudents;
+
 
     private StudentInfoPopWindow popWindow;
     private View container;
@@ -183,7 +185,17 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
         }
     }
 
-
+    private List<UserBean> getChangedStudents() {
+        List<UserBean> changedStudents = new ArrayList<>();
+        for (int i = 0; i < students.size(); i ++){
+            UserBean userBean = students.get(i);
+            UserBean orgUserBean = orgStudents.get(i);
+            if (!userBean.getUserOnBus().equals(orgUserBean.getUserOnBus())){
+                changedStudents.add(userBean);
+            }
+        }
+        return changedStudents;
+    }
     public class SyncTask extends AsyncTask<Void, Void, String> {
         public SyncTask() {
             super();
@@ -207,20 +219,26 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
                     students = new ArrayList<>();
                 students.clear();
 
+                if (orgStudents == null)
+                    orgStudents = new ArrayList<>();
+                orgStudents.clear();
+
                 JSONObject jsonObject = new JSONObject(s);
                 JSONArray jsonArray = jsonObject.getJSONArray("info");
                 for(int i = 0; i < jsonArray.length(); i++){
                     UserBean userBean = new UserBean(jsonArray.getJSONObject(i));
                     students.add(userBean);
+                    orgStudents.add(userBean.clone());
+
                 }
                 if (adapter == null){
                     adapter = new GridViewAdapter(getContext(), students);
                     adapter.setOnInfoButtonOnClickListener(new GridViewAdapter.OnInfoButtonOnClickListener() {
                         @Override
-                        public void onClick(int position) {
+                        public void onClick(UserBean userBean) {
                             Log.d("TTTTTTT", "ccccccccccccccc");
 
-                            show(students.get(position));
+                            show(userBean);
                         }
                     });
                     gridView.setAdapter(adapter);
@@ -256,7 +274,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
 
         @Override
         protected String doInBackground(Void... params) {
-            return HttpData.setTravelArriveStation(students);
+            return HttpData.setTravelArriveStation(getChangedStudents());
         }
 
         @Override
@@ -269,14 +287,20 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
             progressDialog.hide();
             try{
                 JSONObject jsonObject = new JSONObject(s);
-                boolean hasNextStation = jsonObject.getJSONObject("info").getBoolean("has_next_station");
-                Toast.makeText(getContext(), jsonObject.getJSONObject("info").getJSONObject("line").getString("line_site"), Toast.LENGTH_SHORT).show();
-                if (hasNextStation){
+                boolean status = jsonObject.getBoolean("status");
+                if(status){
+                    boolean hasNextStation = jsonObject.getJSONObject("info").getBoolean("has_next_station");
+                    Toast.makeText(getContext(), jsonObject.getJSONObject("info").getJSONObject("line").getString("line_site"), Toast.LENGTH_SHORT).show();
+                    if (hasNextStation){
+                    }else {
+                        llArrive.setVisibility(View.GONE);
+                        llStart.setVisibility(View.VISIBLE);
+                        Toast.makeText(getContext(), "行程结束", Toast.LENGTH_SHORT).show();
+                    }
                 }else {
-                    llArrive.setVisibility(View.GONE);
-                    llStart.setVisibility(View.VISIBLE);
-                    Toast.makeText(getContext(), "行程结束", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), jsonObject.getString("info"), Toast.LENGTH_SHORT).show();
                 }
+
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -307,7 +331,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
 
         @Override
         protected String doInBackground(Void... params) {
-            return HttpData.setTravelStart(travelType, students);
+            return HttpData.setTravelStart(travelType, getChangedStudents());
         }
 
         @Override
