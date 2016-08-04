@@ -452,4 +452,20 @@ public class HttpData {
         return submitPost(HttpData.FAKE_SERVER + "upload/image", filepath);
     }
 
+    public static String chgInfo(String userHead, String userFirstName, String userLastName) {
+        String url = FAKE_SERVER + "aunt/user";
+        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+        BasicNameValuePair vpUserHead = new BasicNameValuePair("user_head",
+                userHead);
+        BasicNameValuePair vpUserFirstName = new BasicNameValuePair("user_first_name",
+                userFirstName);
+        BasicNameValuePair vpUserLastName = new BasicNameValuePair("user_last_name",
+                userLastName);
+        nvps.add(vpUserHead);
+        nvps.add(vpUserFirstName);
+        nvps.add(vpUserLastName);
+
+        return put(url, nvps);
+    }
+
 }

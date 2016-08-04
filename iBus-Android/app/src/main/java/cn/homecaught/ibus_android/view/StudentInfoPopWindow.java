@@ -27,6 +27,8 @@ public class StudentInfoPopWindow extends PopupWindow {
     private TextView tvGrade;
     private TextView tvMobile;
     private TextView tvKinder;
+    private TextView tvPickUpStop;
+    private TextView tvPickOffStop;
 
     public StudentInfoPopWindow(Context context, UserBean user) {
         this.context = context;
@@ -45,6 +47,8 @@ public class StudentInfoPopWindow extends PopupWindow {
         tvSN.setText(userBean.getUserSN());
         tvGrade = (TextView) contentView.findViewById(R.id.tvGrade);
         tvGrade.setText(userBean.getUserGrade());
+        tvPickOffStop =(TextView) contentView.findViewById(R.id.tvPickOffStop);
+        tvPickUpStop = (TextView) contentView.findViewById(R.id.tvPickUpStop);
         if (userBean.getGuardian() != null){
             tvMobile = (TextView) contentView.findViewById(R.id.tvMobile);
             tvMobile.setText(userBean.getGuardian().getUserMobile());
@@ -52,6 +56,10 @@ public class StudentInfoPopWindow extends PopupWindow {
             tvKinder.setText(userBean.getGuardian().getUserRealName());
         }
 
+        if (userBean.getPickOffStop() != null)
+            tvPickOffStop.setText(userBean.getPickOffStop().getLineSite());
+        if (userBean.getPickUpStop() != null)
+            tvPickUpStop.setText(userBean.getPickUpStop().getLineSite());
         setContentView(contentView);
         setWidth(LinearLayout.LayoutParams.WRAP_CONTENT);
         setHeight(LinearLayout.LayoutParams.WRAP_CONTENT);

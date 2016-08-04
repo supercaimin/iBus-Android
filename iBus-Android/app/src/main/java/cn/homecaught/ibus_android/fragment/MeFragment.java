@@ -1,22 +1,39 @@
 package cn.homecaught.ibus_android.fragment;
 
 import android.app.Activity;
+import android.app.SearchManager;
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
+
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.IOException;
 
 import cn.homecaught.ibus_android.R;
 import cn.homecaught.ibus_android.MyApplication;
 import cn.homecaught.ibus_android.activity.LoginActivity;
 import cn.homecaught.ibus_android.activity.PwdActivity;
 import cn.homecaught.ibus_android.activity.WebViewActivity;
+import cn.homecaught.ibus_android.util.CameraDialog;
 import cn.homecaught.ibus_android.util.HttpData;
+import cn.homecaught.ibus_android.util.ImageUntils;
 
 /**
  * Created with IntelliJ IDEA.
@@ -27,6 +44,18 @@ import cn.homecaught.ibus_android.util.HttpData;
 public class MeFragment extends Fragment {
 
     private View container;
+    private ImageView ivHead;
+
+    public OnMeHeadImageUploadListener getOnMeHeadImageUploadListener() {
+        return onMeHeadImageUploadListener;
+    }
+
+    public void setOnMeHeadImageUploadListener(OnMeHeadImageUploadListener onMeHeadImageUploadListener) {
+        this.onMeHeadImageUploadListener = onMeHeadImageUploadListener;
+    }
+
+    private OnMeHeadImageUploadListener onMeHeadImageUploadListener;
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -95,9 +124,18 @@ public class MeFragment extends Fragment {
             }
         });
 
+        ivHead = (ImageView)this.container.findViewById(R.id.ivHead);
+
         ImageLoader.getInstance().displayImage(HttpData.BASE_URL
-                        + MyApplication.getInstance().getLoginUser().getUserHead(),
-                (ImageView) this.container.findViewById(R.id.ivHead));
+                + MyApplication.getInstance().getLoginUser().getUserHead(), ivHead);
+
+
+        ivHead.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(onMeHeadImageUploadListener != null) onMeHeadImageUploadListener.onHeadImageClick(ivHead);
+            }
+        });
         return this.container;
     }
 
@@ -149,5 +187,10 @@ public class MeFragment extends Fragment {
         System.out.println("CCCCCCCCCC____onDetach");
     }
 
+
+    public interface OnMeHeadImageUploadListener{
+
+        public void onHeadImageClick(ImageView ivHead);
+    }
 
 }
