@@ -57,9 +57,9 @@ public class StudentInfoPopWindow extends PopupWindow {
         }
 
         if (userBean.getPickOffStop() != null)
-            tvPickOffStop.setText(userBean.getPickOffStop().getLineSite());
+            tvPickOffStop.setText(userBean.getPickOffStop().getLineName());
         if (userBean.getPickUpStop() != null)
-            tvPickUpStop.setText(userBean.getPickUpStop().getLineSite());
+            tvPickUpStop.setText(userBean.getPickUpStop().getLineName());
         setContentView(contentView);
         setWidth(LinearLayout.LayoutParams.WRAP_CONTENT);
         setHeight(LinearLayout.LayoutParams.WRAP_CONTENT);

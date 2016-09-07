@@ -29,9 +29,11 @@ import cn.homecaught.ibus_android.adapter.GridViewAdapter;
 import cn.homecaught.ibus_android.model.UserBean;
 import cn.homecaught.ibus_android.util.HttpData;
 import cn.homecaught.ibus_android.view.StudentInfoPopWindow;
+import cn.homecaught.ibus_android.view.PullToRefreshLayout;
 
 public class WorkFragment extends Fragment implements View.OnClickListener{
     private GridView gridView = null;
+    private  PullToRefreshLayout pullToRefreshLayout;
     private GridViewAdapter adapter;
     private List<UserBean> students;
     private List<UserBean> orgStudents;
@@ -44,7 +46,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
 
     private ProgressDialog progressDialog;
 
-    private String travelType = null;
+    private String travelType = "";
 
     @Override
     public void onAttach(Activity activity) {
@@ -92,7 +94,22 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
         this.container.findViewById(R.id.btnArrive).setOnClickListener(this);
         this.container.findViewById(R.id.btnGo).setOnClickListener(this);
         this.container.findViewById(R.id.btnBack).setOnClickListener(this);
+        pullToRefreshLayout = (PullToRefreshLayout)this.container.findViewById(R.id.refresh_view);
+
         new SyncTask().execute();
+
+        pullToRefreshLayout.setOnRefreshListener(new PullToRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+                new SyncTask().execute();
+            }
+
+            @Override
+            public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
+
+            }
+        });
+
 
         return this.container;
     }
@@ -214,6 +231,8 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
         @Override
         protected void onPostExecute(String s) {
             progressDialog.hide();
+            pullToRefreshLayout.refreshFinish(PullToRefreshLayout.SUCCEED);
+
             try{
                 if (students == null)
                     students = new ArrayList<>();
@@ -243,7 +262,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
                     });
                     gridView.setAdapter(adapter);
                 }else {
-                    adapter.setmItems(students);
+                    adapter.setmItems(students, travelType);
                 }
             }catch (Exception e){
                 e.printStackTrace();
@@ -290,7 +309,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
                 boolean status = jsonObject.getBoolean("status");
                 if(status){
                     boolean hasNextStation = jsonObject.getJSONObject("info").getBoolean("has_next_station");
-                    Toast.makeText(getContext(), jsonObject.getJSONObject("info").getJSONObject("line").getString("line_site"), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), jsonObject.getJSONObject("info").getJSONObject("line").getString("line_name"), Toast.LENGTH_SHORT).show();
                     if (hasNextStation){
                     }else {
                         llArrive.setVisibility(View.GONE);

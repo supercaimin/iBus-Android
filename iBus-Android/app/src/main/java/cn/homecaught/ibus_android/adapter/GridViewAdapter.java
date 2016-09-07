@@ -26,6 +26,7 @@ public class GridViewAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
     private Context mContext;
     private List<UserBean> mItems;
+    private String mTravelType = "";
 
     public void setOnInfoButtonOnClickListener(OnInfoButtonOnClickListener onInfoButtonOnClickListener) {
         this.onInfoButtonOnClickListener = onInfoButtonOnClickListener;
@@ -80,7 +81,17 @@ public class GridViewAdapter extends BaseAdapter {
             viewHolder = (ViewHolder)convertView.getTag();
         }
         UserBean userBean = mItems.get(position);
-        viewHolder.nameTextView.setText(userBean.getUserRealName());
+        if (mTravelType.equals(HttpData.TRACK_TYPE_GO))
+            if (userBean.getPickOffStop() != null)
+                viewHolder.nameTextView.setText(userBean.getPickOffStop().getLineName());
+            else
+                viewHolder.nameTextView.setText("");
+
+        else
+            if (userBean.getPickUpStop() != null)
+                viewHolder.nameTextView.setText(userBean.getPickUpStop().getLineName());
+            else
+                viewHolder.nameTextView.setText("");
         viewHolder.snTextView.setText(userBean.getUserSN());
         viewHolder.infoBtn.setTag(userBean);
 
@@ -109,8 +120,9 @@ public class GridViewAdapter extends BaseAdapter {
         public void onClick(UserBean userBean);
     }
 
-    public void setmItems(List<UserBean> items){
+    public void setmItems(List<UserBean> items, String travelType){
         mItems = items;
+        mTravelType = travelType;
         notifyDataSetChanged();
     }
 }
