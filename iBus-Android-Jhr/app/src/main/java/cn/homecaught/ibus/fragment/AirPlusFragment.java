@@ -1,6 +1,7 @@
 package cn.homecaught.ibus.fragment;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -71,6 +72,14 @@ public class AirPlusFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_air_plus, container, false);
         toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         toolbar.setTitle("AirPlus");
+        view.findViewById(R.id.download).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("http://fir.im/me5y");
+                Intent it = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(it);
+            }
+        });
         return view;
     }
 

@@ -1,0 +1,121 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:gravity="center_horizontal"
+    android:orientation="vertical" android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="cn.homecaught.ibus.activity.RegisterActivity">
+
+    <!-- Login progress -->
+    <ProgressBar android:id="@+id/login_progress" style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp" android:visibility="gone" />
+
+    <ScrollView android:id="@+id/login_form" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout android:id="@+id/email_login_form" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_margin="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <cn.homecaught.ibus.view.CircleImageView
+                    android:id="@+id/ivHead"
+                    android:layout_centerInParent="true"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/up_btn"
+                    android:layout_centerHorizontal="true"
+                    />
+            </RelativeLayout>
+            <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <AutoCompleteTextView android:id="@+id/first_name" android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:hint="First Name(Required)"
+                    android:inputType="textPersonName" android:maxLines="1"
+                    android:singleLine="true" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText android:id="@+id/last_name" android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:hint="Last Name(Required)"
+                    android:imeActionId="@+id/login"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionUnspecified" android:inputType="textPersonName"
+                    android:maxLines="1" android:singleLine="true" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText android:id="@+id/grade" android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:hint="Grade(Required)"
+                    android:imeActionId="@+id/login"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionUnspecified" android:inputType="textPhonetic"
+                    android:maxLines="1" android:singleLine="true" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText android:id="@+id/sn" android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:hint="Child's S/N(Optional)"
+                    android:imeActionId="@+id/login"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionUnspecified" android:inputType="textAutoComplete"
+                    android:maxLines="1" android:singleLine="true" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <LinearLayout
+                android:paddingLeft="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pick up/drop off compounds"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pick up station"
+                    android:textColor="@color/light_blue"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Drop off station"
+                    android:textColor="@color/light_blue"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff">
+                <CheckBox
+                    android:id="@+id/checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="I here read and understand the school bus relevant information and agree that my children will be abided by the regulations and disciplines."
+                    android:checked="false"/>
+            </LinearLayout>
+
+            <Button android:id="@+id/submit" style="?android:textAppearanceSmall"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="16dp" android:text="SUBMIT"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

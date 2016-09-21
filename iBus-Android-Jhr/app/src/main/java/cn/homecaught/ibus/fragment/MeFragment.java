@@ -13,6 +13,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import cn.homecaught.ibus.R;
 import cn.homecaught.ibus.MyApplication;
+import cn.homecaught.ibus.activity.ApplicationActivity;
 import cn.homecaught.ibus.activity.LoginActivity;
 import cn.homecaught.ibus.activity.PwdActivity;
 import cn.homecaught.ibus.activity.WebViewActivity;
@@ -77,11 +78,11 @@ public class MeFragment extends Fragment {
             }
         });
 
-        this.container.findViewById(R.id.llUrgent).setOnClickListener(new View.OnClickListener() {
+        this.container.findViewById(R.id.timetable).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), WebViewActivity.class);
-                intent.putExtra("webContent", WebViewActivity.WEB_CONTENT_URGENT);
+                intent.putExtra("webContent", WebViewActivity.WEB_CONTENT_TIME_TABLE);
                 startActivity(intent);
             }
         });
@@ -90,6 +91,14 @@ public class MeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), PwdActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        this.container.findViewById(R.id.llApplication).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ApplicationActivity.class);
                 startActivity(intent);
             }
         });

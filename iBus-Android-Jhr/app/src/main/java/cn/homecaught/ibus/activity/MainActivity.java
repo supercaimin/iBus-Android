@@ -19,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.Toolbar;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -42,17 +41,15 @@ import cn.homecaught.ibus.MyApplication;
 import cn.homecaught.ibus.fragment.AirPlusFragment;
 import cn.homecaught.ibus.fragment.MeFragment;
 import cn.homecaught.ibus.fragment.MessageFragment;
-import cn.homecaught.ibus.fragment.WorkFragment;
+import cn.homecaught.ibus.fragment.TrackFragment;
 import cn.homecaught.ibus.R;
 import cn.homecaught.ibus.adapter.FragmentTabAdapter;
-import cn.homecaught.ibus.model.LineBean;
 import cn.homecaught.ibus.model.UgrentBean;
 import cn.homecaught.ibus.model.UserBean;
 import cn.homecaught.ibus.util.CameraDialog;
 import cn.homecaught.ibus.util.HttpData;
 import cn.homecaught.ibus.util.ImageUntils;
 import cn.homecaught.ibus.util.StatusBarCompat;
-import io.rong.imkit.RongIM;
 
 
 public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHeadImageUploadListener {
@@ -81,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fragments.add(new WorkFragment());
+        fragments.add(new TrackFragment());
         fragments.add(new AirPlusFragment());
         fragments.add(new MessageFragment());
         MeFragment fragment = new MeFragment();
@@ -95,8 +92,8 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
         StatusBarCompat.compat(this, 0x000);
 
         progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("提示");
-        progressDialog.setMessage("请求网络中，请稍等...");
+        progressDialog.setTitle("Tips");
+        progressDialog.setMessage("Please wait a moment...");
 
         FragmentTabAdapter tabAdapter = new FragmentTabAdapter(this, fragments, R.id.tab_content, rgs);
         tabAdapter.setOnRgsExtraCheckedChangedListener(new FragmentTabAdapter.OnRgsExtraCheckedChangedListener() {

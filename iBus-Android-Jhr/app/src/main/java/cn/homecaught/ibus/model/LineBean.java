@@ -7,6 +7,10 @@ import org.json.JSONObject;
  */
 public class LineBean {
 
+    public  static final int CHILD_LINE_NORMAL = 0;
+    public  static final int CHILD_LINE_UP = 1;
+    public  static final int CHILD_LINE_OFF = 2;
+
     public String getId() {
         return id;
     }
@@ -43,6 +47,24 @@ public class LineBean {
     private String lineName;
     private String lineSite;
     private String lineDistance;
+    private String arrivedTime;
+    private int childUpOff;
+
+    public String getArrivedTime() {
+        return arrivedTime;
+    }
+
+    public void setArrivedTime(String arrivedTime) {
+        this.arrivedTime = arrivedTime;
+    }
+
+    public int getChildUpOff() {
+        return childUpOff;
+    }
+
+    public void setChildUpOff(int childUpOff) {
+        this.childUpOff = childUpOff;
+    }
 
     public LineBean(JSONObject jsonObject){
         try {
@@ -50,6 +72,7 @@ public class LineBean {
             lineName = jsonObject.getString("line_name");
             lineSite = jsonObject.getString("line_site");
             lineDistance = jsonObject.getString("line_distance");
+            arrivedTime = jsonObject.getString("arrived_time");
         }catch (Exception e){
             e.printStackTrace();
         }

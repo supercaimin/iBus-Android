@@ -30,8 +30,6 @@ public class ConversationActivtiy extends AppCompatActivity {
         setContentView(R.layout.activity_conversation);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //toolbar.setLogo(R.mipmap.ic_launcher);
-        toolbar.setTitle("联系校巴经理");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

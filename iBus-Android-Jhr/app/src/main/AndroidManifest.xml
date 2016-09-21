@@ -43,17 +43,12 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="cn.homecaught.ibus_android"
+                    android:host="cn.homecaught.ibus"
                     android:pathPrefix="/conversationlist"
                     android:scheme="rong" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activity.AddStudentActivity"
-            android:label="@string/title_activity_add_student"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|stateAlwaysHidden" >
-        </activity>
+
         <activity
             android:name=".activity.ConversationActivtiy"
             android:screenOrientation="portrait"
@@ -65,7 +60,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="cn.homecaught.ibus_android"
+                    android:host="cn.homecaught.ibus"
                     android:pathPrefix="/conversation/"
                     android:scheme="rong" />
             </intent-filter>
@@ -82,6 +77,10 @@
         <activity
             android:name=".activity.RegisterActivity"
             android:label="@string/title_activity_register" >
+        </activity>
+        <activity
+            android:name=".activity.ApplicationActivity"
+            android:label="Application" >
         </activity>
     </application>
 

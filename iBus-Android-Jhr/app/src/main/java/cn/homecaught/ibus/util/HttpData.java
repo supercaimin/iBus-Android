@@ -192,10 +192,9 @@ public class HttpData {
             HttpGet get = new HttpGet(url);
             if (cookie != null)
                 get.setHeader("Cookie", cookie);
-                Log.i("Set Cookie", cookie);
+//                Log.i("Set Cookie", cookie);
             get.getParams().setParameter(
                     ClientPNames.COOKIE_POLICY, CookiePolicy.BROWSER_COMPATIBILITY);
-
             HttpResponse httpResponse = httpClient.execute(get);
             strResult = EntityUtils.toString(httpResponse.getEntity());
             SystemUtils.print("code:" + httpResponse.getStatusLine());
@@ -348,7 +347,7 @@ public class HttpData {
     }
 
     public static String getUrgentWeb() {
-        String url = FAKE_SERVER + "site/urgent";
+        String url = FAKE_SERVER + "site/timetable";
         return get(url, null);
     }
 
@@ -496,4 +495,13 @@ public class HttpData {
         return post(url, nvps);
     }
 
+    public static String getChilds() {
+        String url = FAKE_SERVER + "guardian/children/";
+        return get(url, null);
+    }
+
+    public static String getChildLines(String id) {
+        String url = FAKE_SERVER + "guardian/child_lines/?id=" + id;
+        return get(url, null);
+    }
 }

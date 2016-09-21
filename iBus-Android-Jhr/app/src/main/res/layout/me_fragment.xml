@@ -28,7 +28,7 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_centerInParent="true"
-                android:src="@drawable/user_header"
+                android:src="@drawable/up_btn"
                 app:border_width="2dp"
                 app:border_color="@android:color/white" />
         </RelativeLayout>
@@ -82,7 +82,7 @@
         android:background="#f4f4f4">
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/llUrgent"
+        android:id="@+id/timetable"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="vertical"

@@ -92,7 +92,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText android:id="@+id/sn" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="S/N(Required)"
+                    android:layout_height="wrap_content" android:hint="Child's S/N(Required)"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPhonetic"

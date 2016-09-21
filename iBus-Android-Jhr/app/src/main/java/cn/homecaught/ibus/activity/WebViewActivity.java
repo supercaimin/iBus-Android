@@ -19,7 +19,7 @@ public class WebViewActivity extends AppCompatActivity {
     private WebView webView;
 
     public static final String WEB_CONTENT_WROK = "work";
-    public static final String WEB_CONTENT_URGENT = "urgent";
+    public static final String WEB_CONTENT_TIME_TABLE = "timetable";
     public static final String WEB_CONTENT_ABOUT_US = "about_us";
 
     private String webContent = "";
@@ -40,11 +40,11 @@ public class WebViewActivity extends AppCompatActivity {
         new GetWebContentTask().execute();
 
         if (webContent.equals(WEB_CONTENT_ABOUT_US)) {
-            setTitle("关于我们");
+            setTitle("About Us");
         } else if (webContent.equals(WEB_CONTENT_WROK)) {
-            setTitle("工作守则");
-        } else if (webContent.equals(WEB_CONTENT_URGENT)) {
-            setTitle("应急处理预案");
+            setTitle("Handbook");
+        } else if (webContent.equals(WEB_CONTENT_TIME_TABLE)) {
+            setTitle("Timetable");
         } else {
 
         }
@@ -62,7 +62,7 @@ public class WebViewActivity extends AppCompatActivity {
                 return HttpData.getAboutWeb();
             } else if (webContent.equals(WEB_CONTENT_WROK)) {
                 return HttpData.getWorkWeb();
-            } else if (webContent.equals(WEB_CONTENT_URGENT)) {
+            } else if (webContent.equals(WEB_CONTENT_TIME_TABLE)) {
                 return HttpData.getUrgentWeb();
             } else {
 
