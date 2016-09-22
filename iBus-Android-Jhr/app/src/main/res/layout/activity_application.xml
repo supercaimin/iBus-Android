@@ -87,11 +87,13 @@
                     android:layout_height="wrap_content"
                     android:text="Pick up/drop off compounds"/>
                 <TextView
+                    android:id="@+id/tv_pick_up"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pick up station"
                     android:textColor="@color/light_blue"/>
                 <TextView
+                    android:id="@+id/tv_drop_off"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Drop off station"

@@ -3,16 +3,24 @@ package cn.homecaught.ibus.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.LoaderManager.LoaderCallbacks;
+import android.content.ContentResolver;
 import android.content.CursorLoader;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.Loader;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.media.Image;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -24,17 +32,29 @@ import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import cn.homecaught.ibus.R;
+import cn.homecaught.ibus.model.LineBean;
+import cn.homecaught.ibus.model.UserBean;
+import cn.homecaught.ibus.util.CameraDialog;
 import cn.homecaught.ibus.util.HttpData;
+import cn.homecaught.ibus.util.ImageUntils;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -58,22 +78,29 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
-    private UserRegisterTask mAuthTask = null;
+
+    private CameraDialog cameraDialog;
+    private String mHeadPath;
 
 
     // UI references.
-    private EditText mUserMobileView;
-    private EditText mUserEmailView;
-    private EditText mUserPassView;
-    private EditText mUserRePassView;
+    private ImageView headImageView;
     private EditText mUserFirstNameView;
     private EditText mUserLastNameView;
-    private EditText mChildFirstNameView;
-    private EditText mChildLastNameView;
     private EditText mChildSNView;
+    private EditText mGradeView;
+    private CheckBox checkBox;
 
     private View mProgressView;
     private View mLoginFormView;
+    private TextView mPickUpView;
+    private TextView mDropOffView;
+    private List<String> onlines;
+    private List<String> offlines;
+    private List<String> onlineIds;
+    private List<String> offlineIds;
+    private int onlineSelectedIndex = -1;
+    private int offlineSelectedIndex = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,21 +108,92 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
         setContentView(R.layout.activity_application);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
+        headImageView = (ImageView) findViewById(R.id.ivHead);
+        headImageView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCameraDialog();
+            }
+        });
         mUserFirstNameView = (EditText) findViewById(R.id.first_name);
         mUserLastNameView = (EditText) findViewById(R.id.last_name);
         mChildSNView = (EditText) findViewById(R.id.sn);
+        mPickUpView = (TextView) findViewById(R.id.tv_pick_up);
+        mDropOffView = (TextView) findViewById(R.id.tv_drop_off);
+        mGradeView = (EditText) findViewById(R.id.grade);
+        checkBox = (CheckBox) findViewById(R.id.checkbox);
+        mPickUpView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showSelectLinesDialog(mPickUpView, onlines);
+            }
+        });
+
+        mDropOffView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showSelectLinesDialog(mDropOffView, offlines);
+            }
+        });
 
         Button mEmailSignInButton = (Button) findViewById(R.id.submit);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-              //  attemptLogin();
+                  attemptLogin();
             }
         });
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+        onlineIds = new ArrayList<>();
+        offlineIds = new ArrayList<>();
+        onlines = new ArrayList<>();
+        offlines = new ArrayList<>();
+        new GetSelectLinesTask().execute();
+    }
+
+    private void showSelectLinesDialog(final TextView targetView, final List<String> lines) {
+        int selectedIndex = 0;
+        if (targetView == mPickUpView) {
+            selectedIndex = onlineSelectedIndex;
+        } else {
+            selectedIndex = offlineSelectedIndex;
+        }
+        final String names[] = new String[lines.size()];
+        lines.toArray(names);
+        Dialog alertDialog = new AlertDialog.Builder(this).
+                setTitle("Please select").
+                setIcon(R.mipmap.icon_report)
+                .setSingleChoiceItems(names, selectedIndex, new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (targetView == mPickUpView) {
+                            onlineSelectedIndex = which;
+                        } else {
+                            offlineSelectedIndex = which;
+                        }                    }
+                }).
+                        setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if (targetView == mPickUpView) {
+                                    mPickUpView.setText(lines.get(onlineSelectedIndex));
+                                } else {
+                                    mDropOffView.setText(lines.get(offlineSelectedIndex));
+                                }
+                            }
+                        }).
+                        setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // TODO Auto-generated method stub
+                            }
+                        }).create();
+        alertDialog.show();
     }
 
     @Override
@@ -122,14 +220,7 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
             return true;
         }
         if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
-            Snackbar.make(mUserEmailView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
-                    .setAction(android.R.string.ok, new OnClickListener() {
-                        @Override
-                        @TargetApi(Build.VERSION_CODES.M)
-                        public void onClick(View v) {
-                            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
-                        }
-                    });
+
         } else {
             requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
         }
@@ -156,84 +247,45 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
      * errors are presented and no actual login attempt is made.
      */
     private void attemptLogin() {
-        if (mAuthTask != null) {
-            return;
-        }
 
-        // Reset errors.
-        mUserEmailView.setError(null);
-        mUserPassView.setError(null);
-        mUserRePassView.setError(null);
-
-        // Store values at the time of the login attempt.
-        String email = mUserEmailView.getText().toString();
-        String password = mUserPassView.getText().toString();
-        String repassword = mUserRePassView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
-        // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mUserPassView.setError(getString(R.string.error_invalid_password));
-            focusView = mUserPassView;
-            cancel = true;
+        if (TextUtils.isEmpty(mHeadPath)){
+            Toast.makeText(this, "Photo is Required.", Toast.LENGTH_LONG).show();
+            return;
         }
-
-        // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(repassword) && !isPasswordValid(repassword)) {
-            mUserRePassView.setError(getString(R.string.error_invalid_password));
-            focusView = mUserRePassView;
-            cancel = true;
-        }
-
-        if (!mUserRePassView.getText().toString().equals(mUserPassView.getText().toString())){
-            mUserRePassView.setError("Two input passwords are not consistent.");
-            focusView = mUserRePassView;
-            cancel = true;
-        }
-        if (!TextUtils.isEmpty(email) && !isEmailValid(email)) {
-            mUserEmailView.setError("The Email is inValid.");
-            focusView = mUserEmailView;
-            cancel = true;
-        }
-
-        if (TextUtils.isEmpty(mUserFirstNameView.getText().toString())){
+        if (TextUtils.isEmpty(mUserFirstNameView.getText().toString())) {
             mUserFirstNameView.setError("Required.");
             focusView = mUserFirstNameView;
             cancel = true;
         }
 
-        if (TextUtils.isEmpty(mUserLastNameView.getText().toString())){
+        if (TextUtils.isEmpty(mUserLastNameView.getText().toString())) {
             mUserLastNameView.setError("Required.");
             focusView = mUserLastNameView;
             cancel = true;
         }
 
-        if (TextUtils.isEmpty(mChildFirstNameView.getText().toString())){
-            mChildFirstNameView.setError("Required.");
-            focusView = mChildFirstNameView;
+
+        if (TextUtils.isEmpty(mGradeView.getText().toString())) {
+            mGradeView.setError("Required.");
+            focusView = mGradeView;
             cancel = true;
         }
 
-        if (TextUtils.isEmpty(mChildLastNameView.getText().toString())){
-            mChildLastNameView.setError("Required.");
-            focusView = mChildLastNameView;
-            cancel = true;
+
+        if (offlineSelectedIndex == -1 ||
+                onlineSelectedIndex == -1){
+            Toast.makeText(this, "Please select pick up/off compounds.", Toast.LENGTH_LONG).show();
+            return;
         }
 
-        if (TextUtils.isEmpty(mChildSNView.getText().toString())){
-            mChildSNView.setError("Required.");
-            focusView = mChildSNView;
-            cancel = true;
+        if(!checkBox.isChecked()){
+            Toast.makeText(this, "Please check the agreement.", Toast.LENGTH_LONG).show();
+            return;
         }
-
-        if (TextUtils.isEmpty(mUserMobileView.getText().toString())){
-            mUserMobileView.setError("Required.");
-            focusView = mUserMobileView;
-            cancel = true;
-        }
-
 
         if (cancel) {
             // There was an error; don't attempt login and focus the first
@@ -243,15 +295,15 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserRegisterTask(mUserMobileView.getText().toString(),
-                    mUserEmailView.getText().toString(),
-                    mUserPassView.getText().toString(),
-                    mUserFirstNameView.getText().toString(),
+
+            new SubmitTask(mUserFirstNameView.getText().toString(),
                     mUserLastNameView.getText().toString(),
-                    mChildFirstNameView.getText().toString(),
-                    mChildLastNameView.getText().toString(),
-                    mChildSNView.getText().toString());
-            mAuthTask.execute((Void) null);
+                    mChildSNView.getText().toString(),
+                    mGradeView.getText().toString(),
+                    offlineIds.get(onlineSelectedIndex),
+                    onlineIds.get(offlineSelectedIndex),
+                    mHeadPath
+                    ).execute();
         }
     }
 
@@ -352,73 +404,192 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
                 new ArrayAdapter<>(ApplicationActivity.this,
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
 
-       // mEmailView.setAdapter(adapter);
+        // mEmailView.setAdapter(adapter);
     }
 
-    /**
-     * Represents an asynchronous login/registration task used to authenticate
-     * the user.
-     */
-    /**
-     * Represents an asynchronous login/registration task used to authenticate
-     * the user.
-     */
-    public class UserRegisterTask extends AsyncTask<Void, Void, String> {
-        private String mUserMobile;
-        private String mUserEmail;
-        private String mUserPass;
-        private String mUserFirstName;
-        private String mUserLastName;
-        private String mChildFirstName;
-        private String mChildLastName;
-        private String mChildSN;
+    public void showCameraDialog() {
+        if (cameraDialog == null) {
+            cameraDialog = new CameraDialog(this);
+        }
+        cameraDialog.show();
+    }
 
 
-        UserRegisterTask(String userMobile,
-                         String userEmail,
-                         String userPass,
-                         String userFirstName,
-                         String userLastName,
-                         String childFirstName,
-                         String childLastName,
-                         String childSN) {
-            mUserMobile = userMobile;
-            mUserEmail = userEmail;
-            mUserLastName = userLastName;
-            mUserFirstName = userFirstName;
-            mUserPass = userPass;
-            mChildFirstName = childFirstName;
-            mChildLastName = childLastName;
-            mChildSN = childSN;
+    @Override
+    protected void onActivityResult(int request, int result, Intent data) {
+        // TODO Auto-generated method stub
+        super.onActivityResult(request, result, data);
+        if (result == RESULT_OK) {
+            switch (request) {
+                case CameraDialog.CAMERA_CODE: {
+                    File outFile = new File(CameraDialog.UPLOAD_FILE_PARENT_PATH
+                            + "img" + System.currentTimeMillis() + ".png");
+                    boolean comSuc = ImageUntils.compressBmpByOptions(
+                            cameraDialog.getCameraFile(), 400, 400, outFile);
+                    if (comSuc) {
+                        new UploadImageTask(outFile.getAbsolutePath()).execute();
+                    }
+                }
+                break;
+                case CameraDialog.IMAGE_CODE: {
+                    final boolean isKitKat = Build.VERSION.SDK_INT >= 19;
+                    if (!isKitKat) {
+                        Bitmap bm = null;
+                        ContentResolver resolver = getContentResolver();
+                        try {
+                            Uri originalUri = data.getData();
+                            bm = MediaStore.Images.Media.getBitmap(resolver,
+                                    originalUri);
+                            String[] proj = {MediaStore.Images.Media.DATA};
+                            Cursor cursor = getContentResolver().query(originalUri,
+                                    proj, null, null, null);
+                            int column_index = cursor
+                                    .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                            cursor.moveToFirst();
+                            String path = cursor.getString(column_index);
+
+                            File outFile = new File(
+                                    CameraDialog.UPLOAD_FILE_PARENT_PATH + "img"
+                                            + System.currentTimeMillis() + ".png");
+                            boolean comSuc = ImageUntils.compressBmpByOptions(
+                                    new File(path), 200, 200, outFile);
+                            if (comSuc) {
+                                new UploadImageTask(outFile.getAbsolutePath()).execute();
+                            }
+
+                        } catch (IOException e) {
+                        }
+                    } else {
+                        Uri selectedImage = data.getData();
+                        String path = ImageUntils.getPath(this, selectedImage);
+                        File outFile = new File(
+                                CameraDialog.UPLOAD_FILE_PARENT_PATH + "img"
+                                        + System.currentTimeMillis() + ".png");
+                        boolean comSuc = ImageUntils.compressBmpByOptions(new File(
+                                path), 200, 200, outFile);
+                        if (comSuc) {
+                            new UploadImageTask(outFile.getAbsolutePath()).execute();
+                        }
+
+                    }
+                }
+                break;
+                case CameraDialog.CLIP_IMAGE:
+
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    }
+
+    public class UploadImageTask extends AsyncTask<Void, Void, String> {
+
+        private String mFilePath;
+
+        public UploadImageTask(String filePath) {
+            super();
+            mFilePath = filePath;
         }
 
         @Override
         protected String doInBackground(Void... params) {
-            return HttpData.register(mUserMobile,
-                    mUserEmail,
-                    mUserPass,
-                    mUserFirstName,
+            return HttpData.uploadImage(mFilePath);
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            try {
+                JSONObject jsonObject = new JSONObject(s);
+                boolean status = jsonObject.getBoolean("status");
+                if (status) {
+                    mHeadPath = jsonObject.getJSONObject("info").getString("url");
+                    ImageLoader.getInstance().displayImage(HttpData.BASE_URL + mHeadPath, headImageView);
+                    Toast.makeText(ApplicationActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(ApplicationActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onCancelled(String s) {
+            super.onCancelled(s);
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+        }
+    }
+
+    public class SubmitTask extends AsyncTask<Void, Void, String> {
+
+        private String mUserFirstName;
+        private String mUserLastName;
+        private String mChildSN;
+        private String mGrade;
+        private String mPickUpId;
+        private String mDropOffId;
+        private String mUserHead;
+
+
+        SubmitTask(String userFirstName,
+                         String userLastName,
+                         String childSN,
+                         String grade,
+                         String pickUpId,
+                         String dropOffId,
+                         String userHead
+                         ) {
+            mUserFirstName = userFirstName;
+            mUserLastName = userLastName;
+            mChildSN = childSN;
+            mGrade = grade;
+            mPickUpId = pickUpId;
+            mDropOffId = dropOffId;
+            mUserHead = userHead;
+        }
+
+        @Override
+        protected String doInBackground(Void... params) {
+            return HttpData.addChild(mUserFirstName,
                     mUserLastName,
-                    mChildFirstName,
-                    mChildLastName,
-                    mChildSN
-                    );
+                    mChildSN,
+                    mGrade,
+                    mPickUpId,
+                    mDropOffId,
+                    mUserHead
+            );
         }
 
         @Override
         protected void onPostExecute(final String result) {
-            mAuthTask = null;
             showProgress(false);
             boolean success = false;
             try {
                 JSONObject jsonObject = new JSONObject(result);
                 success = jsonObject.getBoolean("status");
-                if (success){
+                if (success) {
                     finish();
-                }else {
+                } else {
                     Toast.makeText(getApplicationContext(), jsonObject.getString("msg"), Toast.LENGTH_LONG).show();
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
@@ -426,9 +597,74 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
 
         @Override
         protected void onCancelled() {
-            mAuthTask = null;
             showProgress(false);
         }
     }
+
+    public class GetSelectLinesTask extends AsyncTask<Void, Void, String> {
+        public GetSelectLinesTask() {
+            super();
+        }
+
+        @Override
+        protected String doInBackground(Void... params) {
+            return HttpData.getSelectLines();
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+
+            try {
+                JSONObject jsonObject = new JSONObject(s);
+                boolean status = jsonObject.getBoolean("status");
+
+                if (status) {
+
+                    JSONObject jsonObject1 = jsonObject.getJSONObject("info").getJSONObject("on");
+                    Iterator it = jsonObject1.keys();
+                    while (it.hasNext()){
+                        String key = it.next().toString();
+                        onlineIds.add(key);
+                        onlines.add(jsonObject1.getString(key));
+                    }
+
+                    JSONObject jsonObject2 = jsonObject.getJSONObject("info").getJSONObject("off");
+                    Iterator it1 = jsonObject2.keys();
+                    while (it1.hasNext()){
+                        String key = it1.next().toString();
+                        offlineIds.add(key);
+                        offlines.add(jsonObject2.getString(key));
+                    }
+
+                } else {
+                    Toast.makeText(getBaseContext(), jsonObject.getString("msg"), Toast.LENGTH_SHORT).show();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            super.onPostExecute(s);
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onCancelled(String s) {
+            super.onCancelled(s);
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+        }
+    }
+
 }
 

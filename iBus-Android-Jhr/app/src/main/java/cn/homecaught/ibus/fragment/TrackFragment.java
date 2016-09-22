@@ -81,8 +81,8 @@ public class TrackFragment extends Fragment{
         super.onCreate(savedInstanceState);
         System.out.println("AAAAAAAAAA____onCreate");
 
-        mTimer = new Timer();
-        setTimerTask();
+        //mTimer = new Timer();
+       // setTimerTask();
     }
 
     @Override

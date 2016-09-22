@@ -121,8 +121,10 @@ public class MeFragment extends Fragment {
 
         ivHead = (ImageView)this.container.findViewById(R.id.ivHead);
 
-        ImageLoader.getInstance().displayImage(HttpData.BASE_URL
-                + MyApplication.getInstance().getLoginUser().getUserHead(), ivHead);
+        if (MyApplication.getInstance().getLoginUser().getUserHead() != null){
+            ImageLoader.getInstance().displayImage(HttpData.BASE_URL
+                    + MyApplication.getInstance().getLoginUser().getUserHead(), ivHead);
+        }
 
 
         ivHead.setOnClickListener(new View.OnClickListener() {

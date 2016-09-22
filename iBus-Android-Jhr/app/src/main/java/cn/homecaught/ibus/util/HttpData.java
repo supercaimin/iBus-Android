@@ -504,4 +504,46 @@ public class HttpData {
         String url = FAKE_SERVER + "guardian/child_lines/?id=" + id;
         return get(url, null);
     }
+
+    public static String getSelectLines() {
+        String url = FAKE_SERVER + "guardian/select_lines/";
+        return get(url, null);
+    }
+
+    public static String addChild( String userFirstName,
+                                       String userLastName,
+                                       String childSN,
+                                       String grade,
+                                       String pickUpId,
+                                       String dropOffId,
+                                       String userHead) {
+        String url = FAKE_SERVER + "guardian/child/";
+        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+
+        BasicNameValuePair vpUserFistName = new BasicNameValuePair("user_first_name",
+                userFirstName);
+        BasicNameValuePair vpUserLastName = new BasicNameValuePair("user_last_name",
+                userLastName);
+        BasicNameValuePair vpChildSN = new BasicNameValuePair("user_sn",
+                childSN);
+        BasicNameValuePair vpGrade = new BasicNameValuePair("user_grade",
+                grade);
+        BasicNameValuePair vpPickUpId = new BasicNameValuePair("user_on_line_id",
+                pickUpId);
+        BasicNameValuePair vpDropOffId = new BasicNameValuePair("user_off_line_id",
+                dropOffId);
+        BasicNameValuePair vpUserHead = new BasicNameValuePair("user_head",
+                userHead);
+
+
+        nvps.add(vpUserFistName);
+        nvps.add(vpUserLastName);
+        nvps.add(vpChildSN);
+        nvps.add(vpGrade);
+        nvps.add(vpPickUpId);
+        nvps.add(vpDropOffId);
+        nvps.add(vpUserHead);
+
+        return post(url, nvps);
+    }
 }
