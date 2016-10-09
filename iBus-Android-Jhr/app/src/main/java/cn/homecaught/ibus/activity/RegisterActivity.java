@@ -440,6 +440,8 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
                 success = jsonObject.getBoolean("status");
                 if (success){
                     finish();
+                    Toast.makeText(getApplicationContext(), "Thanks for signing up with iBus.", Toast.LENGTH_LONG).show();
+
                 }else {
                     Toast.makeText(getApplicationContext(), jsonObject.getString("msg"), Toast.LENGTH_LONG).show();
                 }

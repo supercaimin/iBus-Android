@@ -45,4 +45,5 @@ Using the top level of indoor air quality monitor,the measurement data will be c
 </string>
         <string name="airplus_content2">AirPlus is ideal for educational,commerical,hospitality,healthcare,fitness or residential environment where air quality really matters.
 </string>
+    <string name="title_activity_contact_list">ContactListActivity</string>
 </resources>

@@ -499,9 +499,18 @@ public class HttpData {
         String url = FAKE_SERVER + "guardian/children/";
         return get(url, null);
     }
+    public static String getBuses() {
+        String url = FAKE_SERVER + "manager/buses/";
+        return get(url, null);
+    }
 
     public static String getChildLines(String id) {
         String url = FAKE_SERVER + "guardian/child_lines/?id=" + id;
+        return get(url, null);
+    }
+
+    public static String getBusLines(String id) {
+        String url = FAKE_SERVER + "manager/bus_lines/?id=" + id;
         return get(url, null);
     }
 
@@ -546,4 +555,11 @@ public class HttpData {
 
         return post(url, nvps);
     }
+    public static String getFriends()
+    {
+        String url = FAKE_SERVER + "guardian/friends/";
+        return get(url, null);
+    }
 }
+
+

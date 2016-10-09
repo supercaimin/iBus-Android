@@ -91,26 +91,53 @@ public class TrackListViewAdapter extends BaseAdapter {
         String shortDate = "";
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+
             Date date = sdf.parse(lineBean.getArrivedTime());
-            shortDate = date.getHours() + ":" + date.getMinutes();
+            int minute = date.getMinutes();
+            shortDate = date.getHours() + ":";
+            if (minute > 9){
+                shortDate += minute + "";
+            }else {
+                shortDate += "0" + minute;
+            }
             if(lineBean.getChildUpOff() == LineBean.CHILD_LINE_NORMAL){
                 viewHolder.timeArrivedTextView.setText("Arrived " + shortDate);
-                viewHolder.stopShapeView.setBackgroundResource(R.drawable.shape_arrived_stop);
+                if (position == 0){
+                    viewHolder.timeArrivedTextView.setText("Departure " + shortDate);
+                }
             }else {
                 if (lineBean.getChildUpOff() == LineBean.CHILD_LINE_UP){
                     viewHolder.timeArrivedTextView.setText("Picked up " + shortDate);
-                }else {
+                } else {
                     viewHolder.timeArrivedTextView.setText("Get off " + shortDate);
                 }
-                viewHolder.stopShapeView.setBackgroundResource(R.drawable.shape_dest_stop);
             }
+
             viewHolder.lineView.setStyle(LineView.LINE_NORMAL_STYLE);
         }catch (Exception e){
             viewHolder.timeArrivedTextView.setText("");
-            viewHolder.stopShapeView.setBackgroundResource(R.drawable.shape_unarrived_stop);
             viewHolder.lineView.setStyle(LineView.LINE_DASHED_STYLE);
         }
 
+        if (lineBean.getArrivedTime().equals("null")){
+            viewHolder.stopShapeView.setBackgroundResource(R.drawable.shape_unarrived_stop);
+        }else {
+            viewHolder.stopShapeView.setBackgroundResource(R.drawable.shape_arrived_stop);
+            Log.i("xxxxxxxxx position", "  " + position);
+            Log.i("xxxxxxxxx mszie", "  " + mItems.size());
+            Log.i("xxxxxxxxx", lineBean.getArrivedTime());
+
+            if (position != (mItems.size() - 1)){
+                LineBean nextLine = mItems.get(position + 1);
+                if (nextLine.getArrivedTime().equals("null")){
+                    viewHolder.stopShapeView.setBackgroundResource(R.drawable.shape_dest_stop);
+                }
+            }else {
+                if (!lineBean.getArrivedTime().equals("null")){
+                    viewHolder.stopShapeView.setBackgroundResource(R.drawable.shape_dest_stop);
+                }
+            }
+        }
         return convertView;
     }
 

@@ -211,7 +211,7 @@ public class MyApplication extends Application {
                     try {
                         UserBean userBean = new UserBean(new JSONObject(jsonString).getJSONObject("info"));
                         UserInfo userInfo = new UserInfo(userBean.getId(),
-                                userBean.getUserRealName(),
+                                userBean.getUserFirstName() + " " + userBean.getUserLastName(),
                                 Uri.parse(HttpData.BASE_URL + userBean.getUserHead()));
                         return userInfo;
                     } catch (Exception e) {

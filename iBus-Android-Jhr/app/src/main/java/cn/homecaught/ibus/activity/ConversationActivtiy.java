@@ -1,5 +1,7 @@
 package cn.homecaught.ibus.activity;
 
+import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -7,7 +9,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import cn.homecaught.ibus.R;
+import io.rong.imkit.RongIM;
 import io.rong.imlib.model.Conversation;
+import io.rong.imkit.fragment.ConversationFragment;
+import android.util.Log;
 
 public class ConversationActivtiy extends AppCompatActivity {
     /**
@@ -32,6 +37,16 @@ public class ConversationActivtiy extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        Intent intent = getIntent();
+        intent.getDataString();
+        mTargetId = intent.getData().getQueryParameter("targetId");
+        mTargetIds = intent.getData().getQueryParameter("targetIds");
+        setTitle(intent.getData().getQueryParameter("title"));
+        Log.i("TAGEEEE", mTargetId);
+
+
     }
 
     @Override

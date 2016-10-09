@@ -68,6 +68,7 @@ public class UserBean  implements Cloneable  {
     private String userLastName;
     private String userHead;
     private String userToken;
+    private String userRole;
     private String userRealName;
     private String userSN;
     private LineBean pickUpStop;
@@ -97,6 +98,15 @@ public class UserBean  implements Cloneable  {
 
     public void setUserSN(String userSN) {
         this.userSN = userSN;
+    }
+
+
+    public String getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
     }
 
     public String getUserGrade() {
@@ -158,6 +168,8 @@ public class UserBean  implements Cloneable  {
                 userSN = jsonObject.getString("user_sn");
             if (jsonObject.has("user_grade"))
                 userGrade = jsonObject.getString("user_grade");
+            if (jsonObject.has("user_role"))
+                userRole = jsonObject.getString("user_role");
             if (jsonObject.has("user_on_bus"))
                 userOnBus = jsonObject.getString("user_on_bus");
 

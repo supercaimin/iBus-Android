@@ -586,6 +586,8 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
                 success = jsonObject.getBoolean("status");
                 if (success) {
                     finish();
+                    Toast.makeText(getApplicationContext(), "Thanks for your online application.", Toast.LENGTH_LONG).show();
+
                 } else {
                     Toast.makeText(getApplicationContext(), jsonObject.getString("msg"), Toast.LENGTH_LONG).show();
                 }
