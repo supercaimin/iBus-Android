@@ -22,6 +22,7 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,11 +37,18 @@ import io.rong.push.RongPushClient;
 import io.rong.imkit.RongIM.UserInfoProvider;
 
 
+import java.security.SignatureException;
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+import cn.homecaught.ibus.util.base64.Base64;
+
 /**
  * cn.powerkeeper
  * Created by Rakey.Zhao on 2015/9/5.
  */
 public class MyApplication extends Application {
+    private static final String HMAC_SHA256_ALGORITHM = "HmacSHA256";
+
     public static MyApplication instance;
 
     public UserBean getLoginUser() {
@@ -76,6 +84,26 @@ public class MyApplication extends Application {
         return instance;
     }
 
+    public static String calculateHMAC(String data, String key)
+            throws java.security.SignatureException
+    {
+        String result;
+        try {
+            // Get an hmac_sha256 key from the raw key bytes.
+            SecretKeySpec signingKey = new SecretKeySpec(key.getBytes("UTF8"), HMAC_SHA256_ALGORITHM);
+            // Get an hmac_sha256 Mac instance and initialize with the signing key.
+            Mac mac = Mac.getInstance(HMAC_SHA256_ALGORITHM);
+            mac.init(signingKey);
+            // Compute the hmac on input data bytes.
+            byte[] rawHmac = mac.doFinal(data.getBytes("UTF8"));
+            // Base64-encode the hmac by using the utility in the SDK
+            result = Base64.encodeToString(rawHmac, Base64.DEFAULT);
+        } catch (Exception e) {
+            throw new SignatureException("Failed to generate HMAC : " + e.getMessage());
+        }
+        return result;
+    }
+
     @Override
     public void onCreate() {
 
@@ -105,6 +133,27 @@ public class MyApplication extends Application {
 
         //Initialize ImageLoader with configuration.
         ImageLoader.getInstance().init(config);
+
+        try {
+            String strToSign = "GET\n"
+                    + "create_meeting\n"
+                    + "end_time=1450923006431&"
+                    + "enterprise_id=516f75fcc4afc2093c804b5f03b2efd1218d3be9&"
+                    + "max_participant=50&"
+                    + "meeting_name=test&"
+                    + "require_password=true&"
+                    + "start_time=1450923006431\n"
+                    + "47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=";
+
+            strToSign = "123";
+
+
+          String res =  calculateHMAC(strToSign, "123");
+            Log.i("ssssssssssssss", URLEncoder.encode(res, "UTF-8"));
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 

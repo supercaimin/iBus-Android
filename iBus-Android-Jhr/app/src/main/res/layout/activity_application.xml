@@ -74,6 +74,18 @@
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textAutoComplete"
                     android:maxLines="1" android:singleLine="true" />
+                compound
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText android:id="@+id/compound" android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:hint="Pick up/drop off compounds"
+                    android:imeActionId="@+id/login"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionUnspecified" android:inputType="textAutoComplete"
+                    android:maxLines="1" android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -81,23 +93,27 @@
                 android:paddingLeft="40dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                 android:visibility="gone">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pick up/drop off compounds"/>
-                <TextView
-                    android:id="@+id/tv_pick_up"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pick up station"
-                    android:textColor="@color/light_blue"/>
-                <TextView
-                    android:id="@+id/tv_drop_off"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Drop off station"
-                    android:textColor="@color/light_blue"/>
+
+          <TextView
+              android:id="@+id/tv_pick_up"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Pick up station"
+              android:textColor="@color/light_blue"/>
+
+          <TextView
+              android:id="@+id/tv_drop_off"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Drop off station"
+              android:textColor="@color/light_blue"/>
+
             </LinearLayout>
 
             <LinearLayout

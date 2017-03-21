@@ -3,4 +3,4 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_checked="true" android:drawable="@drawable/rc_radio_button_on" />
     <item android:drawable="@drawable/rc_radio_button_off" />
-</selector><!-- From: file:/Users/a1/Documents/project/iBus-Android/iBus-Android-Jhr/IMKit/src/main/res/drawable/rc_switch_btn.xml -->
+</selector>

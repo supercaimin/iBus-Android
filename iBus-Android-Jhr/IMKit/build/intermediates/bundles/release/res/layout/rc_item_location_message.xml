@@ -28,4 +28,4 @@
         android:textColor="@android:color/white"
         android:maxLines="2"
         android:textSize="14sp" />
-</io.rong.imkit.widget.RCMessageFrameLayout><!-- From: file:/Users/a1/Documents/project/iBus-Android/iBus-Android-Jhr/IMKit/src/main/res/layout/rc_item_location_message.xml -->
+</io.rong.imkit.widget.RCMessageFrameLayout>

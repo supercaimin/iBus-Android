@@ -88,7 +88,9 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
     private EditText mUserFirstNameView;
     private EditText mUserLastNameView;
     private EditText mChildSNView;
+    private EditText mCompoundView;
     private EditText mGradeView;
+
     private CheckBox checkBox;
 
     private View mProgressView;
@@ -121,6 +123,7 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
         mPickUpView = (TextView) findViewById(R.id.tv_pick_up);
         mDropOffView = (TextView) findViewById(R.id.tv_drop_off);
         mGradeView = (EditText) findViewById(R.id.grade);
+        mCompoundView = (EditText) findViewById(R.id.compound);
         checkBox = (CheckBox) findViewById(R.id.checkbox);
         mPickUpView.setOnClickListener(new OnClickListener() {
             @Override
@@ -150,7 +153,7 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
         offlineIds = new ArrayList<>();
         onlines = new ArrayList<>();
         offlines = new ArrayList<>();
-        new GetSelectLinesTask().execute();
+      //  new GetSelectLinesTask().execute();
     }
 
     private void showSelectLinesDialog(final TextView targetView, final List<String> lines) {
@@ -275,12 +278,19 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
             cancel = true;
         }
 
+        if (TextUtils.isEmpty(mChildSNView.getText().toString())) {
+            mChildSNView.setError("Required.");
+            focusView = mChildSNView;
+            cancel = true;
+        }
 
+/*
         if (offlineSelectedIndex == -1 ||
                 onlineSelectedIndex == -1){
             Toast.makeText(this, "Please select pick up/off compounds.", Toast.LENGTH_LONG).show();
             return;
         }
+        */
 
         if(!checkBox.isChecked()){
             Toast.makeText(this, "Please check the agreement.", Toast.LENGTH_LONG).show();
@@ -300,8 +310,7 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
                     mUserLastNameView.getText().toString(),
                     mChildSNView.getText().toString(),
                     mGradeView.getText().toString(),
-                    offlineIds.get(onlineSelectedIndex),
-                    onlineIds.get(offlineSelectedIndex),
+                    mCompoundView.getText().toString(),
                     mHeadPath
                     ).execute();
         }
@@ -543,8 +552,7 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
         private String mUserLastName;
         private String mChildSN;
         private String mGrade;
-        private String mPickUpId;
-        private String mDropOffId;
+        private String mCompound;
         private String mUserHead;
 
 
@@ -552,16 +560,14 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
                          String userLastName,
                          String childSN,
                          String grade,
-                         String pickUpId,
-                         String dropOffId,
+                         String compound,
                          String userHead
                          ) {
             mUserFirstName = userFirstName;
             mUserLastName = userLastName;
             mChildSN = childSN;
             mGrade = grade;
-            mPickUpId = pickUpId;
-            mDropOffId = dropOffId;
+            mCompound = compound;
             mUserHead = userHead;
         }
 
@@ -571,8 +577,7 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
                     mUserLastName,
                     mChildSN,
                     mGrade,
-                    mPickUpId,
-                    mDropOffId,
+                    mCompound,
                     mUserHead
             );
         }

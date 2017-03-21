@@ -18,4 +18,4 @@
             <corners android:radius="5dp"/>
         </shape>
     </item>
-</selector><!-- From: file:/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/src/main/res/drawable/rc_sel_picsel_toolbar_send.xml --><!-- From: file:/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/bundles/debug/res/drawable/rc_sel_picsel_toolbar_send.xml -->
+</selector>

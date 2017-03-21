@@ -9,4 +9,3 @@
     android:gravity="center_vertical|left"
     android:maxWidth="210dp"
     android:paddingLeft="9dp" />
-<!-- From: file:/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/src/main/res/layout/rc_item_text_message.xml -->

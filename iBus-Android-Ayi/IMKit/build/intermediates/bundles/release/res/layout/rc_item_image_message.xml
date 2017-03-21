@@ -21,4 +21,4 @@
         android:gravity="center"
         android:textColor="@android:color/white"
         android:textSize="11sp" />
-</io.rong.imkit.widget.RCMessageFrameLayout><!-- From: file:/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/src/main/res/layout/rc_item_image_message.xml -->
+</io.rong.imkit.widget.RCMessageFrameLayout>

@@ -9,4 +9,4 @@
     <!-- Pressed -->
     <item android:drawable="@drawable/rc_btn_voice_hover" android:state_pressed="true"/>
 
-</selector><!-- From: file:/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/src/main/res/drawable/rc_btn_voice.xml -->
+</selector>

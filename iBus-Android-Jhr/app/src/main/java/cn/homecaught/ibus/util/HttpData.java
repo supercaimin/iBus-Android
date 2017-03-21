@@ -464,7 +464,10 @@ public class HttpData {
         return put(url, nvps);
     }
 
-    public static String register(String userMobile, String userEmail, String userPass, String userFirstName, String userLastName, String childFirstName, String childLastName, String childSN) {
+    public static String register(String userMobile, String userEmail, String userPass, String userFirstName, String userLastName,
+                                  String child1FirstName, String child1LastName, String child1SN,
+                                  String child2FirstName, String child2LastName, String child2SN,
+                                  String child3FirstName, String child3LastName, String child3SN) {
         String url = FAKE_SERVER + "login/reg";
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
         BasicNameValuePair vpUserMobile = new BasicNameValuePair("user_mobile",
@@ -477,20 +480,42 @@ public class HttpData {
                 userFirstName);
         BasicNameValuePair vpUserLastName = new BasicNameValuePair("user_last_name",
                 userLastName);
-        BasicNameValuePair vpChildFirstName = new BasicNameValuePair("child_first_name",
-                childFirstName);
-        BasicNameValuePair vpChildLastName = new BasicNameValuePair("child_last_name",
-                childLastName);
-        BasicNameValuePair vpChildSN = new BasicNameValuePair("child_sn",
-                childSN);
+        BasicNameValuePair vpChild1FirstName = new BasicNameValuePair("children[0][user_first_name]",
+                child1FirstName);
+        BasicNameValuePair vpChild1LastName = new BasicNameValuePair("children[0][user_last_name]",
+                child1LastName);
+        BasicNameValuePair vpChild1SN = new BasicNameValuePair("children[0][user_sn]",
+                child1SN);
+
+        BasicNameValuePair vpChild2FirstName = new BasicNameValuePair("children[1][user_first_name]",
+                child2FirstName);
+        BasicNameValuePair vpChild2LastName = new BasicNameValuePair("children[1][user_last_name]",
+                child2LastName);
+        BasicNameValuePair vpChild2SN = new BasicNameValuePair("children[1][user_sn]",
+                child2SN);
+
+        BasicNameValuePair vpChild3FirstName = new BasicNameValuePair("children[2][user_first_name]",
+                child3FirstName);
+        BasicNameValuePair vpChild3LastName = new BasicNameValuePair("children[2][user_last_name]",
+                child3LastName);
+        BasicNameValuePair vpChild3SN = new BasicNameValuePair("children[2][user_sn]",
+                child3SN);
         nvps.add(vpUserMobile);
         nvps.add(vpUserEmail);
         nvps.add(vpUserPass);
         nvps.add(vpUserFistName);
         nvps.add(vpUserLastName);
-        nvps.add(vpChildFirstName);
-        nvps.add(vpChildLastName);
-        nvps.add(vpChildSN);
+        nvps.add(vpChild1FirstName);
+        nvps.add(vpChild1LastName);
+        nvps.add(vpChild1SN);
+
+        nvps.add(vpChild2FirstName);
+        nvps.add(vpChild2LastName);
+        nvps.add(vpChild2SN);
+
+        nvps.add(vpChild3FirstName);
+        nvps.add(vpChild3LastName);
+        nvps.add(vpChild3SN);
 
         return post(url, nvps);
     }
@@ -523,8 +548,7 @@ public class HttpData {
                                        String userLastName,
                                        String childSN,
                                        String grade,
-                                       String pickUpId,
-                                       String dropOffId,
+                                       String compound,
                                        String userHead) {
         String url = FAKE_SERVER + "guardian/child/";
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
@@ -537,20 +561,18 @@ public class HttpData {
                 childSN);
         BasicNameValuePair vpGrade = new BasicNameValuePair("user_grade",
                 grade);
-        BasicNameValuePair vpPickUpId = new BasicNameValuePair("user_on_line_id",
-                pickUpId);
-        BasicNameValuePair vpDropOffId = new BasicNameValuePair("user_off_line_id",
-                dropOffId);
+        BasicNameValuePair vpPickUpId = new BasicNameValuePair("user_line_name",
+                compound);
         BasicNameValuePair vpUserHead = new BasicNameValuePair("user_head",
                 userHead);
 
 
         nvps.add(vpUserFistName);
         nvps.add(vpUserLastName);
+
         nvps.add(vpChildSN);
         nvps.add(vpGrade);
         nvps.add(vpPickUpId);
-        nvps.add(vpDropOffId);
         nvps.add(vpUserHead);
 
         return post(url, nvps);

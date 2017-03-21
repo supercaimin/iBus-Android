@@ -61,4 +61,4 @@
                 android:src="@drawable/rc_no"/>
         </LinearLayout>
     </RelativeLayout>
-</LinearLayout><!-- From: file:/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/src/main/res/layout/rc_item_text_message_evaluate.xml -->
+</LinearLayout>

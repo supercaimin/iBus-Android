@@ -10,4 +10,4 @@
     android:verticalSpacing="10dp"
     android:stretchMode="columnWidth">
 
-</GridView><!-- From: file:/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/src/main/res/layout/rc_emoji_gridview.xml --><!-- From: file:/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/bundles/debug/res/layout/rc_emoji_gridview.xml -->
+</GridView>

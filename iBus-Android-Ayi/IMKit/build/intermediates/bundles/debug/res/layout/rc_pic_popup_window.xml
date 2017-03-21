@@ -33,4 +33,4 @@
             android:text="@string/rc_dialog_cancel"
             android:textColor="@color/rc_text_color_primary" />
     </LinearLayout>
-</RelativeLayout><!-- From: file:/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/src/main/res/layout/rc_pic_popup_window.xml -->
+</RelativeLayout>

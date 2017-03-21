@@ -37,4 +37,4 @@
             android:textColor="#0099ff"
             android:textSize="17sp" />
     </LinearLayout>
-</LinearLayout><!-- From: file:/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/src/main/res/layout/rc_cs_alert_warning.xml -->
+</LinearLayout>

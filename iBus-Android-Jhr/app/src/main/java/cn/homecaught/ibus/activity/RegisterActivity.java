@@ -74,9 +74,17 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
     private EditText mUserRePassView;
     private EditText mUserFirstNameView;
     private EditText mUserLastNameView;
-    private EditText mChildFirstNameView;
-    private EditText mChildLastNameView;
-    private EditText mChildSNView;
+    private EditText mChild1FirstNameView;
+    private EditText mChild1LastNameView;
+    private EditText mChild1SNView;
+
+    private EditText mChild2FirstNameView;
+    private EditText mChild2LastNameView;
+    private EditText mChild2SNView;
+
+    private EditText mChild3FirstNameView;
+    private EditText mChild3LastNameView;
+    private EditText mChild3SNView;
 
     private View mProgressView;
     private View mLoginFormView;
@@ -107,9 +115,18 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         mUserMobileView = (EditText) findViewById(R.id.mobile);
         mUserFirstNameView = (EditText) findViewById(R.id.first_name);
         mUserLastNameView = (EditText) findViewById(R.id.last_name);
-        mChildFirstNameView = (EditText) findViewById(R.id.child_first_name);
-        mChildLastNameView = (EditText) findViewById(R.id.child_last_name);
-        mChildSNView = (EditText) findViewById(R.id.sn);
+
+        mChild1FirstNameView = (EditText) findViewById(R.id.child_first_name1);
+        mChild1LastNameView = (EditText) findViewById(R.id.child_last_name1);
+        mChild1SNView = (EditText) findViewById(R.id.sn1);
+
+        mChild2FirstNameView = (EditText) findViewById(R.id.child_first_name2);
+        mChild2LastNameView = (EditText) findViewById(R.id.child_last_name2);
+        mChild2SNView = (EditText) findViewById(R.id.sn2);
+
+        mChild3FirstNameView = (EditText) findViewById(R.id.child_first_name3);
+        mChild3LastNameView = (EditText) findViewById(R.id.child_last_name3);
+        mChild3SNView = (EditText) findViewById(R.id.sn3);
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
@@ -235,21 +252,21 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
             cancel = true;
         }
 
-        if (TextUtils.isEmpty(mChildFirstNameView.getText().toString())){
-            mChildFirstNameView.setError("Required.");
-            focusView = mChildFirstNameView;
+        if (TextUtils.isEmpty(mChild1FirstNameView.getText().toString())){
+            mChild1FirstNameView.setError("Required.");
+            focusView = mChild1FirstNameView;
             cancel = true;
         }
 
-        if (TextUtils.isEmpty(mChildLastNameView.getText().toString())){
-            mChildLastNameView.setError("Required.");
-            focusView = mChildLastNameView;
+        if (TextUtils.isEmpty(mChild1LastNameView.getText().toString())){
+            mChild1LastNameView.setError("Required.");
+            focusView = mChild1LastNameView;
             cancel = true;
         }
 
-        if (TextUtils.isEmpty(mChildSNView.getText().toString())){
-            mChildSNView.setError("Required.");
-            focusView = mChildSNView;
+        if (TextUtils.isEmpty(mChild1SNView.getText().toString())){
+            mChild1SNView.setError("Required.");
+            focusView = mChild1SNView;
             cancel = true;
         }
 
@@ -273,9 +290,16 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
                     mUserPassView.getText().toString(),
                     mUserFirstNameView.getText().toString(),
                     mUserLastNameView.getText().toString(),
-                    mChildFirstNameView.getText().toString(),
-                    mChildLastNameView.getText().toString(),
-                    mChildSNView.getText().toString());
+                    mChild1FirstNameView.getText().toString(),
+                    mChild1LastNameView.getText().toString(),
+                    mChild1SNView.getText().toString(),
+                    mChild2FirstNameView.getText().toString(),
+                    mChild2LastNameView.getText().toString(),
+                    mChild2SNView.getText().toString(),
+                    mChild3FirstNameView.getText().toString(),
+                    mChild3LastNameView.getText().toString(),
+                    mChild3SNView.getText().toString()
+                    );
             mAuthTask.execute((Void) null);
         }
     }
@@ -394,9 +418,17 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         private String mUserPass;
         private String mUserFirstName;
         private String mUserLastName;
-        private String mChildFirstName;
-        private String mChildLastName;
-        private String mChildSN;
+        private String mChild1FirstName;
+        private String mChild1LastName;
+        private String mChild1SN;
+
+        private String mChild2FirstName;
+        private String mChild2LastName;
+        private String mChild2SN;
+
+        private String mChild3FirstName;
+        private String mChild3LastName;
+        private String mChild3SN;
 
 
         UserRegisterTask(String userMobile,
@@ -404,17 +436,31 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
                          String userPass,
                          String userFirstName,
                          String userLastName,
-                         String childFirstName,
-                         String childLastName,
-                         String childSN) {
+                         String child1FirstName,
+                         String child1LastName,
+                         String child1SN,
+                         String child2FirstName,
+                         String child2LastName,
+                         String child2SN,
+                         String child3FirstName,
+                         String child3LastName,
+                         String child3SN) {
             mUserMobile = userMobile;
             mUserEmail = userEmail;
             mUserLastName = userLastName;
             mUserFirstName = userFirstName;
             mUserPass = userPass;
-            mChildFirstName = childFirstName;
-            mChildLastName = childLastName;
-            mChildSN = childSN;
+            mChild1FirstName = child1FirstName;
+            mChild1LastName = child1LastName;
+            mChild1SN = child1SN;
+
+            mChild2FirstName = child2FirstName;
+            mChild2LastName = child2LastName;
+            mChild2SN = child2SN;
+
+            mChild3FirstName = child3FirstName;
+            mChild3LastName = child3LastName;
+            mChild3SN = child3SN;
         }
 
         @Override
@@ -424,9 +470,15 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
                     mUserPass,
                     mUserFirstName,
                     mUserLastName,
-                    mChildFirstName,
-                    mChildLastName,
-                    mChildSN
+                    mChild1FirstName,
+                    mChild1LastName,
+                    mChild1SN,
+                    mChild2FirstName,
+                    mChild2LastName,
+                    mChild2SN,
+                    mChild3FirstName,
+                    mChild3LastName,
+                    mChild3SN
                     );
         }
 
