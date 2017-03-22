@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import cn.homecaught.ibus_android.R;
+import cn.homecaught.ibus_android.model.ChildBean;
 import cn.homecaught.ibus_android.model.UserBean;
 import cn.homecaught.ibus_android.util.HttpData;
 
@@ -30,23 +31,25 @@ public class StudentInfoPopWindow extends PopupWindow {
     private TextView tvPickUpStop;
     private TextView tvPickOffStop;
 
-    public StudentInfoPopWindow(Context context, UserBean user) {
+    public StudentInfoPopWindow(Context context, ChildBean user) {
         this.context = context;
         initWindow(user);
     }
 
-    private void initWindow(UserBean userBean) {
+    private void initWindow(ChildBean userBean) {
         // TODO Auto-generated method stub
         mInflater = LayoutInflater.from(context);
         contentView = mInflater.inflate(R.layout.student_info_popwindow, null);
         imageView = (CircleImageView)contentView.findViewById(R.id.ivHead);
-        ImageLoader.getInstance().displayImage(HttpData.BASE_URL + userBean.getUserHead(), imageView);
+
+        ImageLoader.getInstance().displayImage(HttpData.getBaseUrl() + userBean.getHead(),
+                imageView);
         tvName = (TextView) contentView.findViewById(R.id.tvName);
-        tvName.setText(userBean.getUserRealName());
+        tvName.setText(userBean.getFastName() + userBean.getFirstName());
         tvSN = (TextView) contentView.findViewById(R.id.tvSN);
-        tvSN.setText(userBean.getUserSN());
+        tvSN.setText(userBean.getSN());
         tvGrade = (TextView) contentView.findViewById(R.id.tvGrade);
-        tvGrade.setText(userBean.getUserGrade());
+        tvGrade.setText(userBean.getGrade());
         tvPickOffStop =(TextView) contentView.findViewById(R.id.tvPickOffStop);
         tvPickUpStop = (TextView) contentView.findViewById(R.id.tvPickUpStop);
         if (userBean.getGuardian() != null){

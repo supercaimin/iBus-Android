@@ -20,6 +20,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -29,7 +30,12 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.wx.wheelview.adapter.ArrayWheelAdapter;
+import com.wx.wheelview.widget.WheelView;
+
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -37,6 +43,8 @@ import java.util.List;
 
 import cn.homecaught.ibus_android.R;
 import cn.homecaught.ibus_android.MyApplication;
+import cn.homecaught.ibus_android.model.SchoolBean;
+import cn.homecaught.ibus_android.model.UgrentBean;
 import cn.homecaught.ibus_android.model.UserBean;
 import cn.homecaught.ibus_android.util.HttpData;
 
@@ -69,6 +77,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private WheelView mWheelView;
+    private List<SchoolBean> mSchools;
+    private int mCurSelectedSchoolIndex;
+    private Boolean mFirstLogin = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +108,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 attemptLogin();
             }
         });
@@ -102,12 +116,30 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
 
+
+
         if (!MyApplication.getInstance().getSharedPreferenceManager().getUserMobile().equals("")
              && !MyApplication.getInstance().getSharedPreferenceManager().getUserPass().equals("")){
             mMobileView.setText(MyApplication.getInstance().getSharedPreferenceManager().getUserMobile());
             mPasswordView.setText(MyApplication.getInstance().getSharedPreferenceManager().getUserPass());
+            mFirstLogin = false;
 
             attemptLogin();
+        }else {
+            mFirstLogin = true;
+            mWheelView = (WheelView) findViewById(R.id.wheelview);
+            mWheelView.setWheelAdapter(new ArrayWheelAdapter(this)); // 文本数据源
+            mWheelView.setSkin(WheelView.Skin.Common); // common皮肤
+            mWheelView.setOnWheelItemSelectedListener(new WheelView.OnWheelItemSelectedListener() {
+                @Override
+                public void onItemSelected(int position, Object o) {
+                    Toast.makeText(LoginActivity.this, position +"", Toast.LENGTH_LONG).show();
+                    mCurSelectedSchoolIndex = position;
+                }
+            });
+            showProgress(true);
+            new GetSchoolTask().execute();
+
         }
 
     }
@@ -304,6 +336,66 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mMobileView.setAdapter(adapter);
     }
 
+    public class GetSchoolTask extends AsyncTask<Void, Void, String>{
+
+        public GetSchoolTask() {
+            super();
+        }
+
+        @Override
+        protected String doInBackground(Void... params) {
+            return HttpData.getSchool();
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            showProgress(false);
+
+            try{
+                if (mSchools == null)
+                    mSchools =new ArrayList<>();
+                mSchools.clear();
+                JSONObject jsonObject = new JSONObject(s);
+                JSONArray jsonArray = jsonObject.getJSONArray("info");
+                List<String> schools = new ArrayList<>();
+
+                for (int i = 0; i< jsonArray.length(); i++){
+                    SchoolBean schoolBean = new SchoolBean(jsonArray.getJSONObject(i));
+                    mSchools.add(schoolBean);
+                    schools.add(schoolBean.getSchoolName());
+                }
+
+                mWheelView.setWheelData(schools);  // 数据集合
+                mWheelView.setLoop(true);
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            super.onPostExecute(s);
+
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onCancelled(String s) {
+            super.onCancelled(s);
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+        }
+    }
+
     /**
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
@@ -320,6 +412,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         @Override
         protected String doInBackground(Void... params) {
+            if (mFirstLogin){
+                SchoolBean curSchool = mSchools.get(mCurSelectedSchoolIndex);
+                MyApplication.getInstance().getSharedPreferenceManager().setSchoolDomain(curSchool.getSchoolDomain());
+
+            }
+
             return HttpData.login(mMobile, mPassword);
         }
 
@@ -335,6 +433,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     UserBean userBean = new UserBean(jsonObject.getJSONObject("info"));
                     MyApplication.getInstance().setLoginUser(userBean);
                     MyApplication.getInstance().connect(userBean.getUserToken());
+
+                    if (mFirstLogin){
+                        SchoolBean curSchool = mSchools.get(mCurSelectedSchoolIndex);
+                        MyApplication.getInstance().getSharedPreferenceManager().setSchoolDomain(curSchool.getSchoolDomain());
+                        MyApplication.getInstance().getSharedPreferenceManager().setSchoolId(curSchool.getId());
+                        MyApplication.getInstance().getSharedPreferenceManager().setSchoolName(curSchool.getSchoolName());
+                        MyApplication.getInstance().getSharedPreferenceManager().setSchoolLogo(curSchool.getSchoolLogo());
+                    }
+                }else {
+                    MyApplication.getInstance().getSharedPreferenceManager().clear();
+
                 }
             }catch (Exception e){
                 e.printStackTrace();

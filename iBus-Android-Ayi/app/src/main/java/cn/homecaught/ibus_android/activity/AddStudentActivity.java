@@ -220,7 +220,7 @@ public class AddStudentActivity extends AppCompatActivity {
                 boolean status = jsonObject.getBoolean("status");
                 if (status) {
                     mHeadPath = jsonObject.getJSONObject("info").getString("url");
-                    ImageLoader.getInstance().displayImage(HttpData.BASE_URL + mHeadPath, ivHeadImageView);
+                    ImageLoader.getInstance().displayImage(HttpData.getBaseUrl() + mHeadPath, ivHeadImageView);
                     Toast.makeText(AddStudentActivity.this, "上传成功", Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(AddStudentActivity.this, "上传失败", Toast.LENGTH_SHORT).show();

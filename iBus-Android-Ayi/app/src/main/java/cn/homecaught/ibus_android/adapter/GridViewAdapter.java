@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import cn.homecaught.ibus_android.R;
+import cn.homecaught.ibus_android.model.ChildBean;
 import cn.homecaught.ibus_android.model.UserBean;
 import cn.homecaught.ibus_android.util.HttpData;
 
@@ -25,7 +26,7 @@ public class GridViewAdapter extends BaseAdapter {
 
     private LayoutInflater mInflater;
     private Context mContext;
-    private List<UserBean> mItems;
+    private List<ChildBean> mItems;
     private String mTravelType = "";
 
     public void setOnInfoButtonOnClickListener(OnInfoButtonOnClickListener onInfoButtonOnClickListener) {
@@ -34,7 +35,7 @@ public class GridViewAdapter extends BaseAdapter {
 
     public OnInfoButtonOnClickListener onInfoButtonOnClickListener;
 
-    public GridViewAdapter(Context context, List<UserBean> items) {
+    public GridViewAdapter(Context context, List<ChildBean> items) {
 
         mContext = context;
         mInflater = LayoutInflater.from(mContext);
@@ -65,7 +66,7 @@ public class GridViewAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     if(onInfoButtonOnClickListener != null){
-                        onInfoButtonOnClickListener.onClick((UserBean)v.getTag());
+                        onInfoButtonOnClickListener.onClick((ChildBean) v.getTag());
                     }
                 }
             });
@@ -80,12 +81,12 @@ public class GridViewAdapter extends BaseAdapter {
         }else {
             viewHolder = (ViewHolder)convertView.getTag();
         }
-        UserBean userBean = mItems.get(position);
+        ChildBean userBean = mItems.get(position);
         if (userBean.getPickOffStop() != null)
             viewHolder.nameTextView.setText(userBean.getPickOffStop().getLineName());
         else
             viewHolder.nameTextView.setText("");
-        viewHolder.snTextView.setText(userBean.getUserSN());
+        viewHolder.snTextView.setText(userBean.getSN());
         viewHolder.infoBtn.setTag(userBean);
 
         if (userBean.getUserOnBus().equals("off"))
@@ -93,7 +94,7 @@ public class GridViewAdapter extends BaseAdapter {
         else
             viewHolder.viewMask.setVisibility(View.GONE);
 
-        ImageLoader.getInstance().displayImage(HttpData.BASE_URL + userBean.getUserHead(),
+        ImageLoader.getInstance().displayImage(HttpData.getBaseUrl() + userBean.getHead(),
                 viewHolder.headImageView);
 
 
@@ -110,10 +111,10 @@ public class GridViewAdapter extends BaseAdapter {
     }
 
     public interface OnInfoButtonOnClickListener{
-        public void onClick(UserBean userBean);
+        public void onClick(ChildBean userBean);
     }
 
-    public void setmItems(List<UserBean> items, String travelType){
+    public void setmItems(List<ChildBean> items, String travelType){
         mItems = items;
         mTravelType = travelType;
         notifyDataSetChanged();

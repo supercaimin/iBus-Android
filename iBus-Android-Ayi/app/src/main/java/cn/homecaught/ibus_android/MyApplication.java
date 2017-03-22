@@ -213,7 +213,7 @@ public class MyApplication extends Application {
                         UserBean userBean = new UserBean(new JSONObject(jsonString).getJSONObject("info"));
                         UserInfo userInfo = new UserInfo(userBean.getId(),
                                 userBean.getUserRealName(),
-                                Uri.parse(HttpData.BASE_URL + userBean.getUserHead()));
+                                Uri.parse(HttpData.getBaseUrl() + userBean.getUserHead()));
                         return userInfo;
                     } catch (Exception e) {
                         e.printStackTrace();

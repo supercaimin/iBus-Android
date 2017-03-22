@@ -18,7 +18,7 @@
                 android:id="@+id/ivHead"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@drawable/user_header"
+                android:src="@drawable/up_btn"
                 app:border_width="2dp"
                 app:border_color="@android:color/white" />
 

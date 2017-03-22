@@ -42,7 +42,6 @@ import cn.homecaught.ibus_android.MyApplication;
 import cn.homecaught.ibus_android.R;
 import cn.homecaught.ibus_android.fragment.*;
 import cn.homecaught.ibus_android.adapter.FragmentTabAdapter;
-import cn.homecaught.ibus_android.model.LineBean;
 import cn.homecaught.ibus_android.model.UgrentBean;
 import cn.homecaught.ibus_android.model.UserBean;
 import cn.homecaught.ibus_android.util.CameraDialog;
@@ -66,8 +65,7 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
     private String mHeadPath;
 
     private List<UgrentBean> ugrents;
-    private List<LineBean> backStops;
-    private List<LineBean> goStops;
+
 
 
     Toolbar toolbar = null;
@@ -378,7 +376,7 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
                 if (status) {
                     mHeadPath = jsonObject.getJSONObject("info").getString("url");
                     new UpHeadImageTask().execute();
-                    ImageLoader.getInstance().displayImage(HttpData.BASE_URL + mHeadPath, ivHead);
+                    ImageLoader.getInstance().displayImage(HttpData.getBaseUrl() + mHeadPath, ivHead);
                     Toast.makeText(MainActivity.this, "上传成功", Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(MainActivity.this, "上传失败", Toast.LENGTH_SHORT).show();

@@ -47,9 +47,9 @@ public class LineBean {
     public LineBean(JSONObject jsonObject){
         try {
             id = jsonObject.getString("id");
-            lineName = jsonObject.getString("line_name");
-            lineSite = jsonObject.getString("line_site");
-            lineDistance = jsonObject.getString("line_distance");
+            lineName = jsonObject.getString("site_name");
+            lineSite = jsonObject.getString("site_en_name");
+            //lineDistance = jsonObject.getString("line_distance");
         }catch (Exception e){
             e.printStackTrace();
         }

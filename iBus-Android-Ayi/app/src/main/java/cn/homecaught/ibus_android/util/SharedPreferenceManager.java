@@ -14,6 +14,10 @@ public class SharedPreferenceManager {
 	public final static String LOGIN_USER_PASS = "user_pass";
 	public final static String LOGIN_USER_HEAD = "user_head";
 	public final static String LOGIN_USER_NAME = "user_name";
+	public final static String LOGIN_SCHOOL_NAME = "school_name";
+	public final static String LOGIN_SCHOOL_DOMAIN = "school_domain";
+	public final static String LOGIN_SCHOOL_ID = "school_id";
+	public final static String LOGIN_SCHOOL_LOGO = "school_logo";
 
 
 	private SharedPreferences sp;
@@ -22,6 +26,46 @@ public class SharedPreferenceManager {
 	public SharedPreferenceManager(Context context, String file) {
 		sp = context.getSharedPreferences(file, Context.MODE_PRIVATE);
 		editor = sp.edit();
+	}
+
+	public void setSchoolName(String schoolName) {
+		editor.putString(LOGIN_SCHOOL_NAME, schoolName);
+		editor.commit();
+	}
+
+	public String getSchoolName() {
+		return getString(LOGIN_SCHOOL_NAME, "");
+	}
+
+	public void setSchoolId(String schoolId) {
+		editor.putString(LOGIN_SCHOOL_ID, schoolId);
+		editor.commit();
+	}
+	public String getSchoolId() {
+		return getString(LOGIN_SCHOOL_ID, "");
+	}
+
+
+	public void setSchoolLogo(String schoolLogo) {
+		editor.putString(LOGIN_SCHOOL_LOGO, schoolLogo);
+		editor.commit();
+	}
+	public String getSchoolLogo() {
+		return getString(LOGIN_SCHOOL_LOGO, "");
+	}
+
+
+	public void setSchoolDomain(String schoolDomain) {
+        if (schoolDomain == null){
+            editor.remove(LOGIN_SCHOOL_DOMAIN);
+        }else {
+            editor.putString(LOGIN_SCHOOL_DOMAIN, schoolDomain);
+            editor.commit();
+        }
+
+	}
+	public String getSchoolDomain() {
+        return getString(LOGIN_SCHOOL_DOMAIN, "saasibus.chinaairplus.com");
 	}
 
 
@@ -87,5 +131,19 @@ public class SharedPreferenceManager {
 	public static SharedPreferences getSharedPreferences(Context context) {
 		return context.getSharedPreferences(SP_NAME, 0);
 	}
+
+    public void clear(){
+        editor.remove(LOGIN_USER_MOBILE);
+        editor.remove(LOGIN_USER_PASS);
+        editor.remove(LOGIN_USER_HEAD);
+        editor.remove(LOGIN_USER_NAME);
+        editor.remove(LOGIN_SCHOOL_NAME);
+        editor.remove(LOGIN_SCHOOL_DOMAIN);
+        editor.remove(LOGIN_SCHOOL_ID);
+        editor.remove(LOGIN_SCHOOL_LOGO);
+
+        editor.clear();
+        editor.commit();
+    }
 
 }

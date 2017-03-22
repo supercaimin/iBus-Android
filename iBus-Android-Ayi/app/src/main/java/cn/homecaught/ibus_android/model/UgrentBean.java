@@ -30,7 +30,7 @@ public class UgrentBean {
     public UgrentBean(JSONObject jsonObject){
         try {
             setId(jsonObject.getString("id"));
-            setName(jsonObject.getString("option_title"));
+            setName(jsonObject.getString("option_name"));
         }catch (Exception e){
             e.printStackTrace();
         }

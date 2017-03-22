@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -26,6 +27,7 @@ import java.util.List;
 
 import cn.homecaught.ibus_android.R;
 import cn.homecaught.ibus_android.adapter.GridViewAdapter;
+import cn.homecaught.ibus_android.model.ChildBean;
 import cn.homecaught.ibus_android.model.UserBean;
 import cn.homecaught.ibus_android.util.HttpData;
 import cn.homecaught.ibus_android.view.StudentInfoPopWindow;
@@ -35,18 +37,24 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
     private GridView gridView = null;
     private  PullToRefreshLayout pullToRefreshLayout;
     private GridViewAdapter adapter;
-    private List<UserBean> students;
-    private List<UserBean> orgStudents;
+    private List<ChildBean> students;
+    private List<ChildBean> orgStudents;
 
 
     private StudentInfoPopWindow popWindow;
     private View container;
-    private RelativeLayout llArrive;
-    private RelativeLayout llStart;
+
+
+    private View llSelect;
+
+    private View llContent;
 
     private ProgressDialog progressDialog;
+    private Button btnArrive;
 
     private String travelType = "";
+
+    private boolean isTravelStart = false;
 
     @Override
     public void onAttach(Activity activity) {
@@ -74,7 +82,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                UserBean userBean = students.get(position);
+                ChildBean userBean = students.get(position);
                 View maskView = view.findViewById(R.id.viewMask);
                 if (userBean.getUserOnBus().equals(HttpData.CHILD_STATUS_ON)){
                     userBean.setUserOnBus(HttpData.CHILD_STATUS_OFF);
@@ -85,18 +93,15 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
                 }
             }
         });
-        llArrive = (RelativeLayout) this.container.findViewById(R.id.llArrive);
-        llStart = (RelativeLayout) this.container.findViewById(R.id.llStart);
-
-        llArrive.setVisibility(View.GONE);
-        llStart.setVisibility(View.VISIBLE);
-
+        llSelect = this.container.findViewById(R.id.llSelect);
+        llContent = this.container.findViewById(R.id.llContent);
+        btnArrive = (Button) this.container.findViewById(R.id.btnArrive);
         this.container.findViewById(R.id.btnArrive).setOnClickListener(this);
         this.container.findViewById(R.id.btnGo).setOnClickListener(this);
         this.container.findViewById(R.id.btnBack).setOnClickListener(this);
         pullToRefreshLayout = (PullToRefreshLayout)this.container.findViewById(R.id.refresh_view);
 
-        new SyncTask().execute();
+        //new SyncTask().execute();
 
         pullToRefreshLayout.setOnRefreshListener(new PullToRefreshLayout.OnRefreshListener() {
             @Override
@@ -163,7 +168,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
     }
 
 
-    private void show(UserBean user) {
+    private void show(ChildBean user) {
         popWindow = new StudentInfoPopWindow(getActivity(), user);
         WindowManager.LayoutParams lp = getActivity().getWindow().getAttributes();
         lp.alpha = 0.5f;
@@ -184,29 +189,42 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v){
         switch (v.getId()){
             case R.id.btnArrive:
-                progressDialog.show();
-                new SetTravelArriveStationTask().execute();
+                if (isTravelStart){
+                    progressDialog.show();
+                    new SetTravelArriveStationTask().execute();
+                }else {
+                    progressDialog.show();
+                    new SetTravelStartTask().execute();
+                    isTravelStart = true;
+
+                    btnArrive.setText("到站");
+                }
+
                 break;
             case R.id.btnGo:
                 travelType = HttpData.TRACK_TYPE_GO;
+                new SyncTask().execute();
                 progressDialog.show();
-                new SetTravelStartTask().execute();
+                llSelect.setVisibility(View.INVISIBLE);
+                llContent.setVisibility(View.VISIBLE);
                 break;
             case R.id.btnBack:
                 travelType = HttpData.TRACK_TYPE_BACK;
+                new SyncTask().execute();
                 progressDialog.show();
-                new SetTravelStartTask().execute();
+                llSelect.setVisibility(View.INVISIBLE);
+                llContent.setVisibility(View.VISIBLE);
                 break;
             default:
                 break;
         }
     }
 
-    private List<UserBean> getChangedStudents() {
-        List<UserBean> changedStudents = new ArrayList<>();
+    private List<ChildBean> getChangedStudents() {
+        List<ChildBean> changedStudents = new ArrayList<>();
         for (int i = 0; i < students.size(); i ++){
-            UserBean userBean = students.get(i);
-            UserBean orgUserBean = orgStudents.get(i);
+            ChildBean userBean = students.get(i);
+            ChildBean orgUserBean = orgStudents.get(i);
             if (!userBean.getUserOnBus().equals(orgUserBean.getUserOnBus())){
                 changedStudents.add(userBean);
             }
@@ -220,7 +238,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
 
         @Override
         protected String doInBackground(Void... params) {
-            return HttpData.getBusChildren();
+            return HttpData.getBusChildren(travelType);
         }
 
         @Override
@@ -245,7 +263,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
                 JSONObject jsonObject = new JSONObject(s);
                 JSONArray jsonArray = jsonObject.getJSONArray("info");
                 for(int i = 0; i < jsonArray.length(); i++){
-                    UserBean userBean = new UserBean(jsonArray.getJSONObject(i));
+                    ChildBean userBean = new ChildBean(jsonArray.getJSONObject(i));
                     students.add(userBean);
                     orgStudents.add(userBean.clone());
 
@@ -254,7 +272,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
                     adapter = new GridViewAdapter(getContext(), students);
                     adapter.setOnInfoButtonOnClickListener(new GridViewAdapter.OnInfoButtonOnClickListener() {
                         @Override
-                        public void onClick(UserBean userBean) {
+                        public void onClick(ChildBean userBean) {
                             Log.d("TTTTTTT", "ccccccccccccccc");
 
                             show(userBean);
@@ -309,12 +327,14 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
                 boolean status = jsonObject.getBoolean("status");
                 if(status){
                     boolean hasNextStation = jsonObject.getJSONObject("info").getBoolean("has_next_station");
-                    Toast.makeText(getContext(), jsonObject.getJSONObject("info").getJSONObject("line").getString("line_name"), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), jsonObject.getJSONObject("info").getJSONObject("last_site").getString("site_name"), Toast.LENGTH_SHORT).show();
                     if (hasNextStation){
                     }else {
-                        llArrive.setVisibility(View.GONE);
-                        llStart.setVisibility(View.VISIBLE);
+                        llContent.setVisibility(View.INVISIBLE);
+                        llSelect.setVisibility(View.VISIBLE);
                         Toast.makeText(getContext(), "行程结束", Toast.LENGTH_SHORT).show();
+                        isTravelStart = false;
+                        btnArrive.setText("开始行程");
                     }
                 }else {
                     Toast.makeText(getContext(), jsonObject.getString("info"), Toast.LENGTH_SHORT).show();
@@ -365,8 +385,8 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
                 JSONObject jsonObject = new JSONObject(s);
                 boolean status = jsonObject.getBoolean("status");
 
-                llArrive.setVisibility(View.VISIBLE);
-                llStart.setVisibility(View.GONE);
+                //llArrive.setVisibility(View.VISIBLE);
+                //llStart.setVisibility(View.GONE);
 
                 if (status){
 

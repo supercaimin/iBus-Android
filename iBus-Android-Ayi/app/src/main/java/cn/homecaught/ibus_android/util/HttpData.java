@@ -42,6 +42,8 @@ import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.homecaught.ibus_android.MyApplication;
+import cn.homecaught.ibus_android.model.ChildBean;
 import cn.homecaught.ibus_android.model.UserBean;
 
 
@@ -62,13 +64,21 @@ public class HttpData {
     public static final String CHILD_STATUS_ON = "on";
     public static final String CHILD_STATUS_OFF = "off";
 
-    /**
-     * 测试url
-     **/
 
-    public static final String FAKE_SERVER = "http://ibus.chinaairplus.com/api/";
-    //	 // /** 正式的地址url **/
-    public static final String BASE_URL = "http://ibus.chinaairplus.com/";
+    public static String getBaseUrl() {
+
+        return "http://"
+                + MyApplication.getInstance().getSharedPreferenceManager().getSchoolDomain()
+                + "/";
+    }
+
+    public static String getFakeServer() {
+        return "http://"
+                + MyApplication.getInstance().getSharedPreferenceManager().getSchoolDomain()
+                + "/api/";
+    }
+
+
 
     public static final String CONNECTION_ERROR_JSON = "{\"status\":false,\"msg\":\"请求失败%s\"}";
     public static final String CONNECTION_ERROR_URL = "{\"status\":false,\"msg\":\"请求地址无效!\"}";
@@ -151,7 +161,7 @@ public class HttpData {
             put.setEntity(entity);
             HttpResponse httpResponse = httpClient.execute(put);
             strResult = EntityUtils.toString(httpResponse.getEntity());
-            if (url.equals(FAKE_SERVER + "login/login")) {
+            if (url.equals(getFakeServer() + "login/login")) {
                 cookie = HttpData.getCookies(httpClient);
                 Log.i("HttpData cookie", cookie);
             }
@@ -193,9 +203,10 @@ public class HttpData {
             httpClient.getParams().setParameter(
                     CoreConnectionPNames.SO_TIMEOUT, TIMEOUT_SO);
             HttpGet get = new HttpGet(url);
-            if (cookie != null)
+            if (cookie != null) {
                 get.setHeader("Cookie", cookie);
                 Log.i("Set Cookie", cookie);
+            }
             get.getParams().setParameter(
                     ClientPNames.COOKIE_POLICY, CookiePolicy.BROWSER_COMPATIBILITY);
 
@@ -313,7 +324,7 @@ public class HttpData {
 
 
     public static String chgPassword(String oldPassword, String password) {
-        String url = FAKE_SERVER + "aunt/password";
+        String url = getFakeServer() + "aunt/password";
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
         BasicNameValuePair old = new BasicNameValuePair("user_pass",
                 oldPassword);
@@ -334,7 +345,7 @@ public class HttpData {
      * @return
      */
     public static String login(String email, String password) {
-        String url = FAKE_SERVER + "login/login";
+        String url = getFakeServer() + "login/login";
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
         BasicNameValuePair userMobile = new BasicNameValuePair("user_mobile",
                 email);
@@ -346,38 +357,43 @@ public class HttpData {
     }
 
     public static String getWorkWeb() {
-        String url = FAKE_SERVER + "site/work";
+        String url = getFakeServer() + "site/work";
         return get(url, null);
     }
 
     public static String getUrgentWeb() {
-        String url = FAKE_SERVER + "site/urgent";
+        String url = getFakeServer() + "site/urgent";
         return get(url, null);
     }
 
     public static String getAboutWeb() {
-        String url = FAKE_SERVER + "site/about_us";
+        String url = getFakeServer() + "site/about_us";
         return get(url, null);
     }
 
 
     public static String getManagers() {
-        String url = FAKE_SERVER + "aunt/managers";
+        String url = getFakeServer() + "aunt/managers";
         return get(url, null);
     }
 
     public static String getBus() {
-        String url = FAKE_SERVER + "aunt/bus";
+        String url = getFakeServer() + "aunt/bus";
         return get(url, null);
     }
 
-    public static String getBusChildren() {
-        String url = FAKE_SERVER + "aunt/bus_children";
-        return get(url, null);
+    public static String getBusChildren(String lineType) {
+        String url = getFakeServer() + "aunt/bus_children";
+        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+        BasicNameValuePair ttype = new BasicNameValuePair("line_type",
+                lineType);
+        nvps.add(ttype);
+
+        return get(url, nvps);
     }
 
     public static String setUrgent(String id) {
-        String url = FAKE_SERVER + "aunt/urgent";
+        String url = getFakeServer() + "aunt/urgent";
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
         BasicNameValuePair uid = new BasicNameValuePair("id",
                 id);
@@ -387,19 +403,19 @@ public class HttpData {
 
 
     public static String getUrgent() {
-        String url = FAKE_SERVER + "aunt/urgent";
+        String url = getFakeServer() + "aunt/urgent";
         return get(url, null);
     }
 
-    public static String setTravelStart(String travelType, List<UserBean> childs) {
-        String url = FAKE_SERVER + "aunt/travel_start";
+    public static String setTravelStart(String travelType, List<ChildBean> childs) {
+        String url = getFakeServer() + "aunt/travel_start";
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
         BasicNameValuePair ttype = new BasicNameValuePair("travel_type",
                 travelType);
         nvps.add(ttype);
 
         for (int i = 0; i < childs.size(); i++) {
-            UserBean userBean = childs.get(i);
+            ChildBean userBean = childs.get(i);
             BasicNameValuePair childType = new BasicNameValuePair("children[" + i + "][type]", userBean.getUserOnBus());
             BasicNameValuePair childId = new BasicNameValuePair("children[" + i + "][id]", userBean.getId());
             nvps.add(childType);
@@ -408,12 +424,12 @@ public class HttpData {
         return post(url, nvps);
     }
 
-    public static String setTravelArriveStation(List<UserBean> childs) {
-        String url = FAKE_SERVER + "aunt/travel_arrive_station";
+    public static String setTravelArriveStation(List<ChildBean> childs) {
+        String url = getFakeServer() + "aunt/travel_arrive_station";
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
 
         for (int i = 0; i < childs.size(); i++) {
-            UserBean userBean = childs.get(i);
+            ChildBean userBean = childs.get(i);
             BasicNameValuePair childType = new BasicNameValuePair("children[" + i + "][type]",
                     userBean.getUserOnBus());
             BasicNameValuePair childId = new BasicNameValuePair("children[" + i + "][id]",
@@ -425,7 +441,7 @@ public class HttpData {
     }
 
     public static String addChild(String userHead, String userSN, String userFirstName, String userLastName) {
-        String url = FAKE_SERVER + "aunt/child";
+        String url = getFakeServer() + "aunt/child";
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
         BasicNameValuePair vpUserHead = new BasicNameValuePair("user_head",
                 userHead);
@@ -443,17 +459,22 @@ public class HttpData {
         return post(url, nvps);
     }
     public static String getUser(String userId) {
-        String url = FAKE_SERVER + "aunt/user/" + userId;
+        String url = getFakeServer() + "aunt/user/" + userId;
         return get(url, null);
+    }
+
+    public static String getSchool() {
+        String url = getFakeServer() + "school/";
+        return  get(url, null);
     }
 
     public  static String uploadImage(String filepath){
 
-        return submitPost(HttpData.FAKE_SERVER + "upload/image", filepath);
+        return submitPost(HttpData.getFakeServer() + "upload/image", filepath);
     }
 
     public static String chgInfo(String userHead, String userFirstName, String userLastName) {
-        String url = FAKE_SERVER + "aunt/user";
+        String url = getFakeServer() + "aunt/user";
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
         BasicNameValuePair vpUserHead = new BasicNameValuePair("user_head",
                 userHead);
@@ -468,4 +489,9 @@ public class HttpData {
         return put(url, nvps);
     }
 
+    public static String reset() {
+        String url = getFakeServer() + "aunt/travel_reset/";
+
+        return put(url, null);
+    }
 }

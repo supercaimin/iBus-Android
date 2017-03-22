@@ -70,64 +70,7 @@ public class UserBean  implements Cloneable  {
     private String userHead;
     private String userToken;
     private String userRealName;
-    private String userSN;
-    private LineBean pickUpStop;
 
-    public LineBean getPickOffStop() {
-        return pickOffStop;
-    }
-
-    public void setPickOffStop(LineBean pickOffStop) {
-        this.pickOffStop = pickOffStop;
-    }
-
-    public LineBean getPickUpStop() {
-        return pickUpStop;
-    }
-
-    public void setPickUpStop(LineBean pickUpStop) {
-        this.pickUpStop = pickUpStop;
-    }
-
-    private LineBean pickOffStop;
-
-
-    public String getUserSN() {
-        return userSN;
-    }
-
-    public void setUserSN(String userSN) {
-        this.userSN = userSN;
-    }
-
-    public String getUserGrade() {
-        return userGrade;
-    }
-
-    public void setUserGrade(String userGrade) {
-        this.userGrade = userGrade;
-    }
-
-    public String getUserOnBus() {
-        return userOnBus;
-    }
-
-    public void setUserOnBus(String userOnBus) {
-        this.userOnBus = userOnBus;
-    }
-
-    private String userGrade;
-    private String userOnBus;
-
-    public UserBean getGuardian() {
-        return guardian;
-    }
-
-    public void setGuardian(UserBean guardian) {
-        this.guardian = guardian;
-    }
-
-    private UserBean guardian;
 
     public UserBean clone()
     {
@@ -155,25 +98,6 @@ public class UserBean  implements Cloneable  {
                 userToken = jsonObject.getString("user_token");
             if (jsonObject.has("user_real_name"))
                 userRealName = jsonObject.getString("user_real_name");
-            if (jsonObject.has("user_sn"))
-                userSN = jsonObject.getString("user_sn");
-            if (jsonObject.has("user_grade"))
-                userGrade = jsonObject.getString("user_grade");
-            if (jsonObject.has("user_on_bus"))
-                userOnBus = jsonObject.getString("user_on_bus");
-
-            if (jsonObject.has("user_guardian_data"))
-                if(jsonObject.get("user_guardian_data") instanceof JSONObject){
-                    guardian = new UserBean(jsonObject.getJSONObject("user_guardian_data"));
-                }
-            if (jsonObject.has("user_on_line_data"))
-                if(jsonObject.get("user_on_line_data") instanceof  JSONObject){
-                    pickUpStop = new LineBean(jsonObject.getJSONObject("user_on_line_data"));
-                }
-            if (jsonObject.has("user_off_line_data"))
-                if(jsonObject.get("user_off_line_data") instanceof  JSONObject){
-                    pickOffStop = new LineBean(jsonObject.getJSONObject("user_off_line_data"));
-                }
         }catch (Exception e){
             e.printStackTrace();
         }

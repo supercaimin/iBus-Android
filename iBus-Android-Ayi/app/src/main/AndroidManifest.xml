@@ -26,12 +26,8 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name=".activity.LoginActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activity.MainActivity"
@@ -74,11 +70,23 @@
         <activity
             android:name=".activity.WebViewActivity"
             android:label="@string/title_activity_web_view"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
             android:name=".activity.PwdActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_pwd" >
+        </activity>
+
+        <activity android:name=".activity.SplashActivity"
+            android:theme="@style/StartAppTheme"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
