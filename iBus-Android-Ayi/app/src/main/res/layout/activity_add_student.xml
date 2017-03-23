@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".AddStudentActivity">
+    tools:context=".activity.AddStudentActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:layout_height="120dp"
             android:layout_marginTop="20dp">
 
-            <cn.homecaught.ibus_android.view.CircleImageView
+            <cn.homecaught.ibus_saas.view.CircleImageView
                 android:id="@+id/ivHead"
                 android:layout_width="80dp"
                 android:layout_height="80dp"

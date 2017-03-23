@@ -48,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="invisible">
-        <cn.homecaught.ibus_android.view.PullToRefreshLayout
+        <cn.homecaught.ibus_saas.view.PullToRefreshLayout
             android:id="@+id/refresh_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
@@ -56,7 +56,7 @@
             <include layout="@layout/refresh_head" />
             <!-- 支持所有实现Pullable接口的View -->
 
-            <cn.homecaught.ibus_android.view.PullableGridView
+            <cn.homecaught.ibus_saas.view.PullableGridView
                 android:id="@+id/gview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -70,7 +70,7 @@
 
             <include layout="@layout/load_more" />
 
-        </cn.homecaught.ibus_android.view.PullToRefreshLayout>
+        </cn.homecaught.ibus_saas.view.PullToRefreshLayout>
 
         <RelativeLayout
             android:id="@+id/llArrive"
