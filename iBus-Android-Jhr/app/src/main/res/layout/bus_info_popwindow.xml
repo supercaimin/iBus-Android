@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center">
-            <cn.homecaught.ibus.view.CircleImageView
+            <cn.homecaught.ibus_jhr.view.CircleImageView
                 android:id="@+id/ivDriverHead"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
@@ -55,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center">
-            <cn.homecaught.ibus.view.CircleImageView
+            <cn.homecaught.ibus_jhr.view.CircleImageView
                 android:id="@+id/ivAyiHead"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
@@ -92,7 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center">
-            <cn.homecaught.ibus.view.CircleImageView
+            <cn.homecaught.ibus_jhr.view.CircleImageView
                 android:id="@+id/ivManagerHead"
                 android:layout_width="80dp"
                 android:layout_height="80dp"

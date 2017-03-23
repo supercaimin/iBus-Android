@@ -5,7 +5,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <cn.homecaught.ibus.view.LineView
+        <cn.homecaught.ibus_jhr.view.LineView
             android:id="@+id/line"
             android:layout_width="2dp"
             android:layout_height="10dp"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cn.homecaught.ibus" >
+    package="cn.homecaught.ibus_jhr" >
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -18,22 +18,18 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
-        android:name=".MyApplication"
+        android:name="cn.homecaught.ibus_jhr.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name=".activity.LoginActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name="cn.homecaught.ibus_jhr.activity.LoginActivity"
+            android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".activity.MainActivity"
+            android:name="cn.homecaught.ibus_jhr.activity.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" >
@@ -43,13 +39,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="cn.homecaught.ibus"
+                    android:host="cn.homecaught.ibus_jhr"
                     android:pathPrefix="/conversationlist"
                     android:scheme="rong" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.ConversationActivtiy"
+            android:name="cn.homecaught.ibus_jhr.activity.ConversationActivtiy"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" >
@@ -59,32 +55,47 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="cn.homecaught.ibus"
+                    android:host="cn.homecaught.ibus_jhr"
                     android:pathPrefix="/conversation/"
                     android:scheme="rong" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.WebViewActivity"
+            android:name="cn.homecaught.ibus_jhr.activity.WebViewActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_web_view"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name=".activity.PwdActivity"
+            android:name="cn.homecaught.ibus_jhr.activity.PwdActivity"
             android:label="@string/title_activity_pwd" >
         </activity>
         <activity
-            android:name=".activity.RegisterActivity"
+            android:name="cn.homecaught.ibus_jhr.activity.RegisterActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_register" >
         </activity>
         <activity
-            android:name=".activity.ApplicationActivity"
+            android:name="cn.homecaught.ibus_jhr.activity.ApplicationActivity"
+            android:screenOrientation="portrait"
             android:label="Application" >
         </activity>
         <activity
-            android:name=".activity.ContactListActivity"
+            android:name="cn.homecaught.ibus_jhr.activity.ContactListActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_contact_list"
             android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+
+
+        <activity android:name="cn.homecaught.ibus_jhr.activity.SplashActivity"
+            android:theme="@style/StartAppTheme"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

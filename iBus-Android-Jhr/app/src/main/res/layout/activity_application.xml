@@ -5,7 +5,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="cn.homecaught.ibus.activity.RegisterActivity">
+    tools:context="cn.homecaught.ibus_jhr.activity.RegisterActivity">
 
     <!-- Login progress -->
     <ProgressBar android:id="@+id/login_progress" style="?android:attr/progressBarStyleLarge"
@@ -22,7 +22,7 @@
                 android:layout_margin="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <cn.homecaught.ibus.view.CircleImageView
+                <cn.homecaught.ibus_jhr.view.CircleImageView
                     android:id="@+id/ivHead"
                     android:layout_centerInParent="true"
                     android:layout_width="80dp"
