@@ -25,6 +25,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.homecaught.ibus_saas.model.LineBean;
 import cn.homecaught.ibus_saas.model.UserBean;
 import cn.homecaught.ibus_saas.util.HttpData;
 import cn.homecaught.ibus_saas.util.SharedPreferenceManager;
@@ -52,6 +53,7 @@ public class MyApplication extends Application {
     }
 
     private UserBean loginUser;
+
 
     public final static String app_canche_camera = Environment
             .getExternalStorageDirectory() + "/VEGETABLE/images/";
@@ -84,6 +86,7 @@ public class MyApplication extends Application {
         RongPushClient.registerHWPush(this);
         RongPushClient.registerMiPush(this, "2882303761517473625", "5451747338625");
 
+        RongIM.init(this);
 
         sharedPreferenceManager = new SharedPreferenceManager(this, SharedPreferenceManager.PREFERENCE_FILE);
 
@@ -203,8 +206,8 @@ public class MyApplication extends Application {
             /**
              * IMKit SDK调用第一步 初始化
              */
-            RongIM.init(this);
-            String schoolId = getSharedPreferenceManager().getSchoolId();
+
+            final String schoolId = getSharedPreferenceManager().getSchoolId();
             RongIM.getInstance().setCurrentUserInfo(new UserInfo(schoolId + "_" + getLoginUser().getId(),
                     getLoginUser().getUserFirstName() + " " + getLoginUser().getUserLastName(),
                     Uri.parse(HttpData.getBaseUrl() + getLoginUser().getUserHead())));
@@ -216,7 +219,7 @@ public class MyApplication extends Application {
                     String jsonString = HttpData.getUser(s.split("_")[1]);
                     try {
                         UserBean userBean = new UserBean(new JSONObject(jsonString).getJSONObject("info"));
-                        UserInfo userInfo = new UserInfo(userBean.getId(),
+                        UserInfo userInfo = new UserInfo(schoolId + "_" + userBean.getId(),
                                 userBean.getUserRealName(),
                                 Uri.parse(HttpData.getBaseUrl() + userBean.getUserHead()));
                         return userInfo;
@@ -241,7 +244,7 @@ public class MyApplication extends Application {
                             @Override
                             public void onTokenIncorrect() {
 
-                                Log.d("LoginActivity", "--onTokenIncorrect");
+                                Log.d("MyApplication", "--onTokenIncorrect");
                             }
 
                             /**
@@ -251,7 +254,7 @@ public class MyApplication extends Application {
                             @Override
                             public void onSuccess(String userid) {
 
-                                Log.d("LoginActivity", "--onSuccess" + userid);
+                                Log.d("MyApplication", "--onSuccess" + userid);
 
                             }
 
@@ -262,7 +265,7 @@ public class MyApplication extends Application {
                             @Override
                             public void onError(RongIMClient.ErrorCode errorCode) {
 
-                                Log.d("LoginActivity", "--onError" + errorCode);
+                                Log.d("MyApplication", "--onError" + errorCode);
                             }
                         }
 

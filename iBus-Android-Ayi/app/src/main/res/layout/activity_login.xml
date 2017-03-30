@@ -41,15 +41,15 @@
             <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:text="所属学校"
+                    android:text="请选择您所属的学校"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginBottom="5dp"
                     android:textSize="17sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-                <com.wx.wheelview.widget.WheelView
-                    android:id="@+id/wheelview"
+                <Button
+                    android:id="@+id/btn_school"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </android.support.design.widget.TextInputLayout>

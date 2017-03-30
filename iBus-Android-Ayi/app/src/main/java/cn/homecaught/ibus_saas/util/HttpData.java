@@ -380,12 +380,12 @@ public class HttpData {
         return get(url, null);
     }
 
-    public static String getBusChildren(String lineType) {
-        String url = getFakeServer() + "aunt/bus_children";
+    public static String getBusChildren(String lineId) {
+        String url = getFakeServer() + "aunt/bus_children/?line_id=" + lineId;
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
-        BasicNameValuePair ttype = new BasicNameValuePair("line_type",
-                lineType);
-        nvps.add(ttype);
+        BasicNameValuePair ttype = new BasicNameValuePair("line_id",
+                lineId);
+      //  nvps.add(ttype);
 
         return get(url, nvps);
     }
@@ -405,11 +405,11 @@ public class HttpData {
         return get(url, null);
     }
 
-    public static String setTravelStart(String travelType, List<ChildBean> childs) {
+    public static String setTravelStart(String lineId, List<ChildBean> childs) {
         String url = getFakeServer() + "aunt/travel_start";
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
-        BasicNameValuePair ttype = new BasicNameValuePair("travel_type",
-                travelType);
+        BasicNameValuePair ttype = new BasicNameValuePair("line_id",
+                lineId);
         nvps.add(ttype);
 
         for (int i = 0; i < childs.size(); i++) {

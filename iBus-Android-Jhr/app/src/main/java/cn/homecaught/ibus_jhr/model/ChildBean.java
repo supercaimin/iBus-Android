@@ -123,7 +123,8 @@ public class ChildBean implements Cloneable {
             lastName = jsonObject.getString("child_last_name");
             firstName = jsonObject.getString("child_first_name");
             head = jsonObject.getString("child_head");
-            userOnBus = jsonObject.getString("user_on_bus");
+            if (jsonObject.has("user_on_bus"))
+                userOnBus = jsonObject.getString("user_on_bus");
             grade = jsonObject.getString("child_grade");
             SN = jsonObject.getString("child_sn");
             if (jsonObject.has("child_on_site_data"))

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">iBus</string>
+    <string name="app_name">SaaSiBusJHR</string>
     
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>

@@ -3,6 +3,9 @@ package cn.homecaught.ibus_saas.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
@@ -29,10 +32,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.wx.wheelview.adapter.ArrayWheelAdapter;
-import com.wx.wheelview.widget.WheelView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -75,10 +75,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-    private WheelView mWheelView;
     private List<SchoolBean> mSchools;
     private int mCurSelectedSchoolIndex;
     private Boolean mFirstLogin = false;
+    private Button btnSchool = null;
 
 
     @Override
@@ -114,6 +114,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
 
+        btnSchool = (Button) findViewById(R.id.btn_school);
+        btnSchool.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showReportAlert();
+            }
+        });
 
 
         if (!MyApplication.getInstance().getSharedPreferenceManager().getUserMobile().equals("")
@@ -125,16 +132,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             attemptLogin();
         }else {
             mFirstLogin = true;
-            mWheelView = (WheelView) findViewById(R.id.wheelview);
-            mWheelView.setWheelAdapter(new ArrayWheelAdapter(this)); // 文本数据源
-            mWheelView.setSkin(WheelView.Skin.Common); // common皮肤
-            mWheelView.setOnWheelItemSelectedListener(new WheelView.OnWheelItemSelectedListener() {
-                @Override
-                public void onItemSelected(int position, Object o) {
-                    Toast.makeText(LoginActivity.this, position +"", Toast.LENGTH_LONG).show();
-                    mCurSelectedSchoolIndex = position;
-                }
-            });
+
             showProgress(true);
             new GetSchoolTask().execute();
 
@@ -334,6 +332,44 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mMobileView.setAdapter(adapter);
     }
 
+    private void showReportAlert() {
+
+        final String[] reports = new String[mSchools.size()];
+        List<String> names = new ArrayList<>();
+        for (int i=0; i <mSchools.size(); i++){
+            SchoolBean ugrentBean = mSchools.get(i);
+            names.add(ugrentBean.getSchoolName());
+        }
+        names.toArray(reports);
+
+        Dialog alertDialog = new AlertDialog.Builder(this).
+                setTitle("Please choose your school").
+                setIcon(R.mipmap.icon_report)
+                .setSingleChoiceItems(reports, 0, new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mCurSelectedSchoolIndex = which;
+                    }
+                }).
+                        setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                SchoolBean ugrentBean = mSchools.get(mCurSelectedSchoolIndex);
+                                btnSchool.setText(ugrentBean.getSchoolName());
+                            }
+                        }).
+                        setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // TODO Auto-generated method stub
+                            }
+                        }).
+                        create();
+        alertDialog.show();
+    }
     public class GetSchoolTask extends AsyncTask<Void, Void, String>{
 
         public GetSchoolTask() {
@@ -360,16 +396,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 mSchools.clear();
                 JSONObject jsonObject = new JSONObject(s);
                 JSONArray jsonArray = jsonObject.getJSONArray("info");
-                List<String> schools = new ArrayList<>();
 
                 for (int i = 0; i< jsonArray.length(); i++){
                     SchoolBean schoolBean = new SchoolBean(jsonArray.getJSONObject(i));
                     mSchools.add(schoolBean);
-                    schools.add(schoolBean.getSchoolName());
                 }
 
-                mWheelView.setWheelData(schools);  // 数据集合
-                mWheelView.setLoop(true);
+                SchoolBean schoolBean = mSchools.get(0);
+                btnSchool.setText(schoolBean.getSchoolName());
 
             }catch (Exception e){
                 e.printStackTrace();
@@ -438,6 +472,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         MyApplication.getInstance().getSharedPreferenceManager().setSchoolId(curSchool.getId());
                         MyApplication.getInstance().getSharedPreferenceManager().setSchoolName(curSchool.getSchoolName());
                         MyApplication.getInstance().getSharedPreferenceManager().setSchoolLogo(curSchool.getSchoolLogo());
+                        MyApplication.getInstance().getSharedPreferenceManager().setSchoolImages(curSchool.getSchoolImages());
+
                     }
                 }else {
                     MyApplication.getInstance().getSharedPreferenceManager().clear();

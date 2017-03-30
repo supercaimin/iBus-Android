@@ -67,25 +67,25 @@ public class ChildBean implements Cloneable {
         this.userOnBus = userOnBus;
     }
 
-    private LineBean pickUpStop;
+    private StopBean pickUpStop;
 
-    public LineBean getPickOffStop() {
+    public StopBean getPickOffStop() {
         return pickOffStop;
     }
 
-    public void setPickOffStop(LineBean pickOffStop) {
+    public void setPickOffStop(StopBean pickOffStop) {
         this.pickOffStop = pickOffStop;
     }
 
-    public LineBean getPickUpStop() {
+    public StopBean getPickUpStop() {
         return pickUpStop;
     }
 
-    public void setPickUpStop(LineBean pickUpStop) {
+    public void setPickUpStop(StopBean pickUpStop) {
         this.pickUpStop = pickUpStop;
     }
 
-    private LineBean pickOffStop;
+    private StopBean pickOffStop;
 
     public UserBean getGuardian() {
         return guardian;
@@ -128,11 +128,11 @@ public class ChildBean implements Cloneable {
             SN = jsonObject.getString("child_sn");
             if (jsonObject.has("child_on_site_data"))
                 if(jsonObject.get("child_on_site_data") instanceof  JSONObject){
-                    pickUpStop = new LineBean(jsonObject.getJSONObject("child_on_site_data"));
+                    pickUpStop = new StopBean(jsonObject.getJSONObject("child_on_site_data"));
                 }
             if (jsonObject.has("child_off_site_data"))
                 if(jsonObject.get("child_off_site_data") instanceof  JSONObject){
-                    pickOffStop = new LineBean(jsonObject.getJSONObject("child_off_site_data"));
+                    pickOffStop = new StopBean(jsonObject.getJSONObject("child_off_site_data"));
                 }
 
             if (jsonObject.has("child_guardians"))

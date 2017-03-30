@@ -20,19 +20,25 @@ public class SplashActivity extends AppCompatActivity {
     private  final int SPLASH_DISPLAY_LENGTH = 3000;
     private TextView tvSchoolName;
     private ImageView ivLogo;
+    private ImageView ivSplash;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_splash);
         tvSchoolName = (TextView) findViewById(R.id.tvSchoolName);
         ivLogo = (ImageView) findViewById(R.id.ivLogo);
+        ivSplash = (ImageView) findViewById(R.id.iv_splash);
 
         if (MyApplication.getInstance().getSharedPreferenceManager().getSchoolName() != null){
             tvSchoolName.setText(MyApplication.getInstance().getSharedPreferenceManager().getSchoolName());
             ImageLoader.getInstance().displayImage(HttpData.getBaseUrl()
                     + MyApplication.getInstance().getSharedPreferenceManager().getSchoolLogo(), ivLogo);
+            ImageLoader.getInstance().displayImage(HttpData.getBaseUrl()
+                    + MyApplication.getInstance().getSharedPreferenceManager().getSchoolImages(), ivSplash);
+
         }
 
         new Handler().postDelayed(

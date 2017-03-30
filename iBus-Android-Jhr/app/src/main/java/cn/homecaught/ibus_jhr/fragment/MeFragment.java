@@ -106,8 +106,7 @@ public class MeFragment extends Fragment {
         this.container.findViewById(R.id.llLogout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyApplication.getInstance().getSharedPreferenceManager().setUserMobile("");
-                MyApplication.getInstance().getSharedPreferenceManager().setUserPass("");
+                MyApplication.getInstance().getSharedPreferenceManager().clear();
 
 
                 Intent intent = new Intent(getActivity(), LoginActivity.class);

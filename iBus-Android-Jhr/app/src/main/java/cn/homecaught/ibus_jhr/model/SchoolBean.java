@@ -45,12 +45,23 @@ public class SchoolBean {
     String schoolDomain;
     String schoolLogo;
 
+    public String getSchoolImages() {
+        return schoolImages;
+    }
+
+    public void setSchoolImages(String schoolImages) {
+        this.schoolImages = schoolImages;
+    }
+
+    String schoolImages;
+
     public SchoolBean(JSONObject jsonObject){
         try {
             setId(jsonObject.getString("id"));
             setSchoolName(jsonObject.getString("school_name"));
             setSchoolDomain(jsonObject.getString("school_domain"));
             setSchoolLogo(jsonObject.getString("school_logo"));
+            setSchoolImages(jsonObject.getString("school_images"));
 
         }catch (Exception e){
             e.printStackTrace();

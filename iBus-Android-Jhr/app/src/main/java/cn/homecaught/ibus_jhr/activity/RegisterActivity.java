@@ -3,6 +3,9 @@ package cn.homecaught.ibus_jhr.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -29,9 +32,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.wx.wheelview.adapter.ArrayWheelAdapter;
-import com.wx.wheelview.widget.WheelView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -68,10 +68,8 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
      */
     private UserRegisterTask mAuthTask = null;
 
-    private WheelView mWheelView;
     private List<SchoolBean> mSchools;
     private int mCurSelectedSchoolIndex;
-    private Boolean mFirstLogin = false;
 
     // UI references.
     private EditText mUserMobileView;
@@ -94,6 +92,8 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
 
     private View mProgressView;
     private View mLoginFormView;
+    private Button btnSchool = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,15 +145,13 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
 
-        mFirstLogin = true;
-        mWheelView = (WheelView) findViewById(R.id.wheelview);
-        mWheelView.setWheelAdapter(new ArrayWheelAdapter(this)); // 文本数据源
-        mWheelView.setSkin(WheelView.Skin.Common); // common皮肤
-        mWheelView.setOnWheelItemSelectedListener(new WheelView.OnWheelItemSelectedListener() {
+
+
+        btnSchool = (Button) findViewById(R.id.btn_school);
+        btnSchool.setOnClickListener(new OnClickListener() {
             @Override
-            public void onItemSelected(int position, Object o) {
-                Toast.makeText(RegisterActivity.this, position +"", Toast.LENGTH_LONG).show();
-                mCurSelectedSchoolIndex = position;
+            public void onClick(View v) {
+                showReportAlert();
             }
         });
         showProgress(true);
@@ -423,6 +421,46 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
 
        // mEmailView.setAdapter(adapter);
     }
+
+    private void showReportAlert() {
+
+        final String[] reports = new String[mSchools.size()];
+        List<String> names = new ArrayList<>();
+        for (int i=0; i <mSchools.size(); i++){
+            SchoolBean ugrentBean = mSchools.get(i);
+            names.add(ugrentBean.getSchoolName());
+        }
+        names.toArray(reports);
+
+        Dialog alertDialog = new AlertDialog.Builder(this).
+                setTitle("Please choose your school").
+                setIcon(R.mipmap.icon_report)
+                .setSingleChoiceItems(reports, 0, new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mCurSelectedSchoolIndex = which;
+                    }
+                }).
+                        setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                SchoolBean ugrentBean = mSchools.get(mCurSelectedSchoolIndex);
+                                btnSchool.setText(ugrentBean.getSchoolName());
+                            }
+                        }).
+                        setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // TODO Auto-generated method stub
+                            }
+                        }).
+                        create();
+        alertDialog.show();
+    }
+
     public class GetSchoolTask extends AsyncTask<Void, Void, String>{
 
         public GetSchoolTask() {
@@ -449,17 +487,13 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
                 mSchools.clear();
                 JSONObject jsonObject = new JSONObject(s);
                 JSONArray jsonArray = jsonObject.getJSONArray("info");
-                List<String> schools = new ArrayList<>();
 
                 for (int i = 0; i< jsonArray.length(); i++){
                     SchoolBean schoolBean = new SchoolBean(jsonArray.getJSONObject(i));
                     mSchools.add(schoolBean);
-                    schools.add(schoolBean.getSchoolName());
                 }
-
-                mWheelView.setWheelData(schools);  // 数据集合
-                mWheelView.setLoop(true);
-
+                SchoolBean schoolBean = mSchools.get(0);
+                btnSchool.setText(schoolBean.getSchoolName());
             }catch (Exception e){
                 e.printStackTrace();
             }

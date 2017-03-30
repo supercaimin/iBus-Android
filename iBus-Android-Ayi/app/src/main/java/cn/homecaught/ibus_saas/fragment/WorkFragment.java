@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
@@ -25,7 +26,9 @@ import java.util.List;
 
 import cn.homecaught.ibus_saas.R;
 import cn.homecaught.ibus_saas.adapter.GridViewAdapter;
+import cn.homecaught.ibus_saas.adapter.LineDataAdapter;
 import cn.homecaught.ibus_saas.model.ChildBean;
+import cn.homecaught.ibus_saas.model.LineBean;
 import cn.homecaught.ibus_saas.util.HttpData;
 import cn.homecaught.ibus_saas.view.StudentInfoPopWindow;
 import cn.homecaught.ibus_saas.view.PullToRefreshLayout;
@@ -45,13 +48,17 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
     private View llSelect;
 
     private View llContent;
+    private ListView listView;
 
     private ProgressDialog progressDialog;
     private Button btnArrive;
 
-    private String travelType = "";
 
     private boolean isTravelStart = false;
+
+    private List<LineBean> lineBeans;
+    private LineBean curLine;
+
 
     @Override
     public void onAttach(Activity activity) {
@@ -91,11 +98,12 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
             }
         });
         llSelect = this.container.findViewById(R.id.llSelect);
+        listView = (ListView) this.container.findViewById(R.id.listview);
         llContent = this.container.findViewById(R.id.llContent);
         btnArrive = (Button) this.container.findViewById(R.id.btnArrive);
         this.container.findViewById(R.id.btnArrive).setOnClickListener(this);
-        this.container.findViewById(R.id.btnGo).setOnClickListener(this);
-        this.container.findViewById(R.id.btnBack).setOnClickListener(this);
+       // this.container.findViewById(R.id.btnGo).setOnClickListener(this);
+       // this.container.findViewById(R.id.btnBack).setOnClickListener(this);
         pullToRefreshLayout = (PullToRefreshLayout)this.container.findViewById(R.id.refresh_view);
 
         //new SyncTask().execute();
@@ -164,6 +172,24 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
         System.out.println("AAAAAAAAAA____onDetach");
     }
 
+    public void reloadLines(List<LineBean> beanList){
+        LineDataAdapter lineDataAdapter = new LineDataAdapter(this.getContext(), R.layout.line_item, beanList);
+        lineBeans = beanList;
+
+        listView.setAdapter(lineDataAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                curLine = lineBeans.get(position);
+                Toast.makeText(WorkFragment.this.getContext(), curLine.getLineName(), Toast.LENGTH_LONG).show();
+                new SyncTask().execute();
+                progressDialog.show();
+                llSelect.setVisibility(View.GONE);
+                llContent.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
 
     private void show(ChildBean user) {
         popWindow = new StudentInfoPopWindow(getActivity(), user);
@@ -198,20 +224,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
                 }
 
                 break;
-            case R.id.btnGo:
-                travelType = HttpData.TRACK_TYPE_GO;
-                new SyncTask().execute();
-                progressDialog.show();
-                llSelect.setVisibility(View.INVISIBLE);
-                llContent.setVisibility(View.VISIBLE);
-                break;
-            case R.id.btnBack:
-                travelType = HttpData.TRACK_TYPE_BACK;
-                new SyncTask().execute();
-                progressDialog.show();
-                llSelect.setVisibility(View.INVISIBLE);
-                llContent.setVisibility(View.VISIBLE);
-                break;
+
             default:
                 break;
         }
@@ -235,7 +248,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
 
         @Override
         protected String doInBackground(Void... params) {
-            return HttpData.getBusChildren(travelType);
+            return HttpData.getBusChildren(curLine.getId());
         }
 
         @Override
@@ -258,27 +271,33 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
                 orgStudents.clear();
 
                 JSONObject jsonObject = new JSONObject(s);
-                JSONArray jsonArray = jsonObject.getJSONArray("info");
-                for(int i = 0; i < jsonArray.length(); i++){
-                    ChildBean userBean = new ChildBean(jsonArray.getJSONObject(i));
-                    students.add(userBean);
-                    orgStudents.add(userBean.clone());
+                boolean status = jsonObject.getBoolean("status");
+                if (status){
+                    JSONArray jsonArray = jsonObject.getJSONObject("info").getJSONArray("children");
+                    for(int i = 0; i < jsonArray.length(); i++){
+                        ChildBean userBean = new ChildBean(jsonArray.getJSONObject(i));
+                        students.add(userBean);
+                        orgStudents.add(userBean.clone());
 
-                }
-                if (adapter == null){
-                    adapter = new GridViewAdapter(getContext(), students);
-                    adapter.setOnInfoButtonOnClickListener(new GridViewAdapter.OnInfoButtonOnClickListener() {
-                        @Override
-                        public void onClick(ChildBean userBean) {
-                            Log.d("TTTTTTT", "ccccccccccccccc");
+                    }
+                    if (adapter == null){
+                        adapter = new GridViewAdapter(getContext(), students);
+                        adapter.setOnInfoButtonOnClickListener(new GridViewAdapter.OnInfoButtonOnClickListener() {
+                            @Override
+                            public void onClick(ChildBean userBean) {
+                                Log.d("TTTTTTT", "ccccccccccccccc");
 
-                            show(userBean);
-                        }
-                    });
-                    gridView.setAdapter(adapter);
+                                show(userBean);
+                            }
+                        });
+                        gridView.setAdapter(adapter);
+                    }else {
+                        adapter.setmItems(students);
+                    }
                 }else {
-                    adapter.setmItems(students, travelType);
+                    Toast.makeText(getContext(), jsonObject.getString("msg"), Toast.LENGTH_SHORT).show();
                 }
+
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -327,14 +346,20 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
                     Toast.makeText(getContext(), jsonObject.getJSONObject("info").getJSONObject("last_site").getString("site_name"), Toast.LENGTH_SHORT).show();
                     if (hasNextStation){
                     }else {
-                        llContent.setVisibility(View.INVISIBLE);
-                        llSelect.setVisibility(View.VISIBLE);
                         Toast.makeText(getContext(), "行程结束", Toast.LENGTH_SHORT).show();
                         isTravelStart = false;
                         btnArrive.setText("开始行程");
+
+                        llSelect.setVisibility(View.VISIBLE);
+                        llContent.setVisibility(View.GONE);
                     }
                 }else {
                     Toast.makeText(getContext(), jsonObject.getString("msg"), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "行程结束", Toast.LENGTH_SHORT).show();
+                    isTravelStart = false;
+                    btnArrive.setText("开始行程");
+                    llSelect.setVisibility(View.VISIBLE);
+                    llContent.setVisibility(View.GONE);
                 }
 
             }catch (Exception e){
@@ -367,7 +392,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
 
         @Override
         protected String doInBackground(Void... params) {
-            return HttpData.setTravelStart(travelType, getChangedStudents());
+            return HttpData.setTravelStart(curLine.getId(), getChangedStudents());
         }
 
         @Override
@@ -392,6 +417,10 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
 
                 }else {
                     Toast.makeText(getContext(), jsonObject.getString("msg"), Toast.LENGTH_SHORT).show();
+
+
+                    llSelect.setVisibility(View.VISIBLE);
+                    llContent.setVisibility(View.GONE);
                 }
             }catch (Exception e){
 

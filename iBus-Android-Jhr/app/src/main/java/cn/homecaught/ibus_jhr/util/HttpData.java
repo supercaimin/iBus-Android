@@ -418,7 +418,7 @@ public class HttpData {
         return post(url, nvps);
     }
     public static String getUser(String userId) {
-        String url = getFakeServer() + "aunt/user/" + userId;
+        String url = getFakeServer() + "guardian/user/" + userId;
         return get(url, null);
     }
 

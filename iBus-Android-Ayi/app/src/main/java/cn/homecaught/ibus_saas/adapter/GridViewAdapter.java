@@ -25,7 +25,6 @@ public class GridViewAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
     private Context mContext;
     private List<ChildBean> mItems;
-    private String mTravelType = "";
 
     public void setOnInfoButtonOnClickListener(OnInfoButtonOnClickListener onInfoButtonOnClickListener) {
         this.onInfoButtonOnClickListener = onInfoButtonOnClickListener;
@@ -112,9 +111,8 @@ public class GridViewAdapter extends BaseAdapter {
         public void onClick(ChildBean userBean);
     }
 
-    public void setmItems(List<ChildBean> items, String travelType){
+    public void setmItems(List<ChildBean> items){
         mItems = items;
-        mTravelType = travelType;
         notifyDataSetChanged();
     }
 }

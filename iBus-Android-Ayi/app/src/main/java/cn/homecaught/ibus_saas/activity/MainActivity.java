@@ -41,6 +41,7 @@ import java.util.List;
 import cn.homecaught.ibus_saas.MyApplication;
 import cn.homecaught.ibus_saas.R;
 import cn.homecaught.ibus_saas.adapter.FragmentTabAdapter;
+import cn.homecaught.ibus_saas.model.LineBean;
 import cn.homecaught.ibus_saas.model.UgrentBean;
 import cn.homecaught.ibus_saas.model.UserBean;
 import cn.homecaught.ibus_saas.util.CameraDialog;
@@ -68,6 +69,8 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
 
     private List<UgrentBean> ugrents;
 
+    private List<LineBean> lineBeans;
+
 
 
     Toolbar toolbar = null;
@@ -76,13 +79,15 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
 
     private CameraDialog cameraDialog;
 
+    private WorkFragment workFragment;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        fragments.add(new WorkFragment());
+        workFragment = new WorkFragment();
+        fragments.add(workFragment);
         fragments.add(new MessageFragment());
         MeFragment fragment = new MeFragment();
         fragment.setOnMeHeadImageUploadListener(this);
@@ -426,6 +431,16 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
             try {
                 JSONObject jsonObject = new JSONObject(s);
                 manager = new UserBean(jsonObject.getJSONObject("info").getJSONObject("bus_manager_data"));
+                JSONArray jsonArray = jsonObject.getJSONObject("info").getJSONArray("bus_lines");
+                lineBeans = new ArrayList<>();
+                for (int i = 0; i < jsonArray.length(); i ++){
+                    JSONObject obj = jsonArray.getJSONObject(i);
+                    LineBean lineBean = new LineBean(obj);
+                    lineBeans.add(lineBean);
+                }
+
+                workFragment.reloadLines(lineBeans);
+
             } catch (Exception e) {
 
             }

@@ -164,7 +164,7 @@ public class TrackFragment extends Fragment{
         System.out.println("AAAAAAAAAA____onDestroy");
         mTimer.cancel();
         mTimer = null;
-        syncTask.cancel(true);
+//        syncTask.cancel(true);
         syncTask = null;
     }
 
