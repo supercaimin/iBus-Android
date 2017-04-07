@@ -73,7 +73,7 @@ public class SharedPreferenceManager {
 
 	}
 	public String getSchoolDomain() {
-		return getString(LOGIN_SCHOOL_DOMAIN, "saasibus.chinaairplus.com");
+		return getString(LOGIN_SCHOOL_DOMAIN, "www.ibuschina.com");
 	}
 
 	public void setUserMobile(String mobile) {

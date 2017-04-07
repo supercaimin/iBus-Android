@@ -116,7 +116,8 @@
             android:textAlignment="center"
             android:textSize="16sp"
             android:textColor="@color/light_blue"
-            android:text="18626467882"/>
+            android:text="18626467882"
+            android:visibility="gone"/>
     </LinearLayout>
 
 </LinearLayout>
