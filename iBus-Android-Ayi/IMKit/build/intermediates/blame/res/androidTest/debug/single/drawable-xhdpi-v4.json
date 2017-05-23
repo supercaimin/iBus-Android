@@ -196,12 +196,12 @@
         "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_no.png"
     },
     {
-        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/rc_ic_bubble_no_right.9.png",
-        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_ic_bubble_no_right.9.png"
-    },
-    {
         "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/rc_origin_check_nor.png",
         "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_origin_check_nor.png"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/rc_ic_bubble_no_right.9.png",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_ic_bubble_no_right.9.png"
     },
     {
         "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/u1f4a9.png",
@@ -584,12 +584,12 @@
         "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/u1f601.png"
     },
     {
-        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/rc_ic_camera_selected.png",
-        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_ic_camera_selected.png"
-    },
-    {
         "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/rc_ic_voice_receive.png",
         "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_ic_voice_receive.png"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/rc_ic_camera_selected.png",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_ic_camera_selected.png"
     },
     {
         "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/u1f615.png",

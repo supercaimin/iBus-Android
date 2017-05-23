@@ -52,6 +52,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
 
     private ProgressDialog progressDialog;
     private Button btnArrive;
+    private Button btnStart;
 
 
     private boolean isTravelStart = false;
@@ -101,6 +102,8 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
         listView = (ListView) this.container.findViewById(R.id.listview);
         llContent = this.container.findViewById(R.id.llContent);
         btnArrive = (Button) this.container.findViewById(R.id.btnArrive);
+        btnStart = (Button) this.container.findViewById(R.id.btnStart);
+        btnStart.setOnClickListener(this);
         this.container.findViewById(R.id.btnArrive).setOnClickListener(this);
        // this.container.findViewById(R.id.btnGo).setOnClickListener(this);
        // this.container.findViewById(R.id.btnBack).setOnClickListener(this);
@@ -223,6 +226,12 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
                     btnArrive.setText("到站");
                 }
 
+                break;
+            case R.id.btnStart:
+                isTravelStart = false;
+                btnArrive.setText("开始行程");
+                llSelect.setVisibility(View.VISIBLE);
+                llContent.setVisibility(View.GONE);
                 break;
 
             default:

@@ -33,7 +33,7 @@ public class SplashActivity extends AppCompatActivity {
         ivSplash = (ImageView) findViewById(R.id.iv_splash);
 
         if (MyApplication.getInstance().getSharedPreferenceManager().getSchoolName() != null){
-            tvSchoolName.setText(MyApplication.getInstance().getSharedPreferenceManager().getSchoolName());
+            tvSchoolName.setText("The " +MyApplication.getInstance().getSharedPreferenceManager().getSchoolName());
             ImageLoader.getInstance().displayImage(HttpData.getBaseUrl()
                     + MyApplication.getInstance().getSharedPreferenceManager().getSchoolLogo(), ivLogo);
             ImageLoader.getInstance().displayImage(HttpData.getBaseUrl()

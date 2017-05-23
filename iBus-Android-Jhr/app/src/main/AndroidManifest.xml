@@ -64,6 +64,7 @@
             android:name="cn.homecaught.ibus_jhr.activity.WebViewActivity"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_web_view"
+            android:hardwareAccelerated="true"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v7.widget.Toolbar;
+import android.webkit.WebView;
 
 import cn.homecaught.ibus_jhr.R;
 
@@ -73,6 +74,9 @@ public class AirPlusFragment extends Fragment {
         toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         toolbar.setTitle("AirPlus");
 
+        WebView webView = (WebView) view.findViewById(R.id.webview);
+        webView.loadUrl("file:///android_asset/Introduction.html");
+        webView.getSettings().setDefaultTextEncodingName("UTF-8") ;
         return view;
     }
 

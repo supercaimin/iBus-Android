@@ -71,19 +71,27 @@ public class GridViewAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             viewHolder.nameTextView = (TextView)convertView.findViewById(R.id.tvName);
             viewHolder.headImageView = (ImageView)convertView.findViewById(R.id.imageView);
-            viewHolder.snTextView = (TextView) convertView.findViewById(R.id.tvSN);
+            viewHolder.userNameTextView = (TextView) convertView.findViewById(R.id.tvUserName);
+            viewHolder.nickNameTextView = (TextView) convertView.findViewById(R.id.tvNickName);
             viewHolder.viewMask = (View) convertView.findViewById(R.id.viewMask);
             viewHolder.infoBtn = (Button) convertView.findViewById(R.id.btn_info);
             convertView.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder)convertView.getTag();
         }
+        viewHolder.headImageView.setImageDrawable(mContext.getResources().getDrawable(R.mipmap.head));
         ChildBean userBean = mItems.get(position);
         if (userBean.getPickOffStop() != null)
             viewHolder.nameTextView.setText(userBean.getPickOffStop().getLineName());
         else
             viewHolder.nameTextView.setText("");
-        viewHolder.snTextView.setText(userBean.getSN());
+        viewHolder.userNameTextView.setText(userBean.getFirstName() + " " + userBean.getLastName());
+        if (userBean.getNickName().equals("")){
+            viewHolder.nickNameTextView.setVisibility(View.GONE);
+        }else {
+            viewHolder.nickNameTextView.setVisibility(View.VISIBLE);
+            viewHolder.nickNameTextView.setText(userBean.getNickName());
+        }
         viewHolder.infoBtn.setTag(userBean);
 
         if (userBean.getUserOnBus().equals("off"))
@@ -101,7 +109,9 @@ public class GridViewAdapter extends BaseAdapter {
     class ViewHolder {
         ImageView headImageView;
         TextView nameTextView;
-        TextView snTextView;
+        TextView userNameTextView;
+        TextView nickNameTextView;
+
         View viewMask;
         Button infoBtn;
 

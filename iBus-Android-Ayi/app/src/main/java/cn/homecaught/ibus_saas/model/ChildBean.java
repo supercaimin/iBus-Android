@@ -101,6 +101,16 @@ public class ChildBean implements Cloneable {
     private String SN;
     private String userOnBus;
 
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    private String nickName;
+
     private UserBean guardian;
     public ChildBean clone()
     {
@@ -125,6 +135,7 @@ public class ChildBean implements Cloneable {
             head = jsonObject.getString("child_head");
             userOnBus = jsonObject.getString("user_on_bus");
             grade = jsonObject.getString("child_grade");
+            nickName = jsonObject.getString("child_nick_name");
             SN = jsonObject.getString("child_sn");
             if (jsonObject.has("child_on_site_data"))
                 if(jsonObject.get("child_on_site_data") instanceof  JSONObject){

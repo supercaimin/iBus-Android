@@ -2,6 +2,7 @@ package cn.homecaught.ibus_jhr.activity;
 
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -15,6 +16,9 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.provider.MediaStore;
+import android.view.Gravity;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -27,6 +31,7 @@ import android.view.MenuItem;
 
 import android.graphics.drawable.Drawable;
 
+import com.jauker.widget.BadgeView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.json.JSONArray;
@@ -50,6 +55,7 @@ import cn.homecaught.ibus_jhr.util.CameraDialog;
 import cn.homecaught.ibus_jhr.util.HttpData;
 import cn.homecaught.ibus_jhr.util.ImageUntils;
 import cn.homecaught.ibus_jhr.util.StatusBarCompat;
+import io.rong.imkit.RongIM;
 
 
 public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHeadImageUploadListener {
@@ -72,6 +78,8 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
 
     private CameraDialog cameraDialog;
 
+    private BadgeView badgeView;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -87,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
 
 
 
+
         rgs = (RadioGroup) findViewById(R.id.tabs_rg);
         StatusBarCompat.compat(this);
         StatusBarCompat.compat(this, 0x000);
@@ -95,70 +104,98 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
         progressDialog.setTitle("Tips");
         progressDialog.setMessage("Please wait a moment...");
 
+        WindowManager wm = this.getWindowManager();;
+        int width = wm.getDefaultDisplay().getWidth();
+
+        badgeView = new com.jauker.widget.BadgeView(this);
+        badgeView.setTargetView(rgs);
+        badgeView.setBadgeGravity(Gravity.TOP | Gravity.CENTER);
+        badgeView.setBadgeMargin(0, 5,  - (width / 16),0);
+        badgeView.setClickable(true);
+        badgeView.setBadgeCount(RongIM.getInstance().getTotalUnreadCount());
+        badgeView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onRgpChecked(rgs, R.id.tab_rb_c, 2);
+            }
+        });
+
+        RongIM.getInstance().setOnReceiveUnreadCountChangedListener(new RongIM.OnReceiveUnreadCountChangedListener() {
+            @Override
+            public void onMessageIncreased(int i) {
+                MainActivity.this.badgeView.setBadgeCount(i);
+
+            }
+        });
         FragmentTabAdapter tabAdapter = new FragmentTabAdapter(this, fragments, R.id.tab_content, rgs);
         tabAdapter.setOnRgsExtraCheckedChangedListener(new FragmentTabAdapter.OnRgsExtraCheckedChangedListener() {
             @Override
             public void OnRgsExtraCheckedChanged(RadioGroup radioGroup, int checkedId, int index) {
-                System.out.println("Extra---- " + index + " checked!!! ");
-                RadioButton preRb = null;
-                Drawable preDrawable = null;
-                switch (currentIndex) {
-                    case 0:
-                        preRb = (RadioButton) MainActivity.this.findViewById(R.id.tab_rb_a);
-                        preDrawable = MainActivity.this.getResources().getDrawable(R.mipmap.icon_work_normal);
-                        break;
-                    case 1:
-                        preRb = (RadioButton) MainActivity.this.findViewById(R.id.tab_rb_b);
-                        preDrawable = MainActivity.this.getResources().getDrawable(R.mipmap.airplus_normal);
-                        break;
-                    case 2:
-                        preRb = (RadioButton) MainActivity.this.findViewById(R.id.tab_rb_c);
-                        preDrawable = MainActivity.this.getResources().getDrawable(R.mipmap.icon_message_normal);
-                        break;
-                    case 3:
-                        preRb = (RadioButton) MainActivity.this.findViewById(R.id.tab_rb_d);
-                        preDrawable = MainActivity.this.getResources().getDrawable(R.mipmap.icon_user_normal);
-                        break;
-                    default:
-                        break;
-                }
-
-                preRb.setCompoundDrawablesWithIntrinsicBounds(null, preDrawable, null, null);
-                preRb.setTextColor(Color.BLACK);
-
-
-                RadioButton rb = (RadioButton) radioGroup.getChildAt(index);
-                Drawable drawable = null;
-
-                switch (index) {
-                    case 0:
-                        rb = (RadioButton) MainActivity.this.findViewById(R.id.tab_rb_a);
-                        drawable = MainActivity.this.getResources().getDrawable(R.mipmap.icon_work_selected);
-                        break;
-                    case 1:
-                        rb = (RadioButton) MainActivity.this.findViewById(R.id.tab_rb_b);
-                        drawable = MainActivity.this.getResources().getDrawable(R.mipmap.airplus_selected);
-                        break;
-                    case 2:
-                        rb = (RadioButton) MainActivity.this.findViewById(R.id.tab_rb_c);
-                        drawable = MainActivity.this.getResources().getDrawable(R.mipmap.icon_message_selected);
-                        break;
-                    case 3:
-                        rb = (RadioButton) MainActivity.this.findViewById(R.id.tab_rb_d);
-                        drawable = MainActivity.this.getResources().getDrawable(R.mipmap.icon_user_selected);
-                        break;
-                    default:
-                        break;
-                }
-                rb.setCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);
-                rb.setTextColor(MainActivity.this.getResources().getColor(R.color.colorPrimary));
-
-                currentIndex = index;
+                onRgpChecked(radioGroup, checkedId, index);
 
             }
         });
         progressDialog.show();
         new GetBusTaskTask().execute();
+    }
+
+    private void onRgpChecked(RadioGroup radioGroup, int checkedId, int index)
+    {
+        System.out.println("Extra---- " + index + " checked!!! ");
+        RadioButton preRb = null;
+        Drawable preDrawable = null;
+        switch (currentIndex) {
+            case 0:
+                preRb = (RadioButton) MainActivity.this.findViewById(R.id.tab_rb_a);
+                preDrawable = MainActivity.this.getResources().getDrawable(R.mipmap.icon_work_normal);
+                break;
+            case 1:
+                preRb = (RadioButton) MainActivity.this.findViewById(R.id.tab_rb_b);
+                preDrawable = MainActivity.this.getResources().getDrawable(R.mipmap.bsn_normal);
+                break;
+            case 2:
+                preRb = (RadioButton) MainActivity.this.findViewById(R.id.tab_rb_c);
+                preDrawable = MainActivity.this.getResources().getDrawable(R.mipmap.icon_message_normal);
+                break;
+            case 3:
+                preRb = (RadioButton) MainActivity.this.findViewById(R.id.tab_rb_d);
+                preDrawable = MainActivity.this.getResources().getDrawable(R.mipmap.icon_user_normal);
+                break;
+            default:
+                break;
+        }
+
+        preRb.setCompoundDrawablesWithIntrinsicBounds(null, preDrawable, null, null);
+        preRb.setTextColor(Color.BLACK);
+
+
+        RadioButton rb =  (RadioButton) MainActivity.this.findViewById(checkedId);
+        Drawable drawable = null;
+
+        switch (index) {
+            case 0:
+                rb = (RadioButton) MainActivity.this.findViewById(R.id.tab_rb_a);
+                drawable = MainActivity.this.getResources().getDrawable(R.mipmap.icon_work_selected);
+                break;
+            case 1:
+                rb = (RadioButton) MainActivity.this.findViewById(R.id.tab_rb_b);
+                drawable = MainActivity.this.getResources().getDrawable(R.mipmap.bsn_selected);
+                break;
+            case 2:
+                rb = (RadioButton) MainActivity.this.findViewById(R.id.tab_rb_c);
+                drawable = MainActivity.this.getResources().getDrawable(R.mipmap.icon_message_selected);
+                break;
+            case 3:
+                rb = (RadioButton) MainActivity.this.findViewById(R.id.tab_rb_d);
+                drawable = MainActivity.this.getResources().getDrawable(R.mipmap.icon_user_selected);
+                break;
+            default:
+                break;
+        }
+        rb.setCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);
+        rb.setTextColor(MainActivity.this.getResources().getColor(R.color.colorPrimary));
+
+        currentIndex = index;
     }
 
     @Override

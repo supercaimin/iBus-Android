@@ -59,14 +59,27 @@
             android:layout_alignParentBottom="true">
             <Button
                 android:id="@+id/btnArrive"
-                android:layout_width="160dp"
+                android:layout_width="140dp"
                 android:layout_height="40dp"
                 android:background="@color/colorPrimary"
                 android:backgroundTint="@color/colorPrimary"
                 android:text="开始行程"
                 android:textColor="@android:color/white"
                 android:textSize="16dp"
-                android:layout_centerInParent="true"/>
+                android:layout_marginLeft="20dp"
+                android:layout_alignParentLeft="true"/>
+
+            <Button
+                android:id="@+id/btnStart"
+                android:layout_width="140dp"
+                android:layout_height="40dp"
+                android:background="@color/colorPrimary"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="重新开始"
+                android:textColor="@android:color/white"
+                android:textSize="16dp"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentRight="true"/>
         </RelativeLayout>
 
     </RelativeLayout>

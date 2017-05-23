@@ -37,7 +37,14 @@
             android:textColor="@android:color/white"
             android:layout_gravity="center_horizontal"/>
         <TextView
-            android:id="@+id/tvSN"
+            android:id="@+id/tvUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center_horizontal"/>
+        <TextView
+            android:id="@+id/tvNickName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"

@@ -45,6 +45,15 @@
             android:textSize="16sp"
             android:textColor="@color/light_blue"
             android:text="Driver:Jin Hu Dong"/>
+
+        <TextView
+            android:id="@+id/tvDriverMobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textColor="@color/light_blue"
+            android:text=""/>
     </LinearLayout>
 
     <LinearLayout
@@ -116,8 +125,8 @@
             android:textAlignment="center"
             android:textSize="16sp"
             android:textColor="@color/light_blue"
-            android:text="18626467882"
-            android:visibility="gone"/>
+            android:text=""
+            android:visibility="invisible"/>
     </LinearLayout>
 
 </LinearLayout>
