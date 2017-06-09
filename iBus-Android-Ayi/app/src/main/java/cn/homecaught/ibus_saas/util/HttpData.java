@@ -49,12 +49,8 @@ import cn.homecaught.ibus_saas.model.ChildBean;
  * @date 2015-7-15 下午10:58:34
  */
 public class HttpData {
-    private static final int TIMEOUT_CONNECTION = 5000 * 100;
-    private static final int TIMEOUT_SO = 10000 * 100;
-
-
-    public static final String TRACK_TYPE_BACK = "back";
-    public static final String TRACK_TYPE_GO = "go";
+    private static final int TIMEOUT_CONNECTION = 5000 * 1000;
+    private static final int TIMEOUT_SO = 10000 * 1000;
 
     public static final String CHILD_STATUS_ON = "on";
     public static final String CHILD_STATUS_OFF = "off";

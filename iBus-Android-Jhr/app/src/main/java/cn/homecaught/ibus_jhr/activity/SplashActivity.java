@@ -34,7 +34,7 @@ public class SplashActivity extends AppCompatActivity {
 
 
         if (MyApplication.getInstance().getSharedPreferenceManager().getSchoolName() != null){
-            tvSchoolName.setText("The " + MyApplication.getInstance().getSharedPreferenceManager().getSchoolName());
+            tvSchoolName.setText(MyApplication.getInstance().getSharedPreferenceManager().getSchoolName());
             ImageLoader.getInstance().displayImage(HttpData.getBaseUrl()
                     + MyApplication.getInstance().getSharedPreferenceManager().getSchoolLogo(), ivLogo);
             ImageLoader.getInstance().displayImage(HttpData.getBaseUrl()
