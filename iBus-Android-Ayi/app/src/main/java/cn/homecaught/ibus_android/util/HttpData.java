@@ -52,8 +52,8 @@ import cn.homecaught.ibus_android.model.UserBean;
  * @date 2015-7-15 下午10:58:34
  */
 public class HttpData {
-    private static final int TIMEOUT_CONNECTION = 5000 * 100;
-    private static final int TIMEOUT_SO = 10000 * 100;
+    private static final int TIMEOUT_CONNECTION = 5000 * 1000;
+    private static final int TIMEOUT_SO = 10000 * 1000;
 
 
     public static final String TRACK_TYPE_BACK = "back";

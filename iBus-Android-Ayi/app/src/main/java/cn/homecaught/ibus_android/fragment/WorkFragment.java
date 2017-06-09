@@ -95,12 +95,13 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
         this.container.findViewById(R.id.btnGo).setOnClickListener(this);
         this.container.findViewById(R.id.btnBack).setOnClickListener(this);
         pullToRefreshLayout = (PullToRefreshLayout)this.container.findViewById(R.id.refresh_view);
-
+        progressDialog.show();
         new SyncTask().execute();
 
         pullToRefreshLayout.setOnRefreshListener(new PullToRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+                progressDialog.show();
                 new SyncTask().execute();
             }
 
@@ -323,6 +324,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
             }catch (Exception e){
                 e.printStackTrace();
             }
+            progressDialog.show();
             new SyncTask().execute();
             super.onPostExecute(s);
         }
@@ -369,7 +371,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
                 llStart.setVisibility(View.GONE);
 
                 if (status){
-
+                    progressDialog.show();
                     new SyncTask().execute();
                     Toast.makeText(getContext(), "行程开始", Toast.LENGTH_SHORT).show();
 
