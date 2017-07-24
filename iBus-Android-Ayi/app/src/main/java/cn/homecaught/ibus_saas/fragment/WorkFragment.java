@@ -2,8 +2,19 @@ package cn.homecaught.ibus_saas.fragment;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothGattCharacteristic;
+import android.content.BroadcastReceiver;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.IBinder;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.Gravity;
@@ -23,6 +34,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import cn.homecaught.ibus_saas.R;
 import cn.homecaught.ibus_saas.adapter.GridViewAdapter;
@@ -59,6 +71,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
 
     private List<LineBean> lineBeans;
     private LineBean curLine;
+
 
 
     @Override
@@ -452,4 +465,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
             super.onCancelled();
         }
     }
+
+
+
 }
