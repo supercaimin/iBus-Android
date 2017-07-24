@@ -71,7 +71,7 @@ public class SchoolBean {
             setSchoolDomain(jsonObject.getString("school_domain"));
             setSchoolLogo(jsonObject.getString("school_logo"));
             setSchoolImages(jsonObject.getString("school_images"));
-
+            setSchoolRemark(jsonObject.getString("school_remark"));
         }catch (Exception e){
             e.printStackTrace();
         }

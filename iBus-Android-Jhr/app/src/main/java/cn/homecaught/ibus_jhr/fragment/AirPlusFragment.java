@@ -86,7 +86,6 @@ public class AirPlusFragment extends Fragment {
         toolbar.setTitle("School Info");
 
         webView = (WebView) view.findViewById(R.id.webview);
-        webView.getSettings().setDefaultTextEncodingName("UTF-8");
         webView.loadData(MyApplication.getInstance().getSharedPreferenceManager().getSchoolRemark(), "text/html; charset=UTF-8", null);
 
        // new GetWebContentTask().execute();
