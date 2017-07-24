@@ -3,6 +3,7 @@ package cn.homecaught.ibus_jhr.fragment;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,8 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v7.widget.Toolbar;
 import android.webkit.WebView;
+import android.widget.ImageView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import org.json.JSONObject;
+
+import cn.homecaught.ibus_jhr.MyApplication;
 import cn.homecaught.ibus_jhr.R;
+import cn.homecaught.ibus_jhr.util.HttpData;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,6 +42,9 @@ public class AirPlusFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     Toolbar toolbar = null;
+
+    private ImageView imageView;
+    private WebView webView;
 
     /**
      * Use this factory method to create a new instance of
@@ -72,11 +83,17 @@ public class AirPlusFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_air_plus, container, false);
         toolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        toolbar.setTitle("AirPlus");
+        toolbar.setTitle("School Info");
 
-        WebView webView = (WebView) view.findViewById(R.id.webview);
-        webView.loadUrl("file:///android_asset/Introduction.html");
-        webView.getSettings().setDefaultTextEncodingName("UTF-8") ;
+        webView = (WebView) view.findViewById(R.id.webview);
+        webView.getSettings().setDefaultTextEncodingName("UTF-8");
+        webView.loadData(MyApplication.getInstance().getSharedPreferenceManager().getSchoolRemark(), "text/html; charset=UTF-8", null);
+
+       // new GetWebContentTask().execute();
+
+        imageView = (ImageView) view.findViewById(R.id.imageView);
+        ImageLoader.getInstance().displayImage(HttpData.getBaseUrl()
+                + MyApplication.getInstance().getSharedPreferenceManager().getSchoolLogo(), imageView);
         return view;
     }
 
@@ -114,4 +131,49 @@ public class AirPlusFragment extends Fragment {
         public void onFragmentInteraction(Uri uri);
     }
 
+    public class GetWebContentTask extends AsyncTask<Void, Void, String> {
+        public GetWebContentTask() {
+            super();
+        }
+
+        @Override
+        protected String doInBackground(Void... params) {
+
+            return HttpData.getSchoolInfo();
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            try {
+                JSONObject jsonObject = new JSONObject(s);
+                webView.getSettings().setDefaultTextEncodingName("UTF-8");
+                webView.loadData(jsonObject.getString("info"), "text/html; charset=UTF-8", null);
+            } catch (Exception e) {
+
+            }
+            super.onPostExecute(s);
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onCancelled(String s) {
+            super.onCancelled(s);
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+        }
+
+
+    }
 }

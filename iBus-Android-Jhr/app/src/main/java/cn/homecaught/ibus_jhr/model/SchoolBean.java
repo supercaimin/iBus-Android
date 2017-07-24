@@ -44,6 +44,7 @@ public class SchoolBean {
     String schoolName;
     String schoolDomain;
     String schoolLogo;
+    String schoolRemark;
 
     public String getSchoolImages() {
         return schoolImages;
@@ -51,6 +52,14 @@ public class SchoolBean {
 
     public void setSchoolImages(String schoolImages) {
         this.schoolImages = schoolImages;
+    }
+
+    public String getSchoolRemark() {
+        return schoolRemark;
+    }
+
+    public void setSchoolRemark(String schoolRemark) {
+        this.schoolRemark = schoolRemark;
     }
 
     String schoolImages;

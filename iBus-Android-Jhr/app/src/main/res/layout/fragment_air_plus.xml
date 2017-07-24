@@ -25,7 +25,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:src="@mipmap/bscn"
+            android:id="@+id/imageView"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="20dp"
@@ -35,7 +35,7 @@
             android:background="@android:color/transparent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/bsn_content"/>
+            android:text=""/>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>
 

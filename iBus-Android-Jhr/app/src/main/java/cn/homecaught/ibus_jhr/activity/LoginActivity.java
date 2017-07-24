@@ -474,7 +474,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         MyApplication.getInstance().getSharedPreferenceManager().setSchoolName(curSchool.getSchoolName());
                         MyApplication.getInstance().getSharedPreferenceManager().setSchoolLogo(curSchool.getSchoolLogo());
                         MyApplication.getInstance().getSharedPreferenceManager().setSchoolImages(curSchool.getSchoolImages());
-
+                        MyApplication.getInstance().getSharedPreferenceManager().setSchoolRemark(curSchool.getSchoolRemark());
                     }
                 }else {
                     MyApplication.getInstance().getSharedPreferenceManager().clear();

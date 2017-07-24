@@ -366,6 +366,11 @@ public class HttpData {
         return get(url, null);
     }
 
+    public static String getSchoolInfo() {
+        String url = getFakeServer() + "site/school_desc";
+        return get(url, null);
+    }
+
 
     public static String getManagers() {
         String url = getFakeServer() + "aunt/managers";

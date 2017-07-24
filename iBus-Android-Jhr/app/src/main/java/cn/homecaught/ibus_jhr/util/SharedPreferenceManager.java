@@ -20,6 +20,7 @@ public class SharedPreferenceManager {
 	public final static String LOGIN_SCHOOL_ID = "school_id";
 	public final static String LOGIN_SCHOOL_LOGO = "school_logo";
 	public final static String LOGIN_SCHOOL_Images = "school_images";
+	public final static String LOGIN_SCHOOL_REMARK = "school_remark";
 
 	private SharedPreferences sp;
 	private Editor editor;
@@ -45,6 +46,14 @@ public class SharedPreferenceManager {
 		return getString(LOGIN_SCHOOL_ID, "");
 	}
 
+
+	public void setSchoolRemark(String schoolRemark) {
+		editor.putString(LOGIN_SCHOOL_REMARK, schoolRemark);
+		editor.commit();
+	}
+	public String getSchoolRemark() {
+		return getString(LOGIN_SCHOOL_REMARK, "");
+	}
 
 	public void setSchoolLogo(String schoolLogo) {
 		editor.putString(LOGIN_SCHOOL_LOGO, schoolLogo);
@@ -111,6 +120,8 @@ public class SharedPreferenceManager {
 		return getString(LOGIN_USER_NAME, "");
 	}
 
+
+
 	private Boolean getBoolean(String tag, Boolean defaultValue) {
 		if (sp == null) {
 			sp = getSharedPreferences(MyApplication.instance);
@@ -148,6 +159,8 @@ public class SharedPreferenceManager {
 		editor.remove(LOGIN_SCHOOL_ID);
 		editor.remove(LOGIN_SCHOOL_LOGO);
 		editor.remove(LOGIN_SCHOOL_Images);
+		editor.remove(LOGIN_SCHOOL_REMARK);
+
 		editor.clear();
 		editor.commit();
 	}
