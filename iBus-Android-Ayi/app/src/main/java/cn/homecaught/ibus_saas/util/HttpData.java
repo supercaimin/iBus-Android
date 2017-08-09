@@ -104,9 +104,12 @@ public class HttpData {
             }
             post.getParams().setParameter(
                     ClientPNames.COOKIE_POLICY, CookiePolicy.BROWSER_COMPATIBILITY);
-            UrlEncodedFormEntity entity = new UrlEncodedFormEntity(
-                    nameValuePairs, HTTP.UTF_8);
-            post.setEntity(entity);
+            if (nameValuePairs != null){
+
+                UrlEncodedFormEntity entity = new UrlEncodedFormEntity(
+                        nameValuePairs, HTTP.UTF_8);
+                post.setEntity(entity);
+            }
             HttpResponse httpResponse = httpClient.execute(post);
             strResult = EntityUtils.toString(httpResponse.getEntity());
         } catch (IllegalArgumentException e) {
@@ -480,6 +483,24 @@ public class HttpData {
         nvps.add(vpUserFirstName);
         nvps.add(vpUserLastName);
 
+        return put(url, nvps);
+    }
+
+    public static String qrcodeTravelStart(){
+        String url = getFakeServer() + "aunt/qrcode_travel";
+        return post(url, null);
+    }
+
+    public static String qrcodeTravelEnd(){
+        String url = getFakeServer() + "aunt/qrcode_travel_over";
+        return post(url, null);
+    }
+
+    public static String qrcodeSend(String token){
+        String url = getFakeServer() + "aunt/qrcode";
+        List<NameValuePair> nvps = new ArrayList<>();
+        BasicNameValuePair vpToken = new BasicNameValuePair("qrcode", token);
+        nvps.add(vpToken);
         return put(url, nvps);
     }
 

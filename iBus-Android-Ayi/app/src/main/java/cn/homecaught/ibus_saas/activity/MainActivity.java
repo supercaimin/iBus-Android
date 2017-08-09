@@ -2,6 +2,7 @@ package cn.homecaught.ibus_saas.activity;
 
 import android.Manifest;
 import android.view.KeyEvent;
+import android.view.WindowManager;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -111,8 +112,8 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_main);
-        this.getWindow().setFlags(FLAG_HOMEKEY_DISPATCHED, FLAG_HOMEKEY_DISPATCHED);//关键代码
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             // Android M Permission check
@@ -203,7 +204,7 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
 
             }
         });
-        progressDialog.show();
+        //progressDialog.show();
        // new GetBusTaskTask().execute();
 
 
@@ -490,7 +491,6 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
                     lineBeans.add(lineBean);
                 }
 
-                workFragment.reloadLines(lineBeans);
 
             } catch (Exception e) {
 
@@ -787,7 +787,8 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
             } else if (BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED.equals(action)) {
                 startNotifyGattServices(mBluetoothLeService.getSupportedGattServices());
             } else if (BluetoothLeService.ACTION_DATA_AVAILABLE.equals(action)) {
-                displayData(intent.getStringExtra(BluetoothLeService.EXTRA_DATA));
+                //displayData(intent.getStringExtra(BluetoothLeService.EXTRA_DATA));
+                workFragment.onDidReceiveBluetoothData(intent.getStringExtra(BluetoothLeService.EXTRA_DATA));
             }
         }
     };
@@ -814,7 +815,10 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
     }
     private void displayData(String data) {
         if (data != null) {
+           // 3200KsCab+wU+ae7A7V3eOFi5AlmNEk8yF8DJRHKq8G8YElF3luT||8
+
             Log.v("DATA DATA:", data);
+            Toast.makeText(this, data, Toast.LENGTH_LONG).show();
         }
     }
 
