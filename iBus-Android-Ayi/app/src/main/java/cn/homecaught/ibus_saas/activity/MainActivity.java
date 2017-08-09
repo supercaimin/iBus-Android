@@ -204,8 +204,8 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
 
             }
         });
-        //progressDialog.show();
-       // new GetBusTaskTask().execute();
+        progressDialog.show();
+        new GetBusTaskTask().execute();
 
 
     }
@@ -491,6 +491,7 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
                     lineBeans.add(lineBean);
                 }
 
+                workFragment.reloadLines(lineBeans);
 
             } catch (Exception e) {
 

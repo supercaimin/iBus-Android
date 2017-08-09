@@ -486,14 +486,22 @@ public class HttpData {
         return put(url, nvps);
     }
 
-    public static String qrcodeTravelStart(){
+    public static String qrcodeTravelStart(String lineId){
         String url = getFakeServer() + "aunt/qrcode_travel";
-        return post(url, null);
+        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+        BasicNameValuePair ttype = new BasicNameValuePair("line_id",
+                lineId);
+        nvps.add(ttype);
+        return post(url, nvps);
     }
 
-    public static String qrcodeTravelEnd(){
+    public static String qrcodeTravelEnd(String lineId){
         String url = getFakeServer() + "aunt/qrcode_travel_over";
-        return post(url, null);
+        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+        BasicNameValuePair ttype = new BasicNameValuePair("line_id",
+                lineId);
+        nvps.add(ttype);
+        return post(url, nvps);
     }
 
     public static String qrcodeSend(String token){
