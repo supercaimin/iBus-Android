@@ -61,10 +61,21 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
 
     private boolean isTravelStart = false;
 
+    private List<LineBean> lineBeans;
+    private LineBean curLine;
+
     private Button btnAction = null;
 
 
     private List<String> mTokens;
+
+
+    private View llSelect;
+
+    private View llContent;
+    private ListView listView;
+
+    private ProgressDialog progressDialog;
 
 
 
@@ -86,11 +97,35 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         System.out.println("AAAAAAAAAA____onCreateView");
 
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setTitle("提示");
+        progressDialog.setMessage("请求网络中，请稍等...");
+
         this.container = inflater.inflate(R.layout.work_fragment, container, false);
 
         btnAction = (Button) this.container.findViewById(R.id.btnAction);
         btnAction.setOnClickListener(this);
+
+        llSelect = this.container.findViewById(R.id.llSelect);
+        listView = (ListView) this.container.findViewById(R.id.listview);
+
         return this.container;
+    }
+    public void reloadLines(List<LineBean> beanList){
+        LineDataAdapter lineDataAdapter = new LineDataAdapter(this.getContext(), R.layout.line_item, beanList);
+        lineBeans = beanList;
+
+        listView.setAdapter(lineDataAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                curLine = lineBeans.get(position);
+                Toast.makeText(WorkFragment.this.getContext(), curLine.getLineName(), Toast.LENGTH_LONG).show();
+                progressDialog.show();
+                llSelect.setVisibility(View.GONE);
+                llContent.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     @Override
