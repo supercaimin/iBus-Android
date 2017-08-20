@@ -75,7 +75,6 @@ public class MyApplication extends Application {
     private static DisplayImageOptions options;
 
 
-
     public MyApplication() {
         instance = this;
     }

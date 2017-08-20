@@ -88,6 +88,7 @@ public class TrackFragment extends Fragment{
         System.out.println("AAAAAAAAAA____onCreate");
         mTimer = new Timer();
         setTimerTask();
+
     }
 
     @Override

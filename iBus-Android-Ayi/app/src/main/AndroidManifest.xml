@@ -39,10 +39,10 @@
             android:name="cn.homecaught.ibus_saas.activity.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
+            android:alwaysRetainTaskState="true"
             android:windowSoftInputMode="stateHidden|adjustResize" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
