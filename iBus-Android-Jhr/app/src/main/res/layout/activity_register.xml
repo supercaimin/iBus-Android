@@ -147,7 +147,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText android:id="@+id/sn2" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="Child1's S/N(Optional)"
+                    android:layout_height="wrap_content" android:hint="Child1's S/N(Required)"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPhonetic"
@@ -183,7 +183,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText android:id="@+id/sn3" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="Child3's S/N(Optional)"
+                    android:layout_height="wrap_content" android:hint="Child3's S/N(Required)"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPhonetic"
