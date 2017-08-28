@@ -86,9 +86,9 @@ public class AirPlusFragment extends Fragment {
         toolbar.setTitle("School Info");
 
         webView = (WebView) view.findViewById(R.id.webview);
-        webView.loadData(MyApplication.getInstance().getSharedPreferenceManager().getSchoolRemark(), "text/html; charset=UTF-8", null);
+        //webView.loadData(MyApplication.getInstance().getSharedPreferenceManager().getSchoolRemark(), "text/html; charset=UTF-8", null);
 
-       // new GetWebContentTask().execute();
+       new GetWebContentTask().execute();
 
         imageView = (ImageView) view.findViewById(R.id.imageView);
         ImageLoader.getInstance().displayImage(HttpData.getBaseUrl()

@@ -464,25 +464,25 @@ public class HttpData {
                 userFirstName);
         BasicNameValuePair vpUserLastName = new BasicNameValuePair("user_last_name",
                 userLastName);
-        BasicNameValuePair vpChild1FirstName = new BasicNameValuePair("children[0][user_first_name]",
+        BasicNameValuePair vpChild1FirstName = new BasicNameValuePair("children[0][child_first_name]",
                 child1FirstName);
-        BasicNameValuePair vpChild1LastName = new BasicNameValuePair("children[0][user_last_name]",
+        BasicNameValuePair vpChild1LastName = new BasicNameValuePair("children[0][child_last_name]",
                 child1LastName);
-        BasicNameValuePair vpChild1SN = new BasicNameValuePair("children[0][user_sn]",
+        BasicNameValuePair vpChild1SN = new BasicNameValuePair("children[0][child_sn]",
                 child1SN);
 
-        BasicNameValuePair vpChild2FirstName = new BasicNameValuePair("children[1][user_first_name]",
+        BasicNameValuePair vpChild2FirstName = new BasicNameValuePair("children[1][child_first_name]",
                 child2FirstName);
-        BasicNameValuePair vpChild2LastName = new BasicNameValuePair("children[1][user_last_name]",
+        BasicNameValuePair vpChild2LastName = new BasicNameValuePair("children[1][child_last_name]",
                 child2LastName);
-        BasicNameValuePair vpChild2SN = new BasicNameValuePair("children[1][user_sn]",
+        BasicNameValuePair vpChild2SN = new BasicNameValuePair("children[1][child_sn]",
                 child2SN);
 
-        BasicNameValuePair vpChild3FirstName = new BasicNameValuePair("children[2][user_first_name]",
+        BasicNameValuePair vpChild3FirstName = new BasicNameValuePair("children[2][child_first_name]",
                 child3FirstName);
-        BasicNameValuePair vpChild3LastName = new BasicNameValuePair("children[2][user_last_name]",
+        BasicNameValuePair vpChild3LastName = new BasicNameValuePair("children[2][child_last_name]",
                 child3LastName);
-        BasicNameValuePair vpChild3SN = new BasicNameValuePair("children[2][user_sn]",
+        BasicNameValuePair vpChild3SN = new BasicNameValuePair("children[2][child_sn]",
                 child3SN);
         nvps.add(vpUserMobile);
         nvps.add(vpUserEmail);
