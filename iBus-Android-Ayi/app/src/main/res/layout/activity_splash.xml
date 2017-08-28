@@ -15,7 +15,7 @@
         android:id="@+id/ivLogo"
         android:layout_width="160dp"
         android:layout_height="160dp"
-        android:scaleType="fitXY"
+        android:scaleType="centerInside"
         android:adjustViewBounds="true"
         android:layout_marginTop="100dp"
         android:layout_gravity="center_horizontal"

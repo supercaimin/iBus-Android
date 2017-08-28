@@ -726,7 +726,9 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
                                 Log.d("NNNNNNNN:", "null");
 
 
-                            if (device.getName() != null && device.getName().equals(SampleGattAttributes.TARGET_BLUETOOTH_NAME)){
+                            if (device.getName() != null && (device.getName().equals(SampleGattAttributes.TARGET_BLUETOOTH_NAME)
+                            || device.getName().equals(SampleGattAttributes.TARGET_BLUETOOTH_NAME1)
+                            )){
 
                                 mDeviceAddress = device.getAddress();
                                 Intent gattServiceIntent = new Intent(MainActivity.this, BluetoothLeService.class);
