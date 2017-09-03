@@ -82,6 +82,7 @@ public class HttpData {
     public static String cookie = null;
 
 
+
     /**
      * HttpPost请求
      *
@@ -105,7 +106,7 @@ public class HttpData {
             HttpPost post = new HttpPost(url);
             if (cookie != null) {
                 post.setHeader("Cookie", cookie);
-                Log.i("Cookie", cookie);
+                Log.i("Set Cookie", cookie);
             }
             post.getParams().setParameter(
                     ClientPNames.COOKIE_POLICY, CookiePolicy.BROWSER_COMPATIBILITY);
@@ -148,8 +149,10 @@ public class HttpData {
             httpClient.getParams().setParameter(
                     CoreConnectionPNames.SO_TIMEOUT, TIMEOUT_SO);
             HttpPut put = new HttpPut(url);
-            if (cookie != null)
+            if (cookie != null) {
                 put.setHeader("Cookie", cookie);
+                Log.i("Set Cookie", cookie);
+            }
 
             put.getParams().setParameter(
                     ClientPNames.COOKIE_POLICY, CookiePolicy.BROWSER_COMPATIBILITY);
@@ -200,11 +203,13 @@ public class HttpData {
             httpClient.getParams().setParameter(
                     CoreConnectionPNames.SO_TIMEOUT, TIMEOUT_SO);
             HttpGet get = new HttpGet(url);
-            if (cookie != null)
+            if (cookie != null) {
                 get.setHeader("Cookie", cookie);
-//                Log.i("Set Cookie", cookie);
+                Log.i("Set Cookie", cookie);
+            }
             get.getParams().setParameter(
                     ClientPNames.COOKIE_POLICY, CookiePolicy.BROWSER_COMPATIBILITY);
+
             HttpResponse httpResponse = httpClient.execute(get);
             strResult = EntityUtils.toString(httpResponse.getEntity());
             SystemUtils.print("code:" + httpResponse.getStatusLine());
@@ -307,7 +312,6 @@ public class HttpData {
 
         return strResult;
     }
-
 
     private static String getCookies(HttpClient httpClient) {
         StringBuilder sb = new StringBuilder();
@@ -423,7 +427,7 @@ public class HttpData {
         return post(url, nvps);
     }
     public static String getUser(String userId) {
-        String url = getFakeServer() + "guardian/user/" + userId;
+        String url = getFakeServer() + "guardian_new/user/" + userId;
         return get(url, null);
     }
 
@@ -563,7 +567,7 @@ public class HttpData {
     }
     public static String getFriends()
     {
-        String url = getFakeServer() + "guardian/friends/";
+        String url = getFakeServer() + "guardian_new/friends/";
         return get(url, null);
     }
 

@@ -97,6 +97,9 @@ public class UserBean  implements Cloneable  {
                 userToken = jsonObject.getString("user_token");
             if (jsonObject.has("user_real_name"))
                 userRealName = jsonObject.getString("user_real_name");
+            else {
+                userRealName = userFirstName + " " + userLastName;
+            }
         }catch (Exception e){
             e.printStackTrace();
         }

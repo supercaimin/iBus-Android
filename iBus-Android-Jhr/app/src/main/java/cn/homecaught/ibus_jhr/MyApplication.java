@@ -7,6 +7,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
@@ -261,12 +262,21 @@ public class MyApplication extends Application {
                 public UserInfo getUserInfo(String s) {
                     String jsonString = HttpData.getUser(s.split("_")[1]);
                     try {
-                        UserBean userBean = new UserBean(new JSONObject(jsonString).getJSONObject("info"));
-                        UserInfo userInfo = new UserInfo(schoolId + "_" + userBean.getId(),
-                                userBean.getUserFirstName() + " " + userBean.getUserLastName(),
-                                Uri.parse(HttpData.getBaseUrl() + userBean.getUserHead()));
-                        return userInfo;
+                        JSONObject jsonObject = new JSONObject(jsonString);
+                        boolean status = jsonObject.getBoolean("status");
+                        if(status){
+
+                            UserBean userBean = new UserBean(jsonObject.getJSONObject("info"));
+                            UserInfo userInfo = new UserInfo(schoolId + "_" + userBean.getId(),
+                                    userBean.getUserFirstName() + " " + userBean.getUserLastName(),
+                                    Uri.parse(HttpData.getBaseUrl() + userBean.getUserHead()));
+                            return userInfo;
+                        }else {
+                            Toast.makeText(getApplicationContext(), jsonObject.getString("msg"), Toast.LENGTH_LONG).show();
+                            return  null;
+                        }
                     } catch (Exception e) {
+
                         e.printStackTrace();
                     }
                     return null;

@@ -400,7 +400,9 @@ public class TrackFragment extends Fragment{
 
                 }else {
                     String msg = jsonObject.getString("msg");
-                    Toast.makeText(getContext(), msg , Toast.LENGTH_SHORT).show();
+                    if (msg.length() != 0){
+                        Toast.makeText(getContext(), msg , Toast.LENGTH_SHORT).show();
+                    }
                     if (msg.equals("没有权限")){
                         MyApplication.getInstance().getSharedPreferenceManager().setUserMobile("");
                         MyApplication.getInstance().getSharedPreferenceManager().setUserPass("");

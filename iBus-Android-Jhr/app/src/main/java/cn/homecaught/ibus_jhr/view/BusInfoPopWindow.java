@@ -49,6 +49,7 @@ public class BusInfoPopWindow extends PopupWindow {
         tvDriverName.setText("Driver:" + busBean.getDriver().getUserRealName());
         tvDriverMobile = (TextView) contentView.findViewById(R.id.tvDriverMobile);
         tvDriverMobile.setText(busBean.getDriver().getUserMobile());
+        tvDriverMobile.setVisibility(View.GONE);
 
         ayiImageView = (CircleImageView)contentView.findViewById(R.id.ivAyiHead);
         ImageLoader.getInstance().displayImage(HttpData.getBaseUrl() + busBean.getAyi().getUserHead(), ayiImageView);
@@ -61,8 +62,8 @@ public class BusInfoPopWindow extends PopupWindow {
         ImageLoader.getInstance().displayImage(HttpData.getBaseUrl() + busBean.getManager().getUserHead(), managerImageView);
         tvManagerName = (TextView) contentView.findViewById(R.id.tvManagerName);
         tvManagerName.setText("Manager:" + busBean.getManager().getUserRealName());
-        //tvManagerMoblie = (TextView) contentView.findViewById(R.id.tvManagerMobile);
-       // tvManagerMoblie.setText(busBean.getManager().getUserMobile());
+        tvManagerMoblie = (TextView) contentView.findViewById(R.id.tvManagerMobile);
+        tvManagerMoblie.setText(busBean.getManager().getUserMobile());
 
         setContentView(contentView);
         setWidth(LinearLayout.LayoutParams.WRAP_CONTENT);
