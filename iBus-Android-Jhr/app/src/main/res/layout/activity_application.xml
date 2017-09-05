@@ -18,19 +18,7 @@
         <LinearLayout android:id="@+id/email_login_form" android:layout_width="match_parent"
             android:layout_height="wrap_content" android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_margin="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <cn.homecaught.ibus_jhr.view.CircleImageView
-                    android:id="@+id/ivHead"
-                    android:layout_centerInParent="true"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/up_btn"
-                    android:layout_centerHorizontal="true"
-                    />
-            </RelativeLayout>
+
             <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -69,52 +57,13 @@
                 android:layout_height="wrap_content">
 
                 <EditText android:id="@+id/sn" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="Child's S/N(Optional)"
+                    android:layout_height="wrap_content" android:hint="Child's S/N(Required)"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textAutoComplete"
                     android:maxLines="1" android:singleLine="true" />
-                compound
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText android:id="@+id/compound" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="Pick up/drop off compounds"
-                    android:imeActionId="@+id/login"
-                    android:imeActionLabel="@string/action_sign_in_short"
-                    android:imeOptions="actionUnspecified" android:inputType="textAutoComplete"
-                    android:maxLines="1" android:singleLine="true" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <LinearLayout
-                android:paddingLeft="40dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                 android:visibility="gone">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pick up/drop off compounds"/>
-
-          <TextView
-              android:id="@+id/tv_pick_up"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Pick up station"
-              android:textColor="@color/light_blue"/>
-
-          <TextView
-              android:id="@+id/tv_drop_off"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Drop off station"
-              android:textColor="@color/light_blue"/>
-
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_margin="10dp"
@@ -125,7 +74,7 @@
                     android:id="@+id/checkbox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="I here read and understand the school bus relevant information and agree that my children will be abided by the regulations and disciplines."
+                    android:text="I here read and understand the school bus relevant information and agree that my children will be abide by the regulations and disciplines."
                     android:checked="false"/>
             </LinearLayout>
 

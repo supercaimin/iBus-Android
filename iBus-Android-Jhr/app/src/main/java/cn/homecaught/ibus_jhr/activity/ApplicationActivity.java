@@ -77,7 +77,6 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
 
 
     // UI references.
-    private ImageView headImageView;
     private EditText mUserFirstNameView;
     private EditText mUserLastNameView;
     private EditText mChildSNView;
@@ -88,8 +87,6 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
 
     private View mProgressView;
     private View mLoginFormView;
-    private TextView mPickUpView;
-    private TextView mDropOffView;
     private List<String> onlines;
     private List<String> offlines;
     private List<String> onlineIds;
@@ -102,35 +99,16 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_application);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Add Children");
 
-        headImageView = (ImageView) findViewById(R.id.ivHead);
-        headImageView.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showCameraDialog();
-            }
-        });
+
         mUserFirstNameView = (EditText) findViewById(R.id.first_name);
         mUserLastNameView = (EditText) findViewById(R.id.last_name);
         mChildSNView = (EditText) findViewById(R.id.sn);
-        mPickUpView = (TextView) findViewById(R.id.tv_pick_up);
-        mDropOffView = (TextView) findViewById(R.id.tv_drop_off);
         mGradeView = (EditText) findViewById(R.id.grade);
         mCompoundView = (EditText) findViewById(R.id.compound);
         checkBox = (CheckBox) findViewById(R.id.checkbox);
-        mPickUpView.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showSelectLinesDialog(mPickUpView, onlines);
-            }
-        });
 
-        mDropOffView.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showSelectLinesDialog(mDropOffView, offlines);
-            }
-        });
 
         Button mEmailSignInButton = (Button) findViewById(R.id.submit);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
@@ -142,55 +120,10 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
-        onlineIds = new ArrayList<>();
-        offlineIds = new ArrayList<>();
-        onlines = new ArrayList<>();
-        offlines = new ArrayList<>();
+
       //  new GetSelectLinesTask().execute();
     }
 
-    private void showSelectLinesDialog(final TextView targetView, final List<String> lines) {
-        int selectedIndex = 0;
-        if (targetView == mPickUpView) {
-            selectedIndex = onlineSelectedIndex;
-        } else {
-            selectedIndex = offlineSelectedIndex;
-        }
-        final String names[] = new String[lines.size()];
-        lines.toArray(names);
-        Dialog alertDialog = new AlertDialog.Builder(this).
-                setTitle("Please select").
-                setIcon(R.mipmap.icon_report)
-                .setSingleChoiceItems(names, selectedIndex, new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if (targetView == mPickUpView) {
-                            onlineSelectedIndex = which;
-                        } else {
-                            offlineSelectedIndex = which;
-                        }                    }
-                }).
-                        setPositiveButton("OK", new DialogInterface.OnClickListener() {
-
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                if (targetView == mPickUpView) {
-                                    mPickUpView.setText(lines.get(onlineSelectedIndex));
-                                } else {
-                                    mDropOffView.setText(lines.get(offlineSelectedIndex));
-                                }
-                            }
-                        }).
-                        setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                // TODO Auto-generated method stub
-                            }
-                        }).create();
-        alertDialog.show();
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -513,7 +446,6 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
                 boolean status = jsonObject.getBoolean("status");
                 if (status) {
                     mHeadPath = jsonObject.getJSONObject("info").getString("url");
-                    ImageLoader.getInstance().displayImage(HttpData.getBaseUrl() + mHeadPath, headImageView);
                     Toast.makeText(ApplicationActivity.this, "Success", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(ApplicationActivity.this, "Failed", Toast.LENGTH_SHORT).show();
