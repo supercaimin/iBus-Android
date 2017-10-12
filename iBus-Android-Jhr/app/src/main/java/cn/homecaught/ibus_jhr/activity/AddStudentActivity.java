@@ -27,6 +27,7 @@ import android.provider.MediaStore;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import cn.homecaught.ibus_jhr.MyApplication;
 import cn.homecaught.ibus_jhr.util.CameraDialog;
 import cn.homecaught.ibus_jhr.util.HttpData;
 import cn.homecaught.ibus_jhr.util.ImageUntils;
@@ -39,6 +40,7 @@ public class AddStudentActivity extends AppCompatActivity {
     private EditText etFistName;
     private EditText etLastName;
     private EditText etSN;
+    private EditText etGrade;
     private CameraDialog cameraDialog;
 
     private ProgressDialog progressDialog;
@@ -69,12 +71,13 @@ public class AddStudentActivity extends AppCompatActivity {
         etFistName = (EditText) findViewById(R.id.etFirstName);
         etLastName = (EditText) findViewById(R.id.etLastName);
         etSN = (EditText) findViewById(R.id.etSN);
+        etGrade = (EditText) findViewById(R.id.grade);
 
         findViewById(R.id.btn_finish).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 progressDialog.show();
-                new AddChildTask(etSN.getText().toString(), etFistName.getText().toString(), etLastName.getText().toString()).execute();
+                new AddChildTask(etFistName.getText().toString(), etLastName.getText().toString(),etSN.getText().toString(), etGrade.getText().toString()).execute();
             }
         });
     }
@@ -246,18 +249,21 @@ public class AddStudentActivity extends AppCompatActivity {
         private String mSN;
         private String mFirstName;
         private String mLastName;
+        private String mGrade;
 
-        public AddChildTask(String sn, String firstName, String lastName) {
+        public AddChildTask(String sn, String firstName, String lastName, String grade) {
             super();
 
             mSN = sn;
             mFirstName = firstName;
             mLastName = lastName;
+            mGrade = grade;
         }
 
         @Override
         protected String doInBackground(Void... params) {
-            return HttpData.addChild(mHeadPath, mSN, mFirstName, mLastName);
+            String userID = MyApplication.getInstance().getLoginUser().getId();
+            return HttpData.addChild(userID, mFirstName, mLastName, mSN, mGrade);
         }
 
         @Override

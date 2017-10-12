@@ -78,7 +78,7 @@ public class TrackListViewAdapter extends BaseAdapter {
         if (distance < 1){
             height = MIN_HEIGHT;
         }else {
-            height = MIN_HEIGHT + distance * 60;
+            height = MIN_HEIGHT + distance * 20;
         }
         viewHolder.lineView.setLineHeight(height);
         ViewGroup.LayoutParams layoutParams  = viewHolder.lineView.getLayoutParams();

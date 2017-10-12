@@ -74,7 +74,7 @@
                     android:id="@+id/checkbox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="I here read and understand the school bus relevant information and agree that my children will be abide by the regulations and disciplines."
+                    android:text="I here read and understand the school bus relevant information and agree that my children will abide by the regulations and disciplines."
                     android:checked="false"/>
             </LinearLayout>
 

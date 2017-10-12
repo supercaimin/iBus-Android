@@ -142,7 +142,9 @@ public class MessageFragment extends Fragment{
 
         @Override
         protected String doInBackground(Void... params) {
-            return HttpData.getFriends();
+
+            String userId = MyApplication.getInstance().getLoginUser().getId();
+            return HttpData.getFriends(userId);
         }
 
         @Override

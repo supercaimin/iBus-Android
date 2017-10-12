@@ -272,15 +272,15 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
             try{
                 if (students == null)
                     students = new ArrayList<>();
-                students.clear();
 
                 if (orgStudents == null)
                     orgStudents = new ArrayList<>();
-                orgStudents.clear();
 
                 JSONObject jsonObject = new JSONObject(s);
                 boolean status = jsonObject.getBoolean("status");
                 if (status){
+                    students.clear();
+                    orgStudents.clear();
                     JSONArray jsonArray = jsonObject.getJSONObject("info").getJSONArray("children");
                     for(int i = 0; i < jsonArray.length(); i++){
                         ChildBean userBean = new ChildBean(jsonArray.getJSONObject(i));
@@ -362,12 +362,14 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
                         llContent.setVisibility(View.GONE);
                     }
                 }else {
+
                     Toast.makeText(getContext(), jsonObject.getString("msg"), Toast.LENGTH_SHORT).show();
-                    Toast.makeText(getContext(), "行程结束", Toast.LENGTH_SHORT).show();
+                    /* Toast.makeText(getContext(), "行程结束", Toast.LENGTH_SHORT).show();
                     isTravelStart = false;
                     btnArrive.setText("开始行程");
                     llSelect.setVisibility(View.VISIBLE);
                     llContent.setVisibility(View.GONE);
+                    */
                 }
 
             }catch (Exception e){
@@ -428,8 +430,8 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
                     Toast.makeText(getContext(), jsonObject.getString("msg"), Toast.LENGTH_SHORT).show();
 
 
-                    llSelect.setVisibility(View.VISIBLE);
-                    llContent.setVisibility(View.GONE);
+                    //llSelect.setVisibility(View.VISIBLE);
+                    //llContent.setVisibility(View.GONE);
                 }
             }catch (Exception e){
 

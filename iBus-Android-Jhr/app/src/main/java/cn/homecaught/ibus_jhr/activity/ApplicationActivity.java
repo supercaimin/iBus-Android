@@ -44,6 +44,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import cn.homecaught.ibus_jhr.MyApplication;
 import cn.homecaught.ibus_jhr.R;
 import cn.homecaught.ibus_jhr.util.CameraDialog;
 import cn.homecaught.ibus_jhr.util.HttpData;
@@ -80,19 +81,12 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
     private EditText mUserFirstNameView;
     private EditText mUserLastNameView;
     private EditText mChildSNView;
-    private EditText mCompoundView;
     private EditText mGradeView;
 
     private CheckBox checkBox;
 
     private View mProgressView;
     private View mLoginFormView;
-    private List<String> onlines;
-    private List<String> offlines;
-    private List<String> onlineIds;
-    private List<String> offlineIds;
-    private int onlineSelectedIndex = -1;
-    private int offlineSelectedIndex = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +100,6 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
         mUserLastNameView = (EditText) findViewById(R.id.last_name);
         mChildSNView = (EditText) findViewById(R.id.sn);
         mGradeView = (EditText) findViewById(R.id.grade);
-        mCompoundView = (EditText) findViewById(R.id.compound);
         checkBox = (CheckBox) findViewById(R.id.checkbox);
 
 
@@ -181,10 +174,6 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
         boolean cancel = false;
         View focusView = null;
 
-        if (TextUtils.isEmpty(mHeadPath)){
-            Toast.makeText(this, "Photo is Required.", Toast.LENGTH_LONG).show();
-            return;
-        }
         if (TextUtils.isEmpty(mUserFirstNameView.getText().toString())) {
             mUserFirstNameView.setError("Required.");
             focusView = mUserFirstNameView;
@@ -210,13 +199,6 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
             cancel = true;
         }
 
-/*
-        if (offlineSelectedIndex == -1 ||
-                onlineSelectedIndex == -1){
-            Toast.makeText(this, "Please select pick up/off compounds.", Toast.LENGTH_LONG).show();
-            return;
-        }
-        */
 
         if(!checkBox.isChecked()){
             Toast.makeText(this, "Please check the agreement.", Toast.LENGTH_LONG).show();
@@ -235,9 +217,7 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
             new SubmitTask(mUserFirstNameView.getText().toString(),
                     mUserLastNameView.getText().toString(),
                     mChildSNView.getText().toString(),
-                    mGradeView.getText().toString(),
-                    mCompoundView.getText().toString(),
-                    mHeadPath
+                    mGradeView.getText().toString()
                     ).execute();
         }
     }
@@ -477,33 +457,27 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
         private String mUserLastName;
         private String mChildSN;
         private String mGrade;
-        private String mCompound;
-        private String mUserHead;
 
 
         SubmitTask(String userFirstName,
                          String userLastName,
                          String childSN,
-                         String grade,
-                         String compound,
-                         String userHead
+                         String grade
                          ) {
             mUserFirstName = userFirstName;
             mUserLastName = userLastName;
             mChildSN = childSN;
             mGrade = grade;
-            mCompound = compound;
-            mUserHead = userHead;
         }
 
         @Override
         protected String doInBackground(Void... params) {
-            return HttpData.addChild(mUserFirstName,
+            String userID = MyApplication.getInstance().getLoginUser().getId();
+            return HttpData.addChild(userID,
+                    mUserFirstName,
                     mUserLastName,
                     mChildSN,
-                    mGrade,
-                    mCompound,
-                    mUserHead
+                    mGrade
             );
         }
 
@@ -561,16 +535,12 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
                     Iterator it = jsonObject1.keys();
                     while (it.hasNext()){
                         String key = it.next().toString();
-                        onlineIds.add(key);
-                        onlines.add(jsonObject1.getString(key));
                     }
 
                     JSONObject jsonObject2 = jsonObject.getJSONObject("info").getJSONObject("off");
                     Iterator it1 = jsonObject2.keys();
                     while (it1.hasNext()){
                         String key = it1.next().toString();
-                        offlineIds.add(key);
-                        offlines.add(jsonObject2.getString(key));
                     }
 
                 } else {

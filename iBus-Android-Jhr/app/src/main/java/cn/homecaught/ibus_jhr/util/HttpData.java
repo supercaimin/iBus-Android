@@ -408,21 +408,26 @@ public class HttpData {
 
 
 
-    public static String addChild(String userHead, String userSN, String userFirstName, String userLastName) {
-        String url = getFakeServer() + "aunt/child";
+    public static String addChild(String userId, String userFirstName, String userLastName, String userSN, String grade) {
+        String url = getFakeServer() + "guardian_new/child";
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
-        BasicNameValuePair vpUserHead = new BasicNameValuePair("user_head",
-                userHead);
-        BasicNameValuePair vpUserSN = new BasicNameValuePair("user_sn",
+
+        BasicNameValuePair vpUserID = new BasicNameValuePair("login_user_id",
+                userId);
+        BasicNameValuePair vpUserSN = new BasicNameValuePair("child_sn",
                 userSN);
-        BasicNameValuePair vpUserFirstName = new BasicNameValuePair("user_first_name",
+        BasicNameValuePair vpgrade = new BasicNameValuePair("child_grade",
+                grade);
+
+        BasicNameValuePair vpUserFirstName = new BasicNameValuePair("child_first_name",
                 userFirstName);
-        BasicNameValuePair vpUserLastName = new BasicNameValuePair("user_last_name",
+        BasicNameValuePair vpUserLastName = new BasicNameValuePair("child_last_name",
                 userLastName);
-        nvps.add(vpUserHead);
+        nvps.add(vpUserID);
         nvps.add(vpUserSN);
         nvps.add(vpUserFirstName);
         nvps.add(vpUserLastName);
+        nvps.add(vpgrade);
 
         return post(url, nvps);
     }
@@ -565,9 +570,9 @@ public class HttpData {
 
         return post(url, nvps);
     }
-    public static String getFriends()
+    public static String getFriends(String userId)
     {
-        String url = getFakeServer() + "guardian_new/friends/";
+        String url = getFakeServer() + "guardian_new/friends/" + userId;
         return get(url, null);
     }
 
