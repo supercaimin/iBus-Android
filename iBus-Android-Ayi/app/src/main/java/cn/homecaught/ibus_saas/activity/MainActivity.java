@@ -892,7 +892,8 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unbindService(mServiceConnection);
+        if (mServiceConnection != null)
+            unbindService(mServiceConnection);
         mBluetoothLeService = null;
     }
 
