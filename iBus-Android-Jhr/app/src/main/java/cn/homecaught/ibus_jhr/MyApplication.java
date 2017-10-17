@@ -270,6 +270,7 @@ public class MyApplication extends Application {
                             UserInfo userInfo = new UserInfo(schoolId + "_" + userBean.getId(),
                                     userBean.getUserFirstName() + " " + userBean.getUserLastName(),
                                     Uri.parse(HttpData.getBaseUrl() + userBean.getUserHead()));
+                            Log.v("UserInfo", userInfo.getName() + "   " + userInfo.getPortraitUri());
                             return userInfo;
                         }else {
                             Toast.makeText(getApplicationContext(), jsonObject.getString("msg"), Toast.LENGTH_LONG).show();
