@@ -61,6 +61,18 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
 
     private boolean isSendingData = false;
 
+    private boolean mConnected = false;
+
+    public OnStartConnectBluetoothLe getOnStartConnectBluetoothLe() {
+        return onStartConnectBluetoothLe;
+    }
+
+    public void setOnStartConnectBluetoothLe(OnStartConnectBluetoothLe onStartConnectBluetoothLe) {
+        this.onStartConnectBluetoothLe = onStartConnectBluetoothLe;
+    }
+
+    private OnStartConnectBluetoothLe onStartConnectBluetoothLe;
+
 
 
     @Override
@@ -83,7 +95,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
 
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setTitle("提示");
-        progressDialog.setMessage("请求网络中，请稍等...");
+        progressDialog.setMessage("请稍等...");
 
         this.container = inflater.inflate(R.layout.work_fragment, container, false);
 
@@ -96,8 +108,14 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
         listView = (ListView) this.container.findViewById(R.id.listview);
 
 
+        llSelect.setVisibility(View.INVISIBLE);
+        llContent.setVisibility(View.VISIBLE);
         mTimer = new Timer();
         setTimerTask();
+
+        if (!mConnected){
+            btnAction.setText("连接扫描器");
+        }
 
         return this.container;
     }
@@ -212,7 +230,13 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
         switch (v.getId()){
             case R.id.btnAction:
                 progressDialog.show();
-                new TravelEndTask().execute();
+                if (mConnected){
+                    new TravelEndTask().execute();
+                }else {
+                    if (onStartConnectBluetoothLe != null){
+                        onStartConnectBluetoothLe.onStartConnect();
+                    }
+                }
 
                 break;
 
@@ -398,5 +422,25 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
 
     }
 
+    public void onDidConnectedBluetoothle(boolean connected){
+        mConnected = connected;
+        if (mConnected){
+            btnAction.setText("开始行程");
 
+            llSelect.setVisibility(View.VISIBLE);
+            llContent.setVisibility(View.INVISIBLE);
+        }else {
+            btnAction.setText("连接扫描器");
+
+            llSelect.setVisibility(View.INVISIBLE);
+            llContent.setVisibility(View.VISIBLE);
+        }
+        progressDialog.hide();
+    }
+
+
+    public interface OnStartConnectBluetoothLe{
+
+        public void onStartConnect();
+    }
 }

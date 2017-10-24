@@ -478,6 +478,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 }else {
                     MyApplication.getInstance().getSharedPreferenceManager().clear();
 
+                    if (mSchools == null ||
+                            mSchools.size() == 0){
+                        mFirstLogin = true;
+
+                        showProgress(true);
+                        new GetSchoolTask().execute();
+                    }
                 }
             }catch (Exception e){
                 e.printStackTrace();
@@ -492,6 +499,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
+
             }
         }
 

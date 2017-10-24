@@ -86,7 +86,6 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
     private List<UgrentBean> ugrents;
 
     private List<LineBean> lineBeans;
-    public static final int FLAG_HOMEKEY_DISPATCHED = 0x80000000; //需要自己定义标志
 
 
 
@@ -103,7 +102,6 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
     private boolean mScanning;
     private Handler mHandler;
 
-    private static final int REQUEST_ENABLE_BT = 1;
     // Stops scanning after 10 seconds.
     private static final long SCAN_PERIOD = 10000;
     private String mDeviceAddress;
@@ -115,20 +113,28 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_main);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            // Android M Permission check
-            if (this.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_REQUEST_COARSE_LOCATION);
-            }else {
-
-                initLeDevice();
-
-            }
-        }
-
 
         workFragment = new WorkFragment();
         fragments.add(workFragment);
+
+        workFragment.setOnStartConnectBluetoothLe(new WorkFragment.OnStartConnectBluetoothLe() {
+            @Override
+            public void onStartConnect() {
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    // Android M Permission check
+                    if (MainActivity.this.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_REQUEST_COARSE_LOCATION);
+                        Toast.makeText(MainActivity.this, "请打开手机蓝牙再试", Toast.LENGTH_LONG).show();
+                    }else {
+
+                        initLeDevice();
+
+                    }
+                }
+
+            }
+        });
         fragments.add(new MessageFragment());
         MeFragment fragment = new MeFragment();
         fragment.setOnMeHeadImageUploadListener(this);
@@ -666,6 +672,36 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
 
     private void initLeDevice()
     {
+        if (mServiceConnection != null){
+            unbindService(mServiceConnection);
+            mServiceConnection = null;
+        }
+        if (mBluetoothLeService != null){
+            mBluetoothLeService.disconnect();
+            mBluetoothLeService.close();
+            mBluetoothLeService = null;
+
+        }
+        mServiceConnection =  new ServiceConnection() {
+
+            @Override
+            public void onServiceConnected(ComponentName componentName, IBinder service) {
+                mBluetoothLeService = ((BluetoothLeService.LocalBinder) service).getService();
+                if (!mBluetoothLeService.initialize()) {
+                    Log.e(TAG, "Unable to initialize Bluetooth");
+                    finish();
+                }
+                // Automatically connects to the device upon successful start-up initialization.
+                mBluetoothLeService.connect(mDeviceAddress);
+
+
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName componentName) {
+                mBluetoothLeService = null;
+            }
+        };
         mHandler = new Handler();
 
         // Use this check to determine whether BLE is supported on the device.  Then you can
@@ -725,16 +761,11 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
                             else
                                 Log.d("NNNNNNNN:", "null");
 
+                            mDeviceAddress = device.getAddress();
+                            Intent gattServiceIntent = new Intent(MainActivity.this, BluetoothLeService.class);
+                            bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
+                            scanLeDevice(false);
 
-                            if (device.getName() != null && (device.getName().equals(SampleGattAttributes.TARGET_BLUETOOTH_NAME)
-                            || device.getName().equals(SampleGattAttributes.TARGET_BLUETOOTH_NAME1)
-                            )){
-
-                                mDeviceAddress = device.getAddress();
-                                Intent gattServiceIntent = new Intent(MainActivity.this, BluetoothLeService.class);
-                                bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
-                                scanLeDevice(false);
-                            }
                         }
                     });
                 }
@@ -750,26 +781,7 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
     private BluetoothGattCharacteristic mNotifyCharacteristic;
 
 
-    private final ServiceConnection mServiceConnection = new ServiceConnection() {
-
-        @Override
-        public void onServiceConnected(ComponentName componentName, IBinder service) {
-            mBluetoothLeService = ((BluetoothLeService.LocalBinder) service).getService();
-            if (!mBluetoothLeService.initialize()) {
-                Log.e(TAG, "Unable to initialize Bluetooth");
-                finish();
-            }
-            // Automatically connects to the device upon successful start-up initialization.
-            mBluetoothLeService.connect(mDeviceAddress);
-
-
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName componentName) {
-            mBluetoothLeService = null;
-        }
-    };
+    private ServiceConnection mServiceConnection = null;
 
     // Handles various events fired by the Service.
     // ACTION_GATT_CONNECTED: connected to a GATT server.
@@ -783,9 +795,13 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
             final String action = intent.getAction();
             if (BluetoothLeService.ACTION_GATT_CONNECTED.equals(action)) {
                 mConnected = true;
+                workFragment.onDidConnectedBluetoothle(mConnected);
                 updateConnectionState(R.string.connected);
+                Toast.makeText(MainActivity.this,"扫描器连接成功！", Toast.LENGTH_LONG).show();
             } else if (BluetoothLeService.ACTION_GATT_DISCONNECTED.equals(action)) {
                 mConnected = false;
+                workFragment.onDidConnectedBluetoothle(mConnected);
+                Toast.makeText(MainActivity.this,"扫描器连接失败！", Toast.LENGTH_LONG).show();
                 updateConnectionState(R.string.disconnected);
             } else if (BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED.equals(action)) {
                 startNotifyGattServices(mBluetoothLeService.getSupportedGattServices());

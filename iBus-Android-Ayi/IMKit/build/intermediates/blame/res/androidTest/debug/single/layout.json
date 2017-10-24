@@ -20,24 +20,24 @@
         "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/bundles/debug/res/layout/rc_fr_messagelist.xml"
     },
     {
-        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/res/merged/androidTest/debug/layout/rc_fr_messageinput.xml",
-        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/bundles/debug/res/layout/rc_fr_messageinput.xml"
-    },
-    {
         "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/res/merged/androidTest/debug/layout/rc_fr_photo.xml",
         "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/bundles/debug/res/layout/rc_fr_photo.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/res/merged/androidTest/debug/layout/rc_fr_messageinput.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/bundles/debug/res/layout/rc_fr_messageinput.xml"
     },
     {
         "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/res/merged/androidTest/debug/layout/rc_item_public_service_input_menu.xml",
         "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/bundles/debug/res/layout/rc_item_public_service_input_menu.xml"
     },
     {
-        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/res/merged/androidTest/debug/layout/rc_wi_notice.xml",
-        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/bundles/debug/res/layout/rc_wi_notice.xml"
-    },
-    {
         "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/res/merged/androidTest/debug/layout/rc_fr_public_service_search.xml",
         "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/bundles/debug/res/layout/rc_fr_public_service_search.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/res/merged/androidTest/debug/layout/rc_wi_notice.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/bundles/debug/res/layout/rc_wi_notice.xml"
     },
     {
         "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/res/merged/androidTest/debug/layout/rc_emoji_item.xml",
@@ -236,16 +236,16 @@
         "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/bundles/debug/res/layout/rc_item_conversation_member.xml"
     },
     {
-        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/res/merged/androidTest/debug/layout/rc_wi_vo_popup.xml",
-        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/bundles/debug/res/layout/rc_wi_vo_popup.xml"
-    },
-    {
         "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/res/merged/androidTest/debug/layout/rc_item_app_service_conversation.xml",
         "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/bundles/debug/res/layout/rc_item_app_service_conversation.xml"
     },
     {
         "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/res/merged/androidTest/debug/layout/rc_input_pager_layout.xml",
         "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/bundles/debug/res/layout/rc_input_pager_layout.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/res/merged/androidTest/debug/layout/rc_wi_vo_popup.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/bundles/debug/res/layout/rc_wi_vo_popup.xml"
     },
     {
         "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/IMKit/build/intermediates/res/merged/androidTest/debug/layout/rc_item_voice_message.xml",
