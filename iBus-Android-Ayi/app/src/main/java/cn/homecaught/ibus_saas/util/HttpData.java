@@ -114,7 +114,7 @@ public class HttpData {
         } catch (Exception e) {
             Log.e("111", "result:" + strResult);
             strResult = String.format(CONNECTION_ERROR_JSON,
-                    e.getMessage() == null ? "" : e.getMessage());
+                    e.getMessage() == null ? "" : e.toString() + e.getMessage());
             e.printStackTrace();
         }
         SystemUtils.print("result:" + strResult);
@@ -166,7 +166,7 @@ public class HttpData {
         } catch (Exception e) {
             Log.e("111", "result:" + strResult);
             strResult = String.format(CONNECTION_ERROR_JSON,
-                    e.getMessage() == null ? "" : e.getMessage());
+                    e.getMessage() == null ? "" : e.toString() + e.getMessage());
             e.printStackTrace();
         }
         SystemUtils.print("result:" + strResult);
@@ -213,7 +213,7 @@ public class HttpData {
         } catch (Exception e) {
             Log.e("111", "result:" + strResult);
             strResult = String.format(CONNECTION_ERROR_JSON,
-                    e.getMessage() == null ? "" : e.getMessage());
+                    e.getMessage() == null ? "" : e.toString() + e.getMessage());
             SystemUtils.print("result err:" + e.getMessage());
             e.printStackTrace();
 
