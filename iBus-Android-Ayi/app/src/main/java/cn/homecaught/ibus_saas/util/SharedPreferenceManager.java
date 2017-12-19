@@ -19,6 +19,7 @@ public class SharedPreferenceManager {
 	public final static String LOGIN_SCHOOL_ID = "school_id";
 	public final static String LOGIN_SCHOOL_LOGO = "school_logo";
 	public final static String LOGIN_SCHOOL_Images = "school_images";
+	public final static String LOGIN_BUS_ID = "bus_id";
 
 
 	private SharedPreferences sp;
@@ -36,6 +37,14 @@ public class SharedPreferenceManager {
 
 	public String getSchoolName() {
 		return getString(LOGIN_SCHOOL_NAME, "");
+	}
+
+	public void setBusId(String busId) {
+		editor.putString(LOGIN_BUS_ID, busId);
+		editor.commit();
+	}
+	public String getBusId() {
+		return getString(LOGIN_BUS_ID, "");
 	}
 
 	public void setSchoolId(String schoolId) {
@@ -73,7 +82,8 @@ public class SharedPreferenceManager {
 
 	}
 	public String getSchoolDomain() {
-		return getString(LOGIN_SCHOOL_DOMAIN, "www.ibuschina.com");
+		return "xyd.ibokun.com/debug";
+		//return getString(LOGIN_SCHOOL_DOMAIN, "182.61.56.223/debug/");
 	}
 
 

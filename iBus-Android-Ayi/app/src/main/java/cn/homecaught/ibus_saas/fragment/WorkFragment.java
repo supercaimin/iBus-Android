@@ -2,6 +2,7 @@ package cn.homecaught.ibus_saas.fragment;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,11 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -30,6 +36,7 @@ import cn.homecaught.ibus_saas.adapter.LineDataAdapter;
 import cn.homecaught.ibus_saas.model.ChildBean;
 import cn.homecaught.ibus_saas.model.LineBean;
 import cn.homecaught.ibus_saas.util.HttpData;
+import cn.homecaught.ibus_saas.util.LocationService;
 import cn.homecaught.ibus_saas.view.StudentInfoPopWindow;
 import cn.homecaught.ibus_saas.view.PullToRefreshLayout;
 
@@ -60,6 +67,9 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
     private List<LineBean> lineBeans;
     private LineBean curLine;
 
+    private Intent serviceIntent;
+
+
 
     @Override
     public void onAttach(Activity activity) {
@@ -72,7 +82,8 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         System.out.println("AAAAAAAAAA____onCreate");
 
-
+        serviceIntent = new Intent(this.getContext(), LocationService.class);
+        this.getContext().startService(serviceIntent);
     }
 
     @Override
@@ -166,6 +177,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
     public void onDestroy() {
         super.onDestroy();
         System.out.println("AAAAAAAAAA____onDestroy");
+        getContext().stopService(serviceIntent);
     }
 
     @Override
@@ -303,7 +315,11 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
                         adapter.setmItems(students);
                     }
                 }else {
-                    Toast.makeText(getContext(), jsonObject.getString("msg"), Toast.LENGTH_SHORT).show();
+                    if (jsonObject.getString("msg").equals("该巴士没有行程")){
+
+                    }else {
+                        Toast.makeText(getContext(), jsonObject.getString("msg"), Toast.LENGTH_SHORT).show();
+                    }
                 }
 
             }catch (Exception e){
@@ -363,7 +379,17 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
                     }
                 }else {
 
-                    Toast.makeText(getContext(), jsonObject.getString("msg"), Toast.LENGTH_SHORT).show();
+                    if (jsonObject.getString("msg").equals("该巴士没有行程")){
+                        Toast.makeText(getContext(), "行程结束", Toast.LENGTH_SHORT).show();
+                        isTravelStart = false;
+                        btnArrive.setText("开始行程");
+
+                        llSelect.setVisibility(View.VISIBLE);
+                        llContent.setVisibility(View.GONE);
+                    }else {
+                        Toast.makeText(getContext(), jsonObject.getString("msg"), Toast.LENGTH_SHORT).show();
+
+                    }
                     /* Toast.makeText(getContext(), "行程结束", Toast.LENGTH_SHORT).show();
                     isTravelStart = false;
                     btnArrive.setText("开始行程");
@@ -453,5 +479,8 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
         protected void onCancelled() {
             super.onCancelled();
         }
+
     }
+
+
 }

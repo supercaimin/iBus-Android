@@ -35,6 +35,8 @@ import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.StringBody;
 
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -487,5 +489,27 @@ public class HttpData {
         String url = getFakeServer() + "aunt/travel_reset/";
 
         return put(url, null);
+    }
+
+    public static String updateBusLocation(String bus_id, double longitude, double latitude)
+    {
+        String url = getFakeServer() + "common/bus_location";
+        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+
+        DecimalFormat df   =     new   DecimalFormat( "#######0.000000 ");//   16位整数位，两小数位
+        String   temp     =   df.format(longitude);
+
+        BasicNameValuePair vpLongitude = new BasicNameValuePair("longitude",temp);
+
+        String   temp1     =   df.format(latitude);
+
+        BasicNameValuePair vpLatitude = new BasicNameValuePair("latitude",
+                temp1);
+        BasicNameValuePair vpBusId = new BasicNameValuePair("bus_id",
+                bus_id);
+        nvps.add(vpBusId);
+        nvps.add(vpLongitude);
+        nvps.add(vpLatitude);
+        return post(url, nvps);
     }
 }
