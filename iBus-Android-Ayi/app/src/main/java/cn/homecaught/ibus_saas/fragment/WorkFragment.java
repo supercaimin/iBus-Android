@@ -2,6 +2,7 @@ package cn.homecaught.ibus_saas.fragment;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,6 +32,7 @@ import cn.homecaught.ibus_saas.adapter.LineDataAdapter;
 import cn.homecaught.ibus_saas.model.ChildBean;
 import cn.homecaught.ibus_saas.model.LineBean;
 import cn.homecaught.ibus_saas.util.HttpData;
+import cn.homecaught.ibus_saas.util.LocationService;
 import cn.homecaught.ibus_saas.view.StudentInfoPopWindow;
 
 public class WorkFragment extends Fragment implements View.OnClickListener{
@@ -62,6 +64,9 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
     private boolean isSendingData = false;
 
     private boolean mConnected = false;
+
+    private Intent serviceIntent;
+
 
     public OnStartConnectBluetoothLe getOnStartConnectBluetoothLe() {
         return onStartConnectBluetoothLe;
@@ -119,7 +124,6 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
 
         return this.container;
     }
-
 
     private void  setTimerTask(){
         mTimer.schedule(new TimerTask() {
@@ -213,6 +217,8 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
     public void onDestroy() {
         super.onDestroy();
         System.out.println("AAAAAAAAAA____onDestroy");
+        getContext().stopService(serviceIntent);
+
     }
 
     @Override
@@ -277,6 +283,9 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
                     btnAction.setText("结束行程");
                     Toast.makeText(WorkFragment.this.getContext(), "行程开始", Toast.LENGTH_LONG).show();
                 }
+
+                WorkFragment.this.serviceIntent = new Intent(getContext(), LocationService.class);
+                WorkFragment.this.getContext().startService(serviceIntent);
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -332,6 +341,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
                     llSelect.setVisibility(View.VISIBLE);
                     llContent.setVisibility(View.GONE);
                 }
+                WorkFragment.this.getContext().stopService(serviceIntent);
             }catch (Exception e){
                 e.printStackTrace();
             }

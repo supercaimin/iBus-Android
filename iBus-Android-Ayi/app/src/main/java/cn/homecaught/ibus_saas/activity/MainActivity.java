@@ -1,6 +1,8 @@
 package cn.homecaught.ibus_saas.activity;
 
 import android.Manifest;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.KeyEvent;
 import android.view.WindowManager;
 import android.app.ProgressDialog;
@@ -212,7 +214,22 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
         });
         progressDialog.show();
         new GetBusTaskTask().execute();
-
+        //Android 6.0判断用户是否授予定位权限
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {//如果 API level 是大于等于 23(Android 6.0) 时
+            //判断是否具有权限
+            if (ContextCompat.checkSelfPermission(this,
+                    Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                //判断是否需要向用户解释为什么需要申请该权限
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                        Manifest.permission.ACCESS_COARSE_LOCATION)) {
+                    Toast.makeText(MainActivity.this,"自Android 6.0开始需要打开位置权限",Toast.LENGTH_SHORT).show();
+                }
+                //请求权限
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
+                        22);
+            }
+        }
 
     }
 
@@ -488,6 +505,7 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
             progressDialog.hide();
             try {
                 JSONObject jsonObject = new JSONObject(s);
+                MyApplication.getInstance().getSharedPreferenceManager().setBusId(jsonObject.getJSONObject("info").getString("id"));
                 manager = new UserBean(jsonObject.getJSONObject("info").getJSONObject("bus_manager_data"));
                 JSONArray jsonArray = jsonObject.getJSONObject("info").getJSONArray("bus_lines");
                 lineBeans = new ArrayList<>();
