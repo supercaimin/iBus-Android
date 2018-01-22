@@ -19,10 +19,6 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
-import com.baidu.location.BDLocation;
-import com.baidu.location.BDLocationListener;
-import com.baidu.location.LocationClient;
-import com.baidu.location.LocationClientOption;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -82,8 +78,6 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         System.out.println("AAAAAAAAAA____onCreate");
 
-        serviceIntent = new Intent(this.getContext(), LocationService.class);
-        this.getContext().startService(serviceIntent);
     }
 
     @Override
@@ -376,6 +370,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
 
                         llSelect.setVisibility(View.VISIBLE);
                         llContent.setVisibility(View.GONE);
+                        WorkFragment.this.getContext().stopService(serviceIntent);
                     }
                 }else {
 
@@ -451,11 +446,10 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
                     progressDialog.show();
                     new SyncTask().execute();
                     Toast.makeText(getContext(), "行程开始", Toast.LENGTH_SHORT).show();
-
+                    WorkFragment.this.serviceIntent = new Intent(getContext(), LocationService.class);
+                    WorkFragment.this.getContext().startService(serviceIntent);
                 }else {
                     Toast.makeText(getContext(), jsonObject.getString("msg"), Toast.LENGTH_SHORT).show();
-
-
                     //llSelect.setVisibility(View.VISIBLE);
                     //llContent.setVisibility(View.GONE);
                 }

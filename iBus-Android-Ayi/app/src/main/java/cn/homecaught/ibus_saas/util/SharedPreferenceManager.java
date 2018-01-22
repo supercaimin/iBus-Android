@@ -82,8 +82,8 @@ public class SharedPreferenceManager {
 
 	}
 	public String getSchoolDomain() {
-		return "xyd.ibokun.com/debug";
-		//return getString(LOGIN_SCHOOL_DOMAIN, "182.61.56.223/debug/");
+		//return "xyd.ibokun.com/debug";
+		return getString(LOGIN_SCHOOL_DOMAIN, "www.ibuschina.com");
 	}
 
 
@@ -135,7 +135,6 @@ public class SharedPreferenceManager {
 	}
 	public String getString(String tag, String defaultValue) {
 
-//	private String getString(String tag, String defaultValue) {
 		if (sp == null) {
 			sp = getSharedPreferences(MyApplication.instance);
 		}

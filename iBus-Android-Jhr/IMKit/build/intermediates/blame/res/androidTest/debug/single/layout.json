@@ -8,12 +8,12 @@
         "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Jhr/IMKit/build/intermediates/bundles/debug/res/layout/rc_fragment_base_setting.xml"
     },
     {
-        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Jhr/IMKit/build/intermediates/res/merged/androidTest/debug/layout/rc_ac_picture_pager.xml",
-        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Jhr/IMKit/build/intermediates/bundles/debug/res/layout/rc_ac_picture_pager.xml"
-    },
-    {
         "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Jhr/IMKit/build/intermediates/res/merged/androidTest/debug/layout/rc_fr_messageinput.xml",
         "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Jhr/IMKit/build/intermediates/bundles/debug/res/layout/rc_fr_messageinput.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Jhr/IMKit/build/intermediates/res/merged/androidTest/debug/layout/rc_ac_picture_pager.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Jhr/IMKit/build/intermediates/bundles/debug/res/layout/rc_ac_picture_pager.xml"
     },
     {
         "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Jhr/IMKit/build/intermediates/res/merged/androidTest/debug/layout/rc_emoji_gridview.xml",

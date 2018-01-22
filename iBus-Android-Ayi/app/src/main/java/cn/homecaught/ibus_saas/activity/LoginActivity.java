@@ -445,8 +445,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         protected String doInBackground(Void... params) {
             if (mFirstLogin){
-          //      SchoolBean curSchool = mSchools.get(mCurSelectedSchoolIndex);
-           //     MyApplication.getInstance().getSharedPreferenceManager().setSchoolDomain(curSchool.getSchoolDomain());
+                SchoolBean curSchool = mSchools.get(mCurSelectedSchoolIndex);
+                MyApplication.getInstance().getSharedPreferenceManager().setSchoolDomain(curSchool.getSchoolDomain());
 
             }
 

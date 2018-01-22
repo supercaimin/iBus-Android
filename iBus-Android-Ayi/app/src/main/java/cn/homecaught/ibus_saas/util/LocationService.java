@@ -1,7 +1,6 @@
 package cn.homecaught.ibus_saas.util;
 
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
@@ -15,34 +14,20 @@ import com.baidu.location.LocationClientOption;
 
 import cn.homecaught.ibus_saas.MyApplication;
 
+
 public class LocationService extends Service implements BDLocationListener {
     private LocationClient mLocationClient;
-
-    private int count = 0;
 
     public LocationService() {
     }
 
     @Override
     public void onCreate() {
-        super.onCreate();
-
-    }
-
-    @Override
-    public void onStart(Intent intent, int startId) {
-        super.onStart(intent, startId);
-
-    }
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
         mLocationClient = new LocationClient(getApplicationContext());
         mLocationClient.registerLocationListener(this);
 
         LocationClientOption option = new LocationClientOption();
 
-        option = new LocationClientOption();
         option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);//可选，默认高精度，设置定位模式，高精度，低功耗，仅设备
         option.setCoorType("bd09ll");//可选，默认gcj02，设置返回的定位结果坐标系，如果配合百度地图使用，建议设置为bd09ll;
         option.setScanSpan(1000 * 10 );//可选，默认0，即仅定位一次，设置发起连续定位请求的间隔需要大于等于1000ms才是有效的
@@ -59,6 +44,20 @@ public class LocationService extends Service implements BDLocationListener {
 
         mLocationClient.setLocOption(option);
 
+        super.onCreate();
+
+    }
+
+    @Override
+    public void onStart(Intent intent, int startId) {
+        super.onStart(intent, startId);
+
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+
+
         mLocationClient.start();
 
         return super.onStartCommand(intent, flags, startId);
@@ -68,6 +67,8 @@ public class LocationService extends Service implements BDLocationListener {
 
     @Override
     public void onDestroy() {
+        mLocationClient.stop();
+        mLocationClient = null;
         super.onDestroy();
     }
 
@@ -119,7 +120,7 @@ public class LocationService extends Service implements BDLocationListener {
 
         String coorType = location.getCoorType();
         //获取经纬度坐标类型，以LocationClientOption中设置过的坐标类型为准
-        count ++;
+
         int errorCode = location.getLocType();
         Log.e("errorCode:", errorCode + "");
         //获取定位类型、定位错误返回码，具体信息可参照类参考中BDLocation类中的说明
@@ -139,8 +140,10 @@ public class LocationService extends Service implements BDLocationListener {
 
         @Override
         protected String doInBackground(Void... params) {
+            //return HttpData.updateBusLocation(MyApplication.getInstance().getSharedPreferenceManager().getBusId(),
+            //        mLocation.getLongitude() + count * 0.001, mLocation.getLatitude() + count * 0.0001);
             return HttpData.updateBusLocation(MyApplication.getInstance().getSharedPreferenceManager().getBusId(),
-                    mLocation.getLongitude() + count * 0.001, mLocation.getLatitude() + count * 0.001);
+                    mLocation.getLongitude(), mLocation.getLatitude());
         }
 
         @Override
@@ -168,4 +171,6 @@ public class LocationService extends Service implements BDLocationListener {
             super.onCancelled();
         }
     }
+
+
 }

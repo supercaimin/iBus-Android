@@ -6,6 +6,7 @@ import android.app.Application;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Environment;
+import android.provider.Settings;
 import android.util.Log;
 
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
@@ -25,7 +26,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.homecaught.ibus_saas.model.LineBean;
 import cn.homecaught.ibus_saas.model.UserBean;
 import cn.homecaught.ibus_saas.util.HttpData;
 import cn.homecaught.ibus_saas.util.SharedPreferenceManager;
