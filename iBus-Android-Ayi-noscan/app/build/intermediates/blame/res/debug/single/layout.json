@@ -1,0 +1,1050 @@
+[
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_wi_txt_provider.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_wi_txt_provider.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/design_menu_item_action_area.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/res/layout/design_menu_item_action_area.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_system_conversation.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_system_conversation.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/notification_template_big_media.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/notification_template_big_media.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_fr_public_service_inf.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_fr_public_service_inf.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_item_layout.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/design_navigation_item.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/res/layout/design_navigation_item.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar_include.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/res/layout/design_layout_snackbar_include.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_fr_messageinput.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_fr_messageinput.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/activity_login.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/src/main/res/layout/activity_login.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_ac_camera.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_ac_camera.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/design_navigation_item_header.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/res/layout/design_navigation_item_header.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_image_message.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_image_message.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_fr_image.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_fr_image.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/abc_action_bar_up_container.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_picsel_grid_camera.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_picsel_grid_camera.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_fr_public_service_inf.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_fr_public_service_inf.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/select_dialog_item_material.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/select_dialog_item_material.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_voice_message.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_voice_message.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_plugin_gridview.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_plugin_gridview.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_wi_notice.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_wi_notice.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/design_navigation_item_separator.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/res/layout/design_navigation_item_separator.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/design_navigation_item.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/res/layout/design_navigation_item.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_cs_alert_robot_evaluation.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_cs_alert_robot_evaluation.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_fr_conversation_member_list.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_fr_conversation_member_list.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_public_service_input_menu.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_public_service_input_menu.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_wi_vo_popup.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_wi_vo_popup.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_ac_webview.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_ac_webview.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_wi_vo_provider.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_wi_vo_provider.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/design_menu_item_action_area.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/res/layout/design_menu_item_action_area.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/activity_add_student.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/src/main/res/layout/activity_add_student.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_cs_alert_human_evaluation.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_cs_alert_human_evaluation.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_public_service_search.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_public_service_search.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_ac_selected_pictrue.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_ac_selected_pictrue.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_discussion_conversation.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_discussion_conversation.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_public_service_list.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_public_service_list.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_fr_public_service_search.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_fr_public_service_search.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/res/layout/design_layout_snackbar.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_picsel_grid_item.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_picsel_grid_item.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_wi_block.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_wi_block.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/notification_template_lines.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/notification_template_lines.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/abc_search_view.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_search_view.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/abc_search_view.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_search_view.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_cs_alert_robot_evaluation.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_cs_alert_robot_evaluation.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/student_info_popwindow.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/src/main/res/layout/student_info_popwindow.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_public_service_search.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_public_service_search.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_fr_messagelist.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_fr_messagelist.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/notification_template_part_time.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_ac_selected_pictrue.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_ac_selected_pictrue.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_fr_photo.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_fr_photo.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_conversation.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_conversation.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_public_service_message.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_public_service_message.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_app_service_conversation.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_app_service_conversation.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/grid_item.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/src/main/res/layout/grid_item.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_information_notification_message.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_information_notification_message.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/abc_action_bar_title_item.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/activity_web_view.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/src/main/res/layout/activity_web_view.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/message_fragment.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/src/main/res/layout/message_fragment.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_ac_albums.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_ac_albums.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_picsel_activity.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_picsel_activity.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/student_info_popwindow.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/src/main/res/layout/student_info_popwindow.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_checkbox.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_public_service_input_menu_item.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_public_service_input_menu_item.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_emoji_gridview.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_emoji_gridview.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_public_service_conversation.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_public_service_conversation.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_base_conversation.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_base_conversation.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_public_service_message.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_public_service_message.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/abc_select_dialog_material.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_progress.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_progress.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_public_service_list.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_public_service_list.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/notification_template_part_time.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_wi_vo_provider.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_wi_vo_provider.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_fr_conversation.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_fr_conversation.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_material.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/notification_media_action.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/notification_media_action.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_wi_vo_popup.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_wi_vo_popup.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_wi_text_btn.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_wi_text_btn.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/notification_template_big_media_narrow.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_wi_notice.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_wi_notice.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_picprev_activity.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_picprev_activity.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_wi_plugins.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_wi_plugins.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/abc_screen_content_include.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_screen_content_include.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_group_conversation.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_group_conversation.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_picsel_activity.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_picsel_activity.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_ac_picture_pager.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_ac_picture_pager.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/line_item.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/src/main/res/layout/line_item.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/notification_template_media.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/notification_template_media.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/activity_add_student.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/src/main/res/layout/activity_add_student.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_input_pager_layout.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_input_pager_layout.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/notification_media_action.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/notification_media_action.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/abc_action_mode_bar.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/activity_splash.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/src/main/res/layout/activity_splash.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/pull_to_refresh.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/src/main/res/layout/pull_to_refresh.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_text_message.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_text_message.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_discussion_notification_message.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_discussion_notification_message.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/design_layout_tab_icon.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/res/layout/design_layout_tab_icon.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_public_service_multi_rich_content_message.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_public_service_multi_rich_content_message.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/res/layout/design_layout_snackbar.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/activity_splash.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/src/main/res/layout/activity_splash.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/activity_conversation.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/src/main/res/layout/activity_conversation.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_button_bar_material.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_fr_public_service_sub_list.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_fr_public_service_sub_list.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_text_message_evaluate.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_text_message_evaluate.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/activity_conversation.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/src/main/res/layout/activity_conversation.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/abc_action_mode_close_item_material.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/select_dialog_singlechoice_material.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/refresh_head.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/src/main/res/layout/refresh_head.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/pull_to_refresh.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/src/main/res/layout/pull_to_refresh.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/design_navigation_item_subheader.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/res/layout/design_navigation_item_subheader.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_fr_conversation.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_fr_conversation.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/grid_item.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/src/main/res/layout/grid_item.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_pic_popup_window.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_pic_popup_window.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_picprev_activity.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_picprev_activity.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/refresh_head.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/src/main/res/layout/refresh_head.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_fr_image.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_fr_image.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_location_message.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_location_message.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/select_dialog_singlechoice_material.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_button_bar_material.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_rich_content_message.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_rich_content_message.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_public_service_conversation.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_public_service_conversation.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/notification_template_media.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/notification_template_media.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_fr_conversation_member_list.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_fr_conversation_member_list.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/abc_action_mode_bar.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_wi_block_popup.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_wi_block_popup.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/notification_template_part_chronometer.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_ac_picture_pager.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_ac_picture_pager.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/activity_login.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/src/main/res/layout/activity_login.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_item_layout.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/select_dialog_item_material.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/select_dialog_item_material.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/design_layout_tab_icon.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/res/layout/design_layout_tab_icon.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_fr_conversationlist.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_fr_conversationlist.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/notification_template_lines.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/notification_template_lines.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/load_more.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/src/main/res/layout/load_more.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_fr_messagelist.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_fr_messagelist.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_public_service_input_menu.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_public_service_input_menu.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/abc_action_mode_close_item_material.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_message.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_message.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_fr_conversationlist.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_fr_conversationlist.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_picsel_catalog_listview.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_picsel_catalog_listview.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_picsel_catalog_listview.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_picsel_catalog_listview.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/abc_screen_simple.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_screen_simple.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_input_pager_layout.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_input_pager_layout.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_icon.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_conversation.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_conversation.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_fr_messageinput.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_fr_messageinput.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/design_navigation_menu_item.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/res/layout/design_navigation_menu_item.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_public_service_multi_rich_content_message.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_public_service_multi_rich_content_message.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_wi_text_btn.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_wi_text_btn.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/select_dialog_multichoice_material.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/notification_template_big_media_narrow.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_emoji_gridview.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_emoji_gridview.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/abc_action_bar_up_container.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_fr_photo.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_fr_photo.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/activity_web_view.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/src/main/res/layout/activity_web_view.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_ac_camera.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_ac_camera.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_progress.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_progress.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_fragment_base_setting.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_fragment_base_setting.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_plugin_gridview.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_plugin_gridview.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/line_item.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/src/main/res/layout/line_item.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_checkbox.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_pic_popup_window.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_pic_popup_window.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_wi_block.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_wi_block.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_location_message.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_location_message.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_preview_fragment.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_preview_fragment.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_public_service_rich_content_message.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_public_service_rich_content_message.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/abc_screen_simple_overlay_action_mode.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/abc_select_dialog_material.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_wi_txt_provider.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_wi_txt_provider.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/notification_media_cancel_action.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/load_more.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/src/main/res/layout/load_more.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_public_service_rich_content_message.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_public_service_rich_content_message.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_radio.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_wi_input.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_wi_input.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_app_service_conversation.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_app_service_conversation.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/select_dialog_multichoice_material.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_ac_albums.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_ac_albums.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_conversation_member.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_conversation_member.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/work_fragment.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/src/main/res/layout/work_fragment.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_emoji_item.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_emoji_item.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/notification_template_big_media.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/notification_template_big_media.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/me_fragment.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/src/main/res/layout/me_fragment.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_wi_plugins.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_wi_plugins.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/content_web_view.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/src/main/res/layout/content_web_view.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/abc_expanded_menu_layout.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_message.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_message.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_fr_public_service_search.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_fr_public_service_search.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_public_service_input_menus.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_public_service_input_menus.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_cs_alert_human_evaluation.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_cs_alert_human_evaluation.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/design_navigation_item_header.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/res/layout/design_navigation_item_header.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/design_navigation_menu.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/res/layout/design_navigation_menu.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/work_fragment.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/src/main/res/layout/work_fragment.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/abc_screen_content_include.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_screen_content_include.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/abc_screen_simple_overlay_action_mode.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/design_layout_tab_text.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/res/layout/design_layout_tab_text.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_cs_alert_warning.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_cs_alert_warning.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/message_fragment.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/src/main/res/layout/message_fragment.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/content_web_view.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/src/main/res/layout/content_web_view.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/me_fragment.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/src/main/res/layout/me_fragment.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/design_navigation_menu_item.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/res/layout/design_navigation_menu_item.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/notification_template_part_chronometer.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/design_navigation_menu.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/res/layout/design_navigation_menu.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_icon.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/design_navigation_item_separator.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/res/layout/design_navigation_item_separator.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/abc_screen_simple.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_screen_simple.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_wi_block_popup.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_wi_block_popup.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_voice_message.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_voice_message.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_conversation_member.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_conversation_member.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/notification_media_cancel_action.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_picsel_grid_item.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_picsel_grid_item.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_image_message.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_image_message.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_discussion_notification_message.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_discussion_notification_message.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/design_layout_tab_text.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/res/layout/design_layout_tab_text.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_public_service_input_menu_item.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_public_service_input_menu_item.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_cs_alert_warning.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_cs_alert_warning.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_fr_dialog_alter.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_fr_dialog_alter.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_radio.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_text_message_evaluate.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_text_message_evaluate.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_wi_input.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_wi_input.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_emoji_item.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_emoji_item.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_system_conversation.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_system_conversation.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/design_navigation_item_subheader.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/res/layout/design_navigation_item_subheader.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_group_conversation.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_group_conversation.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/activity_pwd.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/src/main/res/layout/activity_pwd.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/abc_action_menu_layout.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_public_service_input_menus.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_public_service_input_menus.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_text_message.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_text_message.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_preview_fragment.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_preview_fragment.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_fr_public_service_sub_list.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_fr_public_service_sub_list.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar_include.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/res/layout/design_layout_snackbar_include.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_discussion_conversation.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_discussion_conversation.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_fragment_base_setting.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_fragment_base_setting.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_item_rich_content_message.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_item_rich_content_message.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_fr_dialog_alter.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_fr_dialog_alter.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_ac_webview.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_ac_webview.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/rc_picsel_grid_camera.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/iBus-Android-Ayi/IMKit/unspecified/res/layout/rc_picsel_grid_camera.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/abc_expanded_menu_layout.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/abc_action_bar_title_item.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_information_notification_message.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_information_notification_message.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/rc_item_base_conversation.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/iBus-Android-Ayi-noscan/IMKit/unspecified/res/layout/rc_item_base_conversation.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/activity_pwd.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/src/main/res/layout/activity_pwd.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_material.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/layout/abc_action_menu_layout.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/layout/abc_action_menu_layout.xml"
+    }
+]

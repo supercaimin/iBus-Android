@@ -18,6 +18,8 @@ import cn.homecaught.ibus_saas.MyApplication;
 public class LocationService extends Service implements BDLocationListener {
     private LocationClient mLocationClient;
 
+    int count = 0;
+
     public LocationService() {
     }
 
@@ -140,6 +142,7 @@ public class LocationService extends Service implements BDLocationListener {
 
         @Override
         protected String doInBackground(Void... params) {
+            //count ++;
             //return HttpData.updateBusLocation(MyApplication.getInstance().getSharedPreferenceManager().getBusId(),
             //        mLocation.getLongitude() + count * 0.001, mLocation.getLatitude() + count * 0.0001);
             return HttpData.updateBusLocation(MyApplication.getInstance().getSharedPreferenceManager().getBusId(),

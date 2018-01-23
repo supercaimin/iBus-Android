@@ -1,0 +1,4 @@
+#Fri Dec 22 19:08:58 CST 2017
+base.0=/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/transforms/dex/release/folders/1000/1f/main
+renamed.0=classes.dex
+file.0=/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/transforms/dex/release/folders/1000/1f/main/classes.dex

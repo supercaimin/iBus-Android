@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <item android:id="@+id/action_add"
+        android:title="添加"
+        android:orderInCategory="80"
+        android:icon="@mipmap/icon_add"
+        app:showAsAction="ifRoom" />
+
+    <item android:id="@+id/action_report"
+        android:title="异常报告"
+        android:orderInCategory="90"
+        android:icon="@mipmap/icon_report"
+        app:showAsAction="ifRoom" />
+
+    <item android:id="@+id/action_chat"
+        android:title="创建聊天"
+        android:orderInCategory="100"
+        android:icon="@mipmap/icon_chat"
+        app:showAsAction="ifRoom" />
+</menu>

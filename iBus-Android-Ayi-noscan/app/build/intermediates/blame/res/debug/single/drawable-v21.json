@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/drawable-v21/abc_action_bar_item_background_material.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/drawable-v21/abc_action_bar_item_background_material.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/drawable-v21/abc_action_bar_item_background_material.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/drawable-v21/abc_action_bar_item_background_material.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/res/merged/debug/drawable-v21/abc_btn_colored_material.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/drawable-v21/abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/res/merged/debug/drawable-v21/abc_btn_colored_material.xml",
+        "source": "/Users/a1/Documents/project/iBus-Android/iBus-Android-Ayi-noscan/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/drawable-v21/abc_btn_colored_material.xml"
+    }
+]
