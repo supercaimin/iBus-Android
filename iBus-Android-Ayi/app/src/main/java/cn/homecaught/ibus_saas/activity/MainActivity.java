@@ -505,7 +505,6 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
             progressDialog.hide();
             try {
                 JSONObject jsonObject = new JSONObject(s);
-                MyApplication.getInstance().getSharedPreferenceManager().setBusId(jsonObject.getJSONObject("info").getString("id"));
                 manager = new UserBean(jsonObject.getJSONObject("info").getJSONObject("bus_manager_data"));
                 JSONArray jsonArray = jsonObject.getJSONObject("info").getJSONArray("bus_lines");
                 lineBeans = new ArrayList<>();
@@ -516,9 +515,12 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
                 }
 
                 workFragment.reloadLines(lineBeans);
+                String busid = jsonObject.getJSONObject("info").getString("id");
+                Log.e("BUS ID:", busid);
+                MyApplication.getInstance().getSharedPreferenceManager().setBusId(busid);
 
             } catch (Exception e) {
-
+                e.printStackTrace();
             }
             super.onPostExecute(s);
         }
