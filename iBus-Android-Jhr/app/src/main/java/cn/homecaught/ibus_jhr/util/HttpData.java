@@ -323,7 +323,7 @@ public class HttpData {
 
 
     public static String chgPassword(String oldPassword, String password) {
-        String url = getFakeServer() + "aunt/password";
+        String url = getFakeServer() + "guardian/password";
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
         BasicNameValuePair old = new BasicNameValuePair("user_pass",
                 oldPassword);

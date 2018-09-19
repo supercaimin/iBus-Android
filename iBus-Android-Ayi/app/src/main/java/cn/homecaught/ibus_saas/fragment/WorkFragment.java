@@ -309,7 +309,8 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
                         adapter.setmItems(students);
                     }
                 }else {
-                    if (jsonObject.getString("msg").equals("该巴士没有行程")){
+                    if (jsonObject.getString("msg").equals("该巴士没有行程") ||
+                            jsonObject.getString("msg").equals("该巴士没有行程！")){
 
                     }else {
                         Toast.makeText(getContext(), jsonObject.getString("msg"), Toast.LENGTH_SHORT).show();
@@ -370,7 +371,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
 
                         llSelect.setVisibility(View.VISIBLE);
                         llContent.setVisibility(View.GONE);
-                        WorkFragment.this.getContext().stopService(serviceIntent);
+                        //WorkFragment.this.getContext().stopService(serviceIntent);
                     }
                 }else {
 

@@ -310,7 +310,8 @@ public class PwdActivity extends AppCompatActivity implements LoaderCallbacks<Cu
             try{
 
                 JSONObject jsonObject = new JSONObject(success);
-                Toast.makeText(PwdActivity.this, jsonObject.getJSONObject("info").getString("msg"), Toast.LENGTH_SHORT).show();
+                Toast.makeText(PwdActivity.this, jsonObject.getString("msg"), Toast.LENGTH_SHORT).show();
+                finish();
             }catch (Exception e){
 
             }
