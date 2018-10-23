@@ -776,6 +776,7 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
                         public void run() {
                             //mLeDeviceListAdapter.addDevice(device);
                             //mLeDeviceListAdapter.notifyDataSetChanged();
+                            String name = device.getName();
                             if (device.getName() != null)
                             Log.d("NNNNNNNN:", device.getName());
                             else
@@ -826,7 +827,7 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
             } else if (BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED.equals(action)) {
                 startNotifyGattServices(mBluetoothLeService.getSupportedGattServices());
             } else if (BluetoothLeService.ACTION_DATA_AVAILABLE.equals(action)) {
-                //displayData(intent.getStringExtra(BluetoothLeService.EXTRA_DATA));
+                displayData(intent.getStringExtra(BluetoothLeService.EXTRA_DATA));
                 workFragment.onDidReceiveBluetoothData(intent.getStringExtra(BluetoothLeService.EXTRA_DATA));
             }
         }
@@ -841,14 +842,18 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
 
             List<BluetoothGattCharacteristic> gattCharacteristics =
                     gattService.getCharacteristics();
+            Log.e("SSS", gattService.getUuid().toString());
 
             // Loops through available Characteristics.
             for (BluetoothGattCharacteristic gattCharacteristic : gattCharacteristics) {
                 uuid = gattCharacteristic.getUuid().toString();
+                Log.e("UUID::", uuid);
                 if (uuid.equals(SampleGattAttributes.TARGET_CHARACTERISTIC_CONFIG)){
                     mNotifyCharacteristic = gattCharacteristic;
+                    break;
                 }
             }
+            if (mNotifyCharacteristic != null) break;
         }
         mBluetoothLeService.setCharacteristicNotification(mNotifyCharacteristic, true);
     }
@@ -857,7 +862,7 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
            // 3200KsCab+wU+ae7A7V3eOFi5AlmNEk8yF8DJRHKq8G8YElF3luT||8
 
             Log.v("DATA DATA:", data);
-            Toast.makeText(this, data, Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, data, Toast.LENGTH_LONG).show();
         }
     }
 
