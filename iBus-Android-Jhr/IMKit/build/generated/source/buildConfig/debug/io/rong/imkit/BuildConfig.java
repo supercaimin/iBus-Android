@@ -8,6 +8,6 @@ public final class BuildConfig {
   public static final String APPLICATION_ID = "io.rong.imkit";
   public static final String BUILD_TYPE = "debug";
   public static final String FLAVOR = "";
-  public static final int VERSION_CODE = 2016011122;
-  public static final String VERSION_NAME = "2.6.2";
+  public static final int VERSION_CODE = 20181023;
+  public static final String VERSION_NAME = "2.6.3";
 }
