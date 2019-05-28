@@ -10,7 +10,7 @@ android {
         abortOnError false
     }
     defaultConfig {
-        applicationId "cn.homecaught.ibus_saas"
+        applicationId "cn.homecaught.ibus_saas_wx"
         minSdkVersion 25
         targetSdkVersion 25
         versionCode 1

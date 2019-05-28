@@ -19,7 +19,7 @@
             android:layout_height="120dp"
             android:layout_marginTop="20dp">
 
-            <cn.homecaught.ibus_saas.view.CircleImageView
+            <cn.homecaught.ibus_saas_wx.view.CircleImageView
                 android:id="@+id/ivHead"
                 android:layout_width="80dp"
                 android:layout_height="80dp"

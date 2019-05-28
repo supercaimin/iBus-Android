@@ -21,7 +21,7 @@
                     android:layout_height="160dp"
                     android:background="@drawable/me_header_background">
 
-                    <cn.homecaught.ibus_saas.view.CircleImageView
+                    <cn.homecaught.ibus_saas_wx.view.CircleImageView
                         android:id="@+id/ivHead"
                         android:layout_width="80dp"
                         android:layout_height="80dp"

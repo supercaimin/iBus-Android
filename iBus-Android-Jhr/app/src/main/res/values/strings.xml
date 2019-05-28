@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">iBusChina监护人</string>
+    <string name="app_name">无锡iBusChina监护人</string>
     
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>

@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center">
-            <cn.homecaught.ibus_saas.view.CircleImageView
+            <cn.homecaught.ibus_saas_wx.view.CircleImageView
                 android:id="@+id/ivHead"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
