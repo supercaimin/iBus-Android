@@ -6,7 +6,6 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/pop_layout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -24,7 +23,7 @@
             android:textColor="@color/rc_text_color_primary" />
 
         <Button
-            android:id="@id/btn_cancel"
+            android:id="@id/rc_btn_cancel"
             android:layout_width="fill_parent"
             android:layout_height="45dp"
             android:layout_marginTop="5dp"

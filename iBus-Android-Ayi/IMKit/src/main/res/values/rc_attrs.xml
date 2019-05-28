@@ -14,19 +14,7 @@
         <attr name="RCDefDrawable" format="reference" />
 
     </declare-styleable>
-
-    <declare-styleable name="InputView">
-        <attr name="RCStyle">
-            <enum name="SCE" value="0x123" />
-            <enum name="CES" value="0x231" />
-            <enum name="ECS" value="0x321" />
-            <enum name="CSE" value="0x213" />
-            <enum name="SC" value="0x120" />
-            <enum name="CS" value="0x21" />
-            <enum name="EC" value="0x320" />
-            <enum name="CE" value="0x023" />
-            <enum name="C" value="0x020" />
-        </attr>
+    <declare-styleable name="AutoLinkTextView">
+        <attr name="RCMaxWidth" format="dimension"/>
     </declare-styleable>
-
 </resources>

@@ -510,7 +510,8 @@ public class ImageUtils {
 		// draw watermark into
 		cv.drawBitmap(watermark, w - ww + 5, h - wh + 5, null);// 在src的右下角画入水印
 		// save all clip
-		cv.save(Canvas.ALL_SAVE_FLAG);// 保存
+		//cv.save(Canvas.ALL_SAVE_FLAG);// 保存
+		cv.save();
 		// store
 		cv.restore();// 存储
 		return newb;

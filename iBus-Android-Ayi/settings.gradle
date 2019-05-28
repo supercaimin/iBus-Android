@@ -1,1 +1,2 @@
-include ':app', ':IMKit'
+include ':app', ':IMKit', ':IMLibx'
+project(':IMLibx').projectDir = new File('IMLib')
