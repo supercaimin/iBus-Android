@@ -16,7 +16,7 @@
             android:textAlignment="center"
             android:textColor="@color/light_blue"
             android:textSize="16sp"
-            android:text="Plate Number:苏AL1011"/>
+            android:text="车牌号:苏AL1011"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,7 +44,7 @@
             android:textAlignment="center"
             android:textSize="16sp"
             android:textColor="@color/light_blue"
-            android:text="Driver:Jin Hu Dong"/>
+            android:text="司机:Jin Hu Dong"/>
 
         <TextView
             android:id="@+id/tvDriverMobile"
@@ -81,7 +81,7 @@
             android:textAlignment="center"
             android:textSize="16sp"
             android:textColor="@color/light_blue"
-            android:text="BusAyi:FangZhou"/>
+            android:text="阿姨:FangZhou"/>
         <TextView
             android:id="@+id/tvAyiMobile"
             android:layout_width="match_parent"
@@ -117,7 +117,7 @@
             android:textAlignment="center"
             android:textSize="16sp"
             android:textColor="@color/light_blue"
-            android:text="Manager:FangZhou"/>
+            android:text="管理员:FangZhou"/>
         <TextView
             android:id="@+id/tvManagerMobile"
             android:layout_width="match_parent"

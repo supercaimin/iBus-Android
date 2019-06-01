@@ -343,7 +343,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         names.toArray(reports);
 
         Dialog alertDialog = new AlertDialog.Builder(this).
-                setTitle("Please choose your school").
+                setTitle("请选择您要登录的学校").
                 setIcon(R.mipmap.icon_report)
                 .setSingleChoiceItems(reports, 0, new DialogInterface.OnClickListener() {
 

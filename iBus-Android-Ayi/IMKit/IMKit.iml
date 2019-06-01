@@ -116,7 +116,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
       <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
     </content>
-    <orderEntry type="jdk" jdkName="Android API 26 Platform" jdkType="Android SDK" />
+    <orderEntry type="jdk" jdkName="Android API 25 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Gradle: com.googlecode.mp4parser:isoparser:1.1.21@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.8.1@jar" level="project" />
@@ -130,7 +130,6 @@
     <orderEntry type="library" name="Gradle: __local_aars__:E.\iBus-Android\iBus-Android-Ayi\IMLib\libs\Rong_IMLib.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-fragment:26.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:exifinterface:26.0.0@aar" level="project" />
-    <orderEntry type="module" module-name="IMLibx" />
     <orderEntry type="module" module-name="IMLibx" />
   </component>
 </module>

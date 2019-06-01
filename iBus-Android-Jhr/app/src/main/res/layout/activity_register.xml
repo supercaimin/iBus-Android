@@ -24,7 +24,7 @@
             <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:text="Please choose your school"
+                    android:text="选择您的学校"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginBottom="5dp"
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content">
 
                 <AutoCompleteTextView android:id="@+id/first_name" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="First Name(Required)"
+                    android:layout_height="wrap_content" android:hint="姓(必填)"
                     android:inputType="textPersonName" android:maxLines="1"
                     android:singleLine="true" />
 
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText android:id="@+id/last_name" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="Last Name(Required)"
+                    android:layout_height="wrap_content" android:hint="名(必填)"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPersonName"
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText android:id="@+id/mobile" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="Mobile(Required)"
+                    android:layout_height="wrap_content" android:hint="手机(必填)"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPhonetic"
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText android:id="@+id/email" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="E-Mail(Optional)"
+                    android:layout_height="wrap_content" android:hint="邮箱(可选)"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textAutoComplete"
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText android:id="@+id/password" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="Password(Required)"
+                    android:layout_height="wrap_content" android:hint="密码(必填)"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPassword"
@@ -99,7 +99,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText android:id="@+id/repassword" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="Password Again(Required)"
+                    android:layout_height="wrap_content" android:hint="再次输入密码(必填)"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPassword"
@@ -111,7 +111,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText android:id="@+id/sn1" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="Child's S/N(Required)"
+                    android:layout_height="wrap_content" android:hint="孩子的学号(必填)"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPhonetic"
@@ -123,7 +123,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText android:id="@+id/child_first_name1" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="Child First Name(Required)"
+                    android:layout_height="wrap_content" android:hint="孩子的姓(必填)"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPersonName"
@@ -135,7 +135,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText android:id="@+id/child_last_name1" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="Child Last Name(Required)"
+                    android:layout_height="wrap_content" android:hint="孩子的名(必填)"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPersonName"
@@ -147,7 +147,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText android:id="@+id/sn2" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="Child1's S/N(Required)"
+                    android:layout_height="wrap_content" android:hint="孩子1的学号(必填)"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPhonetic"
@@ -159,7 +159,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText android:id="@+id/child_first_name2" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="Child1 First Name(Optional)"
+                    android:layout_height="wrap_content" android:hint="孩子1的名(选填)"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPersonName"
@@ -171,7 +171,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText android:id="@+id/child_last_name2" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="Child1 Last Name(Optional)"
+                    android:layout_height="wrap_content" android:hint="孩子1的姓(选填)"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPersonName"
@@ -183,7 +183,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText android:id="@+id/sn3" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="Child3's S/N(Required)"
+                    android:layout_height="wrap_content" android:hint="孩子2的学号(必填)"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPhonetic"
@@ -195,7 +195,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText android:id="@+id/child_first_name3" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="Child3 First Name(Optional)"
+                    android:layout_height="wrap_content" android:hint="孩子2的姓(选填)"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPersonName"
@@ -207,7 +207,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText android:id="@+id/child_last_name3" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="Child3 Last Name(Optional)"
+                    android:layout_height="wrap_content" android:hint="孩子2的名(选填)"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPersonName"
@@ -217,7 +217,7 @@
 
             <Button android:id="@+id/email_sign_in_button" style="?android:textAppearanceSmall"
                 android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:layout_marginTop="16dp" android:text="SIGN UP"
+                android:layout_marginTop="16dp" android:text="提交"
                 android:textStyle="bold" />
 
         </LinearLayout>

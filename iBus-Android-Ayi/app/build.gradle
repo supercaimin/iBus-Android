@@ -1,8 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+    compileSdkVersion 25
     lintOptions {
         checkReleaseBuilds false
         // Or, if you prefer, you can continue to check for errors in release builds,
@@ -11,10 +10,11 @@ android {
     }
     defaultConfig {
         applicationId "cn.homecaught.ibus_saas_wx"
-        minSdkVersion 25
+        minSdkVersion 23
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+        maxSdkVersion 28
     }
     buildTypes {
         release {

@@ -86,7 +86,7 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_application);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Add Children");
+        getSupportActionBar().setTitle("添加孩子");
 
 
         mUserFirstNameView = (EditText) findViewById(R.id.first_name);
