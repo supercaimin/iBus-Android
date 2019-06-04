@@ -6,9 +6,9 @@
     android:versionName="2.9.17 Stable" >
 
     <uses-sdk
-        android:maxSdkVersion="25"
+        android:maxSdkVersion="28"
         android:minSdkVersion="23"
-        android:targetSdkVersion="25" />
+        android:targetSdkVersion="26" />
 
     <!-- 保存图片，拍照等 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

@@ -6,9 +6,9 @@
     android:versionName="2.9.17 Stable" >
 
     <uses-sdk
-        android:maxSdkVersion="25"
+        android:maxSdkVersion="28"
         android:minSdkVersion="23"
-        android:targetSdkVersion="25" />
+        android:targetSdkVersion="26" />
 
     <!-- 访问相册，访问文件系统等 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
