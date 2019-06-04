@@ -219,6 +219,12 @@ INJECTED from E:\iBus-Android\iBus-Android-Jhr\IMKit\src\main\AndroidManifest.xm
 INJECTED from E:\iBus-Android\iBus-Android-Jhr\IMKit\src\main\AndroidManifest.xml
 INJECTED from E:\iBus-Android\iBus-Android-Jhr\IMKit\src\main\AndroidManifest.xml
 INJECTED from E:\iBus-Android\iBus-Android-Jhr\IMKit\src\main\AndroidManifest.xml
+INJECTED from E:\iBus-Android\iBus-Android-Jhr\IMKit\src\main\AndroidManifest.xml
+INJECTED from E:\iBus-Android\iBus-Android-Jhr\IMKit\src\main\AndroidManifest.xml
+	android:maxSdkVersion
+		INJECTED from E:\iBus-Android\iBus-Android-Jhr\IMKit\src\main\AndroidManifest.xml
+		ADDED from E:\iBus-Android\iBus-Android-Jhr\IMKit\src\main\AndroidManifest.xml
+		INJECTED from E:\iBus-Android\iBus-Android-Jhr\IMKit\src\main\AndroidManifest.xml
 	android:targetSdkVersion
 		INJECTED from E:\iBus-Android\iBus-Android-Jhr\IMKit\src\main\AndroidManifest.xml
 		ADDED from E:\iBus-Android\iBus-Android-Jhr\IMKit\src\main\AndroidManifest.xml
