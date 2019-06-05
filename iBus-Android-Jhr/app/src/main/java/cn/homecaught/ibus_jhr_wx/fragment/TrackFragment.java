@@ -54,12 +54,12 @@ public class TrackFragment extends Fragment{
 
     public void setCurrentChild(ChildBean currentChild) {
         this.currentChild = currentChild;
-        tvTitle.setText("Track(" + currentChild.getFirstName() + " " + currentChild.getLastName() +")");
+        tvTitle.setText("轨迹(" + currentChild.getFirstName() + " " + currentChild.getLastName() +")");
     }
 
     public void setCurrentBus(BusBean currentBus) {
         this.currentBus = currentBus;
-        tvTitle.setText("Track("+ currentBus.getBusNumber() + ")");
+        tvTitle.setText("轨迹("+ currentBus.getBusNumber() + ")");
     }
 
 
@@ -95,8 +95,8 @@ public class TrackFragment extends Fragment{
         System.out.println("AAAAAAAAAA____onCreateView");
 
         progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setTitle("Tips");
-        progressDialog.setMessage("Please wait a moment...");
+        progressDialog.setTitle("提示");
+        progressDialog.setMessage("请稍等...");
         this.container = inflater.inflate(R.layout.track_fragment, container, false);
         listView = (ListView) this.container.findViewById(R.id.listView);
         tvTitle = (TextView) this.container.findViewById(R.id.title);
@@ -271,7 +271,7 @@ public class TrackFragment extends Fragment{
             names.toArray(childnames);
 
             Dialog alertDialog = new AlertDialog.Builder(getActivity()).
-                    setTitle("Please select").
+                    setTitle("请选择").
                     setIcon(R.mipmap.icon_report)
                     .setSingleChoiceItems(childnames, selectedReportIndex, new DialogInterface.OnClickListener() {
 
@@ -280,7 +280,7 @@ public class TrackFragment extends Fragment{
                             selectedReportIndex = which;
                         }
                     }).
-                            setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            setPositiveButton("确定", new DialogInterface.OnClickListener() {
 
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -288,7 +288,7 @@ public class TrackFragment extends Fragment{
 
                                 }
                             }).
-                            setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                            setNegativeButton("取消", new DialogInterface.OnClickListener() {
 
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -307,7 +307,7 @@ public class TrackFragment extends Fragment{
             names.toArray(childnames);
 
             Dialog alertDialog = new AlertDialog.Builder(getActivity()).
-                    setTitle("Please select").
+                    setTitle("请选择").
                     setIcon(R.mipmap.icon_report)
                     .setSingleChoiceItems(childnames, selectedReportIndex, new DialogInterface.OnClickListener() {
 
@@ -316,7 +316,7 @@ public class TrackFragment extends Fragment{
                             selectedReportIndex = which;
                         }
                     }).
-                            setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            setPositiveButton("确定", new DialogInterface.OnClickListener() {
 
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -324,7 +324,7 @@ public class TrackFragment extends Fragment{
 
                                 }
                             }).
-                            setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                            setNegativeButton("取消", new DialogInterface.OnClickListener() {
 
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {

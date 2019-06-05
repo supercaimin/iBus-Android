@@ -42,11 +42,11 @@ public class BusInfoPopWindow extends PopupWindow {
         mInflater = LayoutInflater.from(context);
         contentView = mInflater.inflate(R.layout.bus_info_popwindow, null);
         tvBusNumber = (TextView) contentView.findViewById(R.id.plate_number);
-        tvBusNumber.setText("   Plate Number:" + busBean.getBusNumber() + "   ");
+        tvBusNumber.setText("   车牌号:" + busBean.getBusNumber() + "   ");
         driverImageView = (CircleImageView)contentView.findViewById(R.id.ivDriverHead);
         ImageLoader.getInstance().displayImage(HttpData.getBaseUrl() + busBean.getDriver().getUserHead(), driverImageView);
         tvDriverName = (TextView) contentView.findViewById(R.id.tvDriverName);
-        tvDriverName.setText("Driver:" + busBean.getDriver().getUserRealName());
+        tvDriverName.setText("司机:" + busBean.getDriver().getUserRealName());
         tvDriverMobile = (TextView) contentView.findViewById(R.id.tvDriverMobile);
         tvDriverMobile.setText(busBean.getDriver().getUserMobile());
         tvDriverMobile.setVisibility(View.GONE);
@@ -54,14 +54,14 @@ public class BusInfoPopWindow extends PopupWindow {
         ayiImageView = (CircleImageView)contentView.findViewById(R.id.ivAyiHead);
         ImageLoader.getInstance().displayImage(HttpData.getBaseUrl() + busBean.getAyi().getUserHead(), ayiImageView);
         tvAyiName = (TextView) contentView.findViewById(R.id.tvAyiName);
-        tvAyiName.setText("BusAyi:"+busBean.getAyi().getUserRealName());
+        tvAyiName.setText("校车阿姨:"+busBean.getAyi().getUserRealName());
         tvAyiMoblie = (TextView) contentView.findViewById(R.id.tvAyiMobile);
         tvAyiMoblie.setText(busBean.getAyi().getUserMobile());
 
         managerImageView = (CircleImageView)contentView.findViewById(R.id.ivManagerHead);
         ImageLoader.getInstance().displayImage(HttpData.getBaseUrl() + busBean.getManager().getUserHead(), managerImageView);
         tvManagerName = (TextView) contentView.findViewById(R.id.tvManagerName);
-        tvManagerName.setText("Manager:" + busBean.getManager().getUserRealName());
+        tvManagerName.setText("校巴经理:" + busBean.getManager().getUserRealName());
         tvManagerMoblie = (TextView) contentView.findViewById(R.id.tvManagerMobile);
         tvManagerMoblie.setText(busBean.getManager().getUserMobile());
 

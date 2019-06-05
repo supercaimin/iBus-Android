@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content">
 
                 <AutoCompleteTextView android:id="@+id/first_name" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="First Name(Required)"
+                    android:layout_height="wrap_content" android:hint="姓(必填)"
                     android:inputType="textPersonName" android:maxLines="1"
                     android:singleLine="true" />
 
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText android:id="@+id/last_name" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="Last Name(Required)"
+                    android:layout_height="wrap_content" android:hint="名(必填)"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPersonName"
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText android:id="@+id/grade" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="Grade(Required)"
+                    android:layout_height="wrap_content" android:hint="年级(必填)"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPhonetic"
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText android:id="@+id/sn" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="Child's S/N(Required)"
+                    android:layout_height="wrap_content" android:hint="孩子的学号(必填)"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textAutoComplete"
@@ -74,13 +74,13 @@
                     android:id="@+id/checkbox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="I here read and understand the school bus relevant information and agree that my children will abide by the regulations and disciplines."
+                    android:text="我已阅读并理解校车的相关信息，并同意我的孩子将遵守校车的规章制度。"
                     android:checked="false"/>
             </LinearLayout>
 
             <Button android:id="@+id/submit" style="?android:textAppearanceSmall"
                 android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:layout_marginTop="16dp" android:text="SUBMIT"
+                android:layout_marginTop="16dp" android:text="提交"
                 android:textStyle="bold" />
 
         </LinearLayout>
