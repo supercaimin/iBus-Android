@@ -54,7 +54,7 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="qWFiBGiLFKjbc6hKRcootplYwVUOgA3M"></meta-data>
+            android:value="l7NCWstQmRaAH5EFNavsajmIqmEo8fbk"></meta-data>
 
         <activity
             android:name=".activity.LoginActivity"
@@ -71,7 +71,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="cn.homecaught.ibus_android"
+                    android:host="cn.homecaught.ibus_saas_wx"
                     android:pathPrefix="/conversationlist"
                     android:scheme="rong" />
             </intent-filter>
@@ -92,7 +92,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="cn.homecaught.ibus_saas"
+                    android:host="cn.homecaught.ibus_saas_wx"
                     android:pathPrefix="/conversation/"
                     android:scheme="rong" />
             </intent-filter>

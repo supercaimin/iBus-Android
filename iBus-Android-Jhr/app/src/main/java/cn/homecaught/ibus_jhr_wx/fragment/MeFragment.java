@@ -134,7 +134,7 @@ public class MeFragment extends Fragment {
             }
         });
         toolbar = (Toolbar) this.container.findViewById(R.id.toolbar);
-        toolbar.setTitle("Me");
+        toolbar.setTitle("我的");
         return this.container;
     }
 

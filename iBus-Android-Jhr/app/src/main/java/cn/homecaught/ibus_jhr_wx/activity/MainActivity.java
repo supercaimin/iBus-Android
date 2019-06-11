@@ -100,8 +100,8 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
         StatusBarCompat.compat(this, 0x000);
 
         progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Tips");
-        progressDialog.setMessage("Please wait a moment...");
+        progressDialog.setTitle("提示");
+        progressDialog.setMessage("请稍等...");
 
         WindowManager wm = this.getWindowManager();;
         int width = wm.getDefaultDisplay().getWidth();

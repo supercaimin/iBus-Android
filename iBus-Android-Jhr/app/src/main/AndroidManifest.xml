@@ -39,7 +39,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="cn.homecaught.ibus_jhr"
+                    android:host="cn.homecaught.ibus_jhr_wx"
                     android:pathPrefix="/conversationlist"
                     android:scheme="rong" />
             </intent-filter>
@@ -55,7 +55,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="cn.homecaught.ibus_jhr"
+                    android:host="cn.homecaught.ibus_jhr_wx"
                     android:pathPrefix="/conversation/"
                     android:scheme="rong" />
             </intent-filter>

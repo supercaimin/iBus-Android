@@ -58,7 +58,7 @@ public class MessageFragment extends Fragment{
 
         View v = inflater.inflate(R.layout.message_fragment, container, false);
         toolbar = (Toolbar) v.findViewById(R.id.toolbar);
-        toolbar.setTitle("Message");
+        toolbar.setTitle("消息");
         toolbar.inflateMenu(R.menu.menu);
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override

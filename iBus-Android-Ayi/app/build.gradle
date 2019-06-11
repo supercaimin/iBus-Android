@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('E:\\android.jks')
+            keyAlias = 'key0'
+            storePassword 'ch8x6m70'
+            keyPassword 'ch8x6m70'
+        }
+    }
     compileSdkVersion 25
     lintOptions {
         checkReleaseBuilds false
