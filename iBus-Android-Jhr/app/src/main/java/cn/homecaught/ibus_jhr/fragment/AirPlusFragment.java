@@ -111,11 +111,11 @@ public class AirPlusFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_air_plus, container, false);
         progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setTitle("Tips");
-        progressDialog.setMessage("Please wait a moment...");
+        progressDialog.setTitle(R.string.tip_tip);
+        progressDialog.setMessage(getString(R.string.tip_wait));
 
         toolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        toolbar.setTitle("Please wait a moment...");
+        toolbar.setTitle(R.string.tip_wait);
 
         toolbar.inflateMenu(R.menu.map);
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
@@ -185,7 +185,7 @@ public class AirPlusFragment extends Fragment {
             names.toArray(childnames);
 
             Dialog alertDialog = new AlertDialog.Builder(getActivity()).
-                    setTitle("Please select").
+                    setTitle(R.string.tip_select).
                     setIcon(R.mipmap.icon_report)
                     .setSingleChoiceItems(childnames, selectedReportIndex, new DialogInterface.OnClickListener() {
 
@@ -194,7 +194,7 @@ public class AirPlusFragment extends Fragment {
                             selectedReportIndex = which;
                         }
                     }).
-                            setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            setPositiveButton(R.string.action_ok, new DialogInterface.OnClickListener() {
 
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -202,7 +202,7 @@ public class AirPlusFragment extends Fragment {
 
                                 }
                             }).
-                            setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                            setNegativeButton(R.string.action_cancel, new DialogInterface.OnClickListener() {
 
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -221,7 +221,7 @@ public class AirPlusFragment extends Fragment {
             names.toArray(childnames);
 
             Dialog alertDialog = new AlertDialog.Builder(getActivity()).
-                    setTitle("Please select").
+                    setTitle(R.string.tip_select).
                     setIcon(R.mipmap.icon_report)
                     .setSingleChoiceItems(childnames, selectedReportIndex, new DialogInterface.OnClickListener() {
 
@@ -230,7 +230,7 @@ public class AirPlusFragment extends Fragment {
                             selectedReportIndex = which;
                         }
                     }).
-                            setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            setPositiveButton(R.string.action_ok, new DialogInterface.OnClickListener() {
 
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -238,7 +238,7 @@ public class AirPlusFragment extends Fragment {
 
                                 }
                             }).
-                            setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                            setNegativeButton(R.string.action_cancel, new DialogInterface.OnClickListener() {
 
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -260,12 +260,12 @@ public class AirPlusFragment extends Fragment {
 
     public void setCurrentChild(ChildBean currentChild) {
         this.currentChild = currentChild;
-        toolbar.setTitle("Track(" + currentChild.getFirstName() + " " + currentChild.getLastName() +")");
+        toolbar.setTitle(getString(R.string.line_lablel_track) + "(" + currentChild.getFirstName() + " " + currentChild.getLastName() +")");
         new SyncTask().execute();
     }
     public void setCurrentBus(BusBean currentBus) {
         this.currentBus = currentBus;
-        toolbar.setTitle("Track("+ currentBus.getBusNumber() + ")");
+        toolbar.setTitle(getString(R.string.line_lablel_track) + "("+ currentBus.getBusNumber() + ")");
         new SyncTask().execute();
     }
 

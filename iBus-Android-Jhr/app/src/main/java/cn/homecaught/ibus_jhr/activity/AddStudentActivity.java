@@ -54,8 +54,8 @@ public class AddStudentActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("提示");
-        progressDialog.setMessage("请求网络中，请稍等...");
+        progressDialog.setTitle(R.string.tip_tip);
+        progressDialog.setMessage(getString(R.string.tip_wait));
 
         ivHeadImageView = (CircleImageView) findViewById(R.id.ivHead);
         ivHeadImageView.setOnClickListener(new View.OnClickListener() {
@@ -219,9 +219,9 @@ public class AddStudentActivity extends AppCompatActivity {
                 if (status) {
                     mHeadPath = jsonObject.getJSONObject("info").getString("url");
                     ImageLoader.getInstance().displayImage(HttpData.getBaseUrl() + mHeadPath, ivHeadImageView);
-                    Toast.makeText(AddStudentActivity.this, "上传成功", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddStudentActivity.this, R.string.tip_upload_success, Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(AddStudentActivity.this, "上传失败", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddStudentActivity.this, R.string.tip_upload_failed, Toast.LENGTH_SHORT).show();
                 }
             } catch (Exception e) {
                 e.printStackTrace();

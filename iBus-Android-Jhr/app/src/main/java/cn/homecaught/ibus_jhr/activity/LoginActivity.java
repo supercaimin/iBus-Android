@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
-        setTitle("Sign In");
+        setTitle(R.string.action_sign_in_short);
         mMobileView = (AutoCompleteTextView) findViewById(R.id.etMobile);
         populateAutoComplete();
 
@@ -345,7 +345,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         names.toArray(reports);
 
         Dialog alertDialog = new AlertDialog.Builder(this).
-                setTitle("Please choose your school").
+                setTitle(R.string.tip_choose_school).
                 setIcon(R.mipmap.icon_report)
                 .setSingleChoiceItems(reports, 0, new DialogInterface.OnClickListener() {
 
@@ -354,7 +354,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         mCurSelectedSchoolIndex = which;
                     }
                 }).
-                        setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        setPositiveButton(R.string.action_ok, new DialogInterface.OnClickListener() {
 
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -362,7 +362,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                 btnSchool.setText(ugrentBean.getSchoolName());
                             }
                         }).
-                        setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                        setNegativeButton(R.string.action_cancel, new DialogInterface.OnClickListener() {
 
                             @Override
                             public void onClick(DialogInterface dialog, int which) {

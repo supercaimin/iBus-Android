@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
-    package="cn.homecaught.ibus_jhr" >
-
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="cn.homecaught.ibus_jhr">
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -18,21 +18,23 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
-        android:name="cn.homecaught.ibus_jhr.MyApplication"
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:screenOrientation="portrait"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name="cn.homecaught.ibus_jhr.activity.LoginActivity"
-            android:screenOrientation="portrait">
-        </activity>
+        android:theme="@style/AppTheme">
         <activity
-            android:name="cn.homecaught.ibus_jhr.activity.MainActivity"
+            android:name=".activity.ChangeRouteActivity"></activity>
+        <activity
+            android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden|adjustResize" >
+            android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -45,10 +47,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="cn.homecaught.ibus_jhr.activity.ConversationActivtiy"
+            android:name=".activity.ConversationActivtiy"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden|adjustResize" >
+            android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -61,37 +63,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="cn.homecaught.ibus_jhr.activity.WebViewActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_web_view"
+            android:name=".activity.WebViewActivity"
             android:hardwareAccelerated="true"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
-        <activity
-            android:name="cn.homecaught.ibus_jhr.activity.PwdActivity"
-            android:label="@string/title_activity_pwd" >
-        </activity>
-        <activity
-            android:name="cn.homecaught.ibus_jhr.activity.RegisterActivity"
             android:screenOrientation="portrait"
-            android:label="@string/title_activity_register" >
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="cn.homecaught.ibus_jhr.activity.ApplicationActivity"
-            android:screenOrientation="portrait"
-            android:label="Application" >
-        </activity>
+            android:name=".activity.PwdActivity"></activity>
         <activity
-            android:name="cn.homecaught.ibus_jhr.activity.ContactListActivity"
+            android:name=".activity.RegisterActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.ApplicationActivity"
+            android:label="Application"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.ContactListActivity"
             android:screenOrientation="portrait"
-            android:label="@string/title_activity_contact_list"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
-
-
-        <activity android:name="cn.homecaught.ibus_jhr.activity.SplashActivity"
-            android:theme="@style/StartAppTheme"
-            android:screenOrientation="portrait">
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".activity.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/StartAppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

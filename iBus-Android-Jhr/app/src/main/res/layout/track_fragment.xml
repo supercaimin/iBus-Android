@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:text="Track"/>
+            android:text="@string/tab_track"/>
         <ImageView
             android:id="@+id/child"
             android:layout_marginTop="10dp"

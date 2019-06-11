@@ -517,6 +517,12 @@ public class HttpData {
         String url = getFakeServer() + "guardian/children/";
         return get(url, null);
     }
+    public static String getBackLines() {
+        String url = getFakeServer() + "guardian/back_lines/";
+        return get(url, null);
+    }
+
+
     public static String getBuses() {
         String url = getFakeServer() + "manager/buses/";
         return get(url, null);
@@ -570,6 +576,35 @@ public class HttpData {
 
         return post(url, nvps);
     }
+
+    public static String tempLine( String child_id,
+                                   String date,
+                                   String line_id,
+                                   String site_id) {
+        String url = getFakeServer() + "guardian/temp_line/";
+        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+
+        BasicNameValuePair vpUserFistName = new BasicNameValuePair("child_id",
+                child_id);
+        BasicNameValuePair vpUserLastName = new BasicNameValuePair("date",
+                date);
+        BasicNameValuePair vpChildSN = new BasicNameValuePair("line_id",
+                line_id);
+        BasicNameValuePair vpGrade = new BasicNameValuePair("site_id",
+                site_id);
+
+
+        nvps.add(vpUserFistName);
+        nvps.add(vpUserLastName);
+
+        nvps.add(vpChildSN);
+        nvps.add(vpGrade);
+
+        return post(url, nvps);
+    }
+
+
+
     public static String getFriends(String userId)
     {
         String url = getFakeServer() + "guardian_new/friends/" + userId;

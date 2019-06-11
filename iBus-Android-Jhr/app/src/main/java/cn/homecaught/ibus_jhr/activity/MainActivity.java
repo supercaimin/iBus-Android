@@ -101,8 +101,8 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
         StatusBarCompat.compat(this, 0x000);
 
         progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Tips");
-        progressDialog.setMessage("Please wait a moment...");
+        progressDialog.setTitle(R.string.tip_tip);
+        progressDialog.setMessage(getText(R.string.tip_wait));
 
         WindowManager wm = this.getWindowManager();;
         int width = wm.getDefaultDisplay().getWidth();
@@ -242,7 +242,7 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
                         selectedReportIndex = which;
                     }
                 }).
-                        setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                        setPositiveButton(R.string.action_ok, new DialogInterface.OnClickListener() {
 
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -251,7 +251,7 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
 
                             }
                         }).
-                        setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                        setNegativeButton(R.string.action_cancel, new DialogInterface.OnClickListener() {
 
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -400,9 +400,9 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
                     mHeadPath = jsonObject.getJSONObject("info").getString("url");
                     new UpHeadImageTask().execute();
                     ImageLoader.getInstance().displayImage(HttpData.getBaseUrl() + mHeadPath, ivHead);
-                    Toast.makeText(MainActivity.this, "上传成功", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, R.string.tip_upload_success, Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(MainActivity.this, "上传失败", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, R.string.tip_upload_failed, Toast.LENGTH_SHORT).show();
                 }
             } catch (Exception e) {
                 e.printStackTrace();

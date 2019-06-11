@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
-
+configurations.all {
+    resolutionStrategy.force 'com.android.support:support-v4:27.1.0'
+}
 android {
     compileSdkVersion 26
     buildToolsVersion '28.0.3'
@@ -28,8 +30,8 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.13-beta-3'
-    implementation 'com.android.support:appcompat-v7:26.0.0-alpha1'
-    implementation 'com.android.support:design:26.0.0-alpha1'
+    implementation 'com.android.support:appcompat-v7:27.1.0'
+    implementation 'com.android.support:design:27.1.0'
     implementation project(':IMKit')
     implementation files('libs/avoscloud-push-v3.13.4.jar')
     implementation files('libs/avoscloud-sdk-v3.13.4.jar')

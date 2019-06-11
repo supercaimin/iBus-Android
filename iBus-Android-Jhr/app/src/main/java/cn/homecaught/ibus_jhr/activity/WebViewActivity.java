@@ -40,11 +40,11 @@ public class WebViewActivity extends AppCompatActivity {
         new GetWebContentTask().execute();
 
         if (webContent.equals(WEB_CONTENT_ABOUT_US)) {
-            setTitle("About Us");
+            setTitle(R.string.title_about_us);
         } else if (webContent.equals(WEB_CONTENT_WROK)) {
-            setTitle("Handbook");
+            setTitle(R.string.title_handbook);
         } else if (webContent.equals(WEB_CONTENT_TIME_TABLE)) {
-            setTitle("Timetable");
+            setTitle(R.string.title_timetable);
         } else {
 
         }

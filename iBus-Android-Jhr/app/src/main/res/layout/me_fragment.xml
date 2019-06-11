@@ -48,7 +48,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Password"
+            android:text="@string/label_change_password"
             android:textSize="16sp"
             android:paddingLeft="20dp"
             android:paddingTop="20dp"
@@ -69,7 +69,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Handbook"
+            android:text="@string/title_handbook"
             android:textSize="16sp"
             android:paddingLeft="20dp"
             android:paddingTop="20dp"
@@ -90,7 +90,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Timetable"
+            android:text="@string/title_timetable"
             android:textSize="16sp"
             android:paddingLeft="20dp"
             android:paddingTop="20dp"
@@ -111,7 +111,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Children"
+            android:text="@string/title_add_children"
             android:textSize="16sp"
             android:paddingLeft="20dp"
             android:paddingTop="20dp"
@@ -123,6 +123,29 @@
         android:layout_height="1dp"
         android:background="#f4f4f4">
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llChangeRoute"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="vertical"
+        android:background="#fff">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_route_change"
+            android:textSize="16sp"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="10dp"
+            android:textColor="@color/colorPrimary"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#f4f4f4">
+    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/llAbout"
         android:layout_width="match_parent"
@@ -132,7 +155,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="About Us"
+            android:text="@string/title_about_us"
             android:textSize="16sp"
             android:paddingLeft="20dp"
             android:paddingTop="20dp"
@@ -153,7 +176,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign Out"
+            android:text="@string/action_sign_out_short"
             android:textSize="16sp"
             android:paddingLeft="20dp"
             android:paddingTop="20dp"

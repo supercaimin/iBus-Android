@@ -70,6 +70,7 @@ public class PwdActivity extends AppCompatActivity implements LoaderCallbacks<Cu
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pwd);
+        setTitle(R.string.label_change_password);
         // Set up the login form.
         mOldPasswordView = (AutoCompleteTextView) findViewById(R.id.oldPassword);
         //populateAutoComplete();
@@ -170,7 +171,7 @@ public class PwdActivity extends AppCompatActivity implements LoaderCallbacks<Cu
         }
 
         if (!password.equals(passwordAgain)){
-            mPasswordAgainView.setError("两次密码不一致");
+            mPasswordAgainView.setError(getString(R.string.tip_password_diff));
             focusView = mPasswordAgainView;
             cancel = true;
         }

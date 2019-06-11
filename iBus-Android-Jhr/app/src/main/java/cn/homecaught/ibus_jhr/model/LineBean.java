@@ -1,6 +1,9 @@
 package cn.homecaught.ibus_jhr.model;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 /**
  * Created by a1 on 16/6/27.
@@ -50,6 +53,16 @@ public class LineBean {
     private String arrivedTime;
     private int childUpOff;
 
+    public JSONArray getStops() {
+        return stops;
+    }
+
+    public void setStops(JSONArray stops) {
+        this.stops = stops;
+    }
+
+    private JSONArray stops;
+
     public String getArrivedTime() {
         return arrivedTime;
     }
@@ -69,10 +82,23 @@ public class LineBean {
     public LineBean(JSONObject jsonObject){
         try {
             id = jsonObject.getString("id");
-            lineName = jsonObject.getString("site_name");
-            lineSite = jsonObject.getString("site_en_name");
-            lineDistance = jsonObject.getString("site_distance");
-            arrivedTime = jsonObject.getString("arrived_time");
+            if (jsonObject.has("site_name"))
+                lineName = jsonObject.getString("site_name");
+            if (jsonObject.has("line_name"))
+                lineName = jsonObject.getString("line_name");
+            if (jsonObject.has("line_sites")) {
+                stops = jsonObject.getJSONArray("line_sites");
+            }
+            if (jsonObject.has("site_en_name")) {
+                lineSite = jsonObject.getString("site_en_name");
+            }
+
+            if (jsonObject.has("site_distance")) {
+                lineDistance = jsonObject.getString("site_distance");
+            }
+            if (jsonObject.has("arrived_time")) {
+                arrivedTime = jsonObject.getString("arrived_time");
+            }
         }catch (Exception e){
             e.printStackTrace();
         }

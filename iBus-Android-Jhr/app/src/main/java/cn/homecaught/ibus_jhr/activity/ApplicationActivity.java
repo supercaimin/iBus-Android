@@ -93,7 +93,7 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_application);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Add Children");
+        getSupportActionBar().setTitle(R.string.title_add_children);
 
 
         mUserFirstNameView = (EditText) findViewById(R.id.first_name);
@@ -175,33 +175,33 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
         View focusView = null;
 
         if (TextUtils.isEmpty(mUserFirstNameView.getText().toString())) {
-            mUserFirstNameView.setError("Required.");
+            mUserFirstNameView.setError(getText(R.string.error_field_required));
             focusView = mUserFirstNameView;
             cancel = true;
         }
 
         if (TextUtils.isEmpty(mUserLastNameView.getText().toString())) {
-            mUserLastNameView.setError("Required.");
+            mUserLastNameView.setError(getText(R.string.error_field_required));
             focusView = mUserLastNameView;
             cancel = true;
         }
 
 
         if (TextUtils.isEmpty(mGradeView.getText().toString())) {
-            mGradeView.setError("Required.");
+            mGradeView.setError(getText(R.string.error_field_required));
             focusView = mGradeView;
             cancel = true;
         }
 
         if (TextUtils.isEmpty(mChildSNView.getText().toString())) {
-            mChildSNView.setError("Required.");
+            mChildSNView.setError(getText(R.string.error_field_required));
             focusView = mChildSNView;
             cancel = true;
         }
 
 
         if(!checkBox.isChecked()){
-            Toast.makeText(this, "Please check the agreement.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.tip_check_agreement, Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -426,9 +426,9 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
                 boolean status = jsonObject.getBoolean("status");
                 if (status) {
                     mHeadPath = jsonObject.getJSONObject("info").getString("url");
-                    Toast.makeText(ApplicationActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ApplicationActivity.this, R.string.tip_success, Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(ApplicationActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ApplicationActivity.this, R.string.tip_failed, Toast.LENGTH_SHORT).show();
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -490,7 +490,7 @@ public class ApplicationActivity extends AppCompatActivity implements LoaderCall
                 success = jsonObject.getBoolean("status");
                 if (success) {
                     finish();
-                    Toast.makeText(getApplicationContext(), "Thanks for your online application.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.tip_application_success, Toast.LENGTH_LONG).show();
 
                 } else {
                     Toast.makeText(getApplicationContext(), jsonObject.getString("msg"), Toast.LENGTH_LONG).show();

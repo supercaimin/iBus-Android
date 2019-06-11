@@ -38,7 +38,7 @@
                 android:drawableTop="@mipmap/icon_work_selected"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="Track"
+                android:text="@string/tab_track"
                 android:textColor="@color/colorPrimary"
                 android:textSize="13sp" />
             <RadioButton
@@ -50,7 +50,7 @@
                 android:drawableTop="@mipmap/bsn_normal"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="Map"
+                android:text="@string/tab_map"
                 android:textColor="#000000"
                 android:textSize="13sp" />
 
@@ -63,7 +63,7 @@
                 android:drawableTop="@mipmap/icon_message_normal"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="Message"
+                android:text="@string/tab_message"
                 android:textColor="#000000"
                 android:textSize="13sp" />
 
@@ -76,7 +76,7 @@
                 android:drawableTop="@mipmap/icon_user_normal"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="Me"
+                android:text="@string/tab_me"
                 android:textColor="#000000"
                 android:textSize="13sp" />
         </RadioGroup>

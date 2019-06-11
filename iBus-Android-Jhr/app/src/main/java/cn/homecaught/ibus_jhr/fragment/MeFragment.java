@@ -14,6 +14,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import cn.homecaught.ibus_jhr.R;
 import cn.homecaught.ibus_jhr.MyApplication;
 import cn.homecaught.ibus_jhr.activity.ApplicationActivity;
+import cn.homecaught.ibus_jhr.activity.ChangeRouteActivity;
 import cn.homecaught.ibus_jhr.activity.LoginActivity;
 import cn.homecaught.ibus_jhr.activity.PwdActivity;
 import cn.homecaught.ibus_jhr.activity.WebViewActivity;
@@ -103,6 +104,14 @@ public class MeFragment extends Fragment {
             }
         });
 
+        this.container.findViewById(R.id.llChangeRoute).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ChangeRouteActivity.class);
+                startActivity(intent);
+            }
+        });
+
         this.container.findViewById(R.id.llLogout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,7 +143,7 @@ public class MeFragment extends Fragment {
             }
         });
         toolbar = (Toolbar) this.container.findViewById(R.id.toolbar);
-        toolbar.setTitle("Me");
+        toolbar.setTitle(R.string.title_me);
         return this.container;
     }
 

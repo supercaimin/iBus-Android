@@ -52,7 +52,6 @@
 
                 <EditText android:id="@+id/last_name" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:hint="Last Name(Required)"
-                    android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPersonName"
                     android:maxLines="1" android:singleLine="true" />
@@ -64,7 +63,6 @@
 
                 <EditText android:id="@+id/mobile" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:hint="Mobile(Required)"
-                    android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPhonetic"
                     android:maxLines="1" android:singleLine="true" />
@@ -76,7 +74,6 @@
 
                 <EditText android:id="@+id/email" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:hint="E-Mail(Optional)"
-                    android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textAutoComplete"
                     android:maxLines="1" android:singleLine="true" />
@@ -88,7 +85,6 @@
 
                 <EditText android:id="@+id/password" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:hint="Password(Required)"
-                    android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPassword"
                     android:maxLines="1" android:singleLine="true" />
@@ -100,7 +96,6 @@
 
                 <EditText android:id="@+id/repassword" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:hint="Password Again(Required)"
-                    android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPassword"
                     android:maxLines="1" android:singleLine="true" />
@@ -112,7 +107,6 @@
 
                 <EditText android:id="@+id/sn1" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:hint="Child's S/N(Required)"
-                    android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPhonetic"
                     android:maxLines="1" android:singleLine="true" />
@@ -124,7 +118,6 @@
 
                 <EditText android:id="@+id/child_first_name1" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:hint="Child First Name(Required)"
-                    android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPersonName"
                     android:maxLines="1" android:singleLine="true" />
@@ -136,7 +129,6 @@
 
                 <EditText android:id="@+id/child_last_name1" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:hint="Child Last Name(Required)"
-                    android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPersonName"
                     android:maxLines="1" android:singleLine="true" />
@@ -148,7 +140,6 @@
 
                 <EditText android:id="@+id/sn2" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:hint="Child1's S/N(Required)"
-                    android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPhonetic"
                     android:maxLines="1" android:singleLine="true" />
@@ -160,7 +151,6 @@
 
                 <EditText android:id="@+id/child_first_name2" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:hint="Child1 First Name(Optional)"
-                    android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPersonName"
                     android:maxLines="1" android:singleLine="true" />
@@ -172,7 +162,6 @@
 
                 <EditText android:id="@+id/child_last_name2" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:hint="Child1 Last Name(Optional)"
-                    android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPersonName"
                     android:maxLines="1" android:singleLine="true" />
@@ -184,7 +173,6 @@
 
                 <EditText android:id="@+id/sn3" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:hint="Child3's S/N(Required)"
-                    android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPhonetic"
                     android:maxLines="1" android:singleLine="true" />
@@ -196,7 +184,6 @@
 
                 <EditText android:id="@+id/child_first_name3" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:hint="Child3 First Name(Optional)"
-                    android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPersonName"
                     android:maxLines="1" android:singleLine="true" />
@@ -208,7 +195,6 @@
 
                 <EditText android:id="@+id/child_last_name3" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:hint="Child3 Last Name(Optional)"
-                    android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPersonName"
                     android:maxLines="1" android:singleLine="true" />
@@ -217,7 +203,7 @@
 
             <Button android:id="@+id/email_sign_in_button" style="?android:textAppearanceSmall"
                 android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:layout_marginTop="16dp" android:text="SIGN UP"
+                android:layout_marginTop="16dp" android:text="@string/action_sign_up_short"
                 android:textStyle="bold" />
 
         </LinearLayout>

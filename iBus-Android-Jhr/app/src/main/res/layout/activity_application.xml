@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content">
 
                 <AutoCompleteTextView android:id="@+id/first_name" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="First Name(Required)"
+                    android:layout_height="wrap_content" android:hint="@string/label_firt_name"
                     android:inputType="textPersonName" android:maxLines="1"
                     android:singleLine="true" />
 
@@ -33,8 +33,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText android:id="@+id/last_name" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="Last Name(Required)"
-                    android:imeActionId="@+id/login"
+                    android:layout_height="wrap_content" android:hint="@string/label_last_name"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPersonName"
                     android:maxLines="1" android:singleLine="true" />
@@ -45,8 +44,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText android:id="@+id/grade" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="Grade(Required)"
-                    android:imeActionId="@+id/login"
+                    android:layout_height="wrap_content" android:hint="@string/label_grade"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPhonetic"
                     android:maxLines="1" android:singleLine="true" />
@@ -57,8 +55,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText android:id="@+id/sn" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="Child's S/N(Required)"
-                    android:imeActionId="@+id/login"
+                    android:layout_height="wrap_content" android:hint="@string/label_child_sn"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textAutoComplete"
                     android:maxLines="1" android:singleLine="true" />
@@ -74,13 +71,13 @@
                     android:id="@+id/checkbox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="I here read and understand the school bus relevant information and agree that my children will abide by the regulations and disciplines."
+                    android:text="@string/label_relevant"
                     android:checked="false"/>
             </LinearLayout>
 
             <Button android:id="@+id/submit" style="?android:textAppearanceSmall"
                 android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:layout_marginTop="16dp" android:text="SUBMIT"
+                android:layout_marginTop="16dp" android:text="@string/action_submit"
                 android:textStyle="bold" />
 
         </LinearLayout>

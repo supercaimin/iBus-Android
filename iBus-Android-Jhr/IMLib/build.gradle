@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
-
+configurations.all {
+    resolutionStrategy.force 'com.android.support:support-v4:27.1.0'
+}
 android {
     compileSdkVersion 26
 
@@ -19,12 +21,16 @@ android {
         }
     }
     buildToolsVersion = '28.0.3'
+    buildTypes {
+        release {
+        }
+    }
 }
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
-    api 'com.android.support:support-compat:26.0.0'
-    api 'com.google.code.gson:gson:2.8.1'
+    api 'com.android.support:support-compat:27.1.0'
+    api 'com.google.code.gson:gson:2.8.5'
 }
 
 repositories {

@@ -110,8 +110,8 @@ public class MyApplication extends Application {
 
         super.onCreate();
 
-        RongPushClient.registerHWPush(this);
-        RongPushClient.registerMiPush(this, "2882303761517473625", "5451747338625");
+//        RongPushClient.registerHWPush(this);
+//        RongPushClient.registerMiPush(this, "2882303761517473625", "5451747338625");
         RongIM.init(this);
 
 
