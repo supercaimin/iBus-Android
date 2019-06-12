@@ -5,8 +5,10 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Environment;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
@@ -52,6 +54,7 @@ public class MyApplication extends Application {
 
     private UserBean loginUser;
 
+    private List<UserInfo> userlist = null;
 
     public final static String app_canche_camera = Environment
             .getExternalStorageDirectory() + "/VEGETABLE/images/";
@@ -214,16 +217,15 @@ public class MyApplication extends Application {
                 @Override
                 public UserInfo getUserInfo(String s) {
 
-                    String jsonString = HttpData.getUser(s.split("_")[1]);
-                    try {
-                        UserBean userBean = new UserBean(new JSONObject(jsonString).getJSONObject("info"));
-                        UserInfo userInfo = new UserInfo(schoolId + "_" + userBean.getId(),
-                                userBean.getUserRealName(),
-                                Uri.parse(HttpData.getBaseUrl() + userBean.getUserHead()));
-                        return userInfo;
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    String userid = s.split("_")[1];
+                    for(int i = 0; i < userlist.size(); i++) {
+                        UserInfo userInfo = userlist.get(i);
+                        if (userInfo.getUserId().equals(userid)) {
+                            return userInfo;
+                        }
                     }
+
+                    new GetUserInfoTask(userid, schoolId).execute();
                     return null;
                 }
             }, false);
@@ -271,4 +273,71 @@ public class MyApplication extends Application {
 
             }
         }
+
+
+    public class GetUserInfoTask extends AsyncTask<Void, Void, String> {
+
+        private String mUserid;
+        private String mSchoolId;
+        public GetUserInfoTask(String userid, String schoolId) {
+            super();
+            mUserid = userid;
+            mSchoolId = schoolId;
+        }
+
+        @Override
+        protected String doInBackground(Void... params) {
+            return HttpData.getUser(mUserid);
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            try {
+                JSONObject jsonObject = new JSONObject(s);
+                boolean status = jsonObject.getBoolean("status");
+                if(status){
+
+                    UserBean userBean = new UserBean(jsonObject.getJSONObject("info"));
+                    UserInfo userInfo = new UserInfo(mSchoolId + "_" + userBean.getId(),
+                            userBean.getUserFirstName() + " " + userBean.getUserLastName(),
+                            Uri.parse(HttpData.getBaseUrl() + userBean.getUserHead()));
+                    Log.v("UserInfo", userInfo.getName() + "   " + userInfo.getPortraitUri());
+
+                    if (userlist == null) userlist = new ArrayList<>();
+
+                    userlist.add(userInfo);
+                    RongIM.getInstance().refreshUserInfoCache(userInfo);
+
+                }else {
+                    Toast.makeText(getApplicationContext(), jsonObject.getString("msg"), Toast.LENGTH_LONG).show();
+                }
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }
+        }
+
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onCancelled(String s) {
+            super.onCancelled(s);
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+        }
+    }
 }

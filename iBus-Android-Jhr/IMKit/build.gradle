@@ -37,6 +37,10 @@ dependencies {
     api 'com.android.support:support-v4:28.0.0'
     api 'com.googlecode.mp4parser:isoparser:1.1.22'
     api 'com.android.support:exifinterface:28.0.0'
+    api 'com.amap.api:map2d:5.2.0'
+    api 'com.amap.api:navi-3dmap:6.7.0_3dmap6.8.0'
+    api 'com.amap.api:search:6.9.0'
+    api 'com.amap.api:location:4.6.0'
     api project(path: ':IMLibx')
 
 }

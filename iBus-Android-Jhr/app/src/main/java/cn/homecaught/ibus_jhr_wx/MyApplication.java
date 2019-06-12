@@ -5,6 +5,7 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
@@ -27,6 +28,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.homecaught.ibus_jhr_wx.activity.AddStudentActivity;
 import cn.homecaught.ibus_jhr_wx.model.UserBean;
 import cn.homecaught.ibus_jhr_wx.util.SharedPreferenceManager;
 import cn.homecaught.ibus_jhr_wx.util.HttpData;
@@ -61,6 +63,8 @@ public class MyApplication extends Application {
     }
 
     private UserBean loginUser;
+
+    private List<UserInfo> userlist = null;
 
     public final static String app_canche_camera = Environment
             .getExternalStorageDirectory() + "/VEGETABLE/images/";
@@ -243,11 +247,12 @@ public class MyApplication extends Application {
      * @param token
      */
     public void connect(String token) {
+
         /**
          * OnCreate 会被多个进程重入，这段保护代码，确保只有您需要使用 RongIM 的进程和 Push 进程执行了 init。
          * io.rong.push 为融云 push 进程名称，不可修改。
          */
-        if (getApplicationInfo().packageName.equals(getCurProcessName(getApplicationContext())) ) {
+        if (!getApplicationInfo().packageName.equals(getCurProcessName(getApplicationContext())) ) {
 
             /**
              * IMKit SDK调用第一步 初始化
@@ -260,29 +265,19 @@ public class MyApplication extends Application {
             RongIM.setUserInfoProvider(new UserInfoProvider() {
                 @Override
                 public UserInfo getUserInfo(String s) {
-                    String jsonString = HttpData.getUser(s.split("_")[1]);
-                    try {
-                        JSONObject jsonObject = new JSONObject(jsonString);
-                        boolean status = jsonObject.getBoolean("status");
-                        if(status){
 
-                            UserBean userBean = new UserBean(jsonObject.getJSONObject("info"));
-                            UserInfo userInfo = new UserInfo(schoolId + "_" + userBean.getId(),
-                                    userBean.getUserFirstName() + " " + userBean.getUserLastName(),
-                                    Uri.parse(HttpData.getBaseUrl() + userBean.getUserHead()));
-                            Log.v("UserInfo", userInfo.getName() + "   " + userInfo.getPortraitUri());
+                    String userid = s.split("_")[1];
+                    for(int i = 0; i < userlist.size(); i++) {
+                        UserInfo userInfo = userlist.get(i);
+                        if (userInfo.getUserId().equals(userid)) {
                             return userInfo;
-                        }else {
-                            Toast.makeText(getApplicationContext(), jsonObject.getString("msg"), Toast.LENGTH_LONG).show();
-                            return  null;
                         }
-                    } catch (Exception e) {
-
-                        e.printStackTrace();
                     }
+
+                    new GetUserInfoTask(userid, schoolId).execute();
                     return null;
                 }
-            }, false);
+            }, true);
 
 
                 /**
@@ -327,4 +322,70 @@ public class MyApplication extends Application {
 
             }
         }
+
+    public class GetUserInfoTask extends AsyncTask<Void, Void, String> {
+
+        private String mUserid;
+        private String mSchoolId;
+        public GetUserInfoTask(String userid, String schoolId) {
+            super();
+            mUserid = userid;
+            mSchoolId = schoolId;
+        }
+
+        @Override
+        protected String doInBackground(Void... params) {
+            return HttpData.getUser(mUserid);
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            try {
+                JSONObject jsonObject = new JSONObject(s);
+                boolean status = jsonObject.getBoolean("status");
+                if(status){
+
+                    UserBean userBean = new UserBean(jsonObject.getJSONObject("info"));
+                    UserInfo userInfo = new UserInfo(mSchoolId + "_" + userBean.getId(),
+                            userBean.getUserFirstName() + " " + userBean.getUserLastName(),
+                            Uri.parse(HttpData.getBaseUrl() + userBean.getUserHead()));
+                    Log.v("UserInfo", userInfo.getName() + "   " + userInfo.getPortraitUri());
+
+                    if (userlist == null) userlist = new ArrayList<>();
+
+                    userlist.add(userInfo);
+                    RongIM.getInstance().refreshUserInfoCache(userInfo);
+
+                }else {
+                    Toast.makeText(getApplicationContext(), jsonObject.getString("msg"), Toast.LENGTH_LONG).show();
+                }
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }
+        }
+
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onCancelled(String s) {
+            super.onCancelled(s);
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+        }
+    }
 }

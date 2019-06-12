@@ -18,7 +18,7 @@
         <!-- imlib config begin -->
         <meta-data
             android:name="RONG_CLOUD_APP_KEY"
-            android:value="y745wfm84i16v"
+            android:value="sfci50a7cr4ui"
             tools:replace="android:value"/>
 
         <service
