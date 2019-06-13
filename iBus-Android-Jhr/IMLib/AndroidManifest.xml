@@ -1,4 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.rong.imlib">
 
     <!-- 保存图片，拍照等 -->
@@ -18,8 +18,7 @@
         <!-- imlib config begin -->
         <meta-data
             android:name="RONG_CLOUD_APP_KEY"
-            android:value="sfci50a7cr4ui"
-            tools:replace="android:value"/>
+            android:value="y745wfm84i16v" />
 
         <service
             android:name="io.rong.imlib.ipc.RongService"
