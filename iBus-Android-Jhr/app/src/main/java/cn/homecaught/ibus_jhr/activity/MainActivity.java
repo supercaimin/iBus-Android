@@ -56,6 +56,8 @@ import cn.homecaught.ibus_jhr.util.HttpData;
 import cn.homecaught.ibus_jhr.util.ImageUntils;
 import cn.homecaught.ibus_jhr.util.StatusBarCompat;
 import io.rong.imkit.RongIM;
+import io.rong.imkit.manager.IUnReadMessageObserver;
+import io.rong.imlib.RongIMClient;
 
 
 public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHeadImageUploadListener {
@@ -112,7 +114,17 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
         badgeView.setBadgeGravity(Gravity.TOP | Gravity.CENTER);
         badgeView.setBadgeMargin(0, 5,  - (width / 16),0);
         badgeView.setClickable(true);
-        badgeView.setBadgeCount(RongIM.getInstance().getTotalUnreadCount());
+        RongIM.getInstance().getTotalUnreadCount(new RongIMClient.ResultCallback<Integer>() {
+            @Override
+            public void onSuccess(Integer integer) {
+                badgeView.setBadgeCount(integer);
+            }
+
+            @Override
+            public void onError(RongIMClient.ErrorCode errorCode) {
+
+            }
+        });
         badgeView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,13 +132,14 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
             }
         });
 
-        RongIM.getInstance().setOnReceiveUnreadCountChangedListener(new RongIM.OnReceiveUnreadCountChangedListener() {
-            @Override
-            public void onMessageIncreased(int i) {
-                MainActivity.this.badgeView.setBadgeCount(i);
 
+        RongIM.getInstance().addUnReadMessageCountChangedObserver(new IUnReadMessageObserver() {
+            @Override
+            public void onCountChanged(int i) {
+                MainActivity.this.badgeView.setBadgeCount(i);
             }
         });
+
         FragmentTabAdapter tabAdapter = new FragmentTabAdapter(this, fragments, R.id.tab_content, rgs);
         tabAdapter.setOnRgsExtraCheckedChangedListener(new FragmentTabAdapter.OnRgsExtraCheckedChangedListener() {
             @Override

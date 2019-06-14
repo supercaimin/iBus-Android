@@ -53,7 +53,7 @@ public class MyApplication extends Application {
     }
 
     private UserBean loginUser;
-
+    private List<UserInfo> userlist = null;
 
     public final static String app_canche_camera = Environment
             .getExternalStorageDirectory() + "/VEGETABLE/images/";
@@ -87,6 +87,28 @@ public class MyApplication extends Application {
        // RongPushClient.registerMiPush(this, "2882303761517473625", "5451747338625");
 
         RongIM.init(this);
+
+
+        RongIM.getInstance().setUserInfoProvider(new UserInfoProvider() {
+            @Override
+            public UserInfo getUserInfo(String s) {
+                final String schoolId = getSharedPreferenceManager().getSchoolId();
+                String userid = s.split("_")[1];
+
+                if (userlist != null) {
+                    for(int i = 0; i < userlist.size(); i++) {
+                        UserInfo userInfo = userlist.get(i);
+                        if (userInfo.getUserId().equals(userid)) {
+                            return userInfo;
+                        }
+                    }
+                }
+
+
+                new GetUserInfoTask(userid, schoolId).execute();
+                return null;
+            }
+        }, true);
 
         sharedPreferenceManager = new SharedPreferenceManager(this, SharedPreferenceManager.PREFERENCE_FILE);
 
@@ -189,6 +211,8 @@ public class MyApplication extends Application {
 
     public List<UserInfo> getFriendList(){return  null;};
 
+
+
     /**
      * 建立与融云服务器的连接
      *
@@ -196,81 +220,118 @@ public class MyApplication extends Application {
      */
     public void connect(String token) {
         /**
-         * OnCreate 会被多个进程重入，这段保护代码，确保只有您需要使用 RongIM 的进程和 Push 进程执行了 init。
-         * io.rong.push 为融云 push 进程名称，不可修改。
+         * IMKit SDK调用第一步 初始化
          */
 
-        if (getApplicationInfo().packageName.equals(getCurProcessName(getApplicationContext())) ||
-                "io.rong.push".equals(getCurProcessName(getApplicationContext()))) {
+        final String schoolId = getSharedPreferenceManager().getSchoolId();
+        RongIM.getInstance().setCurrentUserInfo(new UserInfo(schoolId + "_" + getLoginUser().getId(),
+                getLoginUser().getUserFirstName() + " " + getLoginUser().getUserLastName(),
+                Uri.parse(HttpData.getBaseUrl() + getLoginUser().getUserHead())));
 
-            /**
-             * IMKit SDK调用第一步 初始化
-             */
+        /**
+         * IMKit SDK调用第二步,建立与服务器的连接
+         */
+        RongIM.getInstance().connect(token, new RongIMClient.ConnectCallback()
 
-            final String schoolId = getSharedPreferenceManager().getSchoolId();
-            RongIM.getInstance().setCurrentUserInfo(new UserInfo(schoolId + "_" + getLoginUser().getId(),
-                    getLoginUser().getUserFirstName() + " " + getLoginUser().getUserLastName(),
-                    Uri.parse(HttpData.getBaseUrl() + getLoginUser().getUserHead())));
+                {
 
-            RongIM.setUserInfoProvider(new UserInfoProvider() {
-                @Override
-                public UserInfo getUserInfo(String s) {
+                    /**
+                     * Token 错误，在线上环境下主要是因为 Token 已经过期，您需要向 App Server 重新请求一个新的 Token
+                     */
+                    @Override
+                    public void onTokenIncorrect() {
 
-                    String jsonString = HttpData.getUser(s.split("_")[1]);
-                    try {
-                        UserBean userBean = new UserBean(new JSONObject(jsonString).getJSONObject("info"));
-                        UserInfo userInfo = new UserInfo(schoolId + "_" + userBean.getId(),
-                                userBean.getUserRealName(),
-                                Uri.parse(HttpData.getBaseUrl() + userBean.getUserHead()));
-                        return userInfo;
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                        Log.d("MyApplication", "--onTokenIncorrect");
                     }
-                    return null;
+
+                    /**
+                     * 连接融云成功
+                     * @param userid 当前 token
+                     */
+                    @Override
+                    public void onSuccess(String userid) {
+
+                        Log.d("MyApplication", "--onSuccess" + userid);
+
+                    }
+
+                    /**
+                     * 连接融云失败
+                     * @param errorCode 错误码，可到官网 查看错误码对应的注释
+                     */
+                    @Override
+                    public void onError(RongIMClient.ErrorCode errorCode) {
+
+                        Log.d("MyApplication", "--onError" + errorCode);
+                    }
                 }
-            }, false);
 
+        );
+    }
 
-                /**
-                 * IMKit SDK调用第二步,建立与服务器的连接
-                 */
-                RongIM.connect(token, new RongIMClient.ConnectCallback()
+    public class GetUserInfoTask extends AsyncTask<Void, Void, String> {
 
-                        {
+        private String mUserid;
+        private String mSchoolId;
+        public GetUserInfoTask(String userid, String schoolId) {
+            super();
+            mUserid = userid;
+            mSchoolId = schoolId;
+        }
 
-                            /**
-                             * Token 错误，在线上环境下主要是因为 Token 已经过期，您需要向 App Server 重新请求一个新的 Token
-                             */
-                            @Override
-                            public void onTokenIncorrect() {
+        @Override
+        protected String doInBackground(Void... params) {
+            return HttpData.getUser(mUserid);
+        }
 
-                                Log.d("MyApplication", "--onTokenIncorrect");
-                            }
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
 
-                            /**
-                             * 连接融云成功
-                             * @param userid 当前 token
-                             */
-                            @Override
-                            public void onSuccess(String userid) {
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
 
-                                Log.d("MyApplication", "--onSuccess" + userid);
+            try {
+                JSONObject jsonObject = new JSONObject(s);
+                boolean status = jsonObject.getBoolean("status");
+                if(status){
 
-                            }
+                    UserBean userBean = new UserBean(jsonObject.getJSONObject("info"));
+                    UserInfo userInfo = new UserInfo(mSchoolId + "_" + userBean.getId(),
+                            userBean.getUserFirstName() + " " + userBean.getUserLastName(),
+                            Uri.parse(HttpData.getBaseUrl() + userBean.getUserHead()));
+                    Log.v("UserInfo", userInfo.getName() + "   " + userInfo.getPortraitUri());
 
-                            /**
-                             * 连接融云失败
-                             * @param errorCode 错误码，可到官网 查看错误码对应的注释
-                             */
-                            @Override
-                            public void onError(RongIMClient.ErrorCode errorCode) {
+                    if (userlist == null) userlist = new ArrayList<>();
 
-                                Log.d("MyApplication", "--onError" + errorCode);
-                            }
-                        }
+                    userlist.add(userInfo);
+                    RongIM.getInstance().refreshUserInfoCache(userInfo);
 
-                );
+                }else {
+                    Toast.makeText(getApplicationContext(), jsonObject.getString("msg"), Toast.LENGTH_LONG).show();
+                }
+            } catch (Exception e) {
 
+                e.printStackTrace();
             }
         }
+
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onCancelled(String s) {
+            super.onCancelled(s);
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+        }
+    }
 }
