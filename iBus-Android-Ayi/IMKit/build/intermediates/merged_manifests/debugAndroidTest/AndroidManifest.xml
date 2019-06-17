@@ -3,7 +3,8 @@
     package="io.rong.imkit.test" >
 
     <uses-sdk
-        android:minSdkVersion="16"
+        android:maxSdkVersion="28"
+        android:minSdkVersion="23"
         android:targetSdkVersion="23" />
 
     <instrumentation
@@ -31,7 +32,9 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- 定位，如果您不需要定位相关的功能，可以删掉 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-    <application android:debuggable="true" >
+    <application
+        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
+        android:debuggable="true" >
         <uses-library android:name="android.test.runner" />
 
         <activity
@@ -114,9 +117,6 @@
         <meta-data
             android:name="RONG_CLOUD_APP_KEY"
             android:value="y745wfm84i16v" />
-        <meta-data
-            android:name="android.support.VERSION"
-            android:value="26.0.0" />
 
         <service
             android:name="io.rong.imlib.ipc.RongService"

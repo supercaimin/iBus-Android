@@ -3,7 +3,8 @@
     package="io.rong.imlib.test" >
 
     <uses-sdk
-        android:minSdkVersion="16"
+        android:maxSdkVersion="28"
+        android:minSdkVersion="23"
         android:targetSdkVersion="23" />
 
     <instrumentation
@@ -20,7 +21,9 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- 定位，如果您不需要定位相关的功能，可以删掉 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-    <application android:debuggable="true" >
+    <application
+        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
+        android:debuggable="true" >
         <uses-library android:name="android.test.runner" />
         <!-- imlib config begin -->
         <meta-data
@@ -60,10 +63,6 @@
                 <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
             </intent-filter>
         </receiver>
-
-        <meta-data
-            android:name="android.support.VERSION"
-            android:value="26.0.0" />
     </application>
 
 </manifest>
