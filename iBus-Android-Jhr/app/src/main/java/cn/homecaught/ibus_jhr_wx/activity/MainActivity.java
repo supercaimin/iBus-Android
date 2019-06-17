@@ -57,6 +57,7 @@ import cn.homecaught.ibus_jhr_wx.util.StatusBarCompat;
 import io.rong.imkit.RongIM;
 import io.rong.imkit.manager.IUnReadMessageObserver;
 import io.rong.imlib.RongIMClient;
+import io.rong.imlib.model.Conversation;
 
 
 public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHeadImageUploadListener {
@@ -137,7 +138,8 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
             public void onCountChanged(int i) {
                 MainActivity.this.badgeView.setBadgeCount(i);
             }
-        });
+        }, Conversation.ConversationType.PRIVATE,  Conversation.ConversationType.DISCUSSION,  Conversation.ConversationType.GROUP, Conversation.ConversationType.SYSTEM);
+
         FragmentTabAdapter tabAdapter = new FragmentTabAdapter(this, fragments, R.id.tab_content, rgs);
         tabAdapter.setOnRgsExtraCheckedChangedListener(new FragmentTabAdapter.OnRgsExtraCheckedChangedListener() {
             @Override
