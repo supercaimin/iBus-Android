@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         minSdkVersion 23
-        targetSdkVersion 23
+        targetSdkVersion 26
         versionCode 2019052416
         versionName "2.9.17 Stable"
         maxSdkVersion 28

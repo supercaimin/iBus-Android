@@ -9,7 +9,7 @@ android {
     defaultConfig {
         applicationId "cn.homecaught.ibus_jhr"
         minSdkVersion 23
-        targetSdkVersion 23
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         maxSdkVersion 28
