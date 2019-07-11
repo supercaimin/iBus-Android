@@ -129,6 +129,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="vertical"
+        android:visibility="gone"
         android:background="#fff">
         <TextView
             android:layout_width="wrap_content"
@@ -141,8 +142,11 @@
             android:textColor="@color/colorPrimary"/>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/llChangeRouteLine"
         android:layout_width="match_parent"
+        android:orientation="vertical"
         android:layout_height="1dp"
+        android:visibility="gone"
         android:background="#f4f4f4">
     </LinearLayout>
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">iBusChina监护人</string>
+    <string name="app_name">iBusChina</string>
 
     <!-- Strings related to login -->
     <string name="prompt_mobile">Mobile</string>

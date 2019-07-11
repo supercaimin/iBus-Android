@@ -615,6 +615,12 @@ public class HttpData {
         String url = getFakeServer() + "school/";
         return  get(url, null);
     }
+
+    public static String getSchoolModule() {
+        String url = getFakeServer() + "site/school_module/";
+        return  get(url, null);
+    }
+
 }
 
 
