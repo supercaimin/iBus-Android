@@ -28,7 +28,7 @@ android {
             res.srcDirs = ['src/main/res']
             assets.srcDirs = ['src/main/assets']
             jni.srcDirs = []
-            jniLibs.srcDirs = ['src/main/libs']
+            jniLibs.srcDirs = ['src/main/libs','libs']
         }
     }
     buildToolsVersion = '28.0.3'
