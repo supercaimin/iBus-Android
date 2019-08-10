@@ -21,6 +21,7 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import cn.homecaught.ibus_jhr.R;
@@ -120,7 +121,16 @@ public class ChangeRouteActivity extends AppCompatActivity {
         });
 
         datePicker = (DatePicker) findViewById(R.id.dpPicker);
-        datePicker.init(2013, 8, 20, new DatePicker.OnDateChangedListener() {
+        Calendar c1 = Calendar.getInstance();
+// 获得年份
+        int year = c1.get(Calendar.YEAR);
+// 获得月份
+        int month = c1.get(Calendar.MONTH);
+
+// 获得星期几（注意（这个与Date类是不同的）：1代表星期日、2代表星期1、3代表星期二，以此类推）
+        int day = c1.get(Calendar.DAY_OF_WEEK);
+
+        datePicker.init(year, month, day, new DatePicker.OnDateChangedListener() {
 
             @Override
             public void onDateChanged(DatePicker view, int year,
