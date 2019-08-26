@@ -522,6 +522,56 @@ public class HttpData {
         return get(url, null);
     }
 
+    public static String getBackLines() {
+        String url = getFakeServer() + "guardian/back_lines/";
+        return get(url, null);
+    }
+
+    public static String tempLine( String child_id,
+                                   String date,
+                                   String line_id,
+                                   String site_id) {
+        String url = getFakeServer() + "guardian/temp_line/";
+        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+
+        BasicNameValuePair vpUserFistName = new BasicNameValuePair("child_id",
+                child_id);
+        BasicNameValuePair vpUserLastName = new BasicNameValuePair("date",
+                date);
+        BasicNameValuePair vpChildSN = new BasicNameValuePair("line_id",
+                line_id);
+        BasicNameValuePair vpGrade = new BasicNameValuePair("site_id",
+                site_id);
+
+
+        nvps.add(vpUserFistName);
+        nvps.add(vpUserLastName);
+
+        nvps.add(vpChildSN);
+        nvps.add(vpGrade);
+
+        return post(url, nvps);
+    }
+
+    public static String leave( String child_id,
+                                   String date) {
+        String url = getFakeServer() + "guardian/leave/";
+        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+
+        BasicNameValuePair vpUserFistName = new BasicNameValuePair("id",
+                child_id);
+        BasicNameValuePair vpUserLastName = new BasicNameValuePair("date",
+                date);
+
+
+        nvps.add(vpUserFistName);
+        nvps.add(vpUserLastName);
+
+
+        return post(url, nvps);
+    }
+
+
     public static String getChildLines(String id) {
         String url = getFakeServer() + "guardian/child_line/?id=" + id;
         return get(url, null);
@@ -578,6 +628,10 @@ public class HttpData {
 
     public static String getSchool() {
         String url = getFakeServer() + "school/wuxi";
+        return  get(url, null);
+    }
+    public static String getSchoolModule() {
+        String url = getFakeServer() + "site/school_module/";
         return  get(url, null);
     }
 }

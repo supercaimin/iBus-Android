@@ -2,6 +2,7 @@ package cn.homecaught.ibus_jhr_wx.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,11 +15,18 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import cn.homecaught.ibus_jhr_wx.R;
 import cn.homecaught.ibus_jhr_wx.MyApplication;
 import cn.homecaught.ibus_jhr_wx.activity.ApplicationActivity;
+import cn.homecaught.ibus_jhr_wx.activity.BusLeaveApplicationActivity;
 import cn.homecaught.ibus_jhr_wx.activity.LoginActivity;
+import cn.homecaught.ibus_jhr_wx.activity.ChangeRouteActivity;
+
 import cn.homecaught.ibus_jhr_wx.activity.PwdActivity;
 import cn.homecaught.ibus_jhr_wx.activity.WebViewActivity;
 import cn.homecaught.ibus_jhr_wx.util.HttpData;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 
 /**
@@ -103,6 +111,23 @@ public class MeFragment extends Fragment {
             }
         });
 
+        this.container.findViewById(R.id.llBusLeaveApplication).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), BusLeaveApplicationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        this.container.findViewById(R.id.llChangeRoute).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ChangeRouteActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         this.container.findViewById(R.id.llLogout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,6 +160,9 @@ public class MeFragment extends Fragment {
         });
         toolbar = (Toolbar) this.container.findViewById(R.id.toolbar);
         toolbar.setTitle("我的");
+
+        new GetSchoolModuleTask().execute();
+
         return this.container;
     }
 
@@ -191,5 +219,75 @@ public class MeFragment extends Fragment {
 
         public void onHeadImageClick(ImageView ivHead);
     }
+
+
+    public class GetSchoolModuleTask extends AsyncTask<Void, Void, String> {
+        public GetSchoolModuleTask() {
+            super();
+        }
+
+        @Override
+        protected String doInBackground(Void... params) {
+            return HttpData.getSchoolModule();
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+
+            try {
+                JSONObject jsonObject = new JSONObject(s);
+                boolean status = jsonObject.getBoolean("status");
+
+                JSONArray jsonArray = jsonObject.getJSONArray("info");
+
+                if (status) {
+                    for (int i = 0; i < jsonArray.length();i++) {
+                        String str = jsonArray.getString(i);
+                        if (str.equals("temp_line")) {
+                            View view1 = MeFragment.this.container.findViewById(R.id.llChangeRoute);
+                            view1.setVisibility(View.VISIBLE);
+
+                            View view2 = MeFragment.this.container.findViewById(R.id.llChangeRouteLine);
+                            view2.setVisibility(View.VISIBLE);
+                        }
+                        if (str.equals("leave")) {
+                            View view1 = MeFragment.this.container.findViewById(R.id.llBusLeaveApplication);
+                            view1.setVisibility(View.VISIBLE);
+
+                            View view2 = MeFragment.this.container.findViewById(R.id.llBusLeaveApplicationLine);
+                            view2.setVisibility(View.VISIBLE);
+                        }
+                    }
+
+                } else {
+                    Toast.makeText(getContext(), jsonObject.getString("msg"), Toast.LENGTH_SHORT).show();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            super.onPostExecute(s);
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onCancelled(String s) {
+            super.onCancelled(s);
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+        }
+    }
+
 
 }

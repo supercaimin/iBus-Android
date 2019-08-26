@@ -30,6 +30,11 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
+            android:name=".activity.ChangeRouteActivity"></activity>
+        <activity
+            android:name=".activity.BusLeaveApplicationActivity"></activity>
+
+        <activity
             android:name=".activity.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
