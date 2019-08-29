@@ -1,6 +1,9 @@
 package cn.homecaught.ibus_saas.fragment;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -9,8 +12,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.net.Uri;
+import android.widget.EditText;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.homecaught.ibus_saas.MyApplication;
 import cn.homecaught.ibus_saas.R;
+import cn.homecaught.ibus_saas.model.UserBean;
+import cn.homecaught.ibus_saas.util.HttpData;
+import io.rong.imkit.RongIM;
 import io.rong.imkit.fragment.ConversationListFragment;
 import io.rong.imlib.model.Conversation;
 
@@ -21,6 +35,7 @@ import io.rong.imlib.model.Conversation;
  * Time: 下午2:39
  */
 public class MessageFragment extends Fragment{
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);

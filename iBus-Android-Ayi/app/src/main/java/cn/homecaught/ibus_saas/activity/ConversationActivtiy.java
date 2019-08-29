@@ -1,5 +1,6 @@
 package cn.homecaught.ibus_saas.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -31,7 +32,11 @@ public class ConversationActivtiy extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //toolbar.setLogo(R.mipmap.ic_launcher);
-        toolbar.setTitle("联系校巴经理");
+        //toolbar.setTitle("联系校巴经理");
+
+        Intent intent = getIntent();
+        intent.getDataString();
+        setTitle(intent.getData().getQueryParameter("title"));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

@@ -512,4 +512,10 @@ public class HttpData {
         nvps.add(vpLatitude);
         return post(url, nvps);
     }
+
+    public static String getFriends(String userId)
+    {
+        String url = getFakeServer() + "aunt/friends/" + userId;
+        return get(url, null);
+    }
 }
