@@ -2,33 +2,41 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <cn.homecaught.ibus_jhr.view.LineView
-            android:id="@+id/line"
-            android:layout_width="2dp"
-            android:layout_height="10dp"
-            android:layout_centerHorizontal="true"/>
-        <TextView
-            android:id="@+id/distance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:text="22.0km"
-            android:layout_toRightOf="@+id/line"
-            android:layout_centerVertical="true"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <View
-            android:id="@+id/stop_shape"
-            android:layout_width="60dp"
-            android:layout_height="30dp"
+        <LinearLayout
+            android:id="@+id/stop"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/shape_arrived_stop">
-        </View>
+            android:layout_width="60dp"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <cn.homecaught.ibus_jhr.view.LineView
+                    android:id="@+id/line"
+                    android:layout_width="2dp"
+                    android:layout_height="10dp"
+                    android:layout_centerHorizontal="true"/>
+                <TextView
+                    android:id="@+id/distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="22.0km"
+                    android:layout_toRightOf="@+id/line"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+            <View
+                android:id="@+id/stop_shape"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/shape_arrived_stop">
+            </View>
+        </LinearLayout>
         <TextView
             android:id="@+id/stop_name"
             android:layout_marginLeft="20dp"
@@ -37,16 +45,16 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:text="Masterland"
-            android:layout_toLeftOf="@+id/stop_shape"
-            android:layout_centerVertical="true"/>
+            android:layout_toLeftOf="@+id/stop"
+            android:layout_alignBottom="@+id/stop" />
         <TextView
             android:id="@+id/time_arrived"
             android:layout_marginLeft="2dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/stop"
             android:textColor="@color/white"
             android:text="Picked up 07:03"
-            android:layout_toRightOf="@+id/stop_shape"
-            android:layout_centerVertical="true"/>
+            android:layout_toRightOf="@+id/stop"/>
     </RelativeLayout>
 </LinearLayout>
