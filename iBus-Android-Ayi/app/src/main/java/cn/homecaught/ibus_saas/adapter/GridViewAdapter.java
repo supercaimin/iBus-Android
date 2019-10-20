@@ -1,6 +1,7 @@
 package cn.homecaught.ibus_saas.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ public class GridViewAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
     private Context mContext;
     private List<ChildBean> mItems;
+    private String mRouteType = null;
 
     public void setOnInfoButtonOnClickListener(OnInfoButtonOnClickListener onInfoButtonOnClickListener) {
         this.onInfoButtonOnClickListener = onInfoButtonOnClickListener;
@@ -32,11 +34,12 @@ public class GridViewAdapter extends BaseAdapter {
 
     public OnInfoButtonOnClickListener onInfoButtonOnClickListener;
 
-    public GridViewAdapter(Context context, List<ChildBean> items) {
+    public GridViewAdapter(Context context, List<ChildBean> items, String routeType) {
 
         mContext = context;
         mInflater = LayoutInflater.from(mContext);
         mItems = items;
+        mRouteType = routeType;
     }
 
     @Override
@@ -81,10 +84,19 @@ public class GridViewAdapter extends BaseAdapter {
         }
         viewHolder.headImageView.setImageDrawable(mContext.getResources().getDrawable(R.mipmap.head));
         ChildBean userBean = mItems.get(position);
-        if (userBean.getPickOffStop() != null)
-            viewHolder.nameTextView.setText(userBean.getPickOffStop().getLineName());
-        else
-            viewHolder.nameTextView.setText("");
+        Log.v("dddd", mRouteType + ":" + userBean.getPickUpStop().getLineName() + "::" + userBean.getPickOffStop().getLineName());
+        if (mRouteType.equals("go")){
+            if (userBean.getPickUpStop() != null)
+                viewHolder.nameTextView.setText(userBean.getPickUpStop().getLineName());
+            else
+                viewHolder.nameTextView.setText("");
+        } else {
+            if (userBean.getPickOffStop() != null)
+                viewHolder.nameTextView.setText(userBean.getPickOffStop().getLineName());
+            else
+                viewHolder.nameTextView.setText("");
+        }
+
         viewHolder.userNameTextView.setText(userBean.getFirstName() + " " + userBean.getLastName());
         if (userBean.getNickName().equals("")){
             viewHolder.nickNameTextView.setVisibility(View.GONE);
@@ -121,8 +133,9 @@ public class GridViewAdapter extends BaseAdapter {
         public void onClick(ChildBean userBean);
     }
 
-    public void setmItems(List<ChildBean> items){
+    public void setmItems(List<ChildBean> items, String lineType){
         mItems = items;
+        mRouteType = lineType;
         notifyDataSetChanged();
     }
 }

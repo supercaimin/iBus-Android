@@ -2,6 +2,7 @@ package cn.homecaught.ibus_jhr.activity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import cn.homecaught.ibus_jhr.R;
 import cn.homecaught.ibus_jhr.model.BusBean;
@@ -97,7 +99,11 @@ public class ChangeRouteActivity extends AppCompatActivity {
                     for (int i=0;i<stops.length();i++) {
                         try {
                             JSONObject object = stops.getJSONObject(i);
+                            if (isZh(getApplicationContext()))
                             selectItems.add(((JSONObject) object).getString("site_name"));
+                            else
+                                selectItems.add(((JSONObject) object).getString("site_en_name"));
+
 
                         }catch (Exception e) {
                             e.printStackTrace();
@@ -192,7 +198,11 @@ public class ChangeRouteActivity extends AppCompatActivity {
 
                                         JSONObject jsonObject = stops.getJSONObject(currentSelectedIndex);
                                         currentStopId = jsonObject.getString("id");
-                                        btnStop.setText(jsonObject.getString("site_name"));
+                                        if (isZh(getApplicationContext()))
+                                            btnStop.setText(jsonObject.getString("site_name"));
+                                        else
+                                            btnStop.setText(jsonObject.getString("site_en_name"));
+
                                     }catch (Exception e) {
                                         e.printStackTrace();
                                     }
@@ -308,5 +318,12 @@ public class ChangeRouteActivity extends AppCompatActivity {
         }
     }
 
-
+    public static boolean isZh(Context context) {
+        Locale locale = context.getResources().getConfiguration().locale;
+        String language = locale.getLanguage();
+        if (language.endsWith("zh"))
+            return true;
+        else
+            return false;
+    }
 }

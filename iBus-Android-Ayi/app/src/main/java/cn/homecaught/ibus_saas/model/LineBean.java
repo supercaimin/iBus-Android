@@ -25,10 +25,22 @@ public class LineBean {
 
     private String id;
     private String lineName;
+    private String lineType;
+
+    public String getLineType() {
+        return lineType;
+    }
+
+    public void setLineType(String lineType) {
+        this.lineType = lineType;
+    }
+
     public LineBean(JSONObject jsonObject){
         try {
             id = jsonObject.getString("id");
             lineName = jsonObject.getString("line_name");
+            lineType = jsonObject.getString("line_type");
+
         }catch (Exception e){
             e.printStackTrace();
         }

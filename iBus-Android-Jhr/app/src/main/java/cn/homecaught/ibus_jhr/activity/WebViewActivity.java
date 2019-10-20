@@ -18,7 +18,7 @@ public class WebViewActivity extends AppCompatActivity {
 
     private WebView webView;
 
-    public static final String WEB_CONTENT_WROK = "work";
+    public static final String WEB_HAND_BOOK = "handbook";
     public static final String WEB_CONTENT_TIME_TABLE = "timetable";
     public static final String WEB_CONTENT_ABOUT_US = "about_us";
 
@@ -41,7 +41,7 @@ public class WebViewActivity extends AppCompatActivity {
 
         if (webContent.equals(WEB_CONTENT_ABOUT_US)) {
             setTitle(R.string.title_about_us);
-        } else if (webContent.equals(WEB_CONTENT_WROK)) {
+        } else if (webContent.equals(WEB_HAND_BOOK)) {
             setTitle(R.string.title_handbook);
         } else if (webContent.equals(WEB_CONTENT_TIME_TABLE)) {
             setTitle(R.string.title_timetable);
@@ -60,8 +60,8 @@ public class WebViewActivity extends AppCompatActivity {
         protected String doInBackground(Void... params) {
             if (webContent.equals(WEB_CONTENT_ABOUT_US)) {
                 return HttpData.getAboutWeb();
-            } else if (webContent.equals(WEB_CONTENT_WROK)) {
-                return HttpData.getWorkWeb();
+            } else if (webContent.equals(WEB_HAND_BOOK)) {
+                return HttpData.getHandbook();
             } else if (webContent.equals(WEB_CONTENT_TIME_TABLE)) {
                 return HttpData.getUrgentWeb();
             } else {

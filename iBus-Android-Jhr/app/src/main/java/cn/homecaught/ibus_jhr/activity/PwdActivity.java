@@ -17,6 +17,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.text.Layout;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -47,6 +48,13 @@ public class PwdActivity extends AppCompatActivity implements LoaderCallbacks<Cu
      */
     private static final int REQUEST_READ_CONTACTS = 0;
 
+    public static final String PWD_ACTION_TYPE = "pwd_action_type";
+    public static final int PWD_ACTION_CHANGE = 0;
+    public static final int PWD_ACTION_FIND = 1;
+
+    public  int actionType = PWD_ACTION_CHANGE;
+
+
     /**
      * A dummy authentication store containing known user names and passwords.
      * TODO: remove after connecting to a real authentication system.
@@ -61,19 +69,36 @@ public class PwdActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 
     // UI references.
     private AutoCompleteTextView mOldPasswordView;
+    private AutoCompleteTextView mCodeView;
+
     private EditText mPasswordView;
     private EditText mPasswordAgainView;
     private View mProgressView;
     private View mLoginFormView;
+
+    private String mMobile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pwd);
         setTitle(R.string.label_change_password);
+        actionType = getIntent().getIntExtra(PWD_ACTION_TYPE, PWD_ACTION_CHANGE);
+        mMobile = getIntent().getStringExtra("mobile");
+
         // Set up the login form.
         mOldPasswordView = (AutoCompleteTextView) findViewById(R.id.oldPassword);
         //populateAutoComplete();
+        mCodeView = (AutoCompleteTextView) findViewById(R.id.code);
+
+        if (actionType == PWD_ACTION_FIND) {
+            View llOldPwd = (View) findViewById(R.id.llOldPwd);
+            View llCode = (View) findViewById(R.id.llCode);
+
+            llOldPwd.setVisibility(View.GONE);
+            llCode.setVisibility(View.VISIBLE);
+            mOldPasswordView = mCodeView;
+        }
 
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordAgainView = (EditText) findViewById(R.id.passwordAgain);
@@ -301,7 +326,11 @@ public class PwdActivity extends AppCompatActivity implements LoaderCallbacks<Cu
         @Override
         protected String doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
-            return HttpData.chgPassword(mOldPassword, mPassword);
+            if (actionType == PWD_ACTION_CHANGE)
+                return HttpData.chgPassword(mOldPassword, mPassword);
+            else
+                return HttpData.findPassword(mMobile, mOldPassword, mPassword);
+
         }
 
         @Override

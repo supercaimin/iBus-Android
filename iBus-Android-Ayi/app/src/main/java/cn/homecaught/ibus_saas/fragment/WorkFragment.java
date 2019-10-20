@@ -295,7 +295,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
 
                     }
                     if (adapter == null){
-                        adapter = new GridViewAdapter(getContext(), students);
+                        adapter = new GridViewAdapter(getContext(), students, curLine.getLineType());
                         adapter.setOnInfoButtonOnClickListener(new GridViewAdapter.OnInfoButtonOnClickListener() {
                             @Override
                             public void onClick(ChildBean userBean) {
@@ -306,7 +306,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
                         });
                         gridView.setAdapter(adapter);
                     }else {
-                        adapter.setmItems(students);
+                        adapter.setmItems(students, curLine.getLineType());
                     }
                 }else {
                     if (jsonObject.getString("msg").equals("该巴士没有行程") ||

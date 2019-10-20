@@ -6,6 +6,7 @@ import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -30,6 +31,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -73,6 +75,8 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
 
     // UI references.
     private EditText mUserMobileView;
+    private EditText mUserCodeView;
+
     private EditText mUserEmailView;
     private EditText mUserPassView;
     private EditText mUserRePassView;
@@ -93,13 +97,27 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
     private View mProgressView;
     private View mLoginFormView;
     private Button btnSchool = null;
+    private RadioGroup rgNum;
 
+    private View child1_tip;
+    private View child1_last_name_v;
+    private View child1_first_name_v;
+    private View child1_school_id_v;
+    private View child2_tip;
+    private View child2_last_name_v;
+    private View child2_first_name_v;
+    private View child2_school_id_v;
+    private View child3_tip;
+    private View child3_last_name_v;
+    private View child3_first_name_v;
+    private View child3_school_id_v;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle(R.string.action_sign_up_short);
 
         // Set up the login form.
         mUserEmailView = (EditText) findViewById(R.id.email);
@@ -119,6 +137,9 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         });
 
         mUserMobileView = (EditText) findViewById(R.id.mobile);
+        Intent intent = getIntent();
+        mUserMobileView.setText(intent.getStringExtra("mobile"));
+        mUserCodeView = (EditText) findViewById(R.id.mobileCode);
         mUserFirstNameView = (EditText) findViewById(R.id.first_name);
         mUserLastNameView = (EditText) findViewById(R.id.last_name);
 
@@ -134,6 +155,21 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         mChild3LastNameView = (EditText) findViewById(R.id.child_last_name3);
         mChild3SNView = (EditText) findViewById(R.id.sn3);
 
+        child1_tip = findViewById(R.id.child1_tip);
+        child1_last_name_v = findViewById(R.id.child1_last_name_v);
+        child1_first_name_v = findViewById(R.id.child1_first_name_v);
+        child1_school_id_v = findViewById(R.id.child1_school_id_v);
+
+        child2_tip = findViewById(R.id.child2_tip);
+        child2_last_name_v = findViewById(R.id.child2_last_name_v);
+        child2_first_name_v = findViewById(R.id.child2_first_name_v);
+        child2_school_id_v = findViewById(R.id.child2_school_id_v);
+
+        child3_tip = findViewById(R.id.child3_tip);
+        child3_last_name_v = findViewById(R.id.child3_last_name_v);
+        child3_first_name_v = findViewById(R.id.child3_first_name_v);
+        child3_school_id_v = findViewById(R.id.child3_school_id_v);
+
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -144,6 +180,64 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
+        rgNum = (RadioGroup) findViewById(R.id.rgSex);
+        rgNum.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i){
+                    case R.id.rbOne:
+                        child1_tip.setVisibility(View.VISIBLE);
+                        child1_last_name_v.setVisibility(View.VISIBLE);
+                        child1_first_name_v.setVisibility(View.VISIBLE);
+                        child1_school_id_v.setVisibility(View.VISIBLE);
+
+                        child2_tip.setVisibility(View.GONE);
+                        child2_last_name_v.setVisibility(View.GONE);
+                        child2_first_name_v.setVisibility(View.GONE);
+                        child2_school_id_v.setVisibility(View.GONE);
+
+                        child3_tip.setVisibility(View.GONE);
+                        child3_last_name_v.setVisibility(View.GONE);
+                        child3_first_name_v.setVisibility(View.GONE);
+                        child3_school_id_v.setVisibility(View.GONE);
+                        break;
+                    case R.id.rbTow:
+                        child1_tip.setVisibility(View.VISIBLE);
+                        child1_last_name_v.setVisibility(View.VISIBLE);
+                        child1_first_name_v.setVisibility(View.VISIBLE);
+                        child1_school_id_v.setVisibility(View.VISIBLE);
+
+                        child2_tip.setVisibility(View.VISIBLE);
+                        child2_last_name_v.setVisibility(View.VISIBLE);
+                        child2_first_name_v.setVisibility(View.VISIBLE);
+                        child2_school_id_v.setVisibility(View.VISIBLE);
+
+                        child3_tip.setVisibility(View.GONE);
+                        child3_last_name_v.setVisibility(View.GONE);
+                        child3_first_name_v.setVisibility(View.GONE);
+                        child3_school_id_v.setVisibility(View.GONE);
+                        break;
+
+                    case R.id.rbThree:
+                        child1_tip.setVisibility(View.VISIBLE);
+                        child1_last_name_v.setVisibility(View.VISIBLE);
+                        child1_first_name_v.setVisibility(View.VISIBLE);
+                        child1_school_id_v.setVisibility(View.VISIBLE);
+
+                        child2_tip.setVisibility(View.VISIBLE);
+                        child2_last_name_v.setVisibility(View.VISIBLE);
+                        child2_first_name_v.setVisibility(View.VISIBLE);
+                        child2_school_id_v.setVisibility(View.VISIBLE);
+
+                        child3_tip.setVisibility(View.VISIBLE);
+                        child3_last_name_v.setVisibility(View.VISIBLE);
+                        child3_first_name_v.setVisibility(View.VISIBLE);
+                        child3_school_id_v.setVisibility(View.VISIBLE);
+                        break;
+                }
+            }
+        });
 
 
 
@@ -264,6 +358,12 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
             cancel = true;
         }
 
+        if (TextUtils.isEmpty(mUserCodeView.getText().toString())){
+            mUserCodeView.setError("Required.");
+            focusView = mUserCodeView;
+            cancel = true;
+        }
+
         if (TextUtils.isEmpty(mUserLastNameView.getText().toString())){
             mUserLastNameView.setError("Required.");
             focusView = mUserLastNameView;
@@ -303,7 +403,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserRegisterTask(mUserMobileView.getText().toString(),
+            mAuthTask = new UserRegisterTask(mUserMobileView.getText().toString(),mUserCodeView.getText().toString(),
                     mUserEmailView.getText().toString(),
                     mUserPassView.getText().toString(),
                     mUserFirstNameView.getText().toString(),
@@ -526,6 +626,8 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
      */
     public class UserRegisterTask extends AsyncTask<Void, Void, String> {
         private String mUserMobile;
+        private String mUserCode;
+
         private String mUserEmail;
         private String mUserPass;
         private String mUserFirstName;
@@ -544,6 +646,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
 
 
         UserRegisterTask(String userMobile,
+                         String userCode,
                          String userEmail,
                          String userPass,
                          String userFirstName,
@@ -558,6 +661,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
                          String child3LastName,
                          String child3SN) {
             mUserMobile = userMobile;
+            mUserCode = userCode;
             mUserEmail = userEmail;
             mUserLastName = userLastName;
             mUserFirstName = userFirstName;
@@ -582,6 +686,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
             MyApplication.getInstance().getSharedPreferenceManager().setSchoolDomain(curSchool.getSchoolDomain());
 
             return HttpData.register(mUserMobile,
+                    mUserCode,
                     mUserEmail,
                     mUserPass,
                     mUserFirstName,

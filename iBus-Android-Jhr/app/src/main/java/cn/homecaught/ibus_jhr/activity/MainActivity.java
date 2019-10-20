@@ -54,6 +54,7 @@ import cn.homecaught.ibus_jhr.model.UserBean;
 import cn.homecaught.ibus_jhr.util.CameraDialog;
 import cn.homecaught.ibus_jhr.util.HttpData;
 import cn.homecaught.ibus_jhr.util.ImageUntils;
+import cn.homecaught.ibus_jhr.util.SharedPreferenceManager;
 import cn.homecaught.ibus_jhr.util.StatusBarCompat;
 import io.rong.imkit.RongIM;
 import io.rong.imkit.manager.IUnReadMessageObserver;
@@ -626,5 +627,31 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
         protected void onCancelled() {
             super.onCancelled();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String dxxx = MyApplication.getInstance().getSharedPreferenceManager().getPP();
+
+        if (dxxx == null) {
+            new AlertDialog.Builder(this)
+                    .setTitle("温馨提示")
+                    .setMessage("        我们深知个人信息对您的重要性，并会尽全力保护您的个人信息安全可靠。我们致力于维持您对我们的信任，恪守以下原则，保护您的个人信息：权责一致原则、目的明确原则、选择同意原则、最少够用原则、确保安全原则、主体参与原则、公开透明原则等。同时，我们承诺，我们将按业界成熟的安全标准，采取相应的安全保护措施来保护您的个人信息。\n 1.我们如何收集和使用您的个人信息。\n 2.我们如何共享、转让、公开披露您的个人信息。\n 3.我们如何使用 Cookie 和同类技术。\n 4.我们如何共享、转让、公开披露您的个人信息。")
+                    .setNegativeButton("不同意", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            MainActivity.this.finish();
+                        }
+                    })
+                    .setPositiveButton("同意", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            MyApplication.getInstance().getSharedPreferenceManager().setPP("xxxxxx");
+                        }
+                    })
+                    .show();
+        }
+
     }
 }

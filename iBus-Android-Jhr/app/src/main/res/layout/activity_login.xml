@@ -1,10 +1,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:gravity="center_horizontal"
-    android:orientation="vertical" android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin" tools:context=".activity.LoginActivity">
+    android:paddingTop="64dp" tools:context=".activity.LoginActivity">
 
     <!-- Login progress -->
     <ProgressBar android:id="@+id/login_progress" style="?android:attr/progressBarStyleLarge"
@@ -61,11 +61,25 @@
                 android:layout_marginTop="16dp" android:text="@string/action_sign_in_short"
                 android:textStyle="bold" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button android:id="@+id/email_sign_up_button" style="?android:textAppearanceSmall"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="16dp" android:text="@string/action_sign_up_short"
+                    android:textStyle="bold" />
 
-            <Button android:id="@+id/email_sign_up_button" style="?android:textAppearanceSmall"
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:layout_marginTop="16dp" android:text="@string/action_sign_up_short"
-                android:textStyle="bold" />
+                <Button android:id="@+id/find_password_button" style="?android:textAppearanceSmall"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="16dp" android:text="@string/action_find_password_short"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
 
         </LinearLayout>
     </ScrollView>

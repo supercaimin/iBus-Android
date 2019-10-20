@@ -25,11 +25,14 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".activity.ChangeRouteActivity"></activity>
+        <activity android:name=".activity.ScheduleActivity"></activity>
+        <activity android:name=".activity.MobileCodeActivity" />
+        <activity android:name=".activity.ChangeRouteActivity" />
+        <activity android:name=".activity.BusLeaveApplicationActivity" />
+
         <activity
             android:name=".activity.LoginActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.MainActivity"
             android:screenOrientation="portrait"
@@ -66,20 +69,19 @@
             android:name=".activity.WebViewActivity"
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".activity.PwdActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.PwdActivity" />
         <activity
             android:name=".activity.RegisterActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ApplicationActivity"
             android:label="Application"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ContactListActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.SplashActivity"
             android:screenOrientation="portrait"

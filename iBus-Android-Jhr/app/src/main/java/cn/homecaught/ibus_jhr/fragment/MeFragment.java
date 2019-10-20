@@ -16,9 +16,11 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import cn.homecaught.ibus_jhr.R;
 import cn.homecaught.ibus_jhr.MyApplication;
 import cn.homecaught.ibus_jhr.activity.ApplicationActivity;
+import cn.homecaught.ibus_jhr.activity.BusLeaveApplicationActivity;
 import cn.homecaught.ibus_jhr.activity.ChangeRouteActivity;
 import cn.homecaught.ibus_jhr.activity.LoginActivity;
 import cn.homecaught.ibus_jhr.activity.PwdActivity;
+import cn.homecaught.ibus_jhr.activity.ScheduleActivity;
 import cn.homecaught.ibus_jhr.activity.WebViewActivity;
 import cn.homecaught.ibus_jhr.util.HttpData;
 import android.support.v7.widget.Toolbar;
@@ -82,7 +84,7 @@ public class MeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), WebViewActivity.class);
-                intent.putExtra("webContent", WebViewActivity.WEB_CONTENT_WROK);
+                intent.putExtra("webContent", WebViewActivity.WEB_HAND_BOOK);
                 startActivity(intent);
             }
         });
@@ -92,6 +94,22 @@ public class MeFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), WebViewActivity.class);
                 intent.putExtra("webContent", WebViewActivity.WEB_CONTENT_TIME_TABLE);
+                startActivity(intent);
+            }
+        });
+
+        this.container.findViewById(R.id.schedule).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ScheduleActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        this.container.findViewById(R.id.leave).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), BusLeaveApplicationActivity.class);
                 startActivity(intent);
             }
         });

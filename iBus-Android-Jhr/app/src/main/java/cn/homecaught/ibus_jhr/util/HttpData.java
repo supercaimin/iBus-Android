@@ -322,7 +322,25 @@ public class HttpData {
     }
 
 
-    public static String chgPassword(String oldPassword, String password) {
+    public static String findPassword(String mobile, String code, String password) {
+        String url = getFakeServer() + "/mobile/forget/";
+        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+        BasicNameValuePair mobileVP = new BasicNameValuePair("mobile",
+                mobile);
+        BasicNameValuePair mobileCodeVP = new BasicNameValuePair("mobile_code",
+                code);
+        BasicNameValuePair newP = new BasicNameValuePair("user_pass",
+                password);
+
+        nvps.add(mobileVP);
+        nvps.add(mobileCodeVP);
+
+        nvps.add(newP);
+        return post(url, nvps);
+    }
+
+
+    public static String chgPassword (String oldPassword, String password) {
         String url = getFakeServer() + "guardian/password";
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
         BasicNameValuePair old = new BasicNameValuePair("user_pass",
@@ -359,6 +377,12 @@ public class HttpData {
         String url = getFakeServer() + "site/work";
         return get(url, null);
     }
+
+    public static String getHandbook() {
+        String url = getFakeServer() + "site/handbook";
+        return get(url, null);
+    }
+
 
     public static String getUrgentWeb() {
         String url = getFakeServer() + "site/timetable";
@@ -457,13 +481,15 @@ public class HttpData {
         return put(url, nvps);
     }
 
-    public static String register(String userMobile, String userEmail, String userPass, String userFirstName, String userLastName,
+    public static String register(String userMobile, String userCode, String userEmail, String userPass, String userFirstName, String userLastName,
                                   String child1FirstName, String child1LastName, String child1SN,
                                   String child2FirstName, String child2LastName, String child2SN,
                                   String child3FirstName, String child3LastName, String child3SN) {
-        String url = getFakeServer() + "login/reg";
+        String url = getFakeServer() + "mobile/mobile_reg";
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
         BasicNameValuePair vpUserMobile = new BasicNameValuePair("user_mobile",
+                userMobile);
+        BasicNameValuePair vpUserCode = new BasicNameValuePair("mobile_code",
                 userMobile);
         BasicNameValuePair vpUserEmail = new BasicNameValuePair("user_email",
                 userEmail);
@@ -494,6 +520,7 @@ public class HttpData {
         BasicNameValuePair vpChild3SN = new BasicNameValuePair("children[2][child_sn]",
                 child3SN);
         nvps.add(vpUserMobile);
+        nvps.add(vpUserCode);
         nvps.add(vpUserEmail);
         nvps.add(vpUserPass);
         nvps.add(vpUserFistName);
@@ -532,7 +559,10 @@ public class HttpData {
         String url = getFakeServer() + "guardian/child_line/?id=" + id;
         return get(url, null);
     }
-
+    public static String getCalendarData(String id) {
+        String url = getFakeServer() + "/guardian/calendar/?id=" + id;
+        return get(url, null);
+    }
     public static String getBusLines(String id) {
         String url = getFakeServer() + "manager/bus_line/?id=" + id;
         return get(url, null);
@@ -603,6 +633,38 @@ public class HttpData {
         return post(url, nvps);
     }
 
+    public static String leave( String child_id,
+                                   String date)
+    {
+        String url = getFakeServer() + "guardian/leave/";
+        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+
+        BasicNameValuePair vpUserFistName = new BasicNameValuePair("id",
+                child_id);
+        BasicNameValuePair vpUserLastName = new BasicNameValuePair("date",
+                date);
+
+
+        nvps.add(vpUserFistName);
+        nvps.add(vpUserLastName);
+
+        return post(url, nvps);
+    }
+
+    public static String getForgetCode(String mobile)
+    {
+        String url = getFakeServer() + "mobile/forget_code/?mobile=" + mobile;
+        return  get(url, null);
+
+    }
+
+    public static String getRegCode(String mobile)
+    {
+        String url = getFakeServer() + "mobile/reg_code/?mobile=" + mobile;
+        return  get(url, null);
+
+    }
+
 
 
     public static String getFriends(String userId)
@@ -612,7 +674,7 @@ public class HttpData {
     }
 
     public static String getSchool() {
-        String url = getFakeServer() + "school/";
+        String url = "http://www.ibuschina.com/api/school/";
         return  get(url, null);
     }
 

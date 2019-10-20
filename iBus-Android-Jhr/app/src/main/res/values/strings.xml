@@ -8,13 +8,16 @@
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="action_sign_up_short">Sign Up</string>
+    <string name="action_find_password_short">Find Password</string>
+
+
     <string name="action_sign_out_short">Sign Out</string>
     <string name="action_ok">OK</string>
     <string name="action_cancel">Cancel</string>
     <string name="action_submit">SUBMIT</string>
 
-    <string name="tab_track">Track</string>
-    <string name="tab_map">Map</string>
+    <string name="tab_track">Route</string>
+    <string name="tab_map">Route Map</string>
     <string name="tab_message">Message</string>
     <string name="tab_me">Me</string>
 
@@ -26,11 +29,16 @@
     <string name="tip_upload_success">Upload Success</string>
     <string name="tip_upload_failed">Upload Failed</string>
 
-    <string name="title_add_children">Add Children</string>
+    <string name="title_add_children">Add Child</string>
+    <string name="title_schedule">Child\'s weekly Schedule</string>
+    <string name="title_leave">Temporary Bus Leave Notification</string>
+    <string name="tip_leave_choose_child_name">Please choose child\'s name</string>
+    <string name="tip_leave_date">Date</string>
     <string name="title_route_change">Temporary Bus Route Change</string>
+    <string name="tip_route_change">To ensure that we can accommodate your request, please submit this form at least one school day in advance. The deadline for a same day change is 1:00 pm. </string>
     <string name="title_about_us">About Us</string>
     <string name="title_handbook">Handbook</string>
-    <string name="title_timetable">Timetable</string>
+    <string name="title_timetable">Bus Stop Schedule</string>
     <string name="title_message">Message</string>
     <string name="title_me">Me</string>
 
@@ -39,12 +47,13 @@
     <string name="tip_failed">Failed</string>
     <string name="tip_application_success">Thanks for your online application.</string>
     <string name="tip_select">Please Select</string>
-    <string name="tip_submitted_successfully">Submitted successfully.</string>
+    <string name="tip_submitted_successfully">Successfully Submitted.</string>
     <string name="tip_choose_child_name">Please choose child’s name</string>
     <string name="tip_not_choose">Not choosed</string>
     <string name="tip_date">Date</string>
     <string name="tip_choose_route">Please choose the bus route which you are going to take</string>
     <string name="tip_choose_stop">Please choose the bus stop</string>
+    <string name="tip_message_title">Please name this discussion group</string>
 
     <string name="label_change_password">Change Password</string>
     <string name="line_label_arrived">Arrived </string>
@@ -53,12 +62,12 @@
     <string name="line_label_get_off">Get off </string>
     <string name="line_lablel_track">Track</string>
 
-    <string name="label_firt_name">First Name(Required)</string>
+    <string name="label_firt_name">Given Name(Required)</string>
     <string name="label_last_name">Last Name(Required)</string>
     <string name="label_grade">Grade(Required)</string>
-    <string name="label_child_sn">Child\'s S/N(Required)</string>
-    <string name="label_relevant">I here read and understand the school bus relevant information and agree that my children will abide by the regulations and disciplines.</string>
-
+    <string name="label_child_sn">Child\'s School ID(Required)</string>
+    <string name="label_relevant">I have hereby read and understood the Bus Guidelines and agree that my child will abide by the regulations and consequences. </string>
+    <string name="tip_bus_leave_application">Please inform us at least one school day in advance. Thank you!</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">Incorrect password</string>
@@ -67,6 +76,8 @@
         completions."
     </string>
 
+    <string name="title_get_code">Get verification code</string>
+    <string name="title_get_code_tip">Please enter a valid mobile number!</string>
 
     <string name="not_updated_yet">Not updated yet</string>
     <string name="updated_at">Updated at %1$s before</string>
@@ -85,5 +96,10 @@
     <string name="load_succeed">加载成功</string>
     <string name="load_fail">加载失败</string>
     <string name="title_activity_register">Sign Up</string>
+    <string name="title_activity_moblie_code">获取验证码</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
 
 </resources>

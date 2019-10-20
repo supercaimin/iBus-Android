@@ -97,9 +97,10 @@ public class TrackListViewAdapter extends BaseAdapter {
                 shortDate += "0" + minute;
             }
             if(lineBean.getChildUpOff() == LineBean.CHILD_LINE_NORMAL){
-                viewHolder.timeArrivedTextView.setText(mContext.getText(R.string.line_label_arrived) + shortDate);
                 if (position == 0){
                     viewHolder.timeArrivedTextView.setText(mContext.getText(R.string.line_label_departure) + shortDate);
+                }else {
+                    viewHolder.timeArrivedTextView.setText(mContext.getText(R.string.line_label_arrived) + shortDate);
                 }
             }else {
                 if (lineBean.getChildUpOff() == LineBean.CHILD_LINE_UP){

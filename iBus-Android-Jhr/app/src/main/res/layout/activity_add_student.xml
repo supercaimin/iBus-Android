@@ -55,7 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="First Name"
+                    android:hint="Given Name"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -125,7 +125,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="S/N"
+                    android:hint="School ID"
                     android:textSize="16sp" />
             </LinearLayout>
 

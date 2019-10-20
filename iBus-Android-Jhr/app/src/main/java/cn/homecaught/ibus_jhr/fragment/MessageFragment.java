@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.net.Uri;
+import android.widget.EditText;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -201,49 +202,65 @@ public class MessageFragment extends Fragment{
         names.toArray(reports);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Please select friends.");
+        builder.setTitle(R.string.tip_select);
         builder.setMultiChoiceItems(reports, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which, boolean isChecked) {
                 checkedItems[which] = isChecked;
             }
         });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.action_cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
             }
         });
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.action_ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                List<UserBean> selectUsers = new ArrayList<UserBean>();
+                final List<UserBean> selectUsers = new ArrayList<UserBean>();
                 for (int i = 0; i < mFriends.size(); i++) {
                     if (checkedItems[i] == true) {
                         selectUsers.add(mFriends.get(i));
                     }
                 }
                 if (selectUsers.size() != 0) {
-                    String schoolId = MyApplication.getInstance().getSharedPreferenceManager().getSchoolId();
+                    final String schoolId = MyApplication.getInstance().getSharedPreferenceManager().getSchoolId();
                     if (selectUsers.size() == 1) {
                         UserBean user = selectUsers.get(0);
                         RongIM.getInstance().startPrivateChat(getActivity(), schoolId + "_" + user.getId(), user.getUserFirstName() + " " + user.getUserLastName());
                     } else {
-                        List<String> ids = new ArrayList<String>();
-                        String title = "";
-                        for (int i = 0; i < selectUsers.size(); i++) {
-                            UserBean user = selectUsers.get(i);
-                            ids.add(schoolId + "_" + user.getId());
+                        final List<String> ids = new ArrayList<String>();
 
-                            title += user.getUserLastName() + " ";
-                        }
-                        RongIM.getInstance().createDiscussionChat(getActivity(), ids, title);
+                        final EditText inputServer = new EditText(getActivity());
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                        builder.setTitle(R.string.tip_message_title).setIcon(android.R.drawable.ic_dialog_info).setView(inputServer)
+                                .setNegativeButton(R.string.action_cancel, null);
+                        builder.setPositiveButton(R.string.action_ok, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int which) {
+                                String title = "";
+                                for (int i = 0; i < selectUsers.size(); i++) {
+                                    UserBean user = selectUsers.get(i);
+                                    ids.add(schoolId + "_" + user.getId());
+
+                                    title += user.getUserLastName() + " ";
+                                }
+
+                                if (inputServer.getText().length() !=0) {
+                                    title = inputServer.getText().toString();
+                                }
+                                RongIM.getInstance().createDiscussionChat(getActivity(), ids, title);
+                            }
+                        });
+                        builder.show();
+
+
 
                     }
                 }
             }
         });
-
         AlertDialog alertDialog = builder.create();
 
         alertDialog.show();

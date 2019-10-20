@@ -7,14 +7,14 @@
     <string name="action_sign_in">로그인</string>
     <string name="action_sign_in_short">로그인</string>
     <string name="action_sign_up_short">등록</string>
-    <string name="action_sign_out_short">로그아웃</string>
+    <string name="action_sign_out_short">로그 아웃</string>
     <string name="action_ok">확인</string>
     <string name="action_cancel">취소</string>
     <string name="action_submit">확인</string>
-    <string name="tab_track">트랙</string>
+    <string name="tab_track">노선</string>
     <string name="tab_map">지도</string>
     <string name="tab_message">메시지</string>
-    <string name="tab_me">마이페이지</string>
+    <string name="tab_me">나</string>
     <string name="tip_tip">정보</string>
     <string name="tip_wait">잠깐만 기다려주세요...</string>
     <string name="tip_choose_school">학교를 선택해 주세요</string>
@@ -22,10 +22,10 @@
     <string name="tip_upload_success">업로드 선공</string>
     <string name="tip_upload_failed">업로드 실패</string>
     <string name="title_add_children">학생 추가</string>
-    <string name="title_route_change">임시 버스 탑승</string>
-    <string name="title_about_us">학교 소개</string>
-    <string name="title_handbook">핸드복</string>
-    <string name="title_timetable">사간표</string>
+    <string name="title_route_change">임시 버스 노선 변경</string>
+    <string name="title_about_us">우리에 대해서</string>
+    <string name="title_handbook">핸드북</string>
+    <string name="title_timetable">버스 시간표</string>
     <string name="title_message">메시지</string>
     <string name="title_me">마이페이지</string>
     <string name="tip_check_agreement">계약서에 확인해 주습니다. </string>
@@ -33,13 +33,13 @@
     <string name="tip_failed">실패</string>
     <string name="tip_application_success">온라인 신청서를 완료 되셔서 감사합니다.</string>
     <string name="tip_select">선택해 주세요</string>
-    <string name="tip_submitted_successfully">제출에 성공합니다.</string>
+    <string name="tip_submitted_successfully">공성적으로 제출됨.</string>
     <string name="tip_choose_child_name">학생 이름 선택해 주세요.</string>
     <string name="tip_not_choose">선택 실패</string>
     <string name="tip_date">날짜</string>
     <string name="tip_choose_route">탑승 노선을 선택해 주세요.</string>
     <string name="tip_choose_stop">승하차지점은 선택해 주세요.</string>
-    <string name="label_change_password">암호 바꾸</string>
+    <string name="label_change_password">비밀번호 변경</string>
     <string name="line_label_arrived">도착 </string>
     <string name="line_label_departure">출발 </string>
     <string name="line_label_picked_up">픽업 </string>
@@ -48,8 +48,8 @@
     <string name="label_firt_name">이름(Required)</string>
     <string name="label_last_name">성(Required)</string>
     <string name="label_grade">학년(Required)</string>
-    <string name="label_child_sn">학번(Required)</string>
-    <string name="label_relevant">스쿨버스정보 수집 및 규정한 버스 이용 수칙과 안전 규정을 따를 것에 동의합니다. </string>
+    <string name="label_child_sn">학교 아이디 번호(Required)</string>
+    <string name="label_relevant">저는 학교 버스 지침서를 읽고 이해했으며, 제 자녀가 버스 규정을 준수하고, 그렇지 못할 경우 초래되는 결과에 따를 것을 동의합니다. </string>
     <string name="error_invalid_email">이메일 주소가 잘못되었습니다.</string>
     <string name="error_invalid_password">비밀 번호가 너무 짧단.</string>
     <string name="error_incorrect_password">비밀번호가 잘못되었습니다</string>
@@ -71,5 +71,11 @@
     <string name="load_succeed">로딩 성공</string>
     <string name="load_fail">로딩 실패</string>
     <string name="title_activity_register">등록</string>
+    <string name="tip_message_title">그룹 명 기입</string>
+    <string name="tip_route_change"> 요청하신 사항을 저희가 처리할 수 있도록 최소한 하루 전에 이 양식을 작성하셔서 제출해 주시기 바랍니다. 당일 변경 마감 시간은 오후 1시입니다. </string>
+    <string name="title_schedule">학생의 주간 버스 스케줄</string>
+    <string name="title_leave">버스를 타지 않을 경우 알림</string>
+    <string name="tip_leave_choose_child_name">아이의 이름을 선택하십시오</string>
+    <string name="tip_bus_leave_application">적어도 하루 전에 공지해 주시기 바랍니다. 감사합니다!</string>
 
 </resources>

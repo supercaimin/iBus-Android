@@ -23,6 +23,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -113,7 +114,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mSignUpButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                Intent intent = new Intent(LoginActivity.this, MobileCodeActivity.class);
+                intent.putExtra(MobileCodeActivity.CODE_TYPE, MobileCodeActivity.CODE_TYPE_REGISTER);
+                startActivity(intent);
+
+                    }
+        });
+
+        Button findPwdBtn = (Button) findViewById(R.id.find_password_button);
+        findPwdBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, MobileCodeActivity.class));
             }
         });
 

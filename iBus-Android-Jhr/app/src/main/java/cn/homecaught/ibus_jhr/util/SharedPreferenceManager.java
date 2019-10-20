@@ -21,6 +21,7 @@ public class SharedPreferenceManager {
 	public final static String LOGIN_SCHOOL_LOGO = "school_logo";
 	public final static String LOGIN_SCHOOL_Images = "school_images";
 	public final static String LOGIN_SCHOOL_REMARK = "school_remark";
+	public final static String PP = "Private_Protocol";
 
 	private SharedPreferences sp;
 	private Editor editor;
@@ -42,10 +43,17 @@ public class SharedPreferenceManager {
 		editor.putString(LOGIN_SCHOOL_ID, schoolId);
 		editor.commit();
 	}
+	public String getPP() {
+		return getString(PP, null);
+	}
+
+	public void setPP(String pp) {
+		editor.putString(PP, pp);
+		editor.commit();
+	}
 	public String getSchoolId() {
 		return getString(LOGIN_SCHOOL_ID, "");
 	}
-
 
 	public void setSchoolRemark(String schoolRemark) {
 		editor.putString(LOGIN_SCHOOL_REMARK, schoolRemark);
