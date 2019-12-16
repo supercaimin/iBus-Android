@@ -30,6 +30,7 @@
     <string name="tip_route_change"> 此申请仅适用于返程线路调整。为保证学校能及时回应您的需要，请至少提前一个工作日提交申请。申请调整当日返程线路的截止时间为下午13点。 </string>
     <string name="tip_bus_leave_application">请至少提前一个工作日告知我们，谢谢！</string>
     <string name="title_about_us">关于我们</string>
+    <string name="title_privacy_policy">隐私政策</string>
     <string name="title_handbook">校车手册</string>
     <string name="title_timetable">校车时刻表</string>
     <string name="title_message">消息</string>
@@ -94,5 +95,11 @@
     <string name="load_succeed">加载成功</string>
     <string name="load_fail">加载失败</string>
     <string name="title_activity_register">注册</string>
+    <string name="prompt_code">验证码(必填)</string>
+
+    <string name="content1">
+
+
+    </string>
 
 </resources>

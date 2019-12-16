@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Environment;
@@ -28,6 +29,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.homecaught.ibus_saas.activity.PlayerMusicService;
 import cn.homecaught.ibus_saas.model.UserBean;
 import cn.homecaught.ibus_saas.util.HttpData;
 import cn.homecaught.ibus_saas.util.SharedPreferenceManager;

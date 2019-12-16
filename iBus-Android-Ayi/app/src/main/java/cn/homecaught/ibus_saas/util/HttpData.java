@@ -388,18 +388,54 @@ public class HttpData {
         return get(url, nvps);
     }
 
-    public static String setUrgent(String id) {
+    public static String getLine(String lineId) {
+        String url = getFakeServer() + "aunt/line/?line_id=" + lineId;
+        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+        BasicNameValuePair ttype = new BasicNameValuePair("line_id",
+                lineId);
+        //  nvps.add(ttype);
+
+        return get(url, nvps);
+    }
+
+
+    public static String setUrgent(String id, String lineId) {
         String url = getFakeServer() + "aunt/urgent";
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
         BasicNameValuePair uid = new BasicNameValuePair("id",
                 id);
+        BasicNameValuePair xlineId = new BasicNameValuePair("line_id",
+                lineId);
         nvps.add(uid);
+        if (lineId != null) {
+            nvps.add(xlineId);
+        }
+        return post(url, nvps);
+    }
+
+    public static String arrivalReminder (String lineId, String siteId) {
+        String url = getFakeServer() + "aunt/arrival_reminder";
+        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+        BasicNameValuePair uid = new BasicNameValuePair("site_id",
+                siteId);
+        BasicNameValuePair line_id = new BasicNameValuePair("line_id",
+                lineId);
+        if (lineId != null)
+            nvps.add(line_id);
+        if (siteId != null)
+            nvps.add(uid);
         return post(url, nvps);
     }
 
 
+
     public static String getUrgent() {
         String url = getFakeServer() + "aunt/urgent";
+        return get(url, null);
+    }
+
+    public static String hasTravel() {
+        String url = getFakeServer() + "aunt/has_travel";
         return get(url, null);
     }
 

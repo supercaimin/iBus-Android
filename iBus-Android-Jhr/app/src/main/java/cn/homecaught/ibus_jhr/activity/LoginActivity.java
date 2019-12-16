@@ -64,6 +64,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private int mCurSelectedSchoolIndex;
     private Boolean mFirstLogin = false;
     private Button btnSchool = null;
+
+    private Button btnGetCode;
+
     /**
      * A dummy authentication store containing known user names and passwords.
      * TODO: remove after connecting to a real authentication system.
@@ -78,7 +81,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     // UI references.
     private AutoCompleteTextView mMobileView;
-    private EditText mPasswordView;
+    private EditText mCodeView;
     private View mProgressView;
     private View mLoginFormView;
 
@@ -91,8 +94,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mMobileView = (AutoCompleteTextView) findViewById(R.id.etMobile);
         populateAutoComplete();
 
-        mPasswordView = (EditText) findViewById(R.id.etPassword);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        mCodeView = (EditText) findViewById(R.id.etCode);
+        /*
+        mCodeView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == R.id.login || id == EditorInfo.IME_NULL) {
@@ -102,7 +106,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 return false;
             }
         });
+        */
 
+        btnGetCode = (Button) findViewById(R.id.btn_get_code);
+        btnGetCode.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (TextUtils.isEmpty(mMobileView.getText().toString())){
+                    mMobileView.setError("Required.");
+                }else {
+                    btnGetCode.setEnabled(false);
+                    new GetCodeTask(mMobileView.getText().toString()).execute();
+                }
+            }
+        });
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -114,10 +131,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mSignUpButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, MobileCodeActivity.class);
-                intent.putExtra(MobileCodeActivity.CODE_TYPE, MobileCodeActivity.CODE_TYPE_REGISTER);
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
-
                     }
         });
 
@@ -140,17 +155,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
 
-        if (!MyApplication.getInstance().getSharedPreferenceManager().getUserMobile().equals("")
-             && !MyApplication.getInstance().getSharedPreferenceManager().getUserPass().equals("")){
-            mMobileView.setText(MyApplication.getInstance().getSharedPreferenceManager().getUserMobile());
-            mPasswordView.setText(MyApplication.getInstance().getSharedPreferenceManager().getUserPass());
-
-            attemptLogin();
-        }else {
-            mFirstLogin = true;
-            showProgress(true);
-            new GetSchoolTask().execute();
-        }
+        mFirstLogin = true;
+        showProgress(true);
+        new GetSchoolTask().execute();
 
     }
 
@@ -210,19 +217,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         // Reset errors.
         mMobileView.setError(null);
-        mPasswordView.setError(null);
+        mCodeView.setError(null);
 
         // Store values at the time of the login attempt.
         String mobile = mMobileView.getText().toString();
-        String password = mPasswordView.getText().toString();
+        String code = mCodeView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView;
+        if (!TextUtils.isEmpty(code) && code.length() != 6) {
+            mCodeView.setError("This verification code is invalid");
+            focusView = mCodeView;
             cancel = true;
         }
 
@@ -241,7 +248,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(mobile, password);
+            mAuthTask = new UserLoginTask(mobile, code);
             mAuthTask.execute((Void) null);
         }
     }
@@ -449,11 +456,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public class UserLoginTask extends AsyncTask<Void, Void, String> {
 
         private final String mMobile;
-        private final String mPassword;
+        private final String mCode;
 
         UserLoginTask(String email, String password) {
             mMobile = email;
-            mPassword = password;
+            mCode = password;
         }
 
         @Override
@@ -463,7 +470,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 MyApplication.getInstance().getSharedPreferenceManager().setSchoolDomain(curSchool.getSchoolDomain());
 
             }
-            return HttpData.login(mMobile, mPassword);
+            return HttpData.login(mMobile, mCode);
         }
 
         @Override
@@ -496,20 +503,65 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
 
             if (success) {
-                MyApplication.getInstance().getSharedPreferenceManager().setUserMobile(mMobile);
-                MyApplication.getInstance().getSharedPreferenceManager().setUserPass(mPassword);
+                //MyApplication.getInstance().getSharedPreferenceManager().setUserMobile(mMobile);
+                //MyApplication.getInstance().getSharedPreferenceManager().setUserPass(mPassword);
                 finish();
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
 
             } else {
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
-                mPasswordView.requestFocus();
+                mCodeView.setError("This verification code is invalid");
+                mCodeView.requestFocus();
             }
         }
 
         @Override
         protected void onCancelled() {
             mAuthTask = null;
+            showProgress(false);
+        }
+    }
+
+    /**
+     * Represents an asynchronous login/registration task used to authenticate
+     * the user.
+     */
+    public class GetCodeTask extends AsyncTask<Void, Void, String> {
+
+        private final String mMobile;
+
+        GetCodeTask(String mobile) {
+            mMobile = mobile;
+        }
+
+        @Override
+        protected String doInBackground(Void... params) {
+            SchoolBean curSchool = mSchools.get(mCurSelectedSchoolIndex);
+            MyApplication.getInstance().getSharedPreferenceManager().setSchoolDomain(curSchool.getSchoolDomain());
+            return HttpData.getLoginCode(mMobile);
+        }
+
+        @Override
+        protected void onPostExecute(final String result) {
+            showProgress(false);
+            boolean success = false;
+            MyApplication.getInstance().getSharedPreferenceManager().clear();
+
+            try {
+                JSONObject jsonObject = new JSONObject(result);
+                success = jsonObject.getBoolean("status");
+                if (success) {
+
+                }else {
+                    btnGetCode.setEnabled(true);
+                }
+                Toast.makeText(getApplicationContext(), jsonObject.getString("msg"), Toast.LENGTH_LONG).show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        protected void onCancelled() {
             showProgress(false);
         }
     }

@@ -42,6 +42,7 @@
     </uses-permission>
     <uses-permission android:name="android.permission.WRITE_SETTINGS" >
     </uses-permission>
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:name=".MyApplication"
@@ -55,7 +56,15 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="qWFiBGiLFKjbc6hKRcootplYwVUOgA3M"></meta-data>
+        <service
 
+            android:name=".activity.PlayerMusicService"
+
+            android:enabled="true"
+
+            android:exported="true"
+
+            android:process=":music_service"></service>
         <activity
             android:name=".activity.LoginActivity"
             android:screenOrientation="portrait"></activity>

@@ -3,6 +3,9 @@ package cn.homecaught.ibus_jhr.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -15,13 +18,17 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import cn.homecaught.ibus_jhr.MyApplication;
 import cn.homecaught.ibus_jhr.R;
+import cn.homecaught.ibus_jhr.fragment.MeFragment;
 import cn.homecaught.ibus_jhr.model.SchoolBean;
 import cn.homecaught.ibus_jhr.model.UserBean;
 import cn.homecaught.ibus_jhr.util.HttpData;
@@ -39,8 +46,9 @@ public class MobileCodeActivity extends AppCompatActivity {
     public final static String CODE_TYPE = "code_type";
 
     private int codeType = CODE_TYPE_FIND_PWD;
-
-
+    private List<SchoolBean> mSchools;
+    private int mCurSelectedSchoolIndex;
+    private Button btnSchool = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +74,15 @@ public class MobileCodeActivity extends AppCompatActivity {
         });
 
         setTitle(R.string.title_get_code);
-
+        btnSchool = (Button) findViewById(R.id.btn_school);
+        btnSchool.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showReportAlert();
+            }
+        });
+        showProgress(true);
+        new GetSchoolTask().execute();
     }
 
 
@@ -77,7 +93,44 @@ public class MobileCodeActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    private void showReportAlert() {
 
+        final String[] reports = new String[mSchools.size()];
+        List<String> names = new ArrayList<>();
+        for (int i=0; i <mSchools.size(); i++){
+            SchoolBean ugrentBean = mSchools.get(i);
+            names.add(ugrentBean.getSchoolName());
+        }
+        names.toArray(reports);
+
+        Dialog alertDialog = new AlertDialog.Builder(this).
+                setTitle("Please choose your school").
+                setIcon(R.mipmap.icon_report)
+                .setSingleChoiceItems(reports, 0, new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mCurSelectedSchoolIndex = which;
+                    }
+                }).
+                        setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                SchoolBean ugrentBean = mSchools.get(mCurSelectedSchoolIndex);
+                                btnSchool.setText(ugrentBean.getSchoolName());
+                            }
+                        }).
+                        setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // TODO Auto-generated method stub
+                            }
+                        }).
+                        create();
+        alertDialog.show();
+    }
     /**
      * 校验手机号
      */
@@ -102,6 +155,9 @@ public class MobileCodeActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(Void... params) {
+            SchoolBean curSchool = mSchools.get(mCurSelectedSchoolIndex);
+            MyApplication.getInstance().getSharedPreferenceManager().setSchoolDomain(curSchool.getSchoolDomain());
+
             if (codeType == CODE_TYPE_FIND_PWD)
                 return HttpData.getForgetCode(mMobile);
             else
@@ -162,13 +218,13 @@ public class MobileCodeActivity extends AppCompatActivity {
 
             mOKBtn.setVisibility(show ? View.GONE : View.VISIBLE);
             mOKBtn.animate().setDuration(shortAnimTime).alpha(
+
                     show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
                     mOKBtn.setVisibility(show ? View.GONE : View.VISIBLE);
                 }
             });
-
             mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
             mProgressView.animate().setDuration(shortAnimTime).alpha(
                     show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
@@ -184,6 +240,64 @@ public class MobileCodeActivity extends AppCompatActivity {
             mEditTextMobile.setVisibility(show ? View.GONE : View.VISIBLE);
             mOKBtn.setVisibility(show ? View.GONE : View.VISIBLE);
 
+        }
+
+
+    }
+
+    class GetSchoolTask extends AsyncTask<Void, Void, String>{
+
+        public GetSchoolTask() {
+            super();
+        }
+
+        @Override
+        protected String doInBackground(Void... params) {
+            return HttpData.getSchool();
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            showProgress(false);
+
+            try{
+                if (mSchools == null)
+                    mSchools =new ArrayList<>();
+                mSchools.clear();
+                JSONObject jsonObject = new JSONObject(s);
+                JSONArray jsonArray = jsonObject.getJSONArray("info");
+
+                for (int i = 0; i< jsonArray.length(); i++){
+                    SchoolBean schoolBean = new SchoolBean(jsonArray.getJSONObject(i));
+                    mSchools.add(schoolBean);
+                }
+                SchoolBean schoolBean = mSchools.get(0);
+                btnSchool.setText(schoolBean.getSchoolName());
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            super.onPostExecute(s);
+
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onCancelled(String s) {
+            super.onCancelled(s);
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
         }
     }
 }

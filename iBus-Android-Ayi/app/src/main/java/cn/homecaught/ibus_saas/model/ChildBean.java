@@ -10,6 +10,24 @@ import org.json.JSONObject;
 public class ChildBean implements Cloneable {
     private String id;
     private String firstName;
+    private boolean isLeave;
+    private String leaveType;
+
+    public boolean isLeave() {
+        return isLeave;
+    }
+
+    public void setLeave(boolean leave) {
+        isLeave = leave;
+    }
+
+    public String getLeaveType() {
+        return leaveType;
+    }
+
+    public void setLeaveType(String leaveType) {
+        this.leaveType = leaveType;
+    }
 
     public String getId() {
         return id;
@@ -137,6 +155,9 @@ public class ChildBean implements Cloneable {
             grade = jsonObject.getString("child_grade");
             nickName = jsonObject.getString("child_nick_name");
             SN = jsonObject.getString("child_sn");
+            isLeave = jsonObject.getBoolean("is_leave");
+            leaveType = jsonObject.getString("leave_type");
+
             if (jsonObject.has("child_on_site_data"))
                 if(jsonObject.get("child_on_site_data") instanceof  JSONObject){
                     pickUpStop = new StopBean(jsonObject.getJSONObject("child_on_site_data"));

@@ -1,6 +1,8 @@
 package cn.homecaught.ibus_jhr.util;
 
 import java.io.File;
+
+import android.os.StrictMode;
 import android.support.v4.app.ActivityCompat;
 
 import android.app.Activity;

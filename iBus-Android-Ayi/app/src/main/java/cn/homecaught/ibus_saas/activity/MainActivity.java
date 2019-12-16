@@ -34,6 +34,8 @@ import android.view.MenuItem;
 
 import android.graphics.drawable.Drawable;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.json.JSONArray;
@@ -51,6 +53,7 @@ import cn.homecaught.ibus_saas.model.LineBean;
 import cn.homecaught.ibus_saas.model.UgrentBean;
 import cn.homecaught.ibus_saas.model.UserBean;
 import cn.homecaught.ibus_saas.util.CameraDialog;
+import cn.homecaught.ibus_saas.util.DialogTool;
 import cn.homecaught.ibus_saas.util.HttpData;
 import cn.homecaught.ibus_saas.util.ImageUntils;
 import cn.homecaught.ibus_saas.util.StatusBarCompat;
@@ -68,7 +71,10 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
     private int currentIndex = 0;
     public List<Fragment> fragments = new ArrayList<Fragment>();
 
-    private int selectedReportIndex = 0;
+    private int  selectedReportIndex = 0;
+    private int selectedLineIndex = -1;
+
+    private int selectedSiteIndex = 0;
 
     public UserBean manager;
 
@@ -92,6 +98,10 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent intent = new Intent(this, PlayerMusicService.class);
+
+        startService(intent);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         setContentView(R.layout.activity_main);
@@ -207,10 +217,12 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
         switch (item.getItemId()) {
             case R.id.action_report:
                 progressDialog.show();
-                new GetUgrentTask().execute();
+                new HasTravelTask(0).execute();
+
                 break;
             case R.id.action_add:
-                startActivity(new Intent(this, AddStudentActivity.class));
+                new HasTravelTask(1).execute();
+
                 break;
             case R.id.action_chat:
                 /*
@@ -250,7 +262,7 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
         names.toArray(reports);
 
         Dialog alertDialog = new AlertDialog.Builder(this).
-                setTitle("请故障选择").
+                setTitle("请选择需要群发的消息").
                 setIcon(R.mipmap.icon_report)
                 .setSingleChoiceItems(reports, 0, new DialogInterface.OnClickListener() {
 
@@ -264,8 +276,60 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 UgrentBean ugrentBean = ugrents.get(selectedReportIndex);
-                                new SetUrgent(ugrentBean.getId()).execute();
+                                if (selectedLineIndex == -1){
+                                    new SetUrgent(ugrentBean.getId(), null).execute();
 
+                                }else {
+                                    LineBean lineBean = lineBeans.get(selectedLineIndex);
+                                    new SetUrgent(ugrentBean.getId(), lineBean.getId()).execute();
+
+                                }
+                            }
+                        }).
+                        setNegativeButton("取消", new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // TODO Auto-generated method stub
+                            }
+                        }).
+                        create();
+        alertDialog.show();
+    }
+
+
+    private void showLineAlert(final int type) {
+
+        final String[] reports = new String[lineBeans.size()];
+        List<String> names = new ArrayList<>();
+        for (int i=0; i <lineBeans.size(); i++){
+            LineBean ugrentBean = lineBeans.get(i);
+            names.add(ugrentBean.getLineName());
+        }
+        names.toArray(reports);
+        selectedLineIndex = 0;
+        String msg = "请选择线路发送消息";
+
+        Dialog alertDialog = new AlertDialog.Builder(this).
+                setTitle(msg).
+                setIcon(R.mipmap.icon_report)
+                .setSingleChoiceItems(reports, 0, new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        selectedLineIndex = which;
+                    }
+                }).
+                        setPositiveButton("确认", new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if (type == 0) {
+                                    new GetUgrentTask().execute();
+                                }else {
+                                    LineBean ugrentBean = lineBeans.get(selectedLineIndex);
+                                    R(ugrentBean);
+                                }
                             }
                         }).
                         setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -502,15 +566,17 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
     public class SetUrgent extends AsyncTask<Void, Void, String> {
 
         private String mUrgentId;
+        private String mLineId;
 
-        public SetUrgent(String urgentId) {
+        public SetUrgent(String urgentId, String lineId) {
             super();
             mUrgentId = urgentId;
+            mLineId = lineId;
         }
 
         @Override
         protected String doInBackground(Void... params) {
-            return HttpData.setUrgent(mUrgentId);
+            return HttpData.setUrgent(mUrgentId, mLineId);
         }
 
         @Override
@@ -523,6 +589,7 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             progressDialog.hide();
+            selectedLineIndex = -1;
             try{
                 JSONObject jsonObject = new JSONObject(s);
                 boolean status = jsonObject.getBoolean("status");
@@ -550,6 +617,111 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
         protected void onCancelled() {
             super.onCancelled();
         }
+    }
+
+
+    public class HasTravelTask extends AsyncTask<Void, Void, String>{
+        private int mtype = 0;
+        public HasTravelTask(int type) {
+            super();
+            mtype = type;
+        }
+
+        @Override
+        protected String doInBackground(Void... params) {
+            return HttpData.hasTravel();
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            try{
+
+                JSONObject jsonObject = new JSONObject(s);
+                boolean status = jsonObject.getBoolean("status");
+
+                if (mtype == 0) {
+                    if(status) {
+                        new GetUgrentTask().execute();
+                    } else {
+                        showLineAlert(0);
+                    }
+
+                } else {
+
+                    if (status) {
+                        LineBean curLine = workFragment.getCurLine();
+                        if (curLine == null) return;
+
+                        R(curLine);
+
+                    } else {
+                        showLineAlert(1);
+                    }
+
+                }
+
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            super.onPostExecute(s);
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onCancelled(String s) {
+            super.onCancelled(s);
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+        }
+    }
+
+    private void  R(final LineBean curLine) {
+        final List<String> sites = new ArrayList();
+        for (int i = 0; i < curLine.getSites().length();i++) {
+            try {
+                JSONObject xjsonObject = curLine.getSites().getJSONObject(i);
+                sites.add(xjsonObject.getString("site_name"));
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        String[] strs1 = sites.toArray(new String[sites.size()]);
+        DialogTool.createSingleChoiceDialog(MainActivity.this, "请选择即将到达的站点发送提醒", strs1, "确定", "取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                JSONArray sites =curLine.getSites();
+                try {
+                    new ArrivalReminder(curLine.getId(), sites.getJSONObject(selectedSiteIndex).getInt("id") + "").execute();
+
+                }catch (Exception e){
+
+                }
+            }
+        }, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        }, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                selectedSiteIndex = which;
+            }
+        }, 0).show();
     }
 
     public class GetUgrentTask extends AsyncTask<Void, Void, String>{
@@ -700,6 +872,62 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
             super.onCancelled();
         }
     }
+
+    public class ArrivalReminder extends AsyncTask<Void, Void, String> {
+
+        private String mlineId;
+        private String msiteId;
+
+        public ArrivalReminder(String lineId, String siteId) {
+            super();
+            mlineId =lineId;
+            msiteId = siteId;
+        }
+
+        @Override
+        protected String doInBackground(Void... params) {
+
+            return HttpData.arrivalReminder(mlineId + "", msiteId + "");
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            progressDialog.hide();
+            try{
+                JSONObject jsonObject = new JSONObject(s);
+                boolean status = jsonObject.getBoolean("status");
+                if (status == false){
+                    Toast.makeText(getBaseContext(), jsonObject.getString("msg"), Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(getBaseContext(), "提醒成功", Toast.LENGTH_SHORT).show();
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            super.onPostExecute(s);
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onCancelled(String s) {
+            super.onCancelled(s);
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+        }
+    }
+
 
     private void showFriendsAlert() {
 

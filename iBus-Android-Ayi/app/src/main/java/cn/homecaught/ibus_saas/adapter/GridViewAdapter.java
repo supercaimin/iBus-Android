@@ -1,6 +1,7 @@
 package cn.homecaught.ibus_saas.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -78,13 +79,14 @@ public class GridViewAdapter extends BaseAdapter {
             viewHolder.nickNameTextView = (TextView) convertView.findViewById(R.id.tvNickName);
             viewHolder.viewMask = (View) convertView.findViewById(R.id.viewMask);
             viewHolder.infoBtn = (Button) convertView.findViewById(R.id.btn_info);
+
             convertView.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder)convertView.getTag();
         }
         viewHolder.headImageView.setImageDrawable(mContext.getResources().getDrawable(R.mipmap.head));
         ChildBean userBean = mItems.get(position);
-        Log.v("dddd", mRouteType + ":" + userBean.getPickUpStop().getLineName() + "::" + userBean.getPickOffStop().getLineName());
+//        Log.v("dddd", mRouteType + ":" + userBean.getPickUpStop().getLineName() + "::" + userBean.getPickOffStop().getLineName());
         if (mRouteType.equals("go")){
             if (userBean.getPickUpStop() != null)
                 viewHolder.nameTextView.setText(userBean.getPickUpStop().getLineName());
@@ -106,10 +108,37 @@ public class GridViewAdapter extends BaseAdapter {
         }
         viewHolder.infoBtn.setTag(userBean);
 
-        if (userBean.getUserOnBus().equals("off"))
-            viewHolder.viewMask.setVisibility(View.VISIBLE);
-        else
-            viewHolder.viewMask.setVisibility(View.GONE);
+
+        if (userBean.getLeaveType().equals("leave")){
+            if (userBean.isLeave()) {
+                viewHolder.infoBtn.setBackgroundResource(R.mipmap.hong);
+                convertView.setEnabled(false);
+            }else {
+                convertView.setEnabled(true);
+                if (userBean.getUserOnBus().equals("off")){
+                    viewHolder.viewMask.setVisibility(View.VISIBLE);
+                    viewHolder.infoBtn.setBackgroundResource(R.mipmap.icon_info);
+                } else {
+                    viewHolder.viewMask.setVisibility(View.GONE);
+                    viewHolder.infoBtn.setBackgroundResource(R.mipmap.l);
+                }
+            }
+        } else if (userBean.getLeaveType().equals("temp_line")){
+            viewHolder.infoBtn.setBackgroundResource(R.mipmap.lv);
+            convertView.setEnabled(false);
+        } else {
+            convertView.setEnabled(true);
+            if (userBean.getUserOnBus().equals("off")){
+                viewHolder.viewMask.setVisibility(View.VISIBLE);
+                viewHolder.infoBtn.setBackgroundResource(R.mipmap.icon_info);
+            } else {
+                viewHolder.viewMask.setVisibility(View.GONE);
+                viewHolder.infoBtn.setBackgroundResource(R.mipmap.l);
+            }
+        }
+
+
+
 
         ImageLoader.getInstance().displayImage(HttpData.getBaseUrl() + userBean.getHead(),
                 viewHolder.headImageView);

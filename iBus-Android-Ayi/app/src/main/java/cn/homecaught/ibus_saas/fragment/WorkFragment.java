@@ -2,10 +2,13 @@ package cn.homecaught.ibus_saas.fragment;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.telephony.PhoneNumberUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -31,12 +34,13 @@ import cn.homecaught.ibus_saas.adapter.GridViewAdapter;
 import cn.homecaught.ibus_saas.adapter.LineDataAdapter;
 import cn.homecaught.ibus_saas.model.ChildBean;
 import cn.homecaught.ibus_saas.model.LineBean;
+import cn.homecaught.ibus_saas.util.DialogTool;
 import cn.homecaught.ibus_saas.util.HttpData;
 import cn.homecaught.ibus_saas.util.LocationService;
 import cn.homecaught.ibus_saas.view.StudentInfoPopWindow;
 import cn.homecaught.ibus_saas.view.PullToRefreshLayout;
 
-public class WorkFragment extends Fragment implements View.OnClickListener{
+public class WorkFragment extends Fragment implements View.OnClickListener, StudentInfoPopWindow.StudentInfoPopWindowMobileClickInterface{
     private GridView gridView = null;
     private  PullToRefreshLayout pullToRefreshLayout;
     private GridViewAdapter adapter;
@@ -61,6 +65,15 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
     private boolean isTravelStart = false;
 
     private List<LineBean> lineBeans;
+
+    public LineBean getCurLine() {
+        return curLine;
+    }
+
+    public void setCurLine(LineBean curLine) {
+        this.curLine = curLine;
+    }
+
     private LineBean curLine;
 
     private Intent serviceIntent;
@@ -94,12 +107,17 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ChildBean userBean = students.get(position);
                 View maskView = view.findViewById(R.id.viewMask);
+                Button infoBtn = view.findViewById(R.id.btn_info);
                 if (userBean.getUserOnBus().equals(HttpData.CHILD_STATUS_ON)){
                     userBean.setUserOnBus(HttpData.CHILD_STATUS_OFF);
                     maskView.setVisibility(View.VISIBLE);
+                    infoBtn.setBackgroundResource(R.mipmap.icon_info);
+
                 }else {
                     userBean.setUserOnBus(HttpData.CHILD_STATUS_ON);
                     maskView.setVisibility(View.GONE);
+                    infoBtn.setBackgroundResource(R.mipmap.l);
+
                 }
             }
         });
@@ -201,6 +219,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
 
     private void show(ChildBean user) {
         popWindow = new StudentInfoPopWindow(getActivity(), user);
+        popWindow.setOnMobileClickInterface(this);
         WindowManager.LayoutParams lp = getActivity().getWindow().getAttributes();
         lp.alpha = 0.5f;
         getActivity().getWindow().setAttributes(lp);
@@ -221,22 +240,40 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
         switch (v.getId()){
             case R.id.btnArrive:
                 if (isTravelStart){
-                    progressDialog.show();
-                    new SetTravelArriveStationTask().execute();
-                }else {
-                    progressDialog.show();
-                    new SetTravelStartTask().execute();
-                    isTravelStart = true;
+                    DialogTool.createConfirmDialog(getContext(), "提示", "是否继续？", "确定", "取消", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            progressDialog.show();
+                            new SetTravelArriveStationTask().execute();
+                        }
+                    }, null, 0).show();
 
-                    btnArrive.setText("到站");
+                }else {
+                    DialogTool.createConfirmDialog(getContext(), "提示", "是否继续？", "确定", "取消", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            progressDialog.show();
+                            new SetTravelStartTask().execute();
+                            isTravelStart = true;
+
+                            btnArrive.setText("到站");
+                        }
+                    }, null, 0).show();
+
                 }
 
                 break;
             case R.id.btnStart:
-                isTravelStart = false;
-                btnArrive.setText("开始行程");
-                llSelect.setVisibility(View.VISIBLE);
-                llContent.setVisibility(View.GONE);
+                DialogTool.createConfirmDialog(getContext(), "提示", "是否继续？", "确定", "取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        isTravelStart = false;
+                        btnArrive.setText("开始行程");
+                        llSelect.setVisibility(View.VISIBLE);
+                        llContent.setVisibility(View.GONE);
+                    }
+                }, null, 0).show();
+
                 break;
 
             default:
@@ -255,6 +292,12 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
         }
         return changedStudents;
     }
+
+    @Override
+    public void OnMobileClickInterface(String mobile) {
+        doSendSMSTo(mobile, "");
+    }
+
     public class SyncTask extends AsyncTask<Void, Void, String> {
         public SyncTask() {
             super();
@@ -477,5 +520,17 @@ public class WorkFragment extends Fragment implements View.OnClickListener{
 
     }
 
+    /**
+     * 调起系统发短信功能
+     * @param phoneNumber
+     * @param message
+     */
+    public void doSendSMSTo(String phoneNumber,String message){
+        if(PhoneNumberUtils.isGlobalPhoneNumber(phoneNumber)){
+            Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:" + phoneNumber));
+            intent.putExtra("sms_body", message);
+            startActivity(intent);
+        }
+    }
 
 }

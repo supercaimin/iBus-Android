@@ -1,5 +1,6 @@
 package cn.homecaught.ibus_saas.model;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
@@ -27,6 +28,16 @@ public class LineBean {
     private String lineName;
     private String lineType;
 
+    public JSONArray getSites() {
+        return sites;
+    }
+
+    public void setSites(JSONArray sites) {
+        this.sites = sites;
+    }
+
+    private JSONArray sites;
+
     public String getLineType() {
         return lineType;
     }
@@ -40,6 +51,7 @@ public class LineBean {
             id = jsonObject.getString("id");
             lineName = jsonObject.getString("line_name");
             lineType = jsonObject.getString("line_type");
+            sites =jsonObject.getJSONArray("line_sites");
 
         }catch (Exception e){
             e.printStackTrace();

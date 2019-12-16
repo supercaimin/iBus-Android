@@ -278,23 +278,26 @@
 
 
 
-            <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
+            <LinearLayout android:layout_width="match_parent" android:orientation="horizontal"
                 android:layout_height="wrap_content">
 
-                <EditText android:id="@+id/mobile" android:layout_width="match_parent"
+                <EditText android:id="@+id/mobile" android:layout_weight="3" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:hint="手机（Mobile）   必填(Required)"
                     android:imeActionLabel="@string/action_sign_in_short"
-                    android:enabled="false"
                     android:imeOptions="actionUnspecified" android:inputType="textPhonetic"
                     android:maxLines="1" android:singleLine="true" />
+                <Button
+                    android:id="@+id/btn_get_code"
+                    android:layout_width="wrap_content" android:layout_weight="1"
+                    android:layout_height="wrap_content" android:text="@string/title_get_code"/>
 
-            </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
 
             <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText android:id="@+id/mobileCode" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="验证码（Mobile）   必填(Required)"
+                    android:layout_height="wrap_content" android:hint="验证码（Code）   必填(Required)"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPhonetic"
                     android:maxLines="1" android:singleLine="true" />

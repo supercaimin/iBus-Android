@@ -165,7 +165,10 @@ public class HttpData {
                 cookie = HttpData.getCookies(httpClient);
                 Log.i("HttpData cookie", cookie);
             }
-
+            if (url.equals(getFakeServer() + "mobile/mobile_login")) {
+                cookie = HttpData.getCookies(httpClient);
+                Log.i("HttpData cookie", cookie);
+            }
 
         } catch (IllegalArgumentException e) {
             strResult = CONNECTION_ERROR_URL;
@@ -358,16 +361,16 @@ public class HttpData {
      * 登陆
      *
      * @param email
-     * @param password
+     * @param code
      * @return
      */
-    public static String login(String email, String password) {
-        String url = getFakeServer() + "login/login";
+    public static String login(String email, String code) {
+        String url = getFakeServer() + "mobile/mobile_login";
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
         BasicNameValuePair userMobile = new BasicNameValuePair("user_mobile",
                 email);
-        BasicNameValuePair userPass = new BasicNameValuePair("user_pass",
-                password);
+        BasicNameValuePair userPass = new BasicNameValuePair("mobile_code",
+                code);
         nvps.add(userMobile);
         nvps.add(userPass);
         return put(url, nvps);
@@ -490,7 +493,7 @@ public class HttpData {
         BasicNameValuePair vpUserMobile = new BasicNameValuePair("user_mobile",
                 userMobile);
         BasicNameValuePair vpUserCode = new BasicNameValuePair("mobile_code",
-                userMobile);
+                userCode);
         BasicNameValuePair vpUserEmail = new BasicNameValuePair("user_email",
                 userEmail);
         BasicNameValuePair vpUserPass = new BasicNameValuePair("user_pass",
@@ -664,7 +667,12 @@ public class HttpData {
         return  get(url, null);
 
     }
+    public static String getLoginCode(String mobile)
+    {
+        String url = getFakeServer() + "mobile/mobile_code/?mobile=" + mobile;
+        return  get(url, null);
 
+    }
 
 
     public static String getFriends(String userId)

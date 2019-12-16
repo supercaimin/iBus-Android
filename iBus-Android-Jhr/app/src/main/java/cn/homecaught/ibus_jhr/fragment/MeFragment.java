@@ -3,7 +3,9 @@ package cn.homecaught.ibus_jhr.fragment;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,6 +74,16 @@ public class MeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         System.out.println("CCCCCCCCCC____onCreateView");
         this.container = inflater.inflate(R.layout.me_fragment, container, false);
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            builder.detectFileUriExposure();
+        }
+
+
+
+
+
         this.container.findViewById(R.id.llAbout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

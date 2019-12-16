@@ -1,7 +1,9 @@
 package cn.homecaught.ibus_saas.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -30,12 +32,34 @@ public class StudentInfoPopWindow extends PopupWindow {
     private TextView tvPickUpStop;
     private TextView tvPickOffStop;
 
+    public StudentInfoPopWindowMobileClickInterface getOnMobileClickInterface() {
+        return onMobileClickInterface;
+    }
+
+    public void setOnMobileClickInterface(StudentInfoPopWindowMobileClickInterface onMobileClickInterface) {
+        this.onMobileClickInterface = onMobileClickInterface;
+    }
+
+    public StudentInfoPopWindowMobileClickInterface onMobileClickInterface;
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
+    public interface StudentInfoPopWindowMobileClickInterface {
+        public void OnMobileClickInterface(String mobile);
+    }
+
     public StudentInfoPopWindow(Context context, ChildBean user) {
         this.context = context;
         initWindow(user);
     }
 
-    private void initWindow(ChildBean userBean) {
+    private void initWindow(final ChildBean userBean) {
         // TODO Auto-generated method stub
         mInflater = LayoutInflater.from(context);
         contentView = mInflater.inflate(R.layout.student_info_popwindow, null);
@@ -54,6 +78,15 @@ public class StudentInfoPopWindow extends PopupWindow {
         if (userBean.getGuardian() != null){
             tvMobile = (TextView) contentView.findViewById(R.id.tvMobile);
             tvMobile.setText(userBean.getGuardian().getUserMobile());
+            tvMobile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onMobileClickInterface != null) {
+                        onMobileClickInterface.OnMobileClickInterface(userBean.getGuardian().getUserMobile());
+                    }
+
+                }
+            });
             tvKinder = (TextView) contentView.findViewById(R.id.tvKinder);
             tvKinder.setText(userBean.getGuardian().getUserRealName());
         }

@@ -112,6 +112,8 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
     private View child3_first_name_v;
     private View child3_school_id_v;
 
+    private Button btnGetCode;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -154,6 +156,19 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         mChild3FirstNameView = (EditText) findViewById(R.id.child_first_name3);
         mChild3LastNameView = (EditText) findViewById(R.id.child_last_name3);
         mChild3SNView = (EditText) findViewById(R.id.sn3);
+
+        btnGetCode = (Button) findViewById(R.id.btn_get_code);
+        btnGetCode.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (TextUtils.isEmpty(mUserMobileView.getText().toString())){
+                    mUserMobileView.setError("Required.");
+                }else {
+                    btnGetCode.setEnabled(false);
+                    new GetCodeTask(mUserMobileView.getText().toString()).execute();
+                }
+            }
+        });
 
         child1_tip = findViewById(R.id.child1_tip);
         child1_last_name_v = findViewById(R.id.child1_last_name_v);
@@ -403,7 +418,8 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserRegisterTask(mUserMobileView.getText().toString(),mUserCodeView.getText().toString(),
+            mAuthTask = new UserRegisterTask(mUserMobileView.getText().toString(),
+                    mUserCodeView.getText().toString(),
                     mUserEmailView.getText().toString(),
                     mUserPassView.getText().toString(),
                     mUserFirstNameView.getText().toString(),
@@ -728,6 +744,51 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         @Override
         protected void onCancelled() {
             mAuthTask = null;
+            showProgress(false);
+        }
+    }
+
+    /**
+     * Represents an asynchronous login/registration task used to authenticate
+     * the user.
+     */
+    public class GetCodeTask extends AsyncTask<Void, Void, String> {
+
+        private final String mMobile;
+
+        GetCodeTask(String mobile) {
+            mMobile = mobile;
+        }
+
+        @Override
+        protected String doInBackground(Void... params) {
+            SchoolBean curSchool = mSchools.get(mCurSelectedSchoolIndex);
+            MyApplication.getInstance().getSharedPreferenceManager().setSchoolDomain(curSchool.getSchoolDomain());
+                return HttpData.getRegCode(mMobile);
+        }
+
+        @Override
+        protected void onPostExecute(final String result) {
+            showProgress(false);
+            boolean success = false;
+            MyApplication.getInstance().getSharedPreferenceManager().clear();
+
+            try {
+                JSONObject jsonObject = new JSONObject(result);
+                success = jsonObject.getBoolean("status");
+                if (success) {
+
+                }else {
+                    btnGetCode.setEnabled(true);
+                }
+                Toast.makeText(getApplicationContext(), jsonObject.getString("msg"), Toast.LENGTH_LONG).show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        protected void onCancelled() {
             showProgress(false);
         }
     }

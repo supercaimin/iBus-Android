@@ -10,8 +10,8 @@ android {
         applicationId "cn.homecaught.ibus_jhr"
         minSdkVersion 23
         targetSdkVersion 26
-        versionCode 2
-        versionName "1.1.1"
+        versionCode 4
+        versionName "1.2.2"
         maxSdkVersion 28
     }
     buildTypes {

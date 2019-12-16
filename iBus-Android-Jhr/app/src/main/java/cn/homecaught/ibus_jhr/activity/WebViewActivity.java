@@ -21,6 +21,8 @@ public class WebViewActivity extends AppCompatActivity {
     public static final String WEB_HAND_BOOK = "handbook";
     public static final String WEB_CONTENT_TIME_TABLE = "timetable";
     public static final String WEB_CONTENT_ABOUT_US = "about_us";
+    public static final String WEB_CONTENT_PRIVACY = "Privacy Policy";
+    public static final String WEB_CONTENT_CONTACT = "Contact";
 
     private String webContent = "";
 
@@ -37,16 +39,30 @@ public class WebViewActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         webContent = intent.getStringExtra("webContent");
-        new GetWebContentTask().execute();
 
         if (webContent.equals(WEB_CONTENT_ABOUT_US)) {
             setTitle(R.string.title_about_us);
+            new GetWebContentTask().execute();
+
         } else if (webContent.equals(WEB_HAND_BOOK)) {
             setTitle(R.string.title_handbook);
+            new GetWebContentTask().execute();
+
         } else if (webContent.equals(WEB_CONTENT_TIME_TABLE)) {
             setTitle(R.string.title_timetable);
-        } else {
+            new GetWebContentTask().execute();
 
+        } else if(webContent.equals(WEB_CONTENT_PRIVACY)){
+            setTitle(R.string.title_privacy_policy);
+            new GetWebContentTask().execute();
+
+            webView.loadUrl("file:///android_asset/222.htm");
+
+        }else if (webContent.equals(WEB_CONTENT_CONTACT)) {
+            setTitle("软件许可及用户协议");
+            new GetWebContentTask().execute();
+
+            webView.loadUrl("file:///android_asset/111.htm");
         }
 
     }

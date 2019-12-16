@@ -5,6 +5,7 @@
     <string name="prompt_mobile">Mobile</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
+    <string name="prompt_code">Verification Code(Required)</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="action_sign_up_short">Sign Up</string>
@@ -37,6 +38,7 @@
     <string name="title_route_change">Temporary Bus Route Change</string>
     <string name="tip_route_change">To ensure that we can accommodate your request, please submit this form at least one school day in advance. The deadline for a same day change is 1:00 pm. </string>
     <string name="title_about_us">About Us</string>
+    <string name="title_privacy_policy">Privacy Policy</string>
     <string name="title_handbook">Handbook</string>
     <string name="title_timetable">Bus Stop Schedule</string>
     <string name="title_message">Message</string>

@@ -1,5 +1,7 @@
 package cn.homecaught.ibus_jhr.activity;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -16,6 +18,8 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -52,6 +56,7 @@ import cn.homecaught.ibus_jhr.adapter.FragmentTabAdapter;
 import cn.homecaught.ibus_jhr.model.UgrentBean;
 import cn.homecaught.ibus_jhr.model.UserBean;
 import cn.homecaught.ibus_jhr.util.CameraDialog;
+import cn.homecaught.ibus_jhr.util.DialogTool;
 import cn.homecaught.ibus_jhr.util.HttpData;
 import cn.homecaught.ibus_jhr.util.ImageUntils;
 import cn.homecaught.ibus_jhr.util.SharedPreferenceManager;
@@ -90,14 +95,13 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         fragments.add(new TrackFragment());
         fragments.add(new AirPlusFragment());
         fragments.add(new MessageFragment());
         MeFragment fragment = new MeFragment();
         fragment.setOnMeHeadImageUploadListener(this);
         fragments.add(fragment);
-
-
 
 
         rgs = (RadioGroup) findViewById(R.id.tabs_rg);
@@ -108,13 +112,14 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
         progressDialog.setTitle(R.string.tip_tip);
         progressDialog.setMessage(getText(R.string.tip_wait));
 
-        WindowManager wm = this.getWindowManager();;
+        WindowManager wm = this.getWindowManager();
+        ;
         int width = wm.getDefaultDisplay().getWidth();
 
         badgeView = new com.jauker.widget.BadgeView(this);
         badgeView.setTargetView(rgs);
         badgeView.setBadgeGravity(Gravity.TOP | Gravity.CENTER);
-        badgeView.setBadgeMargin(0, 5,  - (width / 16),0);
+        badgeView.setBadgeMargin(0, 5, -(width / 16), 0);
         badgeView.setClickable(true);
         RongIM.getInstance().getTotalUnreadCount(new RongIMClient.ResultCallback<Integer>() {
             @Override
@@ -138,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
             public void onCountChanged(int i) {
                 MainActivity.this.badgeView.setBadgeCount(i);
             }
-        }, Conversation.ConversationType.PRIVATE,  Conversation.ConversationType.DISCUSSION,  Conversation.ConversationType.GROUP, Conversation.ConversationType.SYSTEM);
+        }, Conversation.ConversationType.PRIVATE, Conversation.ConversationType.DISCUSSION, Conversation.ConversationType.GROUP, Conversation.ConversationType.SYSTEM);
 
         FragmentTabAdapter tabAdapter = new FragmentTabAdapter(this, fragments, R.id.tab_content, rgs);
         tabAdapter.setOnRgsExtraCheckedChangedListener(new FragmentTabAdapter.OnRgsExtraCheckedChangedListener() {
@@ -152,8 +157,7 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
         new GetBusTaskTask().execute();
     }
 
-    private void onRgpChecked(RadioGroup radioGroup, int checkedId, int index)
-    {
+    private void onRgpChecked(RadioGroup radioGroup, int checkedId, int index) {
         System.out.println("Extra---- " + index + " checked!!! ");
         RadioButton preRb = null;
         Drawable preDrawable = null;
@@ -182,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
         preRb.setTextColor(Color.BLACK);
 
 
-        RadioButton rb =  (RadioButton) MainActivity.this.findViewById(checkedId);
+        RadioButton rb = (RadioButton) MainActivity.this.findViewById(checkedId);
         Drawable drawable = null;
 
         switch (index) {
@@ -239,7 +243,7 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
 
         final String[] reports = new String[ugrents.size()];
         List<String> names = new ArrayList<>();
-        for (int i=0; i <ugrents.size(); i++){
+        for (int i = 0; i < ugrents.size(); i++) {
             UgrentBean ugrentBean = ugrents.get(i);
             names.add(ugrentBean.getName());
         }
@@ -276,17 +280,22 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
     }
 
 
-
     @Override
-    public void onHeadImageClick(ImageView ivHead)
-    {
+    public void onHeadImageClick(ImageView ivHead) {
         this.ivHead = ivHead;
-        if (cameraDialog == null) {
-            cameraDialog = new CameraDialog(this);
+        if (checkPermissionREAD_EXTERNAL_STORAGE(this)) {
+            // do your stuff..
+
+            if (cameraDialog == null) {
+                cameraDialog = new CameraDialog(this);
+            }
+            cameraDialog.show();
         }
-        cameraDialog.show();
+
+
     }
 
+    public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1123;
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
@@ -306,10 +315,27 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
                     // functionality that depends on this permission.
                     Toast.makeText(getApplicationContext(), "Permission denied", Toast.LENGTH_SHORT).show();
                 }
-                return;
-            }
+                break;
 
-            // other 'case' lines to check for other
+
+            }
+            case MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // do your stuff
+                    if (cameraDialog == null) {
+                        cameraDialog = new CameraDialog(this);
+                    }
+                    cameraDialog.show();
+                } else {
+                    Toast.makeText(this, "GET_ACCOUNTS Denied",
+                            Toast.LENGTH_SHORT).show();
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions,
+                        grantResults);
+
+                // other 'case' lines to check for other
             // permissions this app might request
         }
     }
@@ -359,6 +385,7 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
                         } catch (IOException e) {
                         }
                     } else {
+
                         Uri selectedImage = data.getData();
                         String path = ImageUntils.getPath(this, selectedImage);
                         File outFile = new File(
@@ -384,10 +411,57 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
         }
     }
 
+    public boolean checkPermissionREAD_EXTERNAL_STORAGE(
+            final Context context) {
+        int currentAPIVersion = Build.VERSION.SDK_INT;
+        if (currentAPIVersion >= android.os.Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(context,
+                    Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(
+                        (Activity) context,
+                        Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                    showDialog("External storage", getApplicationContext(),
+                            Manifest.permission.READ_EXTERNAL_STORAGE);
+
+                } else {
+                    ActivityCompat
+                            .requestPermissions(
+                                    (Activity) context,
+                                    new String[] { Manifest.permission.READ_EXTERNAL_STORAGE },
+                                    MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+                }
+                return false;
+            } else {
+                return true;
+            }
+
+        } else {
+            return true;
+        }
+    }
+    public void showDialog(final String msg, final Context context,
+                           final String permission) {
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(context);
+        alertBuilder.setCancelable(true);
+        alertBuilder.setTitle("Permission necessary");
+        alertBuilder.setMessage(msg + " permission is necessary");
+        alertBuilder.setPositiveButton(android.R.string.yes,
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        ActivityCompat.requestPermissions((Activity) context,
+                                new String[] { permission },
+                                MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+                    }
+                });
+        AlertDialog alert = alertBuilder.create();
+        alert.show();
+    }
+
     //{"status":true,"msg":"","info":{"state":"SUCCESS","url":"\/data\/upload\/images\/20160629\/150030_760113.png","title":"150030_760113.png","original":"img1467183628581.png","type":".png","size":25917}}
-    public class UploadImageTask extends AsyncTask<Void, Void, String>{
+    public class UploadImageTask extends AsyncTask<Void, Void, String> {
 
         private String mFilePath;
+
         public UploadImageTask(String filePath) {
             super();
             mFilePath = filePath;
@@ -414,7 +488,7 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
                     new UpHeadImageTask().execute();
                     ImageLoader.getInstance().displayImage(HttpData.getBaseUrl() + mHeadPath, ivHead);
                     Toast.makeText(MainActivity.this, R.string.tip_upload_success, Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     Toast.makeText(MainActivity.this, R.string.tip_upload_failed, Toast.LENGTH_SHORT).show();
                 }
             } catch (Exception e) {
@@ -506,15 +580,15 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             progressDialog.hide();
-            try{
+            try {
                 JSONObject jsonObject = new JSONObject(s);
                 boolean status = jsonObject.getBoolean("status");
-                if (status == false){
+                if (status == false) {
                     Toast.makeText(getBaseContext(), jsonObject.getString("msg"), Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     Toast.makeText(getBaseContext(), "报告成功", Toast.LENGTH_SHORT).show();
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -535,7 +609,7 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
         }
     }
 
-    public class GetUgrentTask extends AsyncTask<Void, Void, String>{
+    public class GetUgrentTask extends AsyncTask<Void, Void, String> {
 
         public GetUgrentTask() {
             super();
@@ -554,19 +628,19 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
         @Override
         protected void onPostExecute(String s) {
             progressDialog.hide();
-            try{
+            try {
                 if (ugrents == null)
-                    ugrents =new ArrayList<>();
+                    ugrents = new ArrayList<>();
                 ugrents.clear();
                 JSONObject jsonObject = new JSONObject(s);
                 JSONArray jsonArray = jsonObject.getJSONArray("info");
-                for (int i = 0; i< jsonArray.length(); i++){
+                for (int i = 0; i < jsonArray.length(); i++) {
                     UgrentBean ugrentBean = new UgrentBean(jsonArray.getJSONObject(i));
                     ugrents.add(ugrentBean);
                 }
 
                 showReportAlert();
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             super.onPostExecute(s);
@@ -589,8 +663,7 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
     }
 
 
-
-    public class UpHeadImageTask extends AsyncTask<Void, Void, String>{
+    public class UpHeadImageTask extends AsyncTask<Void, Void, String> {
 
         public UpHeadImageTask() {
             super();
@@ -598,7 +671,7 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
 
         @Override
         protected String doInBackground(Void... params) {
-            return  HttpData.chgInfo(mHeadPath,
+            return HttpData.chgInfo(mHeadPath,
                     MyApplication.getInstance().getLoginUser().getUserFirstName(),
                     MyApplication.getInstance().getLoginUser().getUserLastName());
         }
@@ -628,6 +701,7 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
             super.onCancelled();
         }
     }
+    int selectedIndex = 0;
 
     @Override
     protected void onResume() {
@@ -637,7 +711,8 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
         if (dxxx == null) {
             new AlertDialog.Builder(this)
                     .setTitle("温馨提示")
-                    .setMessage("        我们深知个人信息对您的重要性，并会尽全力保护您的个人信息安全可靠。我们致力于维持您对我们的信任，恪守以下原则，保护您的个人信息：权责一致原则、目的明确原则、选择同意原则、最少够用原则、确保安全原则、主体参与原则、公开透明原则等。同时，我们承诺，我们将按业界成熟的安全标准，采取相应的安全保护措施来保护您的个人信息。\n 1.我们如何收集和使用您的个人信息。\n 2.我们如何共享、转让、公开披露您的个人信息。\n 3.我们如何使用 Cookie 和同类技术。\n 4.我们如何共享、转让、公开披露您的个人信息。")
+                    .setMessage("        我们深知个人信息对您的重要性，并会尽全力保护您的个人信息安全可靠。我们致力于维持您对我们的信任，恪守以下原则，保护您的个人信息：权责一致原则、目的明确原则、选择同意原则、最少够用原则、确保安全原则、主体参与原则、公开透明原则等。同时，我们承诺，我们将按业界成熟的安全标准，采取相应的安全保护措施来保护您的个人信息。\n 请在使用本服务前确认同意《软件许可及用户协议》以及《隐私政策》。\n" +
+                            "谢谢您的合作！")
                     .setNegativeButton("不同意", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -649,7 +724,43 @@ public class MainActivity extends AppCompatActivity implements MeFragment.OnMeHe
                         public void onClick(DialogInterface dialogInterface, int i) {
                             MyApplication.getInstance().getSharedPreferenceManager().setPP("xxxxxx");
                         }
-                    })
+                    }).setNeutralButton("查看详情", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    String[] strs = {"软件许可及用户协议", "iBusChina隐私政策"};
+
+
+                    Dialog dialog = DialogTool.createSingleChoiceDialog(MainActivity.this, "请选择查看内容", strs, "查看",
+                            "取消", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    if (selectedIndex == 1) {
+                                        Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
+                                        intent.putExtra("webContent", WebViewActivity.WEB_CONTENT_PRIVACY);
+                                        startActivity(intent);
+                                    } else {
+                                        Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
+                                        intent.putExtra("webContent", WebViewActivity.WEB_CONTENT_CONTACT);
+                                        startActivity(intent);
+                                    }
+                                }
+                            }, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                }
+                            }, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    selectedIndex = i;
+
+                                }
+                            }, 0);
+
+                    dialog.show();
+
+                }
+            })
                     .show();
         }
 

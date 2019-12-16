@@ -90,7 +90,9 @@ public class TrackListViewAdapter extends BaseAdapter {
 
             Date date = sdf.parse(lineBean.getArrivedTime());
             int minute = date.getMinutes();
-            shortDate = date.getHours() + ":";
+            int hour = date.getHours();
+            if (hour ==0) hour = 12;
+            shortDate = hour + ":";
             if (minute > 9){
                 shortDate += minute + "";
             }else {
